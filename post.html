@@ -115,7 +115,7 @@
 </footer>
 
 <script>
-  // Sterne Hintergrund
+  // Sterne Hintergrund (bleibt gleich)
   (function() {
     const canvas = document.getElementById('stars'); const ctx = canvas.getContext('2d');
     let stars = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -124,116 +124,88 @@
     resize(); create(); draw(0); window.addEventListener('resize', resize);
   })();
 
-  // Lade den Beitrag sicher
+  // Hilfsfunktion: Korrigiert Pfade, damit sie immer vom Hauptverzeichnis starten
+  function fixPath(path) {
+    if (!path) return "";
+    if (path.startsWith('http') || path.startsWith('data:')) return path;
+    return path.startsWith('/') ? path : '/' + path;
+  }
+
   async function renderPost() {
     const params = new URLSearchParams(window.location.search);
     const postId = params.get('id');
-
-    if (!postId) {
-      document.getElementById('post-content').innerHTML = "<h1>Kein Beitrag gefunden</h1><p>Die Sterne schweigen.</p>";
-      return;
-    }
+    if (!postId) return;
 
     try {
-      // Text abrufen
       let response = await fetch(`posts/${postId}.md`);
-      
       if (!response.ok) {
         response = await fetch(`https://raw.githubusercontent.com/chreever/zeitqualitaet/main/posts/${postId}.md`);
       }
-      
       if (!response.ok) throw new Error("Nicht gefunden");
       
       const rawText = await response.text();
-
-      // Frontmatter bereinigen
       let markdownBody = rawText;
       let postTitle = postId.replace(/-/g, ' ').toUpperCase();
-      let customImage = null; // Variable für das CMS-Bild
+      let customImage = "";
+      let customVideo = "";
 
+      // Frontmatter zerlegen
       if (rawText.startsWith('---')) {
         const parts = rawText.split('---');
         if (parts.length >= 3) {
-          markdownBody = parts.slice(2).join('---');
+          const frontmatter = parts[1];
+          markdownBody = parts.slice(2).join('---').trim();
           
-          // Titel auslesen
-          const titleMatch = parts[1].match(/title:\s*['"]?(.*?)['"]?\n/);
-          if (titleMatch) postTitle = titleMatch[1];
+          // Verbesserte Suche für Titel, Bild und Video
+          const tMatch = frontmatter.match(/title:\s*["']?(.*?)["']?(\n|$)/i);
+          const iMatch = frontmatter.match(/image:\s*["']?(.*?)["']?(\n|$)/i);
+          const vMatch = frontmatter.match(/video:\s*["']?(.*?)["']?(\n|$)/i);
           
-          // Bild auslesen (DIE NEUE CMS-LOGIK)
-          const imgMatch = parts[1].match(/image:\s*['"]?(.*?)['"]?\n/);
-          if (imgMatch && imgMatch[1]) {
-             customImage = imgMatch[1];
-          }
-
-          // Video auslesen (NEU)
-          var customVideo = ''; 
-          const vidMatch = parts[1].match(/video:\s*['"]?(.*?)['"]?\n/);
-          if (vidMatch && vidMatch[1]) {
-             customVideo = vidMatch[1];
-          }
+          if (tMatch) postTitle = tMatch[1].trim();
+          if (iMatch) customImage = iMatch[1].trim();
+          if (vMatch) customVideo = vMatch[1].trim();
         }
       }
 
-      // ── BILD ODER VIDEO SETZEN ──
-      const img = document.getElementById('post-image');
-      
-      // 1. Pfad-Check: Wir stellen sicher, dass der Pfad absolut ist
-      let videoPath = (typeof customVideo !== 'undefined' && customVideo !== '') ? customVideo : '';
-      if (videoPath && !videoPath.startsWith('/') && !videoPath.startsWith('http')) {
-          videoPath = '/' + videoPath; 
-      }
+      const imgElement = document.getElementById('post-image');
+      const fallbackPath = "/img/sternenhimmel-berge.jpg";
 
-      if (videoPath !== '') {
-        console.log("Video gefunden, versuche zu laden:", videoPath); // Debug-Info für die Konsole
-        
+      // ── LOGIK: VIDEO ODER BILD ──
+      if (customVideo !== "") {
+        // Video-Modus
         const videoEl = document.createElement('video');
-        videoEl.src = videoPath;
+        videoEl.src = fixPath(customVideo);
         videoEl.autoplay = true;
         videoEl.loop = true;
         videoEl.muted = true;
         videoEl.playsInline = true;
+        // Das Bild als "Poster" (Vorschau), während das Video lädt
+        videoEl.poster = customImage ? fixPath(customImage) : fallbackPath;
         
-        // WICHTIG: Das Bild als "Poster" nutzen. 
-        // Falls das Video hakt, sieht man wenigstens das Bild statt Grau!
-        videoEl.poster = typeof customImage !== 'undefined' ? customImage : 'img/sternenhimmel-berge.jpg';
+        // CSS vom Bild-Platzhalter übernehmen
+        videoEl.className = imgElement.className;
+        videoEl.style.width = "100%";
+        videoEl.style.height = "100%";
+        videoEl.style.objectFit = "cover";
+        videoEl.style.display = "block";
         
-        // Identität übernehmen
-        videoEl.className = img.className;
-        videoEl.id = 'post-image';
-        img.id = 'hidden-fallback-img';
-        
-        // Styling sicherstellen
-        videoEl.style.width = '100%';
-        videoEl.style.height = '100%';
-        videoEl.style.objectFit = 'cover';
-        videoEl.style.display = 'block';
-        videoEl.style.backgroundColor = '#1a1a1a'; // Dunkler Hintergrund statt Hellgrau
-        
-        img.parentNode.insertBefore(videoEl, img);
-        img.style.display = 'none';
-
-        // Kleiner Trick: Falls das Video einen Fehler wirft, zeige das Bild wieder
-        videoEl.onerror = function() {
-            console.error("Video-Ladefehler, wechsle zu Bild");
-            videoEl.style.display = 'none';
-            img.style.display = 'block';
-            img.id = 'post-image';
-        };
+        imgElement.parentNode.insertBefore(videoEl, imgElement);
+        imgElement.remove(); // Das alte <img>-Tag löschen
       } else {
-        // Normale Bild-Logik
-        img.src = (typeof customImage !== 'undefined' && customImage !== '') ? customImage : `img/${postId}.jpg`;
-        img.onerror = () => { img.src = 'img/sternenhimmel-berge.jpg'; };
-        img.style.display = 'block';
+        // Bild-Modus
+        const finalImgPath = customImage ? fixPath(customImage) : `/img/${postId}.jpg`;
+        imgElement.src = finalImgPath;
+        imgElement.style.display = "block";
+        imgElement.onerror = () => { imgElement.src = fallbackPath; };
       }
 
-      // Markdown in HTML übersetzen
-      const finalHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
-      document.getElementById('post-content').innerHTML = finalHTML;
+      // Markdown in HTML
+      document.getElementById('post-content').innerHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
       document.title = `${postTitle} — Zeitqualität`;
 
     } catch (e) {
-      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Dieser Beitrag konnte nicht geladen werden. Bitte stelle sicher, dass die Datei im Ordner 'posts' existiert.</p>";
+      console.error(e);
+      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Beitrag konnte nicht geladen werden.</p>";
     }
   }
 
