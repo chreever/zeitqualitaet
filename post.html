@@ -115,7 +115,7 @@
 </footer>
 
 <script>
-  // Sterne Hintergrund (bleibt gleich)
+  // Sterne Hintergrund (bleibt unverändert)
   (function() {
     const canvas = document.getElementById('stars'); const ctx = canvas.getContext('2d');
     let stars = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -124,11 +124,12 @@
     resize(); create(); draw(0); window.addEventListener('resize', resize);
   })();
 
-  // Hilfsfunktion: Korrigiert Pfade, damit sie immer vom Hauptverzeichnis starten
+  // Der ultimative Pfad-Heiler
   function fixPath(path) {
     if (!path) return "";
-    if (path.startsWith('http') || path.startsWith('data:')) return path;
-    return path.startsWith('/') ? path : '/' + path;
+    let clean = path.trim().replace(/['"]/g, ''); // Entfernt Anführungszeichen und Leerzeichen
+    if (clean.startsWith('http') || clean.startsWith('data:')) return clean;
+    return clean.startsWith('/') ? clean : '/' + clean;
   }
 
   async function renderPost() {
@@ -141,7 +142,7 @@
       if (!response.ok) {
         response = await fetch(`https://raw.githubusercontent.com/chreever/zeitqualitaet/main/posts/${postId}.md`);
       }
-      if (!response.ok) throw new Error("Nicht gefunden");
+      if (!response.ok) throw new Error("Datei nicht gefunden");
       
       const rawText = await response.text();
       let markdownBody = rawText;
@@ -149,21 +150,20 @@
       let customImage = "";
       let customVideo = "";
 
-      // Frontmatter zerlegen
       if (rawText.startsWith('---')) {
         const parts = rawText.split('---');
         if (parts.length >= 3) {
           const frontmatter = parts[1];
           markdownBody = parts.slice(2).join('---').trim();
           
-          // Verbesserte Suche für Titel, Bild und Video
-          const tMatch = frontmatter.match(/title:\s*["']?(.*?)["']?(\n|$)/i);
-          const iMatch = frontmatter.match(/image:\s*["']?(.*?)["']?(\n|$)/i);
-          const vMatch = frontmatter.match(/video:\s*["']?(.*?)["']?(\n|$)/i);
+          // Extrem tolerante Suche (Regex)
+          const tMatch = frontmatter.match(/title:\s*(.*)/i);
+          const iMatch = frontmatter.match(/image:\s*(.*)/i);
+          const vMatch = frontmatter.match(/video:\s*(.*)/i);
           
-          if (tMatch) postTitle = tMatch[1].trim();
-          if (iMatch) customImage = iMatch[1].trim();
-          if (vMatch) customVideo = vMatch[1].trim();
+          if (tMatch) postTitle = tMatch[1].trim().replace(/['"]/g, '');
+          if (iMatch) customImage = iMatch[1].trim().replace(/['"]/g, '');
+          if (vMatch) customVideo = vMatch[1].trim().replace(/['"]/g, '');
         }
       }
 
@@ -171,42 +171,54 @@
       const fallbackPath = "/img/sternenhimmel-berge.jpg";
 
       // ── LOGIK: VIDEO ODER BILD ──
-      if (customVideo !== "") {
-        // Video-Modus
+      if (customVideo && customVideo !== "") {
+        console.log("Video-Pfad erkannt:", fixPath(customVideo));
         const videoEl = document.createElement('video');
         videoEl.src = fixPath(customVideo);
         videoEl.autoplay = true;
         videoEl.loop = true;
         videoEl.muted = true;
         videoEl.playsInline = true;
-        // Das Bild als "Poster" (Vorschau), während das Video lädt
         videoEl.poster = customImage ? fixPath(customImage) : fallbackPath;
         
-        // CSS vom Bild-Platzhalter übernehmen
         videoEl.className = imgElement.className;
         videoEl.style.width = "100%";
-        videoEl.style.height = "100%";
+        videoEl.style.height = "400px"; // Festgelegte Höhe wie im CSS
         videoEl.style.objectFit = "cover";
         videoEl.style.display = "block";
+        videoEl.style.borderRadius = "10px";
         
         imgElement.parentNode.insertBefore(videoEl, imgElement);
-        imgElement.remove(); // Das alte <img>-Tag löschen
+        imgElement.style.display = "none";
+        
+        // Falls das Video einen Fehler hat, zeige das Bild
+        videoEl.onerror = () => { 
+          videoEl.remove(); 
+          showImageFallback(imgElement, customImage, postId, fallbackPath); 
+        };
       } else {
-        // Bild-Modus
-        const finalImgPath = customImage ? fixPath(customImage) : `/img/${postId}.jpg`;
-        imgElement.src = finalImgPath;
-        imgElement.style.display = "block";
-        imgElement.onerror = () => { imgElement.src = fallbackPath; };
+        showImageFallback(imgElement, customImage, postId, fallbackPath);
       }
 
-      // Markdown in HTML
+      // Markdown in HTML umwandeln
       document.getElementById('post-content').innerHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
       document.title = `${postTitle} — Zeitqualität`;
 
     } catch (e) {
-      console.error(e);
-      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Beitrag konnte nicht geladen werden.</p>";
+      console.error("Fehler:", e);
+      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Der Beitrag konnte nicht geladen werden.</p>";
     }
+  }
+
+  function showImageFallback(imgElement, customImage, postId, fallbackPath) {
+    const finalImgPath = customImage ? fixPath(customImage) : `/img/${postId}.jpg`;
+    imgElement.src = finalImgPath;
+    imgElement.style.display = "block";
+    imgElement.onerror = () => { 
+      if (imgElement.src !== window.location.origin + fallbackPath) {
+        imgElement.src = fallbackPath; 
+      }
+    };
   }
 
   renderPost();
