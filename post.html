@@ -135,12 +135,6 @@
     }
 
     try {
-      // Bild setzen
-      const img = document.getElementById('post-image');
-      img.src = `img/${postId}.jpg`;
-      img.onerror = () => { img.src = 'img/sternenhimmel-berge.jpg'; };
-      img.style.display = 'block';
-
       // Text abrufen
       let response = await fetch(`posts/${postId}.md`);
       
@@ -155,15 +149,31 @@
       // Frontmatter bereinigen
       let markdownBody = rawText;
       let postTitle = postId.replace(/-/g, ' ').toUpperCase();
+      let customImage = null; // Variable für das CMS-Bild
 
       if (rawText.startsWith('---')) {
         const parts = rawText.split('---');
         if (parts.length >= 3) {
           markdownBody = parts.slice(2).join('---');
+          
+          // Titel auslesen
           const titleMatch = parts[1].match(/title:\s*['"]?(.*?)['"]?\n/);
           if (titleMatch) postTitle = titleMatch[1];
+          
+          // Bild auslesen (DIE NEUE CMS-LOGIK)
+          const imgMatch = parts[1].match(/image:\s*['"]?(.*?)['"]?\n/);
+          if (imgMatch && imgMatch[1]) {
+             customImage = imgMatch[1];
+          }
         }
       }
+
+      // Bild setzen
+      const img = document.getElementById('post-image');
+      // Nimm das CMS-Bild, wenn es eins gibt. Sonst rate den Dateinamen.
+      img.src = customImage ? customImage : `img/${postId}.jpg`;
+      img.onerror = () => { img.src = 'img/sternenhimmel-berge.jpg'; };
+      img.style.display = 'block';
 
       // Markdown in HTML übersetzen
       const finalHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
