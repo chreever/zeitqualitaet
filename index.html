@@ -1992,7 +1992,7 @@
     window.addEventListener('resize', resize);
   })();
 
-  // ── DIE NEUE CMS LOGIK (DIREKTABRUF GITHUB) ──
+ // ── DIE SCHLAUE CMS LOGIK (MIT KATEGORIEN) ──
   let allPosts = [];
 
   async function loadCMSPosts() {
@@ -2001,6 +2001,7 @@
     if (!container) return;
 
     try {
+      // 1. Liste aller Dateien von GitHub holen
       const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?ref=main';
       const response = await fetch(apiURL);
       
@@ -2009,16 +2010,41 @@
       const files = await response.json();
 
       if (Array.isArray(files)) {
-        allPosts = files.filter(f => f.name.endsWith('.md')).reverse().map(f => {
-          const slug = f.name.replace('.md', '');
-          return {
-            slug: slug,
-            title: slug.replace(/-/g, ' ').toUpperCase(),
-            // Link zum Lesen des Beitrags
-            url: `post.html?id=${slug}` 
-          };
+        const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
+
+        // 2. Kurz in jede Datei spähen, um Titel und Kategorie (Frontmatter) zu lesen
+        const postPromises = mdFiles.map(async (file) => {
+          const slug = file.name.replace('.md', '');
+          let title = slug.replace(/-/g, ' ').toUpperCase(); // Standard-Titel
+          let category = 'Zeitqualität'; // Standard-Kategorie
+
+          try {
+            const rawRes = await fetch(`posts/${file.name}`);
+            if (rawRes.ok) {
+              const rawText = await rawRes.text();
+              if (rawText.startsWith('---')) {
+                const parts = rawText.split('---');
+                if (parts.length >= 3) {
+                  const frontmatter = parts[1];
+                  // Lese echten Titel
+                  const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
+                  // Lese Kategorie
+                  const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
+                  
+                  if (titleMatch) title = titleMatch[1];
+                  if (catMatch) category = catMatch[1];
+                }
+              }
+            }
+          } catch(e) { console.warn("Konnte Daten für", file.name, "nicht lesen."); }
+
+          return { slug, title, category, url: `post.html?id=${slug}` };
         });
 
+        // Warten, bis alle Beiträge analysiert wurden
+        allPosts = await Promise.all(postPromises);
+
+        // 3. Beiträge als Karten auf den Bildschirm zeichnen
         const render = (items, limit = 6) => {
           container.innerHTML = '';
           const list = items.slice(0, limit);
@@ -2031,16 +2057,25 @@
             card.href = p.url; 
             card.className = 'post-card fade-up visible'; 
             card.style.opacity = "1";
-            card.innerHTML = `<img class="post-card-img" src="img/${p.slug}.jpg" onerror="this.src='img/sternenhimmel-berge.jpg'"><div class="post-card-body"><span class="post-tag">Zeitqualität</span><h3>${p.title}</h3><p>Klicke zum Lesen.</p></div>`;
+            card.innerHTML = `
+              <img class="post-card-img" src="img/${p.slug}.jpg" onerror="this.src='img/sternenhimmel-berge.jpg'">
+              <div class="post-card-body">
+                <span class="post-tag">${p.category}</span> <h3>${p.title}</h3>
+                <p>Klicke zum Lesen.</p>
+              </div>`;
             container.appendChild(card);
           });
         };
 
         render(allPosts, 6);
 
+        // Suchfunktion: Durchsucht jetzt auch Kategorien!
         searchInput.addEventListener('input', (e) => {
           const term = e.target.value.toLowerCase();
-          const filtered = allPosts.filter(p => p.title.toLowerCase().includes(term));
+          const filtered = allPosts.filter(p => 
+            p.title.toLowerCase().includes(term) || 
+            p.category.toLowerCase().includes(term)
+          );
           render(filtered, term === '' ? 6 : 20);
         });
       }
