@@ -115,7 +115,7 @@
 </footer>
 
 <script>
-  // Sterne Hintergrund (bleibt unverändert)
+  // Sterne Hintergrund (bleibt gleich)
   (function() {
     const canvas = document.getElementById('stars'); const ctx = canvas.getContext('2d');
     let stars = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -124,11 +124,11 @@
     resize(); create(); draw(0); window.addEventListener('resize', resize);
   })();
 
-  // Der ultimative Pfad-Heiler
+  // Pfad-Heiler
   function fixPath(path) {
     if (!path) return "";
-    let clean = path.trim().replace(/['"]/g, ''); // Entfernt Anführungszeichen und Leerzeichen
-    if (clean.startsWith('http') || clean.startsWith('data:')) return clean;
+    let clean = path.trim().replace(/['"]/g, ''); 
+    if (clean.startsWith('http')) return clean;
     return clean.startsWith('/') ? clean : '/' + clean;
   }
 
@@ -142,10 +142,9 @@
       if (!response.ok) {
         response = await fetch(`https://raw.githubusercontent.com/chreever/zeitqualitaet/main/posts/${postId}.md`);
       }
-      if (!response.ok) throw new Error("Datei nicht gefunden");
-      
       const rawText = await response.text();
-      let markdownBody = rawText;
+      
+      let markdownBody = "";
       let postTitle = postId.replace(/-/g, ' ').toUpperCase();
       let customImage = "";
       let customVideo = "";
@@ -153,72 +152,55 @@
       if (rawText.startsWith('---')) {
         const parts = rawText.split('---');
         if (parts.length >= 3) {
-          const frontmatter = parts[1];
+          // ZEILEN-SCANNER: Wir gehen jede Zeile einzeln durch
+          const lines = parts[1].split('\n');
+          lines.forEach(line => {
+            const [key, ...valParts] = line.split(':');
+            if (valParts.length > 0) {
+              const value = valParts.join(':').trim().replace(/['"]/g, '');
+              const k = key.trim().toLowerCase();
+              if (k === 'title') postTitle = value;
+              if (k === 'image') customImage = value;
+              if (k === 'video') customVideo = value;
+            }
+          });
           markdownBody = parts.slice(2).join('---').trim();
-          
-          // Extrem tolerante Suche (Regex)
-          const tMatch = frontmatter.match(/title:\s*(.*)/i);
-          const iMatch = frontmatter.match(/image:\s*(.*)/i);
-          const vMatch = frontmatter.match(/video:\s*(.*)/i);
-          
-          if (tMatch) postTitle = tMatch[1].trim().replace(/['"]/g, '');
-          if (iMatch) customImage = iMatch[1].trim().replace(/['"]/g, '');
-          if (vMatch) customVideo = vMatch[1].trim().replace(/['"]/g, '');
         }
       }
 
       const imgElement = document.getElementById('post-image');
-      const fallbackPath = "/img/sternenhimmel-berge.jpg";
+      const fallback = "/img/sternenhimmel-berge.jpg";
 
-      // ── LOGIK: VIDEO ODER BILD ──
-      if (customVideo && customVideo !== "") {
-        console.log("Video-Pfad erkannt:", fixPath(customVideo));
+      // ── ENTSCHEIDUNG: VIDEO ODER BILD ──
+      if (customVideo) {
+        console.log("ERFOLG: Video gefunden ->", customVideo);
         const videoEl = document.createElement('video');
         videoEl.src = fixPath(customVideo);
-        videoEl.autoplay = true;
-        videoEl.loop = true;
-        videoEl.muted = true;
-        videoEl.playsInline = true;
-        videoEl.poster = customImage ? fixPath(customImage) : fallbackPath;
-        
+        videoEl.autoplay = true; videoEl.loop = true; videoEl.muted = true; videoEl.playsInline = true;
+        videoEl.poster = customImage ? fixPath(customImage) : fallback;
         videoEl.className = imgElement.className;
-        videoEl.style.width = "100%";
-        videoEl.style.height = "400px"; // Festgelegte Höhe wie im CSS
-        videoEl.style.objectFit = "cover";
-        videoEl.style.display = "block";
-        videoEl.style.borderRadius = "10px";
+        videoEl.style.cssText = "width:100%; height:400px; object-fit:cover; display:block; border-radius:10px;";
         
         imgElement.parentNode.insertBefore(videoEl, imgElement);
         imgElement.style.display = "none";
         
-        // Falls das Video einen Fehler hat, zeige das Bild
-        videoEl.onerror = () => { 
-          videoEl.remove(); 
-          showImageFallback(imgElement, customImage, postId, fallbackPath); 
-        };
+        videoEl.onerror = () => { videoEl.remove(); showImg(imgElement, customImage, postId, fallback); };
       } else {
-        showImageFallback(imgElement, customImage, postId, fallbackPath);
+        showImg(imgElement, customImage, postId, fallback);
       }
 
-      // Markdown in HTML umwandeln
       document.getElementById('post-content').innerHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
       document.title = `${postTitle} — Zeitqualität`;
 
     } catch (e) {
-      console.error("Fehler:", e);
-      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Der Beitrag konnte nicht geladen werden.</p>";
+      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1>";
     }
   }
 
-  function showImageFallback(imgElement, customImage, postId, fallbackPath) {
-    const finalImgPath = customImage ? fixPath(customImage) : `/img/${postId}.jpg`;
-    imgElement.src = finalImgPath;
-    imgElement.style.display = "block";
-    imgElement.onerror = () => { 
-      if (imgElement.src !== window.location.origin + fallbackPath) {
-        imgElement.src = fallbackPath; 
-      }
-    };
+  function showImg(el, custom, id, fall) {
+    el.src = custom ? fixPath(custom) : `/img/${id}.jpg`;
+    el.style.display = "block";
+    el.onerror = () => { el.src = fall; };
   }
 
   renderPost();
