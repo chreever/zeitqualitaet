@@ -6,22 +6,16 @@ media_folder: "img"
 public_folder: "img"
 
 collections:
-  - name: "blog"
-    label: "Blogbeiträge"
+  - name: "posts"
+    label: "Beiträge"
     folder: "posts"
     create: true
-    slug: "{{slug}}"
     fields:
       - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "DD.MM.YYYY", timeFormat: false, required: false}
-      - {label: "Kategorie", name: "category", widget: "select", options: ["Transite", "Mondphasen", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"], default: "Allgemein"}
-      - {label: "Als Top-Thema im Banner anzeigen?", name: "highlight", widget: "boolean", default: false}
-      
-      # --- FLEXIBLE MEDIEN & TEXT ---
-      - {label: "Beitragsbild (Statisch)", name: "image", widget: "image", choose_url: true, required: false}
-      - {label: "ODER Video-Hintergrund (MP4)", name: "video", widget: "file", choose_url: true, required: false}
-      - {label: "Kurzbeschreibung (Großes Textfeld)", name: "description", widget: "text", required: false}
-      - {label: "Badge Text", name: "badge", widget: "string", required: false}
-      # ------------------------------
-
+      - {label: "Kategorie", name: "category", widget: "string"}
+      - {label: "Datum", name: "date", widget: "datetime"}
+      - {label: "Titelbild", name: "image", widget: "image", required: false}
+      - {label: "Hintergrund-Video (MP4)", name: "video", widget: "file", required: false} # <-- HIER IST DAS NEUE FELD
+      - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
+      - {label: "Ist Highlight-Artikel?", name: "highlight", widget: "boolean", default: false, required: false}
       - {label: "Inhalt", name: "body", widget: "markdown"}
