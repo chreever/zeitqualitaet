@@ -1,11 +1,13 @@
 ---
+badge: ""
 title: Saturn trifft Neptun im Widder
 category: Transite
-highlight: true
-video: img/218740_medium.mp4
+date: 2026-04-01T22:55:00.000+02:00
 description: "Die Zeitqualität im 6. Haus: Dein Alltag auf dem Prüfstand. Wenn
   Vision auf Wirklichkeit trifft."
-badge: ""
+placement: Info-Banner (Mitte)
+highlight: true
+video: img/218740_medium.mp4
 ---
 *Stell dir vor, ein strenger Architekt (Saturn) und ein verträumter Künstler (Neptun) müssen gemeinsam ein Haus bauen. Und das Ganze passiert im Zeichen Widder – also mit einer gehörigen Portion Ungeduld und Tatendrang.*
 
