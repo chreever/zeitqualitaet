@@ -1,13 +1,15 @@
 ---
+badge: Vollmond Energie
 title: "Vollmond in der Waage: Beziehungen im Spiegel"
+category: Transite
 date: 2026-04-02
-category: Mondphasen
+image: ""
+placement: Top-Banner (Header)
 highlight: true
-image: img/vollmond.jpg
+video: img/37363-413555921_medium.mp4
 description: Wenn der Vollmond im Zeichen Waage steht, geht ein spürbarer Impuls
   durch unser Sozialleben. Wie viel Raum gebe ich mir selbst – und wie viel dem
   anderen?
-badge: Vollmond Energie
 ---
 Wenn der Vollmond im Zeichen Waage steht, geht ein spürbarer Impuls durch unser Sozialleben. Die Waage sucht Harmonie, doch der Vollmond bringt ans Licht, was wir unter den Teppich gekehrt haben. 
 
