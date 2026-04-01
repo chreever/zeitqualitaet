@@ -2182,7 +2182,14 @@
   }
 
   window.addEventListener('DOMContentLoaded', loadCMSPosts);
-
+// ── SCROLL-ERKENNUNG (Hintergrund abdunkeln) ──
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 150) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  });
   // ── NETLIFY IDENTITY LOGIN REDIRECT ──
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
