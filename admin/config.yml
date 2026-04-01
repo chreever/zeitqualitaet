@@ -12,10 +12,13 @@ collections:
     create: true
     fields:
       - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Kategorie", name: "category", widget: "string"}
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        options: ["Mentaltraining", "Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       - {label: "Titelbild", name: "image", widget: "image", required: false}
-      - {label: "Hintergrund-Video (MP4)", name: "video", widget: "file", required: false} # <-- HIER IST DAS NEUE FELD
+      - {label: "Hintergrund-Video (MP4)", name: "video", widget: "file", required: false}
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
       - {label: "Ist Highlight-Artikel?", name: "highlight", widget: "boolean", default: false, required: false}
       - {label: "Inhalt", name: "body", widget: "markdown"}
