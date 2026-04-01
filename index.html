@@ -1464,16 +1464,8 @@
   </div>
 </header>
 
-<a href="saturn-neptun-widder.html" class="transit-banner fade-up" id="transite" style="text-decoration:none;color:inherit;display:block">
-  <div class="transit-banner-inner">
-    <div>
-      <div class="transit-label">Aktuelle Zeitqualität</div>
-      <div class="transit-title">Saturn-Neptun Konjunktion im Widder — Heilsame Struktur</div>
-      <div class="transit-desc" style="margin-top:0.4rem">Wenn Vision auf Wirklichkeit trifft: Dein Alltag auf dem Prüfstand. Es geht darum, Träume in eine Form zu gießen, die im Alltag Bestand hat.</div>
-    </div>
-    <div class="transit-badge">◯ Aktiv im 6. Haus</div>
+<div id="dynamic-banner-container">
   </div>
-</a>
 
 <div class="philosophy">
   <div class="philosophy-inner">
@@ -1991,20 +1983,19 @@
     window.addEventListener('resize', resize);
   })();
 
-  // ── DIE SCHLAUE CMS LOGIK (MIT KATEGORIEN) ──
+  // ── DIE SCHLAUE CMS LOGIK (MIT KATEGORIEN & TOP-BANNER) ──
   let allPosts = [];
 
   async function loadCMSPosts() {
     const container = document.getElementById('dynamic-posts');
+    const bannerContainer = document.getElementById('dynamic-banner-container');
     const searchInput = document.getElementById('post-search');
     if (!container) return;
 
     try {
       const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?ref=main';
       const response = await fetch(apiURL);
-      
       if (!response.ok) throw new Error("Verbindung zu GitHub fehlgeschlagen.");
-      
       const files = await response.json();
 
       if (Array.isArray(files)) {
@@ -2014,6 +2005,9 @@
           const slug = file.name.replace('.md', '');
           let title = slug.replace(/-/g, ' ').toUpperCase(); 
           let category = 'Zeitqualität'; 
+          let isHighlight = false;
+          let description = '';
+          let badge = '';
 
           try {
             const rawRes = await fetch(`posts/${file.name}`);
@@ -2023,21 +2017,48 @@
                 const parts = rawText.split('---');
                 if (parts.length >= 3) {
                   const frontmatter = parts[1];
+                  // Daten aus dem CMS auslesen
                   const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
                   const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
+                  const highMatch = frontmatter.match(/highlight:\s*(true|false)/i);
+                  const descMatch = frontmatter.match(/description:\s*['"]?(.*?)['"]?\n/);
+                  const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
                   
                   if (titleMatch) title = titleMatch[1];
                   if (catMatch) category = catMatch[1];
+                  if (highMatch && highMatch[1].toLowerCase() === 'true') isHighlight = true;
+                  if (descMatch) description = descMatch[1];
+                  if (badgeMatch) badge = badgeMatch[1];
                 }
               }
             }
-          } catch(e) { console.warn("Konnte Daten für", file.name, "nicht lesen."); }
+          } catch(e) {}
 
-          return { slug, title, category, url: `post.html?id=${slug}` };
+          return { slug, title, category, isHighlight, description, badge, url: `post.html?id=${slug}` };
         });
 
         allPosts = await Promise.all(postPromises);
 
+        // 1. BANNER BEFÜLLEN (Den neuesten Beitrag mit Highlight suchen)
+        if (bannerContainer) {
+          const topPost = allPosts.find(p => p.isHighlight);
+          if (topPost) {
+            bannerContainer.innerHTML = `
+              <a href="${topPost.url}" class="transit-banner fade-up visible" id="transite" style="text-decoration:none;color:inherit;display:block">
+                <div class="transit-banner-inner">
+                  <div>
+                    <div class="transit-label">Aktuelle Zeitqualität</div>
+                    <div class="transit-title">${topPost.title}</div>
+                    <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr über diese Konstellation zu erfahren.'}</div>
+                  </div>
+                  ${topPost.badge ? `<div class="transit-badge">◯ ${topPost.badge}</div>` : ''}
+                </div>
+              </a>
+            `;
+          }
+        }
+
+        // 2. KARTEN BEFÜLLEN
         const render = (items, limit = 6) => {
           container.innerHTML = '';
           const list = items.slice(0, limit);
