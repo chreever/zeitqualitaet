@@ -13,7 +13,11 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Datum", name: "date", widget: "datetime"}
-      - {label: "Vorschaubild", name: "image", widget: "image"}
-      - {label: "Kurzbeschreibung", name: "description", widget: "text"}
+      # --- DAS HIER IST DAS NEUE DROPDOWN-FELD ---
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        options: ["Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"]
+        default: "Allgemein"
+      # ------------------------------------------
       - {label: "Inhalt", name: "body", widget: "markdown"}
