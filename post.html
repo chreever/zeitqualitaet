@@ -181,19 +181,25 @@
       if (typeof customVideo !== 'undefined' && customVideo !== '') {
         // Wenn ein Video im CMS hinterlegt wurde:
         const videoEl = document.createElement('video');
-        videoEl.src = customVideo + '#t=1'; // Startet bei Sek. 1 für weicheren Übergang
+        videoEl.src = customVideo; // Das #t=1 hab ich hier mal weggelassen, das macht manchmal Probleme
         videoEl.autoplay = true;
         videoEl.loop = true;
         videoEl.muted = true;
-        videoEl.playsInline = true; // Wichtig für iPhones
+        videoEl.playsInline = true;
         
-        // Wir geben dem Video exakt dasselbe Design wie dem eigentlichen Bild
+        // IDENTITÄTSDIEBSTAHL: Das Video übernimmt alle Styles des Bildes!
         videoEl.className = img.className; 
+        videoEl.id = 'post-image'; // <- Das hier ist der magische Lebensretter
+        img.id = 'altes-bild-versteckt'; // Wir benennen das alte Bild um, damit sich nichts in die Quere kommt
+        
+        // Sicherheits-Styling, falls die CSS-Klasse nicht reicht
         videoEl.style.width = '100%';
         videoEl.style.height = '100%';
+        videoEl.style.minHeight = '300px'; // Zwingt den Browser, mindestens 300px Höhe zu zeigen
         videoEl.style.objectFit = 'cover';
+        videoEl.style.display = 'block';
         
-        // Video vor dem alten Bild-Platzhalter einfügen und das Bild verstecken
+        // Video vor dem alten Bild einfügen und das Bild verstecken
         img.parentNode.insertBefore(videoEl, img);
         img.style.display = 'none'; 
       } else {
