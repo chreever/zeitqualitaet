@@ -345,13 +345,13 @@
   .orbit-saturn::after {
     content: '';
     position: absolute;
-    top: -17px;
+    top: -13px; /* Exakt die Hälfte der neuen Höhe (26px) zur Zentrierung */
     left: 50%;
     transform: translateX(-50%) rotateX(75deg);
-    width: 34px; height: 34px;
-    border: 4px solid rgba(201,185,122,0.25);
+    width: 26px; height: 26px; /* Ring etwas enger um den Planeten */
+    border: 1.5px solid rgba(201,185,122,0.35); /* Viel dünner und feiner */
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(201,185,122,0.1);
+    box-shadow: 0 0 6px rgba(201,185,122,0.15); /* Etwas sanfteres Leuchten */
     z-index: 1;
   }
 
