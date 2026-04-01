@@ -539,27 +539,31 @@
 
   .hero-tagline span { opacity: 0.4; }
 
+  /* ── BANNER STYLES (FÜR VIDEO UND TEXT ANGEPASST) ── */
   .transit-banner {
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  .transit-banner:hover .transit-banner-inner {
-    border-color: var(--celestial);
-    box-shadow: 0 8px 30px rgba(123, 156, 196, 0.1);
-  }
-
   .transit-banner-inner {
     background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 1.8rem 2.2rem;
+    padding: 2.5rem 2.2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+    height: auto;
+  }
+
+  .transit-banner:hover .transit-banner-inner {
+    border-color: var(--celestial);
+    box-shadow: 0 8px 30px rgba(123, 156, 196, 0.1);
   }
 
   .transit-label {
@@ -581,16 +585,11 @@
   .transit-desc {
     color: var(--text-muted);
     font-size: var(--fs-body);
-    max-width: 650px;       /* Etwas breiter für mehr Text */
-    height: auto;           /* WICHTIG: Erlaubt dem Kasten, nach unten zu wachsen */
-    overflow: visible;      /* Nichts wird mehr abgeschnitten */
-    line-height: 1.6;       /* Bessere Lesbarkeit bei längeren Texten */
+    max-width: 650px;
+    height: auto;
+    overflow: visible;
+    line-height: 1.6;
     margin-top: 0.8rem;
-  }
-
-  .transit-banner-inner {
-    padding: 2.5rem 2.2rem; /* Etwas mehr "Atmenraum" für viel Text */
-    height: auto;           /* Der gesamte Banner wächst mit */
   }
 
   .transit-badge {
@@ -606,6 +605,18 @@
     color: var(--celestial);
     letter-spacing: 0.05em;
     white-space: nowrap;
+  }
+
+  .banner-video { 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.25; 
+    z-index: 1; 
+    pointer-events: none; 
+    border-radius: var(--radius);
   }
 
   section {
@@ -1473,8 +1484,7 @@
   </div>
 </header>
 
-<div id="dynamic-banner-container">
-  </div>
+<div id="dynamic-banner-container"></div>
 
 <div class="philosophy">
   <div class="philosophy-inner">
@@ -1498,23 +1508,7 @@
 
 <div class="divider"><hr></div>
 
-<section>
-  <div class="featured fade-up">
-    <a href="was-ist-zeitqualitaet.html" style="display:contents">
-    <img src="img/sternenhimmel-berge.jpg" alt="Sternenhimmel über Bergen" width="800" height="500" loading="lazy">
-    </a>
-    <div class="featured-body">
-      <span class="post-tag">Einführung · Grundlagen</span>
-      <h2>Was ist Zeitqualität? — Und warum Astrologie kein Aberglaube sein muss</h2>
-      <p>Wir alle kennen das Phänomen: Es gibt Tage, da gelingt uns alles wie von selbst. Und dann gibt es Tage, an denen wir uns wie durch zähen Sirup bewegen. Genau hier begegnen wir dem Begriff der Zeitqualität.</p>
-      <div class="post-meta" style="margin-bottom:1.2rem">
-        <span>28. März 2026</span>
-        <span>7 Min. Lesezeit</span>
-      </div>
-      <a href="was-ist-zeitqualitaet.html" class="read-more">Weiterlesen →</a>
-    </div>
-  </div>
-</section>
+<section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem;"></section>
 
 <section class="tiktok-section" id="videos">
   <div class="section-header">
@@ -1992,13 +1986,15 @@
     window.addEventListener('resize', resize);
   })();
 
-  // ── DIE SCHLAUE CMS LOGIK (MIT KATEGORIEN & TOP-BANNER) ──
+  // ── DIE SCHLAUE CMS LOGIK (MIT KORRIGIERTEN BILDERN, VIDEOS & INFO-BANNER) ──
   let allPosts = [];
 
   async function loadCMSPosts() {
     const container = document.getElementById('dynamic-posts');
     const bannerContainer = document.getElementById('dynamic-banner-container');
+    const infoBannerContainer = document.getElementById('dynamic-info-banner');
     const searchInput = document.getElementById('post-search');
+    
     if (!container) return;
 
     try {
@@ -2017,6 +2013,8 @@
           let isHighlight = false;
           let description = '';
           let badge = '';
+          let image = '';
+          let video = '';
 
           try {
             const rawRes = await fetch(`posts/${file.name}`);
@@ -2026,48 +2024,78 @@
                 const parts = rawText.split('---');
                 if (parts.length >= 3) {
                   const frontmatter = parts[1];
+                  
                   // Daten aus dem CMS auslesen
                   const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
                   const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
                   const highMatch = frontmatter.match(/highlight:\s*(true|false)/i);
                   const descMatch = frontmatter.match(/description:\s*['"]?(.*?)['"]?\n/);
                   const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
+                  const imgMatch = frontmatter.match(/image:\s*['"]?(.*?)['"]?\n/);
+                  const vidMatch = frontmatter.match(/video:\s*['"]?(.*?)['"]?\n/);
                   
                   if (titleMatch) title = titleMatch[1];
                   if (catMatch) category = catMatch[1];
                   if (highMatch && highMatch[1].toLowerCase() === 'true') isHighlight = true;
                   if (descMatch) description = descMatch[1];
                   if (badgeMatch) badge = badgeMatch[1];
+                  if (imgMatch) image = imgMatch[1];
+                  if (vidMatch) video = vidMatch[1];
                 }
               }
             }
           } catch(e) {}
 
-          return { slug, title, category, isHighlight, description, badge, url: `post.html?id=${slug}` };
+          return { slug, title, category, isHighlight, description, badge, image, video, url: `post.html?id=${slug}` };
         });
 
         allPosts = await Promise.all(postPromises);
 
-        // 1. BANNER BEFÜLLEN (Den neuesten Beitrag mit Highlight suchen)
+        // 1. TOP-BANNER BEFÜLLEN
         if (bannerContainer) {
           const topPost = allPosts.find(p => p.isHighlight);
           if (topPost) {
             bannerContainer.innerHTML = `
               <a href="${topPost.url}" class="transit-banner fade-up visible" id="transite" style="text-decoration:none;color:inherit;display:block">
-                <div class="transit-banner-inner">
-                  <div>
+                <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
+                  ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}" type="video/mp4"></video>` : ''}
+                  <div style="position:relative; z-index:2;">
                     <div class="transit-label">Aktuelle Zeitqualität</div>
                     <div class="transit-title">${topPost.title}</div>
                     <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr über diese Konstellation zu erfahren.'}</div>
                   </div>
-                  ${topPost.badge ? `<div class="transit-badge">◯ ${topPost.badge}</div>` : ''}
+                  ${topPost.badge ? `<div class="transit-badge" style="position:relative; z-index:2;">◯ ${topPost.badge}</div>` : ''}
                 </div>
               </a>
             `;
           }
         }
 
-        // 2. KARTEN BEFÜLLEN
+        // 2. INFO-BANNER (Was ist Zeitqualität) BEFÜLLEN
+        if (infoBannerContainer) {
+          const infoPost = allPosts.find(p => p.slug === 'was-ist-zeitqualitaet');
+          if (infoPost) {
+            const mediaHTML = infoPost.video 
+              ? `<video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="${infoPost.video}" type="video/mp4"></video>`
+              : `<img src="${infoPost.image || 'img/was-ist-zeitqualitaet.jpg'}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;" onerror="this.src='img/sternenhimmel-berge.jpg'">`;
+
+            infoBannerContainer.innerHTML = `
+              <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
+                ${mediaHTML}
+                <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
+                  <span class="post-tag">Einführung · Grundlagen</span>
+                  <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">${infoPost.title}</h2>
+                  <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
+                    ${infoPost.description || 'Erfahre mehr über die Philosophie hinter Zeitqualität.'}
+                  </p>
+                  <a href="${infoPost.url}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        // 3. KARTEN BEFÜLLEN (MIT BILDER-FIX)
         const render = (items, limit = 6) => {
           container.innerHTML = '';
           const list = items.slice(0, limit);
@@ -2080,8 +2108,12 @@
             card.href = p.url; 
             card.className = 'post-card fade-up visible'; 
             card.style.opacity = "1";
+            
+            // DIE WICHTIGE LOGIK FÜR DAS BILD: 
+            const imageSrc = p.image ? p.image : `img/${p.slug}.jpg`;
+
             card.innerHTML = `
-              <img class="post-card-img" src="img/${p.slug}.jpg" onerror="this.src='img/sternenhimmel-berge.jpg'">
+              <img class="post-card-img" src="${imageSrc}" onerror="this.src='img/sternenhimmel-berge.jpg'">
               <div class="post-card-body">
                 <span class="post-tag">${p.category}</span>
                 <h3>${p.title}</h3>
@@ -2093,14 +2125,16 @@
 
         render(allPosts, 6);
 
-        searchInput.addEventListener('input', (e) => {
-          const term = e.target.value.toLowerCase();
-          const filtered = allPosts.filter(p => 
-            p.title.toLowerCase().includes(term) || 
-            p.category.toLowerCase().includes(term)
-          );
-          render(filtered, term === '' ? 6 : 20);
-        });
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = allPosts.filter(p => 
+              p.title.toLowerCase().includes(term) || 
+              p.category.toLowerCase().includes(term)
+            );
+            render(filtered, term === '' ? 6 : 20);
+          });
+        }
       }
     } catch (e) {
       console.error(e);
