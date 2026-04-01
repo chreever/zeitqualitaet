@@ -1,12 +1,15 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://identity.netlify.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*; font-src 'self'; media-src 'self'; connect-src 'self' https://identity.netlify.com https://api.allorigins.win https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zeitqualität — Kosmische Einflüsse verstehen</title>
 <meta name="description" content="Zeitqualität – Astrologie als Orientierung, nicht als Orakel. Transite verstehen, kosmische Rhythmen erkennen, bewusster leben.">
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -1514,7 +1517,6 @@
   </div>
 </section>
 
-<!-- ════════ VIDEO-IMPULSE ════════ -->
 <section class="tiktok-section" id="videos">
   <div class="section-header">
     <h2 class="section-title">Video-Impulse</h2>
@@ -1536,101 +1538,23 @@
 </section>
 
 <section id="beitraege">
-  <div class="section-header">
+  <div class="section-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem;">
     <h2 class="section-title">Aktuelle Beiträge</h2>
-    <a href="#" class="section-link">Alle Beiträge →</a>
+    
+    <div style="position: relative; width: 100%; max-width: 400px; margin-bottom: 1rem;">
+      <input type="text" id="post-search" placeholder="Beiträge durchsuchen..." 
+             style="width: 100%; padding: 12px 20px; background: var(--bg-warm); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: var(--font-body); outline: none; transition: 0.3s; border: 1px solid var(--accent-dim);">
+      <span style="position: absolute; right: 20px; top: 12px; color: var(--text-muted);">🔍</span>
+    </div>
+  </div>
+  
+  <div id="dynamic-posts" class="posts-grid">
+    <p style="color:var(--text-dim);">Die Sterne werden neu ausgerichtet... Lade Beiträge.</p>
   </div>
 
-  <div class="posts-grid">
-    <a href="saturn-neptun-widder.html" class="post-card fade-up">
-      <img class="post-card-img" src="saturn-neptun-widder.png" alt="Saturn trifft Neptun im Widder" width="600" height="400" loading="lazy">
-      <div class="post-card-body">
-        <span class="post-tag">Transite · Konjunktion</span>
-        <h3>Saturn trifft Neptun im Widder: Wenn Vision auf Wirklichkeit trifft</h3>
-        <p>Die Zeitqualität im 6. Haus: Dein Alltag auf dem Prüfstand. Wenn ein strenger Architekt und ein verträumter Künstler gemeinsam ein Haus bauen müssen.</p>
-        <div class="post-meta">
-          <span>31. März 2026</span>
-          <span>8 Min.</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="vollmond-waage.html" class="post-card fade-up">
-      <img class="post-card-img" src="img/vollmond.jpg" alt="Vollmond" width="600" height="400" loading="lazy">
-      <div class="post-card-body">
-        <span class="post-tag">Mondphasen</span>
-        <h3>Vollmond in der Waage: Beziehungen im Spiegel</h3>
-        <p>Die Balance zwischen „Ich" und „Wir". Wenn der Vollmond in der Waage steht, geht ein Ruck durch unser Sozialleben.</p>
-        <div class="post-meta">
-          <span>25. März 2026</span>
-          <span>5 Min.</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="pluto-wassermann.html" class="post-card fade-up">
-      <img class="post-card-img" src="img/galaxie.jpg" alt="Galaxie" width="600" height="400" loading="lazy">
-      <div class="post-card-body">
-        <span class="post-tag">Transite · Epochenwechsel</span>
-        <h3>Pluto im Wassermann: Was der Generationenwechsel bedeutet</h3>
-        <p>Wenn der Zerstörer auf den Erneuerer trifft. Was die aktuelle Stellung für Gesellschaft, Technologie und dein persönliches Leben bedeutet.</p>
-        <div class="post-meta">
-          <span>20. März 2026</span>
-          <span>10 Min.</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="ruecklaeufiger-merkur.html" class="post-card fade-up">
-      <img class="post-card-img" src="img/uhr-zeit.jpg" alt="Uhr und Zeit" width="600" height="400" loading="lazy">
-      <div class="post-card-body">
-        <span class="post-tag">Grundlagen</span>
-        <h3>Rückläufiger Merkur: Mythos vs. Realität</h3>
-        <p>Über das Tempo des Denkens und die Kunst des Rückblicks. Merkur ist kein Saboteur – er verändert lediglich die Zeitqualität.</p>
-        <div class="post-meta">
-          <span>15. März 2026</span>
-          <span>5 Min.</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="fruehlings-tagundnachtgleiche.html" class="post-card fade-up">
-      <img class="post-card-img" src="img/sonnenaufgang.jpg" alt="Sonnenaufgang" width="600" height="400" loading="lazy">
-      <div class="post-card-body">
-        <span class="post-tag">Jahreszeiten</span>
-        <h3>Frühlings-Tagundnachtgleiche: Wenn die Zeitqualität auf Aufbruch schaltet</h3>
-        <p>Der magische Nullpunkt, an dem die Sonne in den Widder wandert und der astrologische Tierkreis neu beginnt.</p>
-        <div class="post-meta">
-          <span>10. März 2026</span>
-          <span>4 Min.</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="saturn-return.html" class="post-card fade-up">
-      <img class="post-card-img" src="img/sterne.jpg" alt="Sterne" width="600" height="400" loading="lazy">
-      <div class="post-card-body">
-        <span class="post-tag">Reflexion · Zyklen</span>
-        <h3>Saturn-Return: Warum das Leben mit 29 anders wird</h3>
-        <p>Der kosmische Check-up für Erwachsene. Saturn kehrt an seine Geburtsposition zurück – einer der wichtigsten Momente für deine Zeitqualität.</p>
-        <div class="post-meta">
-          <span>5. März 2026</span>
-          <span>5 Min.</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="astrologie-als-kompass.html" class="post-card fade-up">
-      <img class="post-card-img" src="img/erde-all.jpg" alt="Erde aus dem All" width="600" height="400" loading="lazy">
-      <div class="post-card-body">
-        <span class="post-tag">Persönlich</span>
-        <h3>Ein Blick hinter die Kulissen: Astrologie als Kompass</h3>
-        <p>Wie ich das Wissen um die Zeitqualität nutze, um mein Leben nicht gegen den Strom, sondern mit der Strömung zu gestalten.</p>
-        <div class="post-meta">
-          <span>1. März 2026</span>
-          <span>4 Min.</span>
-        </div>
-      </div>
+  <div style="text-align: center; margin-top: 4rem;">
+    <a href="/admin/" style="display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 100px; color: var(--accent); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.1em; transition: var(--transition);">
+      Zum vollständigen Archiv →
     </a>
   </div>
 </section>
@@ -1648,7 +1572,6 @@
 
 <div class="divider"><hr></div>
 
-<!-- ════════ ÜBER MICH ════════ -->
 <div class="about" id="ueber">
   <div class="about-inner">
     <div class="about-aside fade-up">
@@ -2070,6 +1993,97 @@
 
     window.addEventListener('resize', resize);
   })();
+
+  // ── CMS POSTS & SEARCH ──
+  let allPosts = [];
+
+  async function loadCMSPosts() {
+    const container = document.getElementById('dynamic-posts');
+    const searchInput = document.getElementById('post-search');
+    if (!container) return;
+
+    try {
+      // Verbindung zu GitHub über die Sicherheits-Brücke
+      const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?t=' + Date.now();
+      const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiURL));
+      const data = await response.json();
+      let files = JSON.parse(data.contents);
+      
+      // Falls GitHub die Liste in 'items' packt
+      if (files && files.items) { files = files.items; }
+
+      if (Array.isArray(files)) {
+        // Alle Beiträge laden und sortieren (Neueste zuerst)
+        allPosts = files.filter(f => f.name.endsWith('.md')).reverse().map(f => {
+          const slug = f.name.replace('.md', '');
+          return {
+            slug: slug,
+            title: slug.replace(/-/g, ' ').toUpperCase(),
+            url: `/admin/#/collections/blogbeitraege/entries/${slug}`
+          };
+        });
+
+        // Funktion zum Anzeigen der Karten
+        const render = (items, limit = 6) => {
+          container.innerHTML = '';
+          const list = items.slice(0, limit); // Hier greift die Begrenzung auf 6
+
+          if (list.length === 0) {
+            container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1; text-align: center;">Keine Beiträge zu diesem Begriff gefunden.</p>';
+            return;
+          }
+
+          list.forEach(p => {
+            const card = document.createElement('a');
+            card.href = p.url;
+            card.className = 'post-card fade-up visible';
+            card.style.opacity = "1";
+            card.innerHTML = `
+              <img class="post-card-img" src="img/${p.slug}.jpg" onerror="this.src='img/sternenhimmel-berge.jpg'" alt="${p.title}">
+              <div class="post-card-body">
+                <span class="post-tag">Zeitqualität</span>
+                <h3>${p.title}</h3>
+                <p>Klicke hier, um den Beitrag zu lesen.</p>
+              </div>`;
+            container.appendChild(card);
+          });
+        };
+
+        // Standard: Zeige nur die 6 aktuellsten
+        render(allPosts, 6);
+
+        // Suche: Wenn getippt wird, zeige passende Treffer (bis zu 20)
+        searchInput.addEventListener('input', (e) => {
+          const term = e.target.value.toLowerCase();
+          const filtered = allPosts.filter(p => p.title.toLowerCase().includes(term));
+          
+          if (term === '') {
+            render(allPosts, 6); // Zurück zur Standardansicht (6 Beiträge)
+          } else {
+            render(filtered, 20); // Suchergebnisse anzeigen
+          }
+        });
+      } else {
+         container.innerHTML = '<p style="color:var(--text-dim);">Noch keine Beiträge im Archiv.</p>';
+      }
+    } catch (e) {
+      console.error(e);
+      container.innerHTML = '<p style="color:var(--text-dim);">Beiträge werden synchronisiert...</p>';
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', loadCMSPosts);
+
+  // ── NETLIFY IDENTITY LOGIN REDIRECT ──
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
 </script>
 
 </body>
