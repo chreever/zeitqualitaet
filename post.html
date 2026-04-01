@@ -178,33 +178,51 @@
       // ── BILD ODER VIDEO SETZEN ──
       const img = document.getElementById('post-image');
       
-      if (typeof customVideo !== 'undefined' && customVideo !== '') {
-        // Wenn ein Video im CMS hinterlegt wurde:
+      // 1. Pfad-Check: Wir stellen sicher, dass der Pfad absolut ist
+      let videoPath = (typeof customVideo !== 'undefined' && customVideo !== '') ? customVideo : '';
+      if (videoPath && !videoPath.startsWith('/') && !videoPath.startsWith('http')) {
+          videoPath = '/' + videoPath; 
+      }
+
+      if (videoPath !== '') {
+        console.log("Video gefunden, versuche zu laden:", videoPath); // Debug-Info für die Konsole
+        
         const videoEl = document.createElement('video');
-        videoEl.src = customVideo; // Das #t=1 hab ich hier mal weggelassen, das macht manchmal Probleme
+        videoEl.src = videoPath;
         videoEl.autoplay = true;
         videoEl.loop = true;
         videoEl.muted = true;
         videoEl.playsInline = true;
         
-        // IDENTITÄTSDIEBSTAHL: Das Video übernimmt alle Styles des Bildes!
-        videoEl.className = img.className; 
-        videoEl.id = 'post-image'; // <- Das hier ist der magische Lebensretter
-        img.id = 'altes-bild-versteckt'; // Wir benennen das alte Bild um, damit sich nichts in die Quere kommt
+        // WICHTIG: Das Bild als "Poster" nutzen. 
+        // Falls das Video hakt, sieht man wenigstens das Bild statt Grau!
+        videoEl.poster = typeof customImage !== 'undefined' ? customImage : 'img/sternenhimmel-berge.jpg';
         
-        // Sicherheits-Styling, falls die CSS-Klasse nicht reicht
+        // Identität übernehmen
+        videoEl.className = img.className;
+        videoEl.id = 'post-image';
+        img.id = 'hidden-fallback-img';
+        
+        // Styling sicherstellen
         videoEl.style.width = '100%';
         videoEl.style.height = '100%';
-        videoEl.style.minHeight = '300px'; // Zwingt den Browser, mindestens 300px Höhe zu zeigen
         videoEl.style.objectFit = 'cover';
         videoEl.style.display = 'block';
+        videoEl.style.backgroundColor = '#1a1a1a'; // Dunkler Hintergrund statt Hellgrau
         
-        // Video vor dem alten Bild einfügen und das Bild verstecken
         img.parentNode.insertBefore(videoEl, img);
-        img.style.display = 'none'; 
+        img.style.display = 'none';
+
+        // Kleiner Trick: Falls das Video einen Fehler wirft, zeige das Bild wieder
+        videoEl.onerror = function() {
+            console.error("Video-Ladefehler, wechsle zu Bild");
+            videoEl.style.display = 'none';
+            img.style.display = 'block';
+            img.id = 'post-image';
+        };
       } else {
-        // Wenn es kein Video gibt, greift die normale Bild-Logik
-        img.src = typeof customImage !== 'undefined' && customImage !== '' ? customImage : `img/${postId}.jpg`;
+        // Normale Bild-Logik
+        img.src = (typeof customImage !== 'undefined' && customImage !== '') ? customImage : `img/${postId}.jpg`;
         img.onerror = () => { img.src = 'img/sternenhimmel-berge.jpg'; };
         img.style.display = 'block';
       }
