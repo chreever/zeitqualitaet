@@ -22,4 +22,5 @@ collections:
       - {label: "Kurzbeschreibung (für den Banner)", name: "description", widget: "text", required: false}
       - {label: "Badge Text (z.B. 'Aktiv im 6. Haus')", name: "badge", widget: "string", required: false}
       - {label: "Beitragsbild auswählen", name: "image", widget: "image", choose_url: true, required: false}
+      - {label: "ODER Video hochladen (MP4)", name: "video", widget: "file", choose_url: true, required: false}
       - {label: "Inhalt", name: "body", widget: "markdown"}
