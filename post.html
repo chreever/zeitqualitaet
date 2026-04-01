@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*; font-src 'self'; connect-src 'self' https://raw.githubusercontent.com; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*; font-src 'self'; connect-src 'self' https://raw.githubusercontent.com; media-src 'self'; base-uri 'self'; form-action 'self'">
 <title>Beitrag lesen — Zeitqualität</title>
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -115,7 +115,7 @@
 </footer>
 
 <script>
-  // Sterne Hintergrund (bleibt gleich)
+  // Sterne Hintergrund
   (function() {
     const canvas = document.getElementById('stars'); const ctx = canvas.getContext('2d');
     let stars = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
@@ -124,12 +124,12 @@
     resize(); create(); draw(0); window.addEventListener('resize', resize);
   })();
 
-  // Pfad-Heiler
+  // Pfad-Heiler: Macht aus "img/video.mp4" -> "/img/video.mp4"
   function fixPath(path) {
     if (!path) return "";
     let clean = path.trim().replace(/['"]/g, ''); 
-    if (clean.startsWith('http')) return clean;
-    return clean.startsWith('/') ? clean : '/' + clean;
+    if (clean.startsWith('http') || clean.startsWith('/')) return clean;
+    return '/' + clean;
   }
 
   async function renderPost() {
@@ -152,16 +152,15 @@
       if (rawText.startsWith('---')) {
         const parts = rawText.split('---');
         if (parts.length >= 3) {
-          // ZEILEN-SCANNER: Wir gehen jede Zeile einzeln durch
           const lines = parts[1].split('\n');
           lines.forEach(line => {
-            const [key, ...valParts] = line.split(':');
-            if (valParts.length > 0) {
-              const value = valParts.join(':').trim().replace(/['"]/g, '');
-              const k = key.trim().toLowerCase();
-              if (k === 'title') postTitle = value;
-              if (k === 'image') customImage = value;
-              if (k === 'video') customVideo = value;
+            const separatorIndex = line.indexOf(':');
+            if (separatorIndex !== -1) {
+              const key = line.substring(0, separatorIndex).trim().toLowerCase();
+              const value = line.substring(separatorIndex + 1).trim().replace(/['"]/g, '');
+              if (key === 'title') postTitle = value;
+              if (key === 'image') customImage = value;
+              if (key === 'video') customVideo = value;
             }
           });
           markdownBody = parts.slice(2).join('---').trim();
@@ -173,34 +172,31 @@
 
       // ── ENTSCHEIDUNG: VIDEO ODER BILD ──
       if (customVideo) {
-        console.log("ERFOLG: Video gefunden ->", customVideo);
+        console.log("Video gefunden:", fixPath(customVideo));
         const videoEl = document.createElement('video');
         videoEl.src = fixPath(customVideo);
         videoEl.autoplay = true; videoEl.loop = true; videoEl.muted = true; videoEl.playsInline = true;
         videoEl.poster = customImage ? fixPath(customImage) : fallback;
-        videoEl.className = imgElement.className;
-        videoEl.style.cssText = "width:100%; height:400px; object-fit:cover; display:block; border-radius:10px;";
+        
+        // CSS vom Bild übernehmen
+        videoEl.className = "article-image"; // Nutzt deine CSS Klasse
+        videoEl.style.cssText = "width:100%; height:400px; object-fit:cover; display:block; border-radius:10px; margin-bottom:3rem; border:1px solid var(--border-light);";
         
         imgElement.parentNode.insertBefore(videoEl, imgElement);
-        imgElement.style.display = "none";
-        
-        videoEl.onerror = () => { videoEl.remove(); showImg(imgElement, customImage, postId, fallback); };
+        imgElement.remove(); 
       } else {
-        showImg(imgElement, customImage, postId, fallback);
+        imgElement.src = customImage ? fixPath(customImage) : `/img/${postId}.jpg`;
+        imgElement.style.display = "block";
+        imgElement.onerror = () => { imgElement.src = fallback; };
       }
 
       document.getElementById('post-content').innerHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
       document.title = `${postTitle} — Zeitqualität`;
 
     } catch (e) {
+      console.error(e);
       document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1>";
     }
-  }
-
-  function showImg(el, custom, id, fall) {
-    el.src = custom ? fixPath(custom) : `/img/${id}.jpg`;
-    el.style.display = "block";
-    el.onerror = () => { el.src = fall; };
   }
 
   renderPost();
