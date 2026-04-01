@@ -126,7 +126,7 @@
     --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* ── TYPOGRAPHY SCALE ── */
-    --fs-hero: clamp(3.2rem, 7.5vw, 5.5rem);
+    --fs-hero: clamp(3.5rem, 8.5vw, 6.2rem);
     --fs-h1: 2.3rem;
     --fs-h2: 1.75rem;
     --fs-h3: 1.35rem;
@@ -237,7 +237,7 @@
     to { transform: translate(30px, -20px) scale(1.1); }
   }
 
-  /* ── PLANET ORBIT SYSTEM ── */
+  /* ── PLANET ORBIT SYSTEM (Realistisch) ── */
   .orbit-system {
     position: fixed;
     top: 50%; left: 50%;
@@ -245,21 +245,23 @@
     width: 100vmin; height: 100vmin;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .orbit-ring {
     position: absolute;
     top: 50%; left: 50%;
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.012);
   }
 
   .orbit-ring::before {
     content: '';
     position: absolute;
     border-radius: 50%;
-    box-shadow: 0 0 8px 2px currentColor;
+    transform: translateX(-50%);
+    top: 0; left: 50%;
+    box-shadow: inset -2px -2px 5px rgba(0,0,0,0.6), inset 1px 1px 3px rgba(255,255,255,0.2);
   }
 
   /* Mercury */
@@ -269,11 +271,10 @@
     animation: orbit-spin 18s linear infinite;
   }
   .orbit-mercury::before {
-    width: 4px; height: 4px;
-    top: -2px; left: 50%;
-    transform: translateX(-50%);
-    background: #c4b49a;
-    color: rgba(196, 180, 154, 0.4);
+    width: 5px; height: 5px;
+    top: -2.5px;
+    background: radial-gradient(circle at 30% 30%, #a6a6a6, #555);
+    filter: drop-shadow(0 0 2px rgba(166,166,166,0.4));
   }
 
   /* Venus */
@@ -283,11 +284,10 @@
     animation: orbit-spin 28s linear infinite reverse;
   }
   .orbit-venus::before {
-    width: 6px; height: 6px;
-    top: -3px; left: 50%;
-    transform: translateX(-50%);
-    background: #e8c48e;
-    color: rgba(232, 196, 142, 0.4);
+    width: 8px; height: 8px;
+    top: -4px;
+    background: radial-gradient(circle at 30% 30%, #e8c48e, #b8864b);
+    filter: drop-shadow(0 0 5px rgba(232,196,142,0.4));
   }
 
   /* Earth */
@@ -297,11 +297,10 @@
     animation: orbit-spin 38s linear infinite;
   }
   .orbit-earth::before {
-    width: 7px; height: 7px;
-    top: -3.5px; left: 50%;
-    transform: translateX(-50%);
-    background: #7b9cc4;
-    color: rgba(123, 156, 196, 0.5);
+    width: 9px; height: 9px;
+    top: -4.5px;
+    background: radial-gradient(circle at 30% 30%, #4facfe 0%, #0061ff 100%);
+    filter: drop-shadow(0 0 6px rgba(79,172,254,0.5));
   }
 
   /* Mars */
@@ -311,11 +310,10 @@
     animation: orbit-spin 50s linear infinite;
   }
   .orbit-mars::before {
-    width: 5px; height: 5px;
-    top: -2.5px; left: 50%;
-    transform: translateX(-50%);
-    background: #c47b5c;
-    color: rgba(196, 123, 92, 0.4);
+    width: 6px; height: 6px;
+    top: -3px;
+    background: radial-gradient(circle at 30% 30%, #ff4b2b, #8b0000);
+    filter: drop-shadow(0 0 4px rgba(255,75,43,0.5));
   }
 
   /* Jupiter */
@@ -325,11 +323,10 @@
     animation: orbit-spin 70s linear infinite reverse;
   }
   .orbit-jupiter::before {
-    width: 12px; height: 12px;
-    top: -6px; left: 50%;
-    transform: translateX(-50%);
-    background: #d4a56a;
-    color: rgba(212, 165, 106, 0.35);
+    width: 22px; height: 22px;
+    top: -11px;
+    background: repeating-linear-gradient(180deg, #d4a56a, #e8c48e 15%, #c49a6c 30%);
+    filter: drop-shadow(0 0 10px rgba(212,165,106,0.3));
   }
 
   /* Saturn */
@@ -339,13 +336,23 @@
     animation: orbit-spin 90s linear infinite;
   }
   .orbit-saturn::before {
-    width: 10px; height: 10px;
-    top: -5px; left: 50%;
-    transform: translateX(-50%);
-    background: #c9b97a;
-    color: rgba(201, 185, 122, 0.35);
+    width: 16px; height: 16px;
+    top: -8px;
+    background: radial-gradient(circle at 30% 30%, #e8d9a0, #c9b97a);
+    filter: drop-shadow(0 0 8px rgba(201,185,122,0.4));
+    z-index: 2;
+  }
+  .orbit-saturn::after {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%) rotateX(75deg);
+    width: 34px; height: 34px;
+    border: 4px solid rgba(201,185,122,0.25);
     border-radius: 50%;
-    box-shadow: 0 0 8px 2px currentColor, -6px 0 0 -3px rgba(201, 185, 122, 0.3), 6px 0 0 -3px rgba(201, 185, 122, 0.3);
+    box-shadow: 0 0 10px rgba(201,185,122,0.1);
+    z-index: 1;
   }
 
   /* Uranus */
@@ -355,11 +362,10 @@
     animation: orbit-spin 120s linear infinite reverse;
   }
   .orbit-uranus::before {
-    width: 8px; height: 8px;
-    top: -4px; left: 50%;
-    transform: translateX(-50%);
-    background: #7abfbf;
-    color: rgba(122, 191, 191, 0.35);
+    width: 12px; height: 12px;
+    top: -6px;
+    background: radial-gradient(circle at 30% 30%, #a0efef, #4ca1af);
+    filter: drop-shadow(0 0 6px rgba(122,191,191,0.4));
   }
 
   /* Neptune */
@@ -369,11 +375,10 @@
     animation: orbit-spin 150s linear infinite;
   }
   .orbit-neptune::before {
-    width: 8px; height: 8px;
-    top: -4px; left: 50%;
-    transform: translateX(-50%);
-    background: #5b78c4;
-    color: rgba(91, 120, 196, 0.4);
+    width: 12px; height: 12px;
+    top: -6px;
+    background: radial-gradient(circle at 30% 30%, #7a9ce8, #243b55);
+    filter: drop-shadow(0 0 6px rgba(91,120,196,0.4));
   }
 
   /* Pluto */
@@ -382,14 +387,12 @@
     transform: translate(-50%, -50%);
     animation: orbit-spin 200s linear infinite;
     border-style: dashed;
-    border-color: rgba(255,255,255,0.015);
+    border-color: rgba(255,255,255,0.01);
   }
   .orbit-pluto::before {
-    width: 3px; height: 3px;
-    top: -1.5px; left: 50%;
-    transform: translateX(-50%);
-    background: #a08aad;
-    color: rgba(160, 138, 173, 0.4);
+    width: 4px; height: 4px;
+    top: -2px;
+    background: #8e9eab;
   }
 
   @keyframes orbit-spin {
@@ -402,18 +405,18 @@
     position: fixed;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 20px; height: 20px;
+    width: 25px; height: 25px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 210, 100, 0.6) 0%, rgba(255, 180, 60, 0.2) 40%, transparent 70%);
-    box-shadow: 0 0 40px 15px rgba(255, 200, 80, 0.06), 0 0 80px 30px rgba(255, 180, 60, 0.03);
+    background: radial-gradient(circle, #fff 0%, #ffdf80 40%, #ffbf00 100%);
+    box-shadow: 0 0 60px 20px rgba(255, 200, 80, 0.2);
     pointer-events: none;
     z-index: -1;
     animation: sun-pulse 8s ease-in-out infinite alternate;
   }
 
   @keyframes sun-pulse {
-    from { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
-    to { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    from { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    to { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
   }
 
   nav {
@@ -478,17 +481,16 @@
     font-size: 1.4rem;
   }
 
-  /* ── MEHR RAUM FÜR DEN HERO BEREICH (nimmt jetzt 90% der Höhe ein) ── */
-  .hero { 
-    padding: 12rem 2rem 6rem; 
-    min-height: 90vh; /* Das ist der Zaubertrick! */
+  .hero {
+    padding: 12rem 2rem 6rem;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: var(--max-w); 
-    margin: 0 auto; 
-    text-align: center; 
-    position: relative; 
+    max-width: var(--max-w);
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
   }
 
   .hero-eyebrow {
@@ -545,7 +547,6 @@
 
   .hero-tagline span { opacity: 0.4; }
 
-  /* ── SCROLL INDIKATOR (Neu) ── */
   .scroll-indicator {
     position: absolute;
     bottom: 2rem;
@@ -610,6 +611,9 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: 0.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
   }
 
   .transit-title {
@@ -815,6 +819,8 @@
     color: var(--text-dim);
     display: flex;
     gap: 1.2rem;
+    align-items: center;
+    margin-top: 1rem;
   }
 
   .featured {
@@ -1533,7 +1539,6 @@
   <div class="hero-tagline">
     Transite <span>·</span> Zyklen <span>·</span> Reflexion <span>·</span> Mentale Fitness
   </div>
-  
   <div class="scroll-indicator">
     Entdecken
     <div class="scroll-line"></div>
@@ -1626,44 +1631,28 @@
       <img src="christian.png" alt="Christian" class="about-photo">
       <div class="about-tagline">Wer schreibt hier?</div>
       <h2>Christian</h2>
-      <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.7;">Diplomierter Mentaltrainer. Seit über 20 Jahren in der Finanzbranche. Ich verbinde kosmische Rhythmen mit mentaler Stärke.</p>
+      <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.7;">Diplomierter Mentaltrainer &amp; Finanzexperte.</p>
       <blockquote>Es ist nicht die Zeit, die uns fehlt, sondern die Tiefe, mit der wir sie erleben.</blockquote>
     </div>
 
     <div class="about-content fade-up">
-      <p>Vielleicht kennst du das Gefühl: Dein Kalender ist voll, aber dein Tag fühlt sich leer an. Wir optimieren unsere Effizienz, zählen Minuten und vergessen dabei völlig, dass Zeit weit mehr ist als eine rein physikalische Maßeinheit.</p>
-
-      <h3>Zwei Welten, ein Ziel</h3>
-      <p>Ich komme aus der Finanzbranche – seit über 20 Jahren bewege ich mich in einem Umfeld, in dem alles messbar sein muss: Zahlen, Renditen, Quartalsberichte. Ich kenne den Druck, die Taktung und das Gefühl, vom eigenen Kalender gelebt zu werden.</p>
-      <p>Gleichzeitig habe ich mich zum <strong style="color:var(--accent-light)">diplomierten Mentaltrainer</strong> ausbilden lassen – weil ich früh gespürt habe, dass äußerer Erfolg ohne innere Klarheit auf Dauer nicht trägt. Diese beiden Welten – die analytische Präzision und die intuitive Tiefe – kommen hier auf Zeitqualität zusammen.</p>
-
-      <h3>Warum „Zeitqualität"?</h3>
-      <p>Wir leben in einer Welt, die auf Quantität getrimmt ist. Schneller, mehr, weiter. Doch die wertvollsten Momente unseres Lebens lassen sich nicht mit der Stoppuhr messen. Sie entstehen dort, wo wir ganz präsent sind – im Flow einer Aufgabe, in der Stille eines Morgens oder in der Tiefe eines echten Gesprächs.</p>
-      <p>Für mich ist Zeit kein Gegner, den man „besiegen" oder „managen" muss. Sie ist ein Raum, den wir bewusst gestalten dürfen – mit kosmischem Bewusstsein und mentaler Stärke.</p>
-
-      <h3>Vom Takt zum Rhythmus</h3>
-      <p>Auf diesem Blog geht es nicht darum, noch mehr Aufgaben in deine 24 Stunden zu quetschen. Es geht um die wesentlichen Fragen:</p>
-
+      <p>Als <strong style="color:var(--accent-light)">diplomierter Mentaltrainer</strong> mit über 20 Jahren Erfahrung in der Finanzbranche kenne ich beide Welten: den Takt der Effizienz und das Bedürfnis nach innerer Klarheit.</p>
+      <p>Hier auf Zeitqualität verbinde ich diese Gegensätze. Ich nutze Astrologie als Symbolsprache, um kosmische Rhythmen verständlich zu machen und mit Mentaltechniken zu verknüpfen – für mehr Präsenz und mentale Stärke im Alltag.</p>
       <div class="about-pillars">
         <div class="about-pillar">
           <strong>Präsenz</strong>
-          <span>Wie werde ich wieder zum Gestalter meines eigenen Lebens?</span>
+          <span>Vom Getriebenen zum Gestalter werden.</span>
         </div>
         <div class="about-pillar">
           <strong>Intuition</strong>
-          <span>Wann ist die Zeit reif für einen Aufbruch – und wann für das Innehalten?</span>
+          <span>Den richtigen Moment für Impulse erkennen.</span>
         </div>
         <div class="about-pillar">
           <strong>Mentale Kraft</strong>
-          <span>Wie stärke ich meinen Geist, damit er mich durch turbulente Zeiten trägt?</span>
+          <span>Klarheit finden in turbulenten Zeiten.</span>
         </div>
       </div>
-
-      <h3>Was mich antreibt</h3>
-      <p>Ich bin davon überzeugt, dass wir unser Leben grundlegend verändern, wenn wir zweierlei tun: unsere Beziehung zur Zeit verändern und unseren Geist bewusst trainieren. Wer mit sich und seinem eigenen Tempo im Reinen ist, strahlt eine Klarheit aus, die auch sein Umfeld positiv beeinflusst.</p>
-      <p>Ich bin kein Fan von starren 5-Schritte-Plänen von der Stange. Ich schätze den echten Austausch auf Augenhöhe, ehrliche Impulse und die kleinen, feinen Verschiebungen im Alltag, die den großen Unterschied machen.</p>
-
-      <p class="about-signoff">Ich freue mich darauf, dich ein Stück auf deinem Weg zu mehr Zeitqualität und mentaler Stärke zu begleiten.<br><br>Herzlich,<br>Christian</p>
+      <p class="about-signoff">Herzlich,<br>Christian</p>
     </div>
   </div>
 </div>
@@ -1782,12 +1771,12 @@
   // ── VIDEO PREVIEW FIX ──
   document.querySelectorAll('.local-video').forEach(function(v) {
     v.addEventListener('loadedmetadata', function() {
-      v.currentTime = 3;
+      v.currentTime = 1;
     });
     v.addEventListener('play', function() {
       if (!v.dataset.started) {
         v.dataset.started = '1';
-        v.currentTime = 0;
+        v.currentTime = 1;
       }
     });
   });
@@ -2042,7 +2031,7 @@
     window.addEventListener('resize', resize);
   })();
 
-  // ── DIE SCHLAUE CMS LOGIK (DATUM & LESEZEIT INTEGRIERT) ──
+  // ── DIE SCHLAUE CMS LOGIK (MIT DATUM, LESEZEIT, #T=1) ──
   let allPosts = [];
 
   async function loadCMSPosts() {
@@ -2132,7 +2121,7 @@
             bannerContainer.innerHTML = `
               <a href="${topPost.url}" class="transit-banner fade-up visible" id="transite" style="text-decoration:none;color:inherit;display:block">
                 <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
-                  ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}" type="video/mp4"></video>` : ''}
+                  ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}#t=1" type="video/mp4"></video>` : ''}
                   <div style="position:relative; z-index:2;">
                     <div class="transit-label">
                       <span>Aktuelle Zeitqualität</span>
@@ -2154,7 +2143,7 @@
           const infoPost = allPosts.find(p => p.slug === 'was-ist-zeitqualitaet');
           if (infoPost) {
             const mediaHTML = infoPost.video 
-              ? `<video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="${infoPost.video}" type="video/mp4"></video>`
+              ? `<video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="${infoPost.video}#t=1" type="video/mp4"></video>`
               : `<img src="${infoPost.image || 'img/was-ist-zeitqualitaet.jpg'}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;" onerror="this.src='img/sternenhimmel-berge.jpg'">`;
 
             infoBannerContainer.innerHTML = `
