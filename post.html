@@ -91,7 +91,7 @@
       img.style.display = 'block';
 
       // 2. Text von GitHub holen
-      const response = await fetch(`https://raw.githubusercontent.com/chreever/zeitqualitaet/main/posts/${postId}.md`);
+      const response = await fetch(`posts/${postId}.md?t=` + Date.now());
       
       if (!response.ok) throw new Error("Nicht gefunden");
       
