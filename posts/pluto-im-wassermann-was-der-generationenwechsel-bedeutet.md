@@ -1,5 +1,6 @@
 ---
 title: Pluto im Wassermann - was der Generationenwechsel bedeutet
+category: Transite
 date: 2026-04-01T15:46:00.000+02:00
 image: /img/sonnenaufgang.jpg
 description: >-
@@ -11,6 +12,7 @@ description: >-
 
   Seit Pluto in den Wassermann gewandert ist, stehen wir an der Schwelle eines fundamentalen Wandels. Nicht im Sinne eines einzelnen Ereignisses, sondern als eine allmähliche Verschiebung dessen, was wir als Gesellschaft für normal halten.
 ---
+
 ## Was Pluto bewirkt
 
 Pluto ist kein sanfter Planet. Er ist der Archäologe des Tierkreises – er gräbt, bis er auf den Kern stößt. Was nicht authentisch ist, wird zersetzt. Was Bestand hat, wird transformiert und gestärkt. Pluto fragt nicht um Erlaubnis. Er deckt auf, was im Verborgenen liegt, und zwingt uns hinzuschauen.
