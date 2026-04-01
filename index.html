@@ -1444,6 +1444,23 @@
     .tiktok-section { padding: 2rem 1.5rem 3rem; }
     .video-grid { grid-template-columns: 1fr; }
   }
+/* ── HINTERGRUND-DIMMUNG BEIM SCROLLEN ── */
+  .orbit-system, .sun-core {
+    transition: opacity 1s ease, filter 1s ease;
+  }
+  
+  /* Sobald die Klasse "scrolled" aktiv ist, wird alles dezent */
+  body.scrolled .orbit-system {
+    opacity: 0.15; /* Macht die Planetenbahnen fast unsichtbar */
+  }
+  
+  body.scrolled .sun-core {
+    /* Wir nutzen Filter, damit die Pulsier-Animation nicht kaputt geht */
+    filter: brightness(0.2) opacity(0.3) blur(4px); 
+  }
+  
+
+  
 </style>
 </head>
 <body>
