@@ -165,15 +165,43 @@
           if (imgMatch && imgMatch[1]) {
              customImage = imgMatch[1];
           }
+
+          // Video auslesen (NEU)
+          var customVideo = ''; 
+          const vidMatch = parts[1].match(/video:\s*['"]?(.*?)['"]?\n/);
+          if (vidMatch && vidMatch[1]) {
+             customVideo = vidMatch[1];
+          }
         }
       }
 
-      // Bild setzen
+      // ── BILD ODER VIDEO SETZEN ──
       const img = document.getElementById('post-image');
-      // Nimm das CMS-Bild, wenn es eins gibt. Sonst rate den Dateinamen.
-      img.src = customImage ? customImage : `img/${postId}.jpg`;
-      img.onerror = () => { img.src = 'img/sternenhimmel-berge.jpg'; };
-      img.style.display = 'block';
+      
+      if (typeof customVideo !== 'undefined' && customVideo !== '') {
+        // Wenn ein Video im CMS hinterlegt wurde:
+        const videoEl = document.createElement('video');
+        videoEl.src = customVideo + '#t=1'; // Startet bei Sek. 1 für weicheren Übergang
+        videoEl.autoplay = true;
+        videoEl.loop = true;
+        videoEl.muted = true;
+        videoEl.playsInline = true; // Wichtig für iPhones
+        
+        // Wir geben dem Video exakt dasselbe Design wie dem eigentlichen Bild
+        videoEl.className = img.className; 
+        videoEl.style.width = '100%';
+        videoEl.style.height = '100%';
+        videoEl.style.objectFit = 'cover';
+        
+        // Video vor dem alten Bild-Platzhalter einfügen und das Bild verstecken
+        img.parentNode.insertBefore(videoEl, img);
+        img.style.display = 'none'; 
+      } else {
+        // Wenn es kein Video gibt, greift die normale Bild-Logik
+        img.src = typeof customImage !== 'undefined' && customImage !== '' ? customImage : `img/${postId}.jpg`;
+        img.onerror = () => { img.src = 'img/sternenhimmel-berge.jpg'; };
+        img.style.display = 'block';
+      }
 
       // Markdown in HTML übersetzen
       const finalHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
@@ -181,7 +209,7 @@
       document.title = `${postTitle} — Zeitqualität`;
 
     } catch (e) {
-      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Dieser Beitrag konnte nicht geladen werden. Bitte stelle sicher, dass die Datei im Ordner 'posts' auf GitHub existiert.</p>";
+      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Dieser Beitrag konnte nicht geladen werden. Bitte stelle sicher, dass die Datei im Ordner 'posts' existiert.</p>";
     }
   }
 
