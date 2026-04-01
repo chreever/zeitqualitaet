@@ -1860,12 +1860,9 @@
     let moveTimeout;
 
     const colors = [
-      { r: 212, g: 165, b: 106 },  // gold
-      { r: 232, g: 196, b: 142 },  // light gold
-      { r: 123, g: 156, b: 196 },  // celestial blue
-      { r: 226, g: 223, b: 216 },  // warm white
-      { r: 201, g: 185, b: 122 },  // saturn gold
-      { r: 122, g: 191, b: 191 },  // uranus teal
+      { r: 226, g: 223, b: 216 },  // Warmes Weiß (Hauptfarbe)
+      { r: 210, g: 205, b: 195 },  // Sanftes Silber-Grau
+      { r: 212, g: 185, b: 140 }   // Sehr dezentes, blasses Gold
     ];
 
     function resize() {
@@ -1884,7 +1881,7 @@
         y: y + (Math.random() - 0.5) * 16,
         vx: Math.cos(angle) * velocity + (Math.random() - 0.5) * drift,
         vy: Math.sin(angle) * velocity + (Math.random() - 0.5) * drift - 0.4,
-        size: Math.random() * 2.5 + 0.5,
+        size: Math.random() * 1.5 + 0.5,
         life: 1,
         decay: Math.random() * 0.025 + 0.012,
         color: color,
