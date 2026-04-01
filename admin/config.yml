@@ -13,6 +13,7 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Datum", name: "date", widget: "datetime", format: "YYYY-MM-DD", dateFormat: "DD.MM.YYYY", timeFormat: false, required: false}
       - {label: "Kategorie", name: "category", widget: "select", options: ["Transite", "Mondphasen", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"], default: "Allgemein"}
       - {label: "Als Top-Thema im Banner anzeigen?", name: "highlight", widget: "boolean", default: false}
       
