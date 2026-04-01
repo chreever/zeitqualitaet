@@ -1,5 +1,6 @@
 ---
 title: "Vollmond in der Waage: Beziehungen im Spiegel"
+date: 2026-04-01
 category: Mondphasen
 highlight: true
 image: img/vollmond.jpg
