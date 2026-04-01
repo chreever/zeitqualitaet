@@ -2202,6 +2202,22 @@
       }
     });
   }
+  // 1. Position merken, wenn die Seite verlassen wird
+window.addEventListener('beforeunload', () => {
+    sessionStorage.setItem('scrollPos', window.scrollY);
+});
+
+// 2. Position wiederherstellen (Diese Funktion rufen wir gleich auf)
+function restoreScroll() {
+    const scrollPos = sessionStorage.getItem('scrollPos');
+    if (scrollPos) {
+        window.scrollTo({
+            top: parseInt(scrollPos),
+            behavior: 'instant' // Sofort springen, nicht weich gleiten
+        });
+        sessionStorage.removeItem('scrollPos'); // Danach vergessen
+    }
+}
 </script>
 
 </body>
