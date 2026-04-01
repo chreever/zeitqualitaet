@@ -5,6 +5,7 @@ highlight: true
 description: Die Balance zwischen „Ich" und „Wir". Wenn der Vollmond ans Licht
   bringt, was wir unter den Teppich gekehrt haben.
 badge: Vollmond Energie
+image: img/vollmond.jpg
 ---
 *Wenn der Vollmond im Zeichen Waage steht, geht ein Ruck durch unser Sozialleben. Die Waage sucht Harmonie, aber der Vollmond bringt ans Licht, was wir unter den Teppich gekehrt haben.*
 
