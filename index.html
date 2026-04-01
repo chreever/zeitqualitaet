@@ -7,9 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zeitqualität — Kosmische Einflüsse verstehen</title>
 <meta name="description" content="Zeitqualität – Astrologie als Orientierung, nicht als Orakel. Transite verstehen, kosmische Rhythmen erkennen, bewusster leben.">
-
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -1557,6 +1555,7 @@
     </a>
   </div>
 </section>
+
 <div class="divider"><hr></div>
 
 <section id="galerie">
@@ -1992,7 +1991,7 @@
     window.addEventListener('resize', resize);
   })();
 
- // ── DIE SCHLAUE CMS LOGIK (MIT KATEGORIEN) ──
+  // ── DIE SCHLAUE CMS LOGIK (MIT KATEGORIEN) ──
   let allPosts = [];
 
   async function loadCMSPosts() {
@@ -2001,7 +2000,6 @@
     if (!container) return;
 
     try {
-      // 1. Liste aller Dateien von GitHub holen
       const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?ref=main';
       const response = await fetch(apiURL);
       
@@ -2012,11 +2010,10 @@
       if (Array.isArray(files)) {
         const mdFiles = files.filter(f => f.name.endsWith('.md')).reverse();
 
-        // 2. Kurz in jede Datei spähen, um Titel und Kategorie (Frontmatter) zu lesen
         const postPromises = mdFiles.map(async (file) => {
           const slug = file.name.replace('.md', '');
-          let title = slug.replace(/-/g, ' ').toUpperCase(); // Standard-Titel
-          let category = 'Zeitqualität'; // Standard-Kategorie
+          let title = slug.replace(/-/g, ' ').toUpperCase(); 
+          let category = 'Zeitqualität'; 
 
           try {
             const rawRes = await fetch(`posts/${file.name}`);
@@ -2026,9 +2023,7 @@
                 const parts = rawText.split('---');
                 if (parts.length >= 3) {
                   const frontmatter = parts[1];
-                  // Lese echten Titel
                   const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
-                  // Lese Kategorie
                   const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
                   
                   if (titleMatch) title = titleMatch[1];
@@ -2041,10 +2036,8 @@
           return { slug, title, category, url: `post.html?id=${slug}` };
         });
 
-        // Warten, bis alle Beiträge analysiert wurden
         allPosts = await Promise.all(postPromises);
 
-        // 3. Beiträge als Karten auf den Bildschirm zeichnen
         const render = (items, limit = 6) => {
           container.innerHTML = '';
           const list = items.slice(0, limit);
@@ -2060,7 +2053,8 @@
             card.innerHTML = `
               <img class="post-card-img" src="img/${p.slug}.jpg" onerror="this.src='img/sternenhimmel-berge.jpg'">
               <div class="post-card-body">
-                <span class="post-tag">${p.category}</span> <h3>${p.title}</h3>
+                <span class="post-tag">${p.category}</span>
+                <h3>${p.title}</h3>
                 <p>Klicke zum Lesen.</p>
               </div>`;
             container.appendChild(card);
@@ -2069,7 +2063,6 @@
 
         render(allPosts, 6);
 
-        // Suchfunktion: Durchsucht jetzt auch Kategorien!
         searchInput.addEventListener('input', (e) => {
           const term = e.target.value.toLowerCase();
           const filtered = allPosts.filter(p => 
