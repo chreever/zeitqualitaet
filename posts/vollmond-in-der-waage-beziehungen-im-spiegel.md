@@ -1,25 +1,29 @@
 ---
 title: "Vollmond in der Waage: Beziehungen im Spiegel"
-category: Allgemein
+category: Mondphasen
 highlight: true
-description: Die Balance zwischen „Ich" und „Wir". Wenn der Vollmond ans Licht
-  bringt, was wir unter den Teppich gekehrt haben.
-badge: Vollmond Energie
 image: img/vollmond.jpg
+description: Wenn der Vollmond im Zeichen Waage steht, geht ein spürbarer Impuls
+  durch unser Sozialleben. Wie viel Raum gebe ich mir selbst – und wie viel dem
+  anderen?
+badge: Vollmond Energie
 ---
-*Wenn der Vollmond im Zeichen Waage steht, geht ein Ruck durch unser Sozialleben. Die Waage sucht Harmonie, aber der Vollmond bringt ans Licht, was wir unter den Teppich gekehrt haben.*
+Wenn der Vollmond im Zeichen Waage steht, geht ein spürbarer Impuls durch unser Sozialleben. Die Waage sucht Harmonie, doch der Vollmond bringt ans Licht, was wir unter den Teppich gekehrt haben. 
 
-Die Zeitqualität dieser Tage dreht sich um eine Frage: Wie viel Raum gebe ich mir selbst, und wie viel dem anderen?
+Die Zeitqualität dieser Tage stellt eine zentrale Frage:
 
-## Die Qualität der Resonanz
+> Wie viel Raum gebe ich mir selbst – und wie viel dem anderen?
 
-Sonne im Widder (Ich) trifft auf den Mond in der Waage (Wir). Andere Menschen dienen uns jetzt als Spiegel. Was uns am anderen stört oder was wir bewundern, sagt viel über uns selbst aus. Es ist die Zeit, in der Kompromisse auf den Prüfstand kommen.
+### Die Qualität der Resonanz
 
-## Meine Impulse
+Die Sonne im Widder betont das Ich, der Mond in der Waage richtet den Blick auf das Wir. In dieser Spannung werden Beziehungen zum Spiegel. Was uns am anderen berührt, irritiert oder fasziniert, sagt oft auch etwas über uns selbst aus. Kompromisse, Anpassung und unausgesprochene Erwartungen wollen jetzt ehrlich betrachtet werden.
 
-1. **Den Spiegel putzen:** Wenn dich jemand triggert, atme durch. Frag dich: „Welcher Teil von mir möchte hier gesehen werden?" Nutze die Spannung für Selbsterkenntnis.
-2. **Ehrliche Diplomatie:** Sprich Unstimmigkeiten wertschätzend an. Ein echtes Gespräch ist wertvoller als ein erzwungenes Lächeln um des Friedens willen.
-3. **Schönheit zelebrieren:** Nutze die venusische Energie. Mach es dir und deinem Umfeld schön. Ein gemeinsames Essen oder tiefe Gespräche nähren die Zeitqualität.
+### Meine Impulse
 
-> **Die Balance zwischen „Ich" und „Wir"**
-> Andere Menschen dienen uns jetzt als Spiegel. Was uns am anderen stört oder was wir bewundern, sagt viel über uns selbst aus.
+* **Projektionen erkennen:** Wenn dich jemand triggert, atme bewusst durch und frag dich: Welcher Teil von mir möchte hier gesehen werden? Gerade in der Reibung liegt jetzt viel Potenzial für Selbsterkenntnis.
+* **Ehrliche Diplomatie:** Sprich Unstimmigkeiten wertschätzend an. Ein echtes Gespräch ist in dieser Zeit oft wertvoller als ein erzwungenes Lächeln um des Friedens willen.
+* **Schönheit zelebrieren:** Nutze die venusische Qualität der Waage. Mach es dir und deinem Umfeld schön. Ein gemeinsames Essen, ein harmonischer Raum oder ein tiefes Gespräch können jetzt besonders nährend wirken.
+
+### Die Balance zwischen Ich und Wir
+
+Dieser Vollmond erinnert daran, dass Beziehung weder Selbstaufgabe noch Ego-Durchsetzung bedeutet. Es geht darum, die eigene Wahrheit zu wahren und zugleich offen für Begegnung zu bleiben. Dieser Vollmond in der Waage lädt dazu ein, Beziehung bewusster zu leben: ehrlich, klar und offen. Zwischen Ich und Wir will nun eine neue Balance entstehen.
