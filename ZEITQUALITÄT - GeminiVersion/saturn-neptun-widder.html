@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saturn trifft Neptun im Widder — Zeitqualität</title>
+<meta name="description" content="Die Zeitqualität im 6. Haus: Dein Alltag auf dem Prüfstand. Wenn Vision auf Wirklichkeit trifft.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<style>
+  /* ── LOCAL FONTS ── */
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('fonts/cormorant-garamond.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('fonts/cormorant-garamond-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('fonts/cormorant-garamond-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('fonts/cormorant-garamond-italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Cormorant Garamond';
+    src: url('fonts/cormorant-garamond-italic-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Figtree';
+    src: url('fonts/figtree.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Figtree';
+    src: url('fonts/figtree-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Figtree';
+    src: url('fonts/figtree-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Figtree';
+    src: url('fonts/figtree-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('fonts/ibm-plex-mono-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('fonts/ibm-plex-mono.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --bg: #08090e;
+    --bg-warm: #0c0d14;
+    --bg-card: #11121a;
+    --bg-card-hover: #161722;
+    --bg-elevated: #1a1b26;
+    --text: #e2dfd8;
+    --text-muted: #918d84;
+    --text-dim: #5c5950;
+    --accent: #d4a56a;
+    --accent-light: #e8c48e;
+    --accent-dim: rgba(212, 165, 106, 0.1);
+    --celestial: #7b9cc4;
+    --celestial-dim: rgba(123, 156, 196, 0.1);
+    --border: #222330;
+    --border-light: #1a1b26;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Figtree', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --max-w: 760px;
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --fs-hero: clamp(2.4rem, 5vw, 3.2rem);
+    --fs-h1: 2.3rem;
+    --fs-h2: 1.75rem;
+    --fs-h3: 1.35rem;
+    --fs-body: 1.05rem;
+    --fs-small: 0.92rem;
+    --fs-label: 0.8rem;
+    --fs-fine: 0.75rem;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  a { color: var(--accent); text-decoration: none; transition: var(--transition); }
+  a:hover { color: var(--accent-light); }
+  img { max-width: 100%; display: block; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(8, 9, 14, 0.85);
+    backdrop-filter: blur(28px);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+
+  .logo-symbol {
+    display: inline-block;
+    color: var(--accent);
+    margin-right: 0.25rem;
+    font-size: 0.9em;
+  }
+
+  .nav-links { display: flex; gap: 2.2rem; align-items: center; }
+
+  .nav-links a {
+    color: var(--text-muted);
+    font-size: var(--fs-small);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .menu-toggle {
+    display: none;
+    background: none; border: none;
+    color: var(--text); cursor: pointer;
+    font-size: 1.4rem;
+  }
+
+  /* ── ARTICLE ── */
+  .article-header {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 8rem 2rem 2rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .article-tag {
+    font-family: var(--font-mono);
+    font-size: var(--fs-fine);
+    font-weight: 300;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .article-date {
+    font-family: var(--font-mono);
+    font-size: var(--fs-fine);
+    font-weight: 300;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .article-reading {
+    font-family: var(--font-mono);
+    font-size: var(--fs-fine);
+    font-weight: 300;
+    color: var(--text-dim);
+  }
+
+  .article-header h1 {
+    font-family: var(--font-display);
+    font-size: var(--fs-hero);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .article-header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .article-subtitle {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .article-lead {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    max-width: 620px;
+  }
+
+  .article-hero-img {
+    max-width: 1100px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+  }
+
+  .article-hero-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    filter: saturate(0.85);
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article-body {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 1rem 2rem 4rem;
+  }
+
+  .article-body p {
+    font-size: var(--fs-body);
+    color: var(--text);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-body h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    color: var(--accent-light);
+    margin: 3rem 0 1rem;
+    line-height: 1.3;
+  }
+
+  .article-body h3 {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 500;
+    color: var(--text);
+    margin: 2.5rem 0 0.8rem;
+  }
+
+  .article-body ul {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+  }
+
+  .article-body ul li {
+    position: relative;
+    padding-left: 1.8rem;
+    margin-bottom: 0.8rem;
+    font-size: var(--fs-body);
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  .article-body ul li::before {
+    content: '◦';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 1.2em;
+  }
+
+  .article-body ol {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    counter-reset: impulse;
+  }
+
+  .article-body ol li {
+    counter-increment: impulse;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: var(--fs-body);
+    color: var(--text);
+    line-height: 1.8;
+  }
+
+  .article-body ol li::before {
+    content: counter(impulse);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(212, 165, 106, 0.2);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: var(--fs-fine);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+  }
+
+  .article-body ol li strong {
+    color: var(--accent-light);
+    font-weight: 500;
+  }
+
+  .article-body blockquote {
+    border-left: 2px solid var(--accent);
+    padding: 1.2rem 0 1.2rem 1.5rem;
+    margin: 2rem 0;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .highlight-box p {
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── AUTHOR BOX ── */
+  .author-box {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .author-initial {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(212, 165, 106, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .author-info p {
+    font-size: var(--fs-small);
+    margin-bottom: 0;
+  }
+
+  .author-name {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .author-desc {
+    color: var(--text-muted);
+    font-size: var(--fs-small);
+  }
+
+  /* ── BACK LINK ── */
+  .back-link {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .back-link a {
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .back-link a:hover { gap: 0.7rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border-light);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  footer .logo {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-note {
+    color: var(--text-dim);
+    font-size: var(--fs-label);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 62px; left: 0; right: 0;
+      background: rgba(8,9,14,0.97);
+      backdrop-filter: blur(24px);
+      padding: 1.5rem 2rem; gap: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .menu-toggle { display: block; }
+    .article-header { padding: 7rem 1.5rem 1.5rem; }
+    .article-body { padding: 1rem 1.5rem 3rem; }
+    .article-hero-img img { height: 250px; }
+    .article-hero-img { padding: 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ NAVIGATION ════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-symbol">◌</span> Zeitqualität</a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
+    <div class="nav-links">
+      <a href="index.html#transite">Transite</a>
+      <a href="index.html#beitraege">Beiträge</a>
+      <a href="index.html#galerie">Sternzeichen</a>
+      <a href="index.html#ueber">Über mich</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════ ARTICLE HEADER ════════ -->
+<header class="article-header">
+  <div class="article-meta">
+    <span class="article-tag">Transite · Konjunktion</span>
+    <span class="article-date">31. März 2026</span>
+    <span class="article-reading">8 Min. Lesezeit</span>
+  </div>
+  <h1>Saturn trifft Neptun im Widder: Wenn <em>Vision</em> auf Wirklichkeit trifft</h1>
+  <p class="article-subtitle">Die Zeitqualität im 6. Haus: Dein Alltag auf dem Prüfstand</p>
+  <p class="article-lead">Stell dir vor, ein strenger Architekt (Saturn) und ein verträumter Künstler (Neptun) müssen gemeinsam ein Haus bauen. Und das Ganze passiert im Zeichen Widder – also mit einer gehörigen Portion Ungeduld und Tatendrang.</p>
+</header>
+
+<!-- ════════ HERO IMAGE ════════ -->
+<div class="article-hero-img">
+  <img src="saturn-neptun-widder.png" alt="Saturn trifft Neptun im Widder – Konjunktion im 6. Haus" width="1200" height="500" loading="lazy" style="background:var(--bg-elevated)">
+</div>
+
+<!-- ════════ ARTICLE BODY ════════ -->
+<article class="article-body">
+
+  <p>Genau diese Energie erleben wir aktuell. Wenn diese beiden Giganten im 6. Haus aufeinandertreffen, geht es um das Fundament deines Lebens: deinen Alltag, deine Gesundheit und deine tägliche Arbeit.</p>
+
+  <h2>Was bedeutet das astrologisch?</h2>
+
+  <ul>
+    <li><strong>Saturn</strong> fordert Struktur, Grenzen und Fakten.</li>
+    <li><strong>Neptun</strong> steht für Auflösung, Intuition und Sehnsucht.</li>
+    <li><strong>Der Widder</strong> drückt aufs Gaspedal und will den Neuanfang.</li>
+    <li><strong>Das 6. Haus</strong> ist der Ort, an dem wir „funktionieren" – unser Job, unsere Routinen, unsere körperliche Selbstfürsorge.</li>
+  </ul>
+
+  <div class="highlight-box">
+    <p>Die Qualität dieser Zeit ist <strong style="color:var(--accent)">„Heilsame Struktur"</strong>.</p>
+    <p>Es geht darum, deine Träume (Neptun) in eine Form (Saturn) zu gießen, die im Alltag (6. Haus) auch wirklich Bestand hat.</p>
+  </div>
+
+  <h2>Warum sich das gerade so anfühlt, wie es sich anfühlt</h2>
+
+  <p>Vielleicht merkst du momentan eine seltsame Mischung aus Erschöpfung und Tatendrang. Neptun löst alte, starre Arbeitsstrukturen auf – das kann sich unsicher anfühlen. Saturn verlangt gleichzeitig, dass wir Verantwortung für unseren Körper übernehmen.</p>
+
+  <p>Wer bisher Raubbau an sich betrieben hat, bekommt jetzt die Quittung, wird aber gleichzeitig eingeladen, ein völlig neues Gesundheitskonzept zu entwerfen.</p>
+
+  <h2>Meine Impulse: So nutzt du diese Konjunktion im 6. Haus</h2>
+
+  <ol>
+    <li><strong>Routinen mit Seele füllen:</strong> Ein strenger Zeitplan (Saturn) ohne Sinn (Neptun) macht dich krank. Prüfe deinen Tagesablauf: Wo handelst du nur noch wie ein Roboter? Integriere kleine Momente der Stille oder Inspiration in deine Arbeit.</li>
+    <li><strong>Körperliche Intuition:</strong> Im 6. Haus geht es um Heilung. Widder-Energie kann zu Kopfschmerzen oder Stress führen. Hör auf deinen Körper: Brauchst du gerade Disziplin (Sport) oder Hingabe (Ruhe)? Die Antwort liegt in der Mitte.</li>
+    <li><strong>Vom Chaos zur Klarheit:</strong> Neptun im 6. Haus kann Chaos am Arbeitsplatz bedeuten. Saturn hilft dir jetzt, Prioritäten zu setzen. Fang nicht zehn Dinge gleichzeitig an (typisch Widder), sondern such dir das eine Projekt, das deinem Leben wirklich Struktur gibt.</li>
+  </ol>
+
+  <h2>Mein Fazit zur Zeitqualität</h2>
+
+  <p>Diese Konjunktion ist eine riesige Chance. Sie erlaubt uns, den Alltag nicht mehr als lästige Pflicht zu sehen, sondern als einen Ort, an dem wir unsere Ideale verwirklichen.</p>
+
+  <blockquote>Es ist Zeit, die Grenze zwischen „Pflicht" und „Kür" aufzuheben. Dein Alltag ist dein Leben – gestalte ihn so, dass er dich trägt, statt dich zu erdrücken.</blockquote>
+
+  <!-- ── AUTHOR ── -->
+  <div class="author-box">
+    <div class="author-initial">C</div>
+    <div class="author-info">
+      <p class="author-name">Christian</p>
+      <p class="author-desc">Zeitqualität — Kosmische Rhythmen bewusst verstehen</p>
+    </div>
+  </div>
+
+</article>
+
+<!-- ════════ BACK LINK ════════ -->
+<div class="back-link">
+  <a href="index.html#beitraege">← Zurück zu allen Beiträgen</a>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <a href="index.html" class="logo"><span class="logo-symbol">◌</span> Zeitqualität</a>
+  <p class="footer-note">© 2026 Zeitqualität · Christian — Kosmische Rhythmen bewusst verstehen</p>
+</footer>
+
+<!-- ════════ SCRIPTS ════════ -->
+<script>
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
