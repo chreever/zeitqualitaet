@@ -581,10 +581,16 @@
   .transit-desc {
     color: var(--text-muted);
     font-size: var(--fs-body);
-    max-width: 600px; /* Ein bisschen mehr Platz in der Breite */
-    height: auto;     /* Wichtig: Text darf nach unten wachsen */
-    overflow: visible; /* Nichts wird versteckt */
-    line-height: 1.6;
+    max-width: 650px;       /* Etwas breiter für mehr Text */
+    height: auto;           /* WICHTIG: Erlaubt dem Kasten, nach unten zu wachsen */
+    overflow: visible;      /* Nichts wird mehr abgeschnitten */
+    line-height: 1.6;       /* Bessere Lesbarkeit bei längeren Texten */
+    margin-top: 0.8rem;
+  }
+
+  .transit-banner-inner {
+    padding: 2.5rem 2.2rem; /* Etwas mehr "Atmenraum" für viel Text */
+    height: auto;           /* Der gesamte Banner wächst mit */
   }
 
   .transit-badge {
