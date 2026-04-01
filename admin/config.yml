@@ -13,11 +13,10 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Titel", name: "title", widget: "string"}
-      # --- DAS HIER IST DAS NEUE DROPDOWN-FELD ---
-      - label: "Kategorie"
-        name: "category"
-        widget: "select"
-        options: ["Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"]
-        default: "Allgemein"
-      # ------------------------------------------
+      - {label: "Kategorie", name: "category", widget: "select", options: ["Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"], default: "Allgemein"}
+      # --- NEU FÜR DEN BANNER ---
+      - {label: "Als Top-Thema im Banner anzeigen?", name: "highlight", widget: "boolean", default: false, required: false}
+      - {label: "Kurzbeschreibung (erscheint im Banner)", name: "description", widget: "text", required: false}
+      - {label: "Badge Text (z.B. 'Aktiv im 6. Haus')", name: "badge", widget: "string", required: false}
+      # --------------------------
       - {label: "Inhalt", name: "body", widget: "markdown"}
