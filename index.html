@@ -581,6 +581,7 @@
     font-family: var(--font-display);
     font-size: var(--fs-h3);
     font-weight: 500;
+    color: var(--accent);
   }
 
   .transit-desc {
@@ -1610,7 +1611,24 @@ section#kontakt button[type="submit"]:active {
   transform: translateY(-1px); /* Der Button geht beim Klick wieder ein Stück runter */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 } 
+/* --- GOLD-UPDATE FÜR ALLE TITEL AUF DER STARTSEITE --- */
 
+/* 1. Der Top-Banner ganz oben */
+.transit-title {
+    color: var(--accent) !important;
+}
+
+/* 2. Alle Titel in den kleinen Beitrags-Kacheln */
+.post-card h3 {
+    color: var(--accent) !important;
+    text-transform: uppercase; /* Damit es zum Credo-Look passt */
+    letter-spacing: 0.02em;
+}
+
+/* 3. Der Titel im Info-Banner (Vorsichtsmaßnahme) */
+.featured h2 {
+    color: var(--accent) !important;
+}
   
 </style>
 </head>
@@ -2300,7 +2318,7 @@ if (infoBannerContainer) {
         ${mediaHTML}
         <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
           <span class="post-tag">${infoPost.category}</span>
-          <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem;">${infoPost.title}</h2>
+          <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent);">${infoPost.title}</h2>
           <div class="post-meta" style="margin-bottom: 1.5rem; margin-top: 0;">
             ${infoPost.date ? `<span>${infoPost.date}</span>` : ''}
             <span>${infoPost.readTime} Min. Lesezeit</span>
