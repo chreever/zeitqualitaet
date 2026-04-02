@@ -1412,7 +1412,7 @@
     transform: translateY(0);
   }
 
- /* --- RESPONSIVE OPTIMIERUNG (MENÜ & ÜBER MICH) --- */
+/* --- RESPONSIVE OPTIMIERUNG (FIX FÜR BANNER & ÜBER MICH) --- */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -1427,18 +1427,15 @@
         right: 0;
         background: rgba(8, 9, 14, 0.97);
         backdrop-filter: blur(24px);
-        /* Seitlicher Abstand radikal auf 0.5rem reduziert für mehr Platz */
         padding: 1.5rem 0.5rem;
         gap: 0.8rem;
         border-bottom: 1px solid var(--border);
         text-align: center;
     }
 
-    /* Fix für "Mentale Fitness" & Co. im schmalen Hochformat */
     .nav-links.open a {
         display: block;
         width: 100%;
-        /* Schriftgröße auf 0.9rem gesenkt, damit lange Wörter Platz haben */
         font-size: 0.9rem;
         letter-spacing: 0.01em;
         padding: 0.5rem 0;
@@ -1459,7 +1456,27 @@
     }
 
     section {
-        padding: 3rem 1rem;
+        padding: 3rem 1.5rem;
+    }
+
+    /* --- FIX FÜR DEN TRANSIT-BANNER (PAARWEISE) --- */
+    /* Hier werden Transite, Zyklen, Reflexion, Mentale Fitness in 2er-Paaren angeordnet */
+    .transit-banner-inner {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Erzeugt 2 Spalten */
+        gap: 1.5rem 1rem; /* Abstand zwischen den Paaren */
+        padding: 0 1rem;
+        text-align: center;
+        justify-items: center;
+    }
+
+    /* Damit die einzelnen Wörter nicht gequetscht werden */
+    .transit-banner-inner span, 
+    .transit-item {
+        font-size: 0.85rem !important;
+        white-space: normal !important; /* Erlaubt Zeilenumbruch innerhalb der Kachel */
+        display: block;
+        width: 100%;
     }
 
     /* --- KACHELN & ÜBER MICH STAPELN --- */
@@ -1475,132 +1492,31 @@
 
     /* --- ÜBER MICH: FOTO-FIX (BEIBEHALTEN) --- */
     .about-aside {
-        order: -1; /* Foto über dem Text */
+        order: -1;
         margin-bottom: 1.5rem;
     }
 
     .about-aside img {
         width: 100% !important;
-        height: auto !important; /* Fix gegen Langziehen */
+        height: auto !important;
         max-height: 400px;
         object-fit: cover;
         border-radius: var(--radius);
     }
 
     /* --- WEITERE MOBILE ANPASSUNGEN --- */
-    .featured {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-body {
-        padding: 1.8rem;
-    }
-
-    .featured-img {
-        min-height: 220px;
-    }
-
-    .posts-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
+    .featured, .posts-grid, .contact-grid, .video-grid {
+        grid-template-columns: 1fr !important;
     }
 
     .form-row {
         flex-direction: column;
-    }
-
-    .transit-banner-inner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .about {
-        padding: 3rem 1rem;
-    }
-
-    .article-header {
-        padding: 6rem 1rem 1rem;
-    }
-    
-    .article-body {
-        padding: 1rem 1rem 3rem;
-    }
-
-    .tiktok-section {
-        padding: 2rem 1rem 3rem;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-    /* --- KACHELN UNTEREINANDER STAPELN --- */
-    /* Dies betrifft Aufklärung, Transite verstehen, Sinn, Orientierung */
-    .philosophy-inner, 
-    .philosophy-grid, 
-    .pillars-grid, 
-    .grid-4,
-    .about-pillars {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-    }
-
-    .featured {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-body {
-        padding: 1.8rem;
-    }
-
-    .featured-img {
-        min-height: 220px;
-    }
-
-    .posts-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-row {
-        flex-direction: column;
-    }
-
-    .transit-banner-inner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    /* --- ÜBER MICH OPTIMIERUNG (NEU) --- */
-    .about-inner {
-        grid-template-columns: 1fr !important;
-        gap: 2rem;
-    }
-
-    .about-aside {
-        position: static;
-        order: -1; /* Setzt das Foto auf dem Handy ÜBER den Text */
-    }
-
-    .about-aside img {
-        width: 100%;
-        height: auto !important; /* Verhindert das Verzerren/Langziehen */
-        object-fit: cover;
-        border-radius: var(--radius);
     }
 
     .about {
         padding: 3rem 1.5rem;
     }
 
-    /* Optimierung der Abstände für Blog-Inhalte auf Mobile */
     .article-header {
         padding: 6rem 1rem 1rem;
     }
@@ -1611,10 +1527,6 @@
 
     .tiktok-section {
         padding: 2rem 1.5rem 3rem;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
     }
 }
 
