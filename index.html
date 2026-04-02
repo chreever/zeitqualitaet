@@ -1483,11 +1483,15 @@
         display: none !important;
     }
 
-    /* Die Wörter selbst schön formatieren */
+    /* Die Wörter selbst (Transite, Zyklen...) dezent aufhellen */
     .hero-tagline span {
         font-size: 0.88rem !important;
         white-space: nowrap !important; /* Verhindert Zeilenbruch innerhalb der Wörter */
-        opacity: 0.8; /* Dezente Optik, wie im Original */
+        /* Wir setzen die Deckkraft auf 1 (statt 0.8), damit sie kräftiger leuchten */
+        opacity: 1 !important; 
+        /* Und geben ihnen eine hellere Farbe aus deinen Variablen */
+        color: var(--text-muted) !important; 
+        letter-spacing: 0.05em;
     }
     /* --- DIESER TEIL STAPELT KACHELN UND "ÜBER MICH" UNTEREINANDER --- */
     /* Dies fixiert die langgezogenen Kacheln und das Quetschen bei "Über mich" */
