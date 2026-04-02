@@ -17,13 +17,21 @@ collections:
         widget: "select"
         options: ["Mentaltraining", "Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
-      - {label: "Titelbild", name: "image", widget: "image", required: false}
-      - {label: "Hintergrund-Video (MP4)", name: "video", widget: "file", required: false}
+      
+      # Titel-Medien (Was in den Beitrags-Karten erscheint)
+      - {label: "Titelbild (Foto)", name: "image", widget: "image", required: false}
+      - {label: "Titel-Video (MP4)", name: "featured_video", widget: "file", required: false}
+      
+      # Banner-Medien (Was nur erscheint, wenn ein Banner-Platz gewählt ist)
+      - {label: "Hintergrund-Video für Banner (MP4)", name: "video", widget: "file", required: false}
+      
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
+      
       - label: "Banner-Platzierung"
         name: "placement"
         widget: "select"
         options: ["Kein Banner", "Top-Banner (Header)", "Info-Banner (Mitte)"]
         default: "Kein Banner"
         required: false
+        
       - {label: "Inhalt", name: "body", widget: "markdown"}
