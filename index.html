@@ -1466,7 +1466,29 @@
     section {
         padding: 3rem 1.5rem;
     }
+/* --- SPEZIAL-FIX FÜR DIE VIER SCHLAGWORTE (PAARWEISE 2x2) --- */
+    .hero-tagline {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Erzeugt 2 Spalten */
+        gap: 0.8rem 1rem !important; /* Abstand: oben/unten | links/rechts */
+        max-width: 290px; /* Hält die Paare kompakt in der Mitte */
+        margin: 1.5rem auto !important;
+        justify-items: center;
+        opacity: 1 !important;
+        padding: 0 !important;
+    }
 
+    /* Die Punkte zwischen den Wörtern werden am Handy ausgeblendet */
+    .hero-tagline .dot {
+        display: none !important;
+    }
+
+    /* Die Wörter selbst schön formatieren */
+    .hero-tagline span {
+        font-size: 0.88rem !important;
+        white-space: nowrap !important; /* Verhindert Zeilenbruch innerhalb der Wörter */
+        opacity: 0.8; /* Dezente Optik, wie im Original */
+    }
     /* --- DIESER TEIL STAPELT KACHELN UND "ÜBER MICH" UNTEREINANDER --- */
     /* Dies fixiert die langgezogenen Kacheln und das Quetschen bei "Über mich" */
     .philosophy-inner, 
