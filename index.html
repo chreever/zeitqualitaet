@@ -481,21 +481,32 @@
     z-index: 1;
   }
 
-  .hero-tagline {
-    display: inline-flex;
-    align-items: center;
-    gap: 1.5rem;
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    position: relative;
-    z-index: 1;
-    justify-content: center;
-  }
+ /* --- Desktop Credo-Look --- */
+.hero-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem; 
+  color: var(--text-dim);
+  letter-spacing: 0.15em; /* Der weite Abstand für den Credo-Look */
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  justify-content: center;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
 
-  .hero-tagline span { opacity: 0.4; }
+.hero-tagline span {
+  opacity: 0.9; /* Dezent, aber lesbar */
+  transition: var(--transition);
+}
+
+.hero-tagline .dot {
+  opacity: 0.3;
+  font-size: 1.2rem;
+}
 
   .scroll-indicator {
     position: absolute;
