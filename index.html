@@ -2310,23 +2310,29 @@ section#kontakt button[type="submit"]:active {
           }
         }
 
-        // 3. KARTEN BEFÜLLEN
+        // 3. Die Kacheln rendern
         const render = (items, limit = 6) => {
     container.innerHTML = '';
     const list = items.slice(0, limit);
     
     list.forEach(p => {
-        const card = document.createElement('a'); 
-        card.href = p.url; 
-        card.className = 'post-card fade-up visible'; 
-        
-        // Entscheiden: Video oder Bild?
-        const mediaHTML = p.featured_video 
-            ? `<video class="post-card-img" autoplay muted loop playsinline>
-                 <source src="${p.featured_video}#t=0.1" type="video/mp4">
-               </video>`
-            : `<img class="post-card-img" src="${p.image || 'img/sternenhimmel-berge.jpg'}" 
-                 onerror="this.src='img/sternenhimmel-berge.jpg'">`;
+        const card = document.createElement('a');
+        card.href = p.url;
+        card.className = 'post-card fade-up visible';
+        card.style.opacity = "1";
+
+        // Logik: Video bevorzugen, falls vorhanden
+        let mediaHTML = '';
+        if (p.featured_video) {
+            mediaHTML = `
+                <video class="post-card-img" autoplay muted loop playsinline poster="${p.image || ''}">
+                    <source src="${p.featured_video}#t=0.1" type="video/mp4">
+                </video>`;
+        } else {
+            mediaHTML = `
+                <img class="post-card-img" src="${p.image || 'img/sternenhimmel-berge.jpg'}" 
+                     onerror="this.src='img/sternenhimmel-berge.jpg'">`;
+        }
 
         card.innerHTML = `
             ${mediaHTML}
