@@ -4,6 +4,7 @@ title: "Vollmond in der Waage: Beziehungen im Spiegel"
 category: Transite
 date: 2026-04-02
 image: ""
+featured_video: img/37363-413555921_medium.mp4
 placement: Top-Banner (Header)
 highlight: true
 video: img/37363-413555921_medium.mp4
