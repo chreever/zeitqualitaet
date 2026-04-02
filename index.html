@@ -2178,7 +2178,7 @@ section#kontakt button[type="submit"]:active {
   // ── DIE SCHLAUE CMS LOGIK (MIT DATUM, LESEZEIT, #T=1) ──
   let allPosts = [];
 
-  async function loadCMSPosts() {
+ async function loadCMSPosts() {
     const container = document.getElementById('dynamic-posts');
     const bannerContainer = document.getElementById('dynamic-banner-container');
     const infoBannerContainer = document.getElementById('dynamic-info-banner');
@@ -2199,7 +2199,7 @@ section#kontakt button[type="submit"]:active {
           const slug = file.name.replace('.md', '');
           let title = slug.replace(/-/g, ' ').toUpperCase(); 
           let category = 'Zeitqualität'; 
-          let placement = 'Kein Banner'; // NEU: Unsere Platzierungs-Variable
+          let placement = 'Kein Banner';
           let description = '';
           let badge = '';
           let image = '';
@@ -2218,10 +2218,10 @@ section#kontakt button[type="submit"]:active {
                   const frontmatter = parts[1];
                   const bodyText = parts.slice(2).join('---').trim();
                   
-                  // Daten auslesen
+                  // Daten auslesen per Regex
                   const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
                   const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
-                  const placeMatch = frontmatter.match(/placement:\s*['"]?(.*?)['"]?\n/); // Sucht das neue Feld
+                  const placeMatch = frontmatter.match(/placement:\s*['"]?(.*?)['"]?\n/);
                   const descMatch = frontmatter.match(/description:\s*['"]?(.*?)['"]?\n/);
                   const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
                   const imgMatch = frontmatter.match(/image:\s*['"]?(.*?)['"]?\n/);
@@ -2231,7 +2231,7 @@ section#kontakt button[type="submit"]:active {
                   
                   if (titleMatch) title = titleMatch[1];
                   if (catMatch) category = catMatch[1];
-                  if (placeMatch) placement = placeMatch[1]; // Speichert die Auswahl
+                  if (placeMatch) placement = placeMatch[1];
                   if (descMatch) description = descMatch[1];
                   if (badgeMatch) badge = badgeMatch[1];
                   if (imgMatch) image = imgMatch[1];
@@ -2253,12 +2253,13 @@ section#kontakt button[type="submit"]:active {
             }
           } catch(e) {}
 
-          return { slug, title, category, placement, description, badge, image, video, date: dateFormatted, readTime, url: `post.html?id=${slug}` };
+          // WICHTIG: Hier muss featured_video mit rein!
+          return { slug, title, category, placement, description, badge, image, video, featured_video, date: dateFormatted, readTime, url: `post.html?id=${slug}` };
         });
 
         allPosts = await Promise.all(postPromises);
 
-        // 1. TOP-BANNER (Sucht jetzt nach Dropdown-Auswahl)
+        // 1. TOP-BANNER RENDERN
         if (bannerContainer) {
           const topPost = allPosts.find(p => p.placement === 'Top-Banner (Header)');
           if (topPost) {
@@ -2282,7 +2283,7 @@ section#kontakt button[type="submit"]:active {
           }
         }
 
-        // 2. INFO-BANNER (Sucht jetzt nach Dropdown-Auswahl)
+        // 2. INFO-BANNER RENDERN
         if (infoBannerContainer) {
           const infoPost = allPosts.find(p => p.placement === 'Info-Banner (Mitte)');
           if (infoPost) {
@@ -2310,46 +2311,47 @@ section#kontakt button[type="submit"]:active {
           }
         }
 
-        // 3. Die Kacheln rendern
+        // 3. KACHELN RENDERN
         const render = (items, limit = 6) => {
-    container.innerHTML = '';
-    const list = items.slice(0, limit);
-    
-    list.forEach(p => {
-        const card = document.createElement('a');
-        card.href = p.url;
-        card.className = 'post-card fade-up visible';
-        card.style.opacity = "1";
+          container.innerHTML = '';
+          const list = items.slice(0, limit);
+          
+          list.forEach(p => {
+            const card = document.createElement('a');
+            card.href = p.url;
+            card.className = 'post-card fade-up visible';
+            card.style.opacity = "1";
 
-        // Logik: Video bevorzugen, falls vorhanden
-        let mediaHTML = '';
-        if (p.featured_video) {
-            mediaHTML = `
+            let mediaHTML = '';
+            if (p.featured_video && p.featured_video.trim() !== "") {
+              mediaHTML = `
                 <video class="post-card-img" autoplay muted loop playsinline poster="${p.image || ''}">
-                    <source src="${p.featured_video}#t=0.1" type="video/mp4">
+                  <source src="${p.featured_video}#t=0.1" type="video/mp4">
                 </video>`;
-        } else {
-            mediaHTML = `
+            } else {
+              mediaHTML = `
                 <img class="post-card-img" src="${p.image || 'img/sternenhimmel-berge.jpg'}" 
                      onerror="this.src='img/sternenhimmel-berge.jpg'">`;
-        }
+            }
 
-        card.innerHTML = `
-            ${mediaHTML}
-            <div class="post-card-body">
+            card.innerHTML = `
+              ${mediaHTML}
+              <div class="post-card-body">
                 <span class="post-tag">${p.category}</span>
                 <h3>${p.title}</h3>
                 <div class="post-meta">
-                    ${p.date ? `<span>${p.date}</span>` : ''}
-                    <span>${p.readTime} Min. Lesezeit</span>
+                  ${p.date ? `<span>${p.date}</span>` : ''}
+                  <span>${p.readTime} Min. Lesezeit</span>
                 </div>
-            </div>`;
-        container.appendChild(card);
-    });
-};
+              </div>`;
+            container.appendChild(card);
+          });
+        };
 
         render(allPosts, 6);
-setTimeout(restoreScroll, 100);
+        
+        // Scroll-Position und Suche
+        setTimeout(restoreScroll, 100);
         if (searchInput) {
           searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
@@ -2362,7 +2364,7 @@ setTimeout(restoreScroll, 100);
         }
       }
     } catch (e) {
-      console.error(e);
+      console.error("Fehler beim Laden:", e);
       container.innerHTML = '<p style="color:var(--text-dim);">Fehler beim Laden der Beiträge.</p>';
     }
   }
