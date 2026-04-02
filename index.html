@@ -1412,54 +1412,144 @@
     transform: translateY(0);
   }
 
-  /* ── RESPONSIVE OPTIMIERUNG ── */
-  @media (max-width: 768px) {
+ @media (max-width: 768px) {
     .nav-links {
-      display: none;
+        display: none;
     }
 
     .nav-links.open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 62px;
-      left: 0;
-      right: 0;
-      background: rgba(8, 9, 14, 0.97);
-      backdrop-filter: blur(24px);
-      /* Padding reduziert, damit links/rechts nichts abgeschnitten wird */
-      padding: 1.5rem 1rem; 
-      gap: 1.2rem;
-      border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        background: rgba(8, 9, 14, 0.97);
+        backdrop-filter: blur(24px);
+        /* Reduziertes Padding für mehr Platz links/rechts */
+        padding: 1.5rem 1rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* Optimierung für die Menü-Links auf dem Smartphone */
+    .nav-links.open a {
+        display: block;
+        width: 100%;
+        text-align: center; /* Zentrierung verhindert optisches Anstoßen am Rand */
+        font-size: 0.95rem; 
+        letter-spacing: 0.02em;
+        word-wrap: break-word; /* Erlaubt Umbruch bei sehr langen Wörtern */
+    }
+
+    /* Extra-Schutz für extrem schmale Displays (unter 400px) */
+    @media (max-width: 400px) {
+        .nav-links.open a {
+            font-size: 0.9rem;
+        }
     }
 
     .menu-toggle {
-      display: block;
-    }
-
-    /* Spezieller Schutz für sehr schmale Smartphones (iPhone SE etc.) */
-    @media (max-width: 480px) {
-      .nav-links.open a {
-        font-size: 0.95rem; /* Schrift minimal verkleinert */
-        letter-spacing: 0.02em; /* Buchstaben rücken etwas näher zusammen */
-        word-wrap: break-word; /* Falls ein Wort extrem lang ist, darf es brechen */
         display: block;
-        width: 100%;
-        text-align: center; /* Zentrierung hilft oft gegen optisches Abschneiden */
-      }
-
-      .article-header {
-        padding: 6rem 1rem 1rem; /* Weniger Abstand am Rand */
-      }
-      
-      .article-body {
-        padding: 1rem 1rem 3rem; /* Mehr Platz für Text auf kleinen Displays */
-      }
     }
-  }
+
+    .hero {
+        padding: 9rem 1.5rem 3rem;
+        min-height: auto;
+    }
+
+    .orbit-system {
+        opacity: 0.4;
+    }
+
+    section {
+        padding: 3rem 1.5rem;
+    }
+
+    /* --- KACHELN UNTEREINANDER STAPELN --- */
+    /* Dies betrifft Aufklärung, Transite verstehen, Sinn, Orientierung */
+    .philosophy-inner, 
+    .philosophy-grid, 
+    .pillars-grid, 
+    .grid-4,
+    .about-pillars {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .featured {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-body {
+        padding: 1.8rem;
+    }
+
+    .featured-img {
+        min-height: 220px;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .transit-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* --- ÜBER MICH OPTIMIERUNG (NEU) --- */
+    .about-inner {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+
+    .about-aside {
+        position: static;
+        order: -1; /* Setzt das Foto auf dem Handy ÜBER den Text */
+    }
+
+    .about-aside img {
+        width: 100%;
+        height: auto !important; /* Verhindert das Verzerren/Langziehen */
+        object-fit: cover;
+        border-radius: var(--radius);
+    }
+
+    .about {
+        padding: 3rem 1.5rem;
+    }
+
+    /* Optimierung der Abstände für Blog-Inhalte auf Mobile */
+    .article-header {
+        padding: 6rem 1rem 1rem;
+    }
+    
+    .article-body {
+        padding: 1rem 1rem 3rem;
+    }
+
+    .tiktok-section {
+        padding: 2rem 1.5rem 3rem;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ── HINTERGRUND-DIMMUNG BEIM SCROLLEN ── */
-  .orbit-system, .sun-core {
+.orbit-system, .sun-core {
     transition: opacity 1s ease, filter 1s ease;
+}
   }
   
   /* Sobald die Klasse "scrolled" aktiv ist, wird alles dezent */
