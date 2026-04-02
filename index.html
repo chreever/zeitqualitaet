@@ -2204,6 +2204,7 @@ section#kontakt button[type="submit"]:active {
           let badge = '';
           let image = '';
           let video = '';
+          let featured_video = '';
           let dateFormatted = '';
           let readTime = 1;
 
@@ -2225,6 +2226,7 @@ section#kontakt button[type="submit"]:active {
                   const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
                   const imgMatch = frontmatter.match(/image:\s*['"]?(.*?)['"]?\n/);
                   const vidMatch = frontmatter.match(/video:\s*['"]?(.*?)['"]?\n/);
+                  const featVidMatch = frontmatter.match(/featured_video:\s*['"]?(.*?)['"]?\n/);
                   const dateMatch = frontmatter.match(/date:\s*['"]?(.*?)['"]?\n/i);
                   
                   if (titleMatch) title = titleMatch[1];
@@ -2234,7 +2236,7 @@ section#kontakt button[type="submit"]:active {
                   if (badgeMatch) badge = badgeMatch[1];
                   if (imgMatch) image = imgMatch[1];
                   if (vidMatch) video = vidMatch[1];
-
+                  if (featVidMatch) featured_video = featVidMatch[1];
                   if (dateMatch) {
                     const d = new Date(dateMatch[1]);
                     if (!isNaN(d)) {
@@ -2310,32 +2312,35 @@ section#kontakt button[type="submit"]:active {
 
         // 3. KARTEN BEFÜLLEN
         const render = (items, limit = 6) => {
-          container.innerHTML = '';
-          const list = items.slice(0, limit);
-          if (list.length === 0) {
-            container.innerHTML = '<p style="color:var(--text-muted); grid-column: 1/-1;">Keine passenden Beiträge gefunden.</p>';
-            return;
-          }
-          list.forEach(p => {
-            const card = document.createElement('a'); 
-            card.href = p.url; 
-            card.className = 'post-card fade-up visible'; 
-            card.style.opacity = "1";
-            const imageSrc = p.image ? p.image : `img/${p.slug}.jpg`;
+    container.innerHTML = '';
+    const list = items.slice(0, limit);
+    
+    list.forEach(p => {
+        const card = document.createElement('a'); 
+        card.href = p.url; 
+        card.className = 'post-card fade-up visible'; 
+        
+        // Entscheiden: Video oder Bild?
+        const mediaHTML = p.featured_video 
+            ? `<video class="post-card-img" autoplay muted loop playsinline>
+                 <source src="${p.featured_video}#t=0.1" type="video/mp4">
+               </video>`
+            : `<img class="post-card-img" src="${p.image || 'img/sternenhimmel-berge.jpg'}" 
+                 onerror="this.src='img/sternenhimmel-berge.jpg'">`;
 
-            card.innerHTML = `
-              <img class="post-card-img" src="${imageSrc}" onerror="this.src='img/sternenhimmel-berge.jpg'">
-              <div class="post-card-body">
+        card.innerHTML = `
+            ${mediaHTML}
+            <div class="post-card-body">
                 <span class="post-tag">${p.category}</span>
                 <h3>${p.title}</h3>
                 <div class="post-meta">
-                  ${p.date ? `<span>${p.date}</span>` : ''}
-                  <span>${p.readTime} Min. Lesezeit</span>
+                    ${p.date ? `<span>${p.date}</span>` : ''}
+                    <span>${p.readTime} Min. Lesezeit</span>
                 </div>
-              </div>`;
-            container.appendChild(card);
-          });
-        };
+            </div>`;
+        container.appendChild(card);
+    });
+};
 
         render(allPosts, 6);
 setTimeout(restoreScroll, 100);
