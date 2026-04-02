@@ -2284,32 +2284,36 @@ section#kontakt button[type="submit"]:active {
         }
 
         // 2. INFO-BANNER RENDERN
-        if (infoBannerContainer) {
-          const infoPost = allPosts.find(p => p.placement === 'Info-Banner (Mitte)');
-          if (infoPost) {
-            const mediaHTML = infoPost.video 
-              ? `<video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="${infoPost.video}#t=1" type="video/mp4"></video>`
-              : `<img src="${infoPost.image || 'img/sternenhimmel-berge.jpg'}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;" onerror="this.src='img/sternenhimmel-berge.jpg'">`;
+if (infoBannerContainer) {
+  const infoPost = allPosts.find(p => p.placement === 'Info-Banner (Mitte)');
+  if (infoPost) {
+    // NEUE LOGIK: Erst Video, dann Bild, sonst nichts (kein Sternenhimmel)
+    let mediaHTML = '';
+    if (infoPost.video) {
+      mediaHTML = `<video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="${infoPost.video}#t=1" type="video/mp4"></video>`;
+    } else if (infoPost.image) {
+      mediaHTML = `<img src="${infoPost.image}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">`;
+    }
 
-            infoBannerContainer.innerHTML = `
-              <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
-                ${mediaHTML}
-                <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
-                  <span class="post-tag">${infoPost.category}</span>
-                  <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem;">${infoPost.title}</h2>
-                  <div class="post-meta" style="margin-bottom: 1.5rem; margin-top: 0;">
-                    ${infoPost.date ? `<span>${infoPost.date}</span>` : ''}
-                    <span>${infoPost.readTime} Min. Lesezeit</span>
-                  </div>
-                  <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
-                    ${infoPost.description || 'Erfahre mehr über dieses Thema.'}
-                  </p>
-                  <a href="${infoPost.url}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
-                </div>
-              </div>
-            `;
-          }
-        }
+    infoBannerContainer.innerHTML = `
+      <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
+        ${mediaHTML}
+        <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
+          <span class="post-tag">${infoPost.category}</span>
+          <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem;">${infoPost.title}</h2>
+          <div class="post-meta" style="margin-bottom: 1.5rem; margin-top: 0;">
+            ${infoPost.date ? `<span>${infoPost.date}</span>` : ''}
+            <span>${infoPost.readTime} Min. Lesezeit</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
+            ${infoPost.description || 'Erfahre mehr über dieses Thema.'}
+          </p>
+          <a href="${infoPost.url}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
+        </div>
+      </div>
+    `;
+  }
+}
 
         // 3. KACHELN RENDERN
         const render = (items, limit = 6) => {
