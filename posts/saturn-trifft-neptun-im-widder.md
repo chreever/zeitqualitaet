@@ -3,7 +3,7 @@ badge: ""
 title: Saturn trifft Neptun im Widder
 category: Transite
 date: 2026-04-01T22:55:00.000+02:00
-featured_video: img/218740_medium.mp4
+featured_video: ""
 placement: Info-Banner (Mitte)
 highlight: true
 video: img/218740_medium.mp4
