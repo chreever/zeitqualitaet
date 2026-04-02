@@ -1432,7 +1432,21 @@
         gap: 1.2rem;
         border-bottom: 1px solid var(--border);
     }
+/* --- TRANSIT-BANNER: PAARWEISE ANORDNUNG (2x2) --- */
+    .transit-banner-inner {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Erzwingt zwei Spalten */
+        gap: 1rem !important; /* Abstand zwischen den Paaren */
+        padding: 1rem !important;
+        text-align: center !important;
+    }
 
+    .transit-banner-inner span,
+    .transit-item {
+        font-size: 0.9rem !important; /* Leicht verkleinert, damit es sicher passt */
+        display: block !important;
+        white-space: nowrap !important; /* Verhindert unschöne Zeilenumbrüche im Wort */
+    }
     /* NEU: Verhindert, dass "Mentale Fitness" links/rechts abgeschnitten wird */
     .nav-links.open a {
         display: block;
