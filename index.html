@@ -1830,19 +1830,25 @@ section#kontakt button[type="submit"]:active {
         <em>Hinweis: Da meine E-Mail-Leitung gerade gewartet wird, nutze bitte dieses Formular für Nachrichten.</em>
       </p>
       
-      <form name="gaestebuch" method="POST" data-netlify="true">
-        <div style="margin-bottom: 1rem;">
-          <input type="text" name="name" placeholder="Dein Name" required style="width:100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px;">
-        </div>
-        <div style="margin-bottom: 1rem;">
-          <textarea name="message" placeholder="Deine Nachricht" rows="4" required style="width:100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-family: inherit;"></textarea>
-        </div>
-        <div style="margin-bottom: 1rem; font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;">
-          <input type="checkbox" id="privacy" name="privacy" required style="margin-top: 3px;">
-          <label for="privacy">Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden (siehe <a href="datenschutz.html">Datenschutz</a>).</label>
-        </div>
-        <button type="submit" style="background: var(--clr-primary, #000); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 500;">Nachricht absenden</button>
-      </form>
+      <form name="gaestebuch" method="POST" data-netlify="true" action="/success.html">
+  
+  <input type="hidden" name="form-name" value="gaestebuch" />
+
+  <div style="margin-bottom: 1rem;">
+    <input type="text" name="name" placeholder="Dein Name" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); border-radius: 5px;">
+  </div>
+  
+  <div style="margin-bottom: 1rem;">
+    <textarea name="message" placeholder="Deine Nachricht" rows="4" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); border-radius: 5px; font-family: inherit;"></textarea>
+  </div>
+  
+  <div style="margin-bottom: 1rem; font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;">
+    <input type="checkbox" id="privacy" name="privacy" required style="margin-top: 3px;">
+    <label for="privacy" style="color: var(--text-muted);">Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden (siehe <a href="datenschutz.html" style="color: var(--accent);">Datenschutz</a>).</label>
+  </div>
+  
+  <button type="submit" style="background: var(--accent); color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Nachricht absenden</button>
+</form>
     </div>
     <p style="margin-bottom:1.5rem; opacity: 0.6;">
       <a href="mailto:info@zeitqualität.at" style="font-size:var(--fs-body);font-weight:500; text-decoration: line-through;">info@zeitqualität.at</a> 
