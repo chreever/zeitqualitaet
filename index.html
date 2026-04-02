@@ -1412,7 +1412,7 @@
     transform: translateY(0);
   }
 
- /* --- RESPONSIVE OPTIMIERUNG --- */
+ /* --- RESPONSIVE OPTIMIERUNG (MENÜ & ÜBER MICH) --- */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -1427,27 +1427,22 @@
         right: 0;
         background: rgba(8, 9, 14, 0.97);
         backdrop-filter: blur(24px);
-        /* Reduziertes Padding für mehr Platz links/rechts */
-        padding: 1.5rem 1rem;
-        gap: 1.2rem;
+        /* Seitlicher Abstand radikal auf 0.5rem reduziert für mehr Platz */
+        padding: 1.5rem 0.5rem;
+        gap: 0.8rem;
         border-bottom: 1px solid var(--border);
+        text-align: center;
     }
 
-    /* NEU: Verhindert, dass "Mentale Fitness" links/rechts abgeschnitten wird */
+    /* Fix für "Mentale Fitness" & Co. im schmalen Hochformat */
     .nav-links.open a {
         display: block;
         width: 100%;
-        text-align: center; /* Zentrierung verhindert optisches Anstoßen */
-        font-size: 0.95rem; 
-        letter-spacing: 0.02em;
-        word-wrap: break-word; /* Erlaubt Umbruch bei sehr langen Wörtern */
-    }
-
-    /* Extra-Schutz für sehr schmale Displays (unter 400px) */
-    @media (max-width: 400px) {
-        .nav-links.open a {
-            font-size: 0.9rem;
-        }
+        /* Schriftgröße auf 0.9rem gesenkt, damit lange Wörter Platz haben */
+        font-size: 0.9rem;
+        letter-spacing: 0.01em;
+        padding: 0.5rem 0;
+        word-wrap: break-word;
     }
 
     .menu-toggle {
@@ -1455,7 +1450,7 @@
     }
 
     .hero {
-        padding: 9rem 1.5rem 3rem;
+        padding: 8rem 1rem 3rem;
         min-height: auto;
     }
 
@@ -1464,33 +1459,35 @@
     }
 
     section {
-        padding: 3rem 1.5rem;
+        padding: 3rem 1rem;
     }
 
-    /* --- DIESER TEIL STAPELT KACHELN UND "ÜBER MICH" UNTEREINANDER --- */
-    /* Dies fixiert die langgezogenen Kacheln und das Quetschen bei "Über mich" */
+    /* --- KACHELN & ÜBER MICH STAPELN --- */
     .philosophy-inner, 
+    .philosophy-grid, 
     .pillars-grid, 
     .grid-4, 
     .about-pillars,
     .about-inner {
-        grid-template-columns: 1fr !important; /* Erzwingt eine Spalte */
-        gap: 1.5rem; /* Abstand zwischen den Kacheln beim Scrollen */
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
     }
 
-    /* --- ÜBER MICH: FOTO-FIX (WICHTIG!) --- */
+    /* --- ÜBER MICH: FOTO-FIX (BEIBEHALTEN) --- */
+    .about-aside {
+        order: -1; /* Foto über dem Text */
+        margin-bottom: 1.5rem;
+    }
+
     .about-aside img {
-        width: 100%;
-        height: auto !important; /* Verhindert, dass das Foto langgezogen wird */
-        object-fit: cover;       /* Sorgt dafür, dass das Bild proportional bleibt */
+        width: 100% !important;
+        height: auto !important; /* Fix gegen Langziehen */
+        max-height: 400px;
+        object-fit: cover;
         border-radius: var(--radius);
     }
 
-    .about-aside {
-        position: static;
-        order: -1; /* Setzt das Foto am Handy ÜBER den Text (sieht meist besser aus) */
-    }
-
+    /* --- WEITERE MOBILE ANPASSUNGEN --- */
     .featured {
         grid-template-columns: 1fr;
     }
@@ -1521,11 +1518,19 @@
     }
 
     .about {
-        padding: 3rem 1.5rem;
+        padding: 3rem 1rem;
+    }
+
+    .article-header {
+        padding: 6rem 1rem 1rem;
+    }
+    
+    .article-body {
+        padding: 1rem 1rem 3rem;
     }
 
     .tiktok-section {
-        padding: 2rem 1.5rem 3rem;
+        padding: 2rem 1rem 3rem;
     }
 
     .video-grid {
