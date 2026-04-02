@@ -134,7 +134,7 @@
     return '/' + clean;
   }
 
-  async function renderPost() {
+ async function renderPost() {
     const params = new URLSearchParams(window.location.search);
     const postId = params.get('id');
     if (!postId) return;
@@ -149,7 +149,8 @@
       let markdownBody = "";
       let postTitle = postId.replace(/-/g, ' ').toUpperCase();
       let customImage = "";
-      let customVideo = "";
+      let bannerVideo = "";      // Das große Video
+      let featuredVideo = "";    // Das Kachel-Video als Backup
 
       if (rawText.startsWith('---')) {
         const parts = rawText.split('---');
@@ -162,7 +163,8 @@
               const value = line.substring(separatorIndex + 1).trim().replace(/['"]/g, '');
               if (key === 'title') postTitle = value;
               if (key === 'image') customImage = value;
-              if (key === 'video') customVideo = value;
+              if (key === 'video') bannerVideo = value;
+              if (key === 'featured_video') featuredVideo = value;
             }
           });
           markdownBody = parts.slice(2).join('---').trim();
@@ -170,26 +172,35 @@
       }
 
       const imgElement = document.getElementById('post-image');
-      const fallback = "/img/sternenhimmel-berge.jpg";
+      // Hilfsfunktion für Pfade (falls nötig)
+      const fixPath = (path) => path.startsWith('http') ? path : (path.startsWith('/') ? path : '/' + path);
 
       // ── ENTSCHEIDUNG: VIDEO ODER BILD ──
-      if (customVideo) {
-        console.log("Video gefunden:", fixPath(customVideo));
+      const activeVideo = bannerVideo || featuredVideo;
+
+      if (activeVideo && activeVideo.trim() !== "") {
+        // 1. Priorität: Video (Banner oder Kachel)
         const videoEl = document.createElement('video');
-        videoEl.src = fixPath(customVideo);
-        videoEl.autoplay = true; videoEl.loop = true; videoEl.muted = true; videoEl.playsInline = true;
-        videoEl.poster = customImage ? fixPath(customImage) : fallback;
+        videoEl.src = fixPath(activeVideo);
+        videoEl.autoplay = true; 
+        videoEl.loop = true; 
+        videoEl.muted = true; 
+        videoEl.playsInline = true;
+        videoEl.poster = customImage ? fixPath(customImage) : "";
         
-        // CSS vom Bild übernehmen
-        videoEl.className = "article-image"; // Nutzt deine CSS Klasse
+        videoEl.className = "article-image"; 
         videoEl.style.cssText = "width:100%; height:400px; object-fit:cover; display:block; border-radius:10px; margin-bottom:3rem; border:1px solid var(--border-light);";
         
         imgElement.parentNode.insertBefore(videoEl, imgElement);
         imgElement.remove(); 
-      } else {
-        imgElement.src = customImage ? fixPath(customImage) : `/img/${postId}.jpg`;
+      } else if (customImage && customImage.trim() !== "") {
+        // 2. Priorität: Dein Bild
+        imgElement.src = fixPath(customImage);
         imgElement.style.display = "block";
-        imgElement.onerror = () => { imgElement.src = fallback; };
+        imgElement.onerror = () => { imgElement.remove(); }; // Wenn Bildpfad kaputt, ganz entfernen
+      } else {
+        // 3. Nichts da: Platzhalter einfach löschen
+        imgElement.remove();
       }
 
       document.getElementById('post-content').innerHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
@@ -197,7 +208,7 @@
 
     } catch (e) {
       console.error(e);
-      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1>";
+      document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Der Beitrag konnte nicht geladen werden.</p>";
     }
   }
 
