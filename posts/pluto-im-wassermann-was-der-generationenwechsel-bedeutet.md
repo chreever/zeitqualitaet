@@ -4,6 +4,7 @@ category: Transite
 date: 2026-04-02T12:27:00.000+02:00
 image: ""
 featured_video: img/202591-918431544_medium.mp4
+video: img/202591-918431544_medium.mp4
 description: >-
   *Wenn der Zerstörer auf den Erneuerer trifft. Pluto wechselt das Zeichen nur
   alle 12 bis 30 Jahre. Er ist der langsamste, tiefgreifendste Planet in der
