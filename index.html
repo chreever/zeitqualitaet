@@ -1641,7 +1641,30 @@
   <div class="contact-info" style="max-width:600px;">
     <h3>In Verbindung bleiben</h3>
     <p>Fragen, Gedanken oder Anregungen? Ich freue mich über Austausch — ob inhaltlich, philosophisch oder einfach menschlich.</p>
-    <p style="margin-bottom:1.5rem"><a href="mailto:info@zeitqualität.at" style="font-size:var(--fs-body);font-weight:500;">info@zeitqualität.at</a></p>
+    
+    <div style="margin: 2rem 0; background: rgba(0,0,0,0.03); padding: 1.5rem; border-radius: 12px;">
+      <p style="font-size: 0.9rem; margin-bottom: 1rem; color: #666;">
+        <em>Hinweis: Da meine E-Mail-Leitung gerade gewartet wird, nutze bitte dieses Formular für Nachrichten.</em>
+      </p>
+      
+      <form name="gaestebuch" method="POST" data-netlify="true">
+        <div style="margin-bottom: 1rem;">
+          <input type="text" name="name" placeholder="Dein Name" required style="width:100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <textarea name="message" placeholder="Deine Nachricht" rows="4" required style="width:100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-family: inherit;"></textarea>
+        </div>
+        <div style="margin-bottom: 1rem; font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;">
+          <input type="checkbox" id="privacy" name="privacy" required style="margin-top: 3px;">
+          <label for="privacy">Ich stimme zu, dass meine Angaben zur Kontaktaufnahme gespeichert werden (siehe <a href="datenschutz.html">Datenschutz</a>).</label>
+        </div>
+        <button type="submit" style="background: var(--clr-primary, #000); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 500;">Nachricht absenden</button>
+      </form>
+    </div>
+    <p style="margin-bottom:1.5rem; opacity: 0.6;">
+      <a href="mailto:info@zeitqualität.at" style="font-size:var(--fs-body);font-weight:500; text-decoration: line-through;">info@zeitqualität.at</a> 
+      <span style="font-size: 0.8rem; display: block;">(E-Mail-Zustellung aktuell verzögert)</span>
+    </p>
 
     <div class="social-links">
       <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener" class="social-link">Instagram</a>
