@@ -1412,7 +1412,8 @@
     transform: translateY(0);
   }
 
- @media (max-width: 768px) {
+ /* --- RESPONSIVE OPTIMIERUNG --- */
+@media (max-width: 768px) {
     .nav-links {
         display: none;
     }
@@ -1432,17 +1433,17 @@
         border-bottom: 1px solid var(--border);
     }
 
-    /* Optimierung für die Menü-Links auf dem Smartphone */
+    /* NEU: Verhindert, dass "Mentale Fitness" links/rechts abgeschnitten wird */
     .nav-links.open a {
         display: block;
         width: 100%;
-        text-align: center; /* Zentrierung verhindert optisches Anstoßen am Rand */
+        text-align: center; /* Zentrierung verhindert optisches Anstoßen */
         font-size: 0.95rem; 
         letter-spacing: 0.02em;
         word-wrap: break-word; /* Erlaubt Umbruch bei sehr langen Wörtern */
     }
 
-    /* Extra-Schutz für extrem schmale Displays (unter 400px) */
+    /* Extra-Schutz für sehr schmale Displays (unter 400px) */
     @media (max-width: 400px) {
         .nav-links.open a {
             font-size: 0.9rem;
@@ -1465,6 +1466,72 @@
     section {
         padding: 3rem 1.5rem;
     }
+
+    /* --- DIESER TEIL STAPELT KACHELN UND "ÜBER MICH" UNTEREINANDER --- */
+    /* Dies fixiert die langgezogenen Kacheln und das Quetschen bei "Über mich" */
+    .philosophy-inner, 
+    .pillars-grid, 
+    .grid-4, 
+    .about-pillars,
+    .about-inner {
+        grid-template-columns: 1fr !important; /* Erzwingt eine Spalte */
+        gap: 1.5rem; /* Abstand zwischen den Kacheln beim Scrollen */
+    }
+
+    /* --- ÜBER MICH: FOTO-FIX (WICHTIG!) --- */
+    .about-aside img {
+        width: 100%;
+        height: auto !important; /* Verhindert, dass das Foto langgezogen wird */
+        object-fit: cover;       /* Sorgt dafür, dass das Bild proportional bleibt */
+        border-radius: var(--radius);
+    }
+
+    .about-aside {
+        position: static;
+        order: -1; /* Setzt das Foto am Handy ÜBER den Text (sieht meist besser aus) */
+    }
+
+    .featured {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-body {
+        padding: 1.8rem;
+    }
+
+    .featured-img {
+        min-height: 220px;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .transit-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about {
+        padding: 3rem 1.5rem;
+    }
+
+    .tiktok-section {
+        padding: 2rem 1.5rem 3rem;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
     /* --- KACHELN UNTEREINANDER STAPELN --- */
     /* Dies betrifft Aufklärung, Transite verstehen, Sinn, Orientierung */
