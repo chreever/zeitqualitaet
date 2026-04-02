@@ -1458,7 +1458,27 @@
     /* Wir nutzen Filter, damit die Pulsier-Animation nicht kaputt geht */
     filter: brightness(0.2) opacity(0.3) blur(4px); 
   }
-  
+ /* --- Animation für den Absende-Button --- */
+
+/* 1. Der Normalzustand: Wir sagen dem Button, dass er sich Zeit lassen soll */
+section#kontakt button[type="submit"] {
+  transition: all 0.3s ease-in-out; /* Das macht die Bewegung geschmeidig */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Ein ganz leichter Schatten */
+}
+
+/* 2. Der Schwebe-Effekt: Was passiert, wenn die Maus drüberfährt? */
+section#kontakt button[type="submit"]:hover {
+  background-color: #34495e; /* Die Farbe ändert sich leicht */
+  transform: translateY(-3px); /* Der Button hebt sich um 3 Pixel an */
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Der Schatten wird tiefer -> 3D Effekt */
+}
+
+/* 3. Der Klick-Effekt: Ein kurzes "Eindrücken" beim Draufklicken */
+section#kontakt button[type="submit"]:active {
+  transform: translateY(-1px); /* Der Button geht beim Klick wieder ein Stück runter */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+} 
 
   
 </style>
