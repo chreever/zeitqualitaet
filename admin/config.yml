@@ -18,12 +18,12 @@ collections:
         options: ["Mentaltraining", "Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
-      # Titel-Medien (Was in den Beitrags-Karten erscheint)
-      - {label: "Titelbild (Foto)", name: "image", widget: "image", required: false}
-      - {label: "Titel-Video (MP4)", name: "featured_video", widget: "file", required: false}
+      # Medien für die Vorschau-Kacheln (Was in den Beitrags-Karten erscheint)
+      - {label: "Vorschaubild für Kachel (Foto)", name: "image", widget: "image", required: false}
+      - {label: "Vorschauvideo für Kachel (MP4)", name: "featured_video", widget: "file", required: false}
       
-      # Banner-Medien (Was nur erscheint, wenn ein Banner-Platz gewählt ist)
-      - {label: "Hintergrund-Video für Banner (MP4)", name: "video", widget: "file", required: false}
+      # Medien für die großen Banner (Was nur erscheint, wenn ein Banner-Platz gewählt ist)
+      - {label: "Hintergrund-Video nur für Banner (MP4)", name: "video", widget: "file", required: false}
       
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
       
