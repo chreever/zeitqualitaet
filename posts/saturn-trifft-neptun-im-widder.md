@@ -2,11 +2,11 @@
 badge: ""
 title: Saturn trifft Neptun im Widder
 category: Transite
-date: 2026-04-01T22:55:00.000+02:00
-featured_video: ""
+date: 2026-04-02T22:55:00.000+02:00
+featured_video: img/218740_medium.mp4
 placement: Info-Banner (Mitte)
 highlight: true
-video: ""
+video: img/218740_medium.mp4
 description: "Die Zeitqualität im 6. Haus: Dein Alltag auf dem Prüfstand. Wenn
   Vision auf Wirklichkeit trifft."
 ---
