@@ -246,11 +246,9 @@
     border-radius: 50%;
     transform: translateX(-50%);
     top: 0; left: 50%;
-    /* Der 3D-Effekt bleibt gleich */
     box-shadow: inset -2px -2px 5px rgba(0,0,0,0.6), inset 1px 1px 3px rgba(255,255,255,0.2);
   }
 
-  /* Merkur: Weniger Leuchten, staubigeres Grau */
   .orbit-mercury { width: 120px; height: 120px; transform: translate(-50%, -50%); animation: orbit-spin 18s linear infinite; }
   .orbit-mercury::before {
     width: 5px; height: 5px;
@@ -259,7 +257,6 @@
     filter: drop-shadow(0 0 2px rgba(166, 166, 166, 0.3));
   }
 
-  /* Venus: Wolkenverhangen, sanfteres Gelb, diffuses Leuchten */
   .orbit-venus { width: 200px; height: 200px; transform: translate(-50%, -50%); animation: orbit-spin 28s linear infinite reverse; }
   .orbit-venus::before {
     width: 8px; height: 8px;
@@ -268,7 +265,6 @@
     filter: drop-shadow(0 0 6px rgba(232, 196, 142, 0.35));
   }
 
-  /* Erde: Realistisches Blau mit Wolkenanteil, blauer Atmosphären-Glow */
   .orbit-earth { width: 310px; height: 310px; transform: translate(-50%, -50%); animation: orbit-spin 38s linear infinite; }
   .orbit-earth::before {
     width: 9px; height: 9px;
@@ -277,7 +273,6 @@
     filter: drop-shadow(0 0 7px rgba(123, 156, 196, 0.6));
   }
 
-  /* Mars: ROSTIGES ROT (Viel dunkler, desaturierter), weniger Glow */
   .orbit-mars { width: 420px; height: 420px; transform: translate(-50%, -50%); animation: orbit-spin 50s linear infinite; }
   .orbit-mars::before {
     width: 6px; height: 6px;
@@ -286,7 +281,6 @@
     filter: drop-shadow(0 0 3px rgba(184, 95, 75, 0.4));
   }
 
-  /* Jupiter: Behalten wir bei, aber mit sanfterem Glow */
   .orbit-jupiter { width: 580px; height: 580px; transform: translate(-50%, -50%); animation: orbit-spin 70s linear infinite reverse; }
   .orbit-jupiter::before {
     width: 22px; height: 22px;
@@ -295,7 +289,6 @@
     filter: drop-shadow(0 0 9px rgba(212, 165, 106, 0.25));
   }
 
-  /* Saturn: Bleibt perfekt, plus der FEINERE RING */
   .orbit-saturn { width: 720px; height: 720px; transform: translate(-50%, -50%); animation: orbit-spin 90s linear infinite; }
   .orbit-saturn::before {
     width: 16px; height: 16px;
@@ -307,17 +300,16 @@
   .orbit-saturn::after {
     content: '';
     position: absolute;
-    top: -13px; /* Perfekt zentriert */
+    top: -13px;
     left: 50%;
     transform: translateX(-50%) rotateX(75deg);
-    width: 26px; height: 26px; /* Kleiner und enger */
-    border: 1.5px solid rgba(201, 185, 122, 0.35); /* Feiner und dünner */
+    width: 26px; height: 26px;
+    border: 1.5px solid rgba(201, 185, 122, 0.35);
     border-radius: 50%;
-    box-shadow: 0 0 6px rgba(201, 185, 122, 0.15); /* Dezentes Leuchten */
+    box-shadow: 0 0 6px rgba(201, 185, 122, 0.15);
     z-index: 1;
   }
 
-  /* Uranus: Eisriese, türkis-grauer Mischmasch, diffuses Leuchten */
   .orbit-uranus { width: 880px; height: 880px; transform: translate(-50%, -50%); animation: orbit-spin 120s linear infinite reverse; }
   .orbit-uranus::before {
     width: 12px; height: 12px;
@@ -326,7 +318,6 @@
     filter: drop-shadow(0 0 6px rgba(122, 191, 191, 0.3));
   }
 
-  /* Neptun: Dunklerer Eisriese, blauer Atmosphären-Glow */
   .orbit-neptune { width: 1020px; height: 1020px; transform: translate(-50%, -50%); animation: orbit-spin 150s linear infinite; }
   .orbit-neptune::before {
     width: 12px; height: 12px;
@@ -335,7 +326,6 @@
     filter: drop-shadow(0 0 7px rgba(91, 120, 196, 0.4));
   }
 
-  /* Pluto: Gestein, Gletschereis, kaum Leuchten */
   .orbit-pluto { width: 1160px; height: 1160px; transform: translate(-50%, -50%); animation: orbit-spin 200s linear infinite; border-style: dashed; border-color: rgba(255,255,255,0.01); }
   .orbit-pluto::before {
     width: 4px; height: 4px;
@@ -385,19 +375,26 @@
     justify-content: space-between;
   }
 
-  .logo {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    color: var(--text);
-    letter-spacing: 0.04em;
+  /* ── BILD-LOGO IN DER NAVIGATION ── */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
   }
 
-  .logo-symbol {
-    display: inline-block;
-    color: var(--accent);
-    margin-right: 0.25rem;
-    font-size: 0.9em;
+  .nav-logo-img {
+    height: 38px;
+    width: auto;
+    display: block;
+    transition: var(--transition);
+    border-radius: 4px;
+    mix-blend-mode: lighten; 
+  }
+
+  .logo-container:hover .nav-logo-img {
+    transform: scale(1.05);
+    filter: brightness(1.2);
   }
 
   .nav-links { display: flex; gap: 2.2rem; align-items: center; }
@@ -480,60 +477,31 @@
     z-index: 1;
   }
 
- /* --- Desktop Credo-Look --- */
-.hero-tagline {
-  display: inline-flex;
-  align-items: center;
-  gap: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem; 
-  color: var(--text-dim);
-  letter-spacing: 0.15em; /* Der weite Abstand für den Credo-Look */
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
-  justify-content: center;
-  margin: 0 auto 2.5rem;
-  font-weight: 300;
-}
-
-.hero-tagline span {
-  opacity: 0.9; /* Dezent, aber lesbar */
-  transition: var(--transition);
-}
-
-.hero-tagline .dot {
-  opacity: 0.3;
-  font-size: 1.2rem;
-}
-
-  .scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
+  /* --- Desktop Credo-Look --- */
+  .hero-tagline {
+    display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
-    color: var(--text-dim);
+    gap: 1.5rem;
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.85rem; 
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
   }
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
-    animation: scrollDrop 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    transform-origin: top;
+
+  .hero-tagline span {
+    opacity: 0.9;
+    transition: var(--transition);
   }
-  @keyframes scrollDrop {
-    0% { transform: scaleY(0); opacity: 0; }
-    50% { transform: scaleY(1); opacity: 1; }
-    100% { transform: scaleY(1) translateY(15px); opacity: 0; }
+
+  .hero-tagline .dot {
+    opacity: 0.3;
+    font-size: 1.2rem;
   }
 
   /* ── BANNER STYLES (FÜR VIDEO UND TEXT ANGEPASST) ── */
@@ -759,25 +727,22 @@
   }
 
   /* --- GOLD-FIX FÜR ALLE KACHELN (POSTS & VIDEO-IMPULSE) --- */
-
-/* Das trifft die normalen Beitrags-Kacheln UND die Video-Impulse */
-.post-card h3, 
-.video-card h3, 
-#dynamic-posts h3, 
-#video-impulse-container h3 {
+  .post-card h3, 
+  .video-card h3, 
+  #dynamic-posts h3, 
+  #video-impulse-container h3 {
     color: var(--accent) !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
     font-family: var(--font-display) !important;
     font-weight: 500 !important;
     line-height: 1.3 !important;
-}
+  }
 
-/* Optional: Falls auch die Kategorie-Tags noch weiß sind, machen wir die auch Gold */
-.post-tag {
+  .post-tag {
     color: var(--accent) !important;
     opacity: 1 !important;
-}
+  }
 
   .post-card p {
     font-size: var(--fs-body);
@@ -1094,111 +1059,6 @@
     box-shadow: 0 8px 28px rgba(212, 165, 106, 0.2);
   }
 
-  /* ── GDPR CHECKBOX ── */
-  .gdpr-checkbox {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .gdpr-checkbox input[type="checkbox"] {
-    margin-top: 0.25rem;
-    accent-color: var(--accent);
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-  }
-
-  .gdpr-checkbox label {
-    font-family: var(--font-body);
-    font-size: var(--fs-small);
-    font-weight: 300;
-    color: var(--text-muted);
-    text-transform: none;
-    letter-spacing: 0;
-    line-height: 1.5;
-    cursor: pointer;
-  }
-
-  .gdpr-checkbox label a {
-    color: var(--accent);
-  }
-
-  /* ── COOKIE BANNER ── */
-  .cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 10000;
-    background: var(--bg-elevated);
-    border-top: 1px solid var(--border);
-    padding: 1.2rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    backdrop-filter: blur(20px);
-    transform: translateY(100%);
-    transition: transform 0.5s ease;
-  }
-
-  .cookie-banner.visible {
-    transform: translateY(0);
-  }
-
-  .cookie-banner p {
-    font-size: var(--fs-small);
-    color: var(--text-muted);
-    line-height: 1.6;
-    flex: 1;
-    min-width: 280px;
-  }
-
-  .cookie-banner a {
-    color: var(--accent);
-  }
-
-  .cookie-buttons {
-    display: flex;
-    gap: 0.6rem;
-    flex-shrink: 0;
-  }
-
-  .cookie-btn {
-    padding: 0.55rem 1.3rem;
-    border-radius: 100px;
-    font-family: var(--font-body);
-    font-size: var(--fs-small);
-    font-weight: 500;
-    cursor: pointer;
-    transition: var(--transition);
-    border: none;
-  }
-
-  .cookie-btn-accept {
-    background: var(--accent);
-    color: var(--bg);
-  }
-
-  .cookie-btn-accept:hover {
-    background: var(--accent-light);
-  }
-
-  .cookie-btn-decline {
-    background: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-  }
-
-  .cookie-btn-decline:hover {
-    border-color: var(--text-muted);
-    color: var(--text);
-  }
-
   /* ── FOOTER LINKS ── */
   .footer-links {
     display: flex;
@@ -1451,23 +1311,20 @@
         right: 0;
         background: rgba(8, 9, 14, 0.97);
         backdrop-filter: blur(24px);
-        /* Reduziertes Padding für mehr Platz links/rechts */
         padding: 1.5rem 1rem;
         gap: 1.2rem;
         border-bottom: 1px solid var(--border);
     }
 
-    /* NEU: Verhindert, dass "Mentale Fitness" links/rechts abgeschnitten wird */
     .nav-links.open a {
         display: block;
         width: 100%;
-        text-align: center; /* Zentrierung verhindert optisches Anstoßen */
+        text-align: center;
         font-size: 0.95rem; 
         letter-spacing: 0.02em;
-        word-wrap: break-word; /* Erlaubt Umbruch bei sehr langen Wörtern */
+        word-wrap: break-word; 
     }
 
-    /* Extra-Schutz für sehr schmale Displays (unter 400px) */
     @media (max-width: 400px) {
         .nav-links.open a {
             font-size: 0.9rem;
@@ -1490,59 +1347,51 @@
     section {
         padding: 3rem 1.5rem;
     }
-/* --- SPEZIAL-FIX FÜR DIE VIER SCHLAGWORTE (PAARWEISE 2x2) --- */
+
     .hero-tagline {
         display: grid !important;
-        grid-template-columns: 1fr 1fr !important; /* Erzeugt 2 Spalten */
-        gap: 0.8rem 1rem !important; /* Abstand: oben/unten | links/rechts */
-        max-width: 290px; /* Hält die Paare kompakt in der Mitte */
+        grid-template-columns: 1fr 1fr !important; 
+        gap: 0.8rem 1rem !important; 
+        max-width: 290px; 
         margin: 1.5rem auto !important;
         justify-items: center;
         opacity: 1 !important;
         padding: 0 !important;
     }
 
-    /* Die Punkte zwischen den Wörtern werden am Handy ausgeblendet */
     .hero-tagline .dot {
         display: none !important;
     }
 
-    /* Die Wörter selbst (Transite, Zyklen...) im edlen Credo-Look */
     .hero-tagline span {
-        font-size: 0.82rem !important; /* Etwas kleiner wirkt oft edler */
+        font-size: 0.82rem !important; 
         white-space: nowrap !important;
-        
-        /* Wir nehmen wieder das dunklere 'dim', aber mit voller Deckkraft */
         color: var(--text-dim) !important; 
         opacity: 0.9 !important; 
-        
-        /* Das Geheimnis für den Credo-Look: Mehr Abstand zwischen den Buchstaben */
         letter-spacing: 0.12em !important; 
-        text-transform: uppercase; /* Verstärkt den Charakter einer festen Aussage */
+        text-transform: uppercase; 
         font-weight: 300;
     }
-    /* --- DIESER TEIL STAPELT KACHELN UND "ÜBER MICH" UNTEREINANDER --- */
-    /* Dies fixiert die langgezogenen Kacheln und das Quetschen bei "Über mich" */
+
     .philosophy-inner, 
     .pillars-grid, 
     .grid-4, 
     .about-pillars,
     .about-inner {
-        grid-template-columns: 1fr !important; /* Erzwingt eine Spalte */
-        gap: 1.5rem; /* Abstand zwischen den Kacheln beim Scrollen */
+        grid-template-columns: 1fr !important; 
+        gap: 1.5rem; 
     }
 
-    /* --- ÜBER MICH: FOTO-FIX (WICHTIG!) --- */
     .about-aside img {
         width: 100%;
-        height: auto !important; /* Verhindert, dass das Foto langgezogen wird */
-        object-fit: cover;       /* Sorgt dafür, dass das Bild proportional bleibt */
+        height: auto !important; 
+        object-fit: cover;       
         border-radius: var(--radius);
     }
 
     .about-aside {
         position: static;
-        order: -1; /* Setzt das Foto am Handy ÜBER den Text (sieht meist besser aus) */
+        order: -1; 
     }
 
     .featured {
@@ -1591,53 +1440,44 @@
 .orbit-system, .sun-core {
     transition: opacity 1s ease, filter 1s ease;
 }
-  }
   
-  /* Sobald die Klasse "scrolled" aktiv ist, wird alles dezent */
-  body.scrolled .orbit-system {
-    opacity: 0.15; /* Macht die Planetenbahnen fast unsichtbar */
-  }
+body.scrolled .orbit-system {
+    opacity: 0.15; 
+}
   
-  body.scrolled .sun-core {
-    /* Wir nutzen Filter, damit die Pulsier-Animation nicht kaputt geht */
+body.scrolled .sun-core {
     filter: brightness(0.2) opacity(0.3) blur(4px); 
-  }
- /* --- Animation für den Absende-Button --- */
+}
 
-/* 1. Der Normalzustand: Wir sagen dem Button, dass er sich Zeit lassen soll */
+/* --- Animation für den Absende-Button --- */
 section#kontakt button[type="submit"] {
-  transition: all 0.3s ease-in-out; /* Das macht die Bewegung geschmeidig */
+  transition: all 0.3s ease-in-out; 
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Ein ganz leichter Schatten */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
 }
 
-/* 2. Der Schwebe-Effekt: Was passiert, wenn die Maus drüberfährt? */
 section#kontakt button[type="submit"]:hover {
-  background-color: #34495e; /* Die Farbe ändert sich leicht */
-  transform: translateY(-3px); /* Der Button hebt sich um 3 Pixel an */
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Der Schatten wird tiefer -> 3D Effekt */
+  background-color: #34495e; 
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2); 
 }
 
-/* 3. Der Klick-Effekt: Ein kurzes "Eindrücken" beim Draufklicken */
 section#kontakt button[type="submit"]:active {
-  transform: translateY(-1px); /* Der Button geht beim Klick wieder ein Stück runter */
+  transform: translateY(-1px); 
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 } 
-/* --- GOLD-UPDATE FÜR ALLE TITEL AUF DER STARTSEITE --- */
 
-/* 1. Der Top-Banner ganz oben */
+/* --- GOLD-UPDATE FÜR ALLE TITEL AUF DER STARTSEITE --- */
 .transit-title {
     color: var(--accent) !important;
 }
 
-/* 2. Alle Titel in den kleinen Beitrags-Kacheln */
 .post-card h3 {
     color: var(--accent) !important;
-    text-transform: uppercase; /* Damit es zum Credo-Look passt */
+    text-transform: uppercase; 
     letter-spacing: 0.02em;
 }
 
-/* 3. Der Titel im Info-Banner (Vorsichtsmaßnahme) */
 .featured h2 {
     color: var(--accent) !important;
 }
@@ -1667,7 +1507,9 @@ section#kontakt button[type="submit"]:active {
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo"><span class="logo-symbol">◌</span> Zeitqualität</a>
+    <a href="#" class="logo-container">
+      <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+    </a>
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
     <div class="nav-links">
       <a href="#transite">Transite</a>
@@ -1692,6 +1534,61 @@ section#kontakt button[type="submit"]:active {
   </div>
 </header>
 
+<section id="tages-impuls" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem 2rem 0;">
+  <div class="fade-up" style="margin: 0 auto; max-width: 760px; padding: 2rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border-left: 3px solid var(--accent); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+    
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+      <span style="font-size: 1.5rem; color: var(--accent);">✨</span>
+      <h3 style="margin: 0; font-family: var(--font-display); font-size: var(--fs-h3); color: var(--accent-light); font-style: italic;">Impuls des Tages</h3>
+    </div>
+    
+    <p id="daily-impulse-text" style="font-size: var(--fs-body); color: var(--text); line-height: 1.8; margin: 0; font-weight: 300;">
+      Lade heutigen Impuls...
+    </p>
+  </div>
+
+  <script>
+    // Exakt abgestimmt auf die Transite & Mondphasen im April 2026
+    const impulses = [
+      /* 1. April */ "Der frische Waage-Vollmond wirkt nach. Ein exzellenter Tag, um Balance in deinen Beziehungen zu finden und Ungleichgewichte fair auszusprechen.",
+      /* 2. April */ "Die Waage-Energie schenkt dir heute Leichtigkeit für Kooperationen. Manchmal ist der Mut, überhaupt einen Schritt auf andere zuzugehen, wichtiger als die perfekte Entscheidung.",
+      /* 3. April */ "Der Mond wechselt in den Skorpion. Die Energie wird merklich tiefer. Halte inne, lausche in dich hinein und erlaube verborgenen Gefühlen, an die Oberfläche zu kommen.",
+      /* 4. April */ "Skorpion-Mond. Ein Tag der Wandlung. Nutze diese kraftvolle, fast magische Zeitqualität für ehrliche Selbstreflexion und den Mut, Altes endgültig loszulassen.",
+      /* 5. April */ "Die tiefe Skorpion-Schwingung klingt langsam aus. Schaffe mentalen Raum für die neuen feurigen Impulse, die in den nächsten Tagen auf dich warten.",
+      /* 6. April */ "Der Mond steht im Schützen! Der Blick richtet sich wieder nach vorn. Feuerenergie weckt den Optimismus und lädt zu Bewegung oder einer meditativen Wanderung ein.",
+      /* 7. April */ "Schütze-Energie bringt Weitblick. Ideal, um deinen Horizont zu erweitern, ein gutes Buch zu lesen oder visionäre Pläne für die Zukunft zu schmieden.",
+      /* 8. April */ "Bereite dich innerlich auf neue Taten vor. Sammle heute deine Kräfte, denn morgen steht ein massiver planetarer Energiewechsel bevor.",
+      /* 9. April */ "Mars wechselt heute in den Widder! Eine enorme Kraftquelle öffnet sich. Packe jetzt Projekte an, die Mut erfordern, aber achte darauf, dein Feuer klug einzuteilen.",
+      /* 10. April */ "Letztes Mondviertel im Steinbock. Emotionale Überhitzung kühlt ab. Pflichtbewusstsein und Klarheit rücken nach vorn – perfekt, um Struktur in deinen Alltag zu bringen.",
+      /* 11. April */ "Steinbock-Präzision. Fokussiere dich heute auf das Wesentliche. Liegengebliebenes lässt sich jetzt mit kühlem Kopf und großer Ausdauer abarbeiten.",
+      /* 12. April */ "Der Mond im Wassermann bringt frischen Wind und unkonventionelle Ideen. Brich heute aus deiner Routine aus und probiere etwas völlig Neues.",
+      /* 13. April */ "Wassermann-Impulse begünstigen den Austausch. Vernetze dich mit Gleichgesinnten – im Gespräch entstehen heute die genialsten Geistesblitze.",
+      /* 14. April */ "Merkur zieht in den Widder. Worte werden heute direkter, schneller und klarer. Ein perfekter Tag für ehrliche Kommunikation, aber hüte dich vor zu viel Impulsivität.",
+      /* 15. April */ "Der Mond steht in den Fischen. Die Intuition ist enorm stark. Nimm dir heute bewusst Zeit für Ruhe, Meditation und emotionale Einkehr.",
+      /* 16. April */ "Fische-Energie macht durchlässig. Schütze deine energetischen Grenzen, aber bleibe offen für die subtilen Schwingungen und kreativen Eingebungen dieses Tages.",
+      /* 17. April */ "Neumond im Widder! Ein kraftvoller, emotionaler Neustart. Das Universum drückt auf Reset. Setze heute bewusst den Samen für mutige, völlig neue Vorhaben.",
+      /* 18. April */ "Seltene Planetenreihe am Morgenhimmel (Saturn, Mars, Merkur, Neptun). Die Energien bündeln sich. Nutze den Tag für eine tiefe, aufrichtige Standortbestimmung.",
+      /* 19. April */ "Die Sonne wechselt in den Stier. Nach dem wilden Feuereifer der letzten Tage kehrt nun spürbar Erdung, Ruhe und Beständigkeit ein.",
+      /* 20. April */ "Stier-Saison. Richte deinen Fokus heute auf das Sinnliche und Greifbare. Frage dich: Was gibt mir echte Sicherheit, und wo darf ich einfach mal genießen?",
+      /* 21. April */ "Mond in den Zwillingen. Die geistige Energie und Kommunikation fließen leicht. Ein wunderbarer Tag, um Neues zu lernen oder alte Kontakte wieder aufzufrischen.",
+      /* 22. April */ "Zwillinge-Luftigkeit. Bleib heute neugierig und vor allem flexibel, falls sich Pläne oder Gedanken spontan in eine andere Richtung entwickeln.",
+      /* 23. April */ "Der Mond wandert in den Krebs. Der Fokus verschiebt sich nach innen: Familie, dein Zuhause und emotionale Geborgenheit rücken jetzt in den Mittelpunkt.",
+      /* 24. April */ "Erstes Mondviertel im Löwen. Konfrontiere Hürden mit einem Lächeln. Dein Selbstbewusstsein und deine Kreativität steigen heute merklich an. Zeig dich!",
+      /* 25. April */ "Venus (und Uranus) wechseln in die Zwillinge. Beziehungen und Begegnungen werden ab heute spürbar leichter, gesprächiger und wunderbar spielerisch.",
+      /* 26. April */ "Löwe-Mond. Gönn dir heute etwas Besonderes. Dein Herzensprojekt braucht jetzt deine leuchtende, warme Energie und ungeteilte Aufmerksamkeit.",
+      /* 27. April */ "Mond in der Jungfrau. Ein idealer Tag, um Ordnung im Außen und Innen zu schaffen, Details zu prüfen und wohltuende Routinen zu etablieren.",
+      /* 28. April */ "Jungfrau-Präzision. Fokussiere dich auf deine Gesundheit. Was tut deinem Körper heute gut? Ernährung und Bewegung bringen nun besonders gute Resultate.",
+      /* 29. April */ "Der Mond zieht wieder in die Waage. Suche ganz bewusst den Ausgleich zwischen deinen eigenen Bedürfnissen und den Erwartungen anderer.",
+      /* 30. April */ "Waage-Balance. Ein harmonischer Abschluss des Monats. Nutze den Tag für ästhetische Dinge, faire Entscheidungen und friedvolle, ausgleichende Gespräche.",
+      /* 31. Platzhalter */ "Ein Tag der Integration. Spüre nach, welche kosmischen Energien dich gerade am meisten bewegen, und richte deinen inneren Kompass behutsam neu aus."
+    ];
+
+    const today = new Date().getDate(); 
+    const impulseOfTheDay = impulses[today - 1];
+    
+    document.getElementById('daily-impulse-text').innerText = impulseOfTheDay;
+  </script>
+</section>
 <div id="dynamic-banner-container"></div>
 
 <div class="philosophy">
@@ -1787,7 +1684,7 @@ section#kontakt button[type="submit"]:active {
 
     <div class="about-content fade-up">
       <h3>Vom Takt der Effizienz zum Rhythmus der Zeit</h3>
-      <p>Mein Name ist Christian. Nach über 20 Jahren in der analytischen, schnelllebigen Finanzbranche kenne ich den ständigen Druck der Effizienz nur zu gut. Als <strong style="color:var(--accent-light)">diplomierter Mentaltrainer</strong> habe ich mich oft gefragt: Leben wir eigentlich im Einklang mit unserer Zeit, oder rennen wir ihr nur atemlos hinterher?</p>
+      <p>Mein Name ist Christian. Nach über 20 Jahren in der analytischen, schnelllebigen Finanzbranche kenne ich den ständigen Druck der Effizienz nur zu gut. Als <strong style="color:var(--accent-light)">ausgebildeter Mentaltrainer</strong> habe ich mich oft gefragt: Leben wir eigentlich im Einklang mit unserer Zeit, oder rennen wir ihr nur atemlos hinterher?</p>
       
       <p>Aus dieser Frage entstand <em>Zeitqualität</em>. Für mich ist Astrologie keine mystische Zukunftsdeutung und kein esoterisches Orakel, sondern eine jahrtausendealte Symbolsprache. Sie ist ein wunderbares Werkzeug zur Selbstreflexion, das uns hilft, größere Lebenszyklen zu verstehen und Phasen des Umbruchs gelassener zu navigieren.</p>
       
@@ -1869,9 +1766,12 @@ section#kontakt button[type="submit"]:active {
   <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener" class="social-link">Instagram</a>
   <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener" class="social-link">TikTok</a>
 </div>
+</section>
 
 <footer>
-  <a href="#" class="logo"><span class="logo-symbol">◌</span> Zeitqualität</a>
+  <a href="#" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
+    <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+  </a>
   <p class="footer-note">© 2026 Zeitqualität · Christian Balas</p>
   <p class="footer-disclaimer">Unabhängiger redaktioneller Informationsblog zur thematischen Einordnung astrologischer Inhalte und Zeitqualität. Die Inhalte dienen der Reflexion und Orientierung – sie ersetzen keine professionelle Beratung.</p>
   <p class="footer-disclaimer" style="margin-top:0.4rem;">Bildnachweis &amp; Transparenz: Visuelle Inhalte und Illustrationen wurden teilweise unter Verwendung von Künstlicher Intelligenz (KI) generiert.</p>
