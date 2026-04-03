@@ -7,7 +7,7 @@ video: /img/mond-erde.mp4
 description: "Radikale Ehrlichkeit statt toxischer Positivität: Warum der Mond
   im Skorpion die perfekte Zeitqualität ist, um emotionale Altlasten abzuwerfen
   und echte mentale Stärke zu trainieren."
-placement: Top-Banner (Header)
+placement: Kein Banner
 ---
 
 Wenn der Mond auf seiner Reise durch den Tierkreis in das Zeichen Skorpion eintritt, ändert sich die kosmische Tonart. Das leichte Plaudern verstummt, der Blick richtet sich nach innen. Skorpion-Energie gibt sich nicht mit der Oberfläche zufrieden – sie will auf den Grund gehen, dorthin, wo es vielleicht auch mal unbequem wird.
