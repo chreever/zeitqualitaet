@@ -79,6 +79,30 @@
   
   .fade-up { opacity: 0; transform: translateY(24px); transition: 0.8s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* --- RESPONSIVE OPTIMIERUNG FÜR HANDYS --- */
+  @media (max-width: 768px) {
+    .nav-inner {
+      padding: 0 1.5rem;
+      height: 70px; /* Minimal kompakter auf dem Handy */
+    }
+    
+    .nav-logo-img {
+      height: 45px; /* Verhindert Platzprobleme mit dem Zurück-Link */
+    }
+
+    section {
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr; /* Zwingt die Kacheln in eine saubere Spalte */
+    }
+  }
 </style>
 </head>
 <body>
