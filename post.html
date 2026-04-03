@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Beitrag lesen — Zeitqualität</title>
-
+<meta property="og:type" content="article">
+<meta property="og:url" id="og-url" content="">
+<meta property="og:title" id="og-title" content="Beitrag lesen — Zeitqualität">
+<meta property="og:description" id="og-desc" content="Kosmische Rhythmen & Mentale Stärke — Ein neuer Impuls auf Zeitqualität.">
+<meta property="og:image" id="og-image" content="https://deine-domain.at/img/zq-logo.png">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <link rel="icon" type="image/png" href="img/zq-favicon.png">
@@ -274,7 +278,21 @@
 
       document.getElementById('post-content').innerHTML = `<h1>${postTitle}</h1>` + marked.parse(markdownBody);
       document.title = `${postTitle} — Zeitqualität`;
-
+// Meta-Tags für Social Media aktualisieren
+      document.getElementById('og-title').setAttribute('content', postTitle);
+      document.getElementById('og-url').setAttribute('content', window.location.href);
+      
+      // Das spezifische Artikelbild an Facebook übergeben
+      if (customImage) {
+        // Facebook braucht zwingend die absolute URL (https://...)
+        const fullImgPath = window.location.origin + fixPath(customImage);
+        document.getElementById('og-image').setAttribute('content', fullImgPath);
+      }
+      
+      // Die Kurzbeschreibung an Facebook übergeben
+      if (typeof description !== 'undefined' && description) {
+        document.getElementById('og-desc').setAttribute('content', description);
+      }
     } catch (e) {
       console.error(e);
       document.getElementById('post-content').innerHTML = "<h1>Signal verloren</h1><p>Der Beitrag konnte nicht geladen werden.</p>";
