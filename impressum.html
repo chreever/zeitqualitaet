@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Impressum und Offenlegung — Zeitqualität</title>
+
 <link rel="icon" type="image/png" href="img/zq-favicon.png">
 <link rel="apple-touch-icon" href="img/zq-favicon.png">
+
 <style>
   /* ── LOCAL FONTS ── */
   @font-face {
@@ -159,25 +161,32 @@
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 2rem;
-    height: 62px;
+    height: 80px; /* HÖHER FÜR DAS LOGO */
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  .logo {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    color: var(--text);
-    letter-spacing: 0.04em;
+  /* NEUES BILD-LOGO CSS */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
   }
 
-  .logo-symbol {
-    display: inline-block;
-    color: var(--accent);
-    margin-right: 0.25rem;
-    font-size: 0.9em;
+  .nav-logo-img {
+    height: 65px; /* GRÖSSERES LOGO */
+    width: auto;
+    display: block;
+    transition: var(--transition);
+    border-radius: 4px;
+    mix-blend-mode: lighten; 
+  }
+
+  .logo-container:hover .nav-logo-img {
+    transform: scale(1.05);
+    filter: brightness(1.2);
   }
 
   .nav-links { display: flex; gap: 2.2rem; align-items: center; }
@@ -265,11 +274,6 @@
       margin-top: 3rem;
   }
 
-  footer .logo {
-      display: inline-block;
-      margin-bottom: 0.8rem;
-  }
-
   .footer-note {
       color: var(--text-dim);
       font-size: var(--fs-label);
@@ -301,13 +305,15 @@
     .nav-links { display: none; }
     .nav-links.open {
       display: flex; flex-direction: column;
-      position: absolute; top: 62px; left: 0; right: 0;
+      position: absolute; top: 80px; left: 0; right: 0; /* ANGEPASST AN NEUE LEISTE */
       background: rgba(8,9,14,0.97);
       backdrop-filter: blur(24px);
       padding: 1.5rem 1rem; gap: 1.2rem;
       border-bottom: 1px solid var(--border);
     }
     .menu-toggle { display: block; }
+    .nav-inner { padding: 0 1.5rem; height: 70px; }
+    .nav-logo-img { height: 45px; }
     .article-header { padding: 7rem 1.5rem 1.5rem; }
     .article-body { padding: 1rem 1.5rem 3rem; }
   }
@@ -317,7 +323,9 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo"><span class="logo-symbol">◌</span> Zeitqualität</a>
+    <a href="index.html" class="logo-container">
+        <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+    </a>
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
     <div class="nav-links">
       <a href="index.html#transite">Transite</a>
@@ -368,7 +376,9 @@
 </div>
 
 <footer>
-    <a href="index.html" class="logo"><span class="logo-symbol">◌</span> Zeitqualität</a>
+    <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
+        <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+    </a>
     <p class="footer-note">© 2026 Zeitqualität · Christian Balas</p>
     <p class="footer-disclaimer">Privater, redaktioneller Informationsblog zur thematischen Einordnung astrologischer Inhalte und Zeitqualität. Die Inhalte dienen ausschließlich der Reflexion und Orientierung und ersetzen keine professionelle Beratung. Es werden keine gewerblichen Dienstleistungen angeboten.</p>
     <p class="footer-disclaimer" style="margin-top:0.4rem;">Bildnachweis &amp; Transparenz: Visuelle Inhalte und Illustrationen wurden teilweise unter Verwendung von Künstlicher Intelligenz (KI) generiert.</p>
