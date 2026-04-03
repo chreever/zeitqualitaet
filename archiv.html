@@ -6,6 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Archiv — Zeitqualität</title>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<link rel="icon" type="image/png" href="img/zq-favicon.png">
+<link rel="apple-touch-icon" href="img/zq-favicon.png">
+
 <style>
   /* Wir importieren genau deine bestehenden Schriften und Farben */
   @font-face { font-family: 'Cormorant Garamond'; src: url('fonts/cormorant-garamond.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -30,7 +34,29 @@
 
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8, 9, 14, 0.85); backdrop-filter: blur(28px); border-bottom: 1px solid var(--border-light); }
   .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; height: 62px; display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; color: var(--text); }
+  
+  /* NEUES BILD-LOGO CSS */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%;
+  }
+
+  .nav-logo-img {
+    height: 38px;
+    width: auto;
+    display: block;
+    transition: var(--transition);
+    border-radius: 4px;
+    mix-blend-mode: lighten; 
+  }
+
+  .logo-container:hover .nav-logo-img {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+
   .nav-links { display: flex; gap: 2.2rem; align-items: center; }
   .nav-links a { color: var(--text-muted); font-size: var(--fs-small); text-transform: uppercase; }
 
@@ -45,7 +71,7 @@
   .post-card-img { width: 100%; height: 195px; object-fit: cover; border-bottom: 1px solid var(--border-light); background: var(--bg-elevated); }
   .post-card-body { padding: 1.5rem; }
   .post-tag { font-family: var(--font-mono); font-size: var(--fs-fine); color: var(--accent); text-transform: uppercase; margin-bottom: 0.7rem; display: block; }
-  .post-card h3 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; margin-bottom: 0.5rem; }
+  .post-card h3 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; margin-bottom: 0.5rem; color: var(--accent) !important; text-transform: uppercase; letter-spacing: 0.05em; }
   .post-card p { font-size: var(--fs-body); color: var(--text-muted); }
 
   footer { border-top: 1px solid var(--border-light); padding: 3.5rem 2rem; text-align: center; }
@@ -61,7 +87,9 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo">◌ Zeitqualität</a>
+    <a href="index.html" class="logo-container">
+      <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+    </a>
     <div class="nav-links">
       <a href="index.html">← Zurück zur Startseite</a>
     </div>
@@ -87,7 +115,9 @@
 </section>
 
 <footer>
-  <a href="index.html" class="logo">Zeitqualität</a>
+  <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
+    <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+  </a>
   <p class="footer-note" style="margin-top: 1rem;">© 2026 Zeitqualität · Christian Balas</p>
 </footer>
 
