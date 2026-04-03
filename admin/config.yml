@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: "img"
-public_folder: "img"
+public_folder: "/img"
 
 collections:
   - name: "posts"
@@ -18,19 +18,23 @@ collections:
         options: ["Mentaltraining", "Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
-      # Medien für die Vorschau-Kacheln (Was in den Beitrags-Karten erscheint)
+      # Medien für die Vorschau-Kacheln
       - {label: "Vorschaubild für Kachel (Foto)", name: "image", widget: "image", required: false}
       - {label: "Vorschauvideo für Kachel (MP4)", name: "featured_video", widget: "file", required: false}
       
-      # Medien für die großen Banner (Was nur erscheint, wenn ein Banner-Platz gewählt ist)
+      # Medien für die großen Banner
       - {label: "Hintergrund-Video nur für Banner (MP4)", name: "video", widget: "file", required: false}
       
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
       
+      # Krisensicheres Select-Feld (mit explizitem Label und Value)
       - label: "Banner-Platzierung"
         name: "placement"
         widget: "select"
-        options: ["Kein Banner", "Top-Banner (Header)", "Info-Banner (Mitte)"]
+        options:
+          - { label: "Kein Banner", value: "Kein Banner" }
+          - { label: "Top-Banner (Header)", value: "Top-Banner (Header)" }
+          - { label: "Info-Banner (Mitte)", value: "Info-Banner (Mitte)" }
         default: "Kein Banner"
         required: false
         
