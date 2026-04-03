@@ -48,15 +48,7 @@ collections:
         name: "impulses"
         file: "data/impulses.json"
         fields:
-          - label: "Impulse (Vorausplanen)"
-            name: "daily_impulses"
-            widget: "list"
-            fields:
-              - label: "Datum"
-                name: "date"
-                widget: "datetime"
-                date_format: "YYYY-MM-DD"
-                time_format: false
-              - label: "Impuls Text"
-                name: "text"
-                widget: "text"
+          - label: "Alle Impulse für den Monat"
+            name: "impulses_block"
+            widget: "markdown"
+            hint: "Format pro Zeile: YYYY-MM-DD: Dein Text"
