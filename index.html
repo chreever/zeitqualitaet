@@ -1547,37 +1547,36 @@ section#kontakt button[type="submit"]:active {
   </div>
 
  <script>
+   <script>
     async function loadDailyImpulse() {
       const textElement = document.getElementById('daily-impulse-text');
       try {
         const res = await fetch('data/impulses.json');
-        if (!res.ok) throw new Error('JSON nicht gefunden');
         const data = await res.json();
         
-        const impulses = data.daily_impulses || [];
-        
-        // Holt das heutige Datum im Format "YYYY-MM-DD" (z.B. "2026-04-03")
+        // Das heutige Datum holen (YYYY-MM-DD)
         const today = new Date();
-        // Wir berücksichtigen die lokale Zeitzone, damit es nicht um Mitternacht zu Verschiebungen kommt
-        const localOffset = today.getTimezoneOffset() * 60000;
-        const localDate = new Date(today.getTime() - localOffset);
-        const todayString = localDate.toISOString().split('T')[0]; 
+        const offset = today.getTimezoneOffset() * 60000;
+        const todayString = new Date(today.getTime() - offset).toISOString().split('T')[0];
+
+        // Den gesamten Textblock nehmen
+        const block = data.impulses_block || "";
         
-        // Sucht in deiner Liste exakt nach dem Eintrag für heute
-        const todaysImpulse = impulses.find(imp => imp.date === todayString);
-        
-        if (todaysImpulse && todaysImpulse.text) {
-          textElement.innerText = todaysImpulse.text;
+        // Magische Suche: Suche nach dem Datum am Zeilenanfang und nimm den Text dahinter
+        const regex = new RegExp("^" + todayString + ":\\s*(.*)$", "m");
+        const match = block.match(regex);
+
+        if (match && match[1]) {
+          textElement.innerText = match[1].trim();
         } else {
-          // Fallback: Wenn du für heute keinen Text eingetragen hast
-          textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien für den nächsten Impuls.";
+          textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
         }
       } catch(e) {
-        textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien für den nächsten Impuls.";
+        textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
       }
     }
-    
     loadDailyImpulse();
+  </script>
   </script>
 </section>
 <div id="dynamic-banner-container"></div>
