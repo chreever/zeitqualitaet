@@ -108,6 +108,30 @@
   
   /* ════════ ENDE CORPORATE DESIGN ════════ */
 
+  /* ── SHARE BUTTON ── */
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-size: var(--fs-small, 0.92rem);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 3rem;
+  }
+
+  .share-btn:hover {
+    background: var(--accent-dim);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 165, 106, 0.15);
+  }
+
   footer { border-top: 1px solid var(--border-light); padding: 3rem 2rem; text-align: center; color: var(--text-dim); margin-top: 4rem; }
 
   /* --- RESPONSIVE OPTIMIERUNG FÜR HANDYS --- */
@@ -148,6 +172,10 @@
   <article id="post-content" class="post-content">
     <p>Signal wird gesucht...</p>
   </article>
+
+  <button id="share-btn" class="share-btn">
+    <span class="share-icon">↗</span> Beitrag teilen
+  </button>
 </div>
 
 <footer>
@@ -254,6 +282,31 @@
   }
 
   renderPost();
+
+  // ── NATIVE SHARE BUTTON LOGIK ──
+  const shareBtn = document.getElementById('share-btn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      // Prüfen, ob das Gerät native Sharing-Funktionen unterstützt
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: 'Schau dir diesen Impuls zur aktuellen Zeitqualität an:',
+            url: window.location.href // Link zum Beitrag
+          });
+        } catch (err) {
+          console.log('Teilen wurde abgebrochen.', err);
+        }
+      } else {
+        // Fallback: Link in die Zwischenablage kopieren, wenn Teilen nicht verfügbar ist
+        navigator.clipboard.writeText(window.location.href);
+        const originalText = shareBtn.innerHTML;
+        shareBtn.innerHTML = '✨ Link kopiert!';
+        setTimeout(() => { shareBtn.innerHTML = originalText; }, 2500);
+      }
+    });
+  }
 </script>
 </body>
 </html>
