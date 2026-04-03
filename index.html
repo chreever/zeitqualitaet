@@ -2151,59 +2151,63 @@ section#kontakt button[type="submit"]:active {
           let image = '';
           let video = '';
           let featured_video = '';
-          let dateFormatted = '';
-          let readTime = 1;
+                  let dateFormatted = '';
+                  let rawDate = 0; // NEU: Ein unsichtbarer Datums-Stempel zum Sortieren
+                  let readTime = 1;
 
-          try {
-            const rawRes = await fetch(`posts/${file.name}`);
-            if (rawRes.ok) {
-              const rawText = await rawRes.text();
-              if (rawText.startsWith('---')) {
-                const parts = rawText.split('---');
-                if (parts.length >= 3) {
-                  const frontmatter = parts[1];
-                  const bodyText = parts.slice(2).join('---').trim();
-                  
-                  // Daten auslesen per Regex
-                  const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
-                  const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
-                  const placeMatch = frontmatter.match(/placement:\s*['"]?(.*?)['"]?\n/);
-                  const descMatch = frontmatter.match(/description:\s*['"]?(.*?)['"]?\n/);
-                  const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
-                  const imgMatch = frontmatter.match(/image:\s*['"]?(.*?)['"]?\n/);
-                  const vidMatch = frontmatter.match(/video:\s*['"]?(.*?)['"]?\n/);
-                  const featVidMatch = frontmatter.match(/featured_video:\s*['"]?(.*?)['"]?\n/);
-                  const dateMatch = frontmatter.match(/date:\s*['"]?(.*?)['"]?\n/i);
-                  
-                  if (titleMatch) title = titleMatch[1];
-                  if (catMatch) category = catMatch[1];
-                  if (placeMatch) placement = placeMatch[1];
-                  if (descMatch) description = descMatch[1];
-                  if (badgeMatch) badge = badgeMatch[1];
-                  if (imgMatch) image = imgMatch[1];
-                  if (vidMatch) video = vidMatch[1];
-                  if (featVidMatch) featured_video = featVidMatch[1];
-                  if (dateMatch) {
-                    const d = new Date(dateMatch[1]);
-                    if (!isNaN(d)) {
-                      dateFormatted = d.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
-                    } else {
-                      dateFormatted = dateMatch[1];
+                  try {
+                    const rawRes = await fetch(`posts/${file.name}`);
+                    if (rawRes.ok) {
+                      const rawText = await rawRes.text();
+                      if (rawText.startsWith('---')) {
+                        const parts = rawText.split('---');
+                        if (parts.length >= 3) {
+                          const frontmatter = parts[1];
+                          const bodyText = parts.slice(2).join('---').trim();
+                          
+                          // Daten auslesen per Regex
+                          const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
+                          const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
+                          const placeMatch = frontmatter.match(/placement:\s*['"]?(.*?)['"]?\n/);
+                          const descMatch = frontmatter.match(/description:\s*['"]?(.*?)['"]?\n/);
+                          const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
+                          const imgMatch = frontmatter.match(/image:\s*['"]?(.*?)['"]?\n/);
+                          const vidMatch = frontmatter.match(/video:\s*['"]?(.*?)['"]?\n/);
+                          const featVidMatch = frontmatter.match(/featured_video:\s*['"]?(.*?)['"]?\n/);
+                          const dateMatch = frontmatter.match(/date:\s*['"]?(.*?)['"]?\n/i);
+                          
+                          if (titleMatch) title = titleMatch[1];
+                          if (catMatch) category = catMatch[1];
+                          if (placeMatch) placement = placeMatch[1];
+                          if (descMatch) description = descMatch[1];
+                          if (badgeMatch) badge = badgeMatch[1];
+                          if (imgMatch) image = imgMatch[1];
+                          if (vidMatch) video = vidMatch[1];
+                          if (featVidMatch) featured_video = featVidMatch[1];
+                          if (dateMatch) {
+                            const d = new Date(dateMatch[1]);
+                            if (!isNaN(d)) {
+                              dateFormatted = d.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
+                              rawDate = d.getTime(); // NEU: Speichert die genaue Millisekunde für die perfekte Sortierung
+                            } else {
+                              dateFormatted = dateMatch[1];
+                            }
+                          }
+
+                          const words = bodyText.split(/\s+/).length;
+                          readTime = Math.max(1, Math.ceil(words / 200));
+                        }
+                      }
                     }
-                  }
+                  } catch(e) {}
 
-                  const words = bodyText.split(/\s+/).length;
-                  readTime = Math.max(1, Math.ceil(words / 200));
-                }
-              }
-            }
-          } catch(e) {}
-
-          // WICHTIG: Hier muss featured_video mit rein!
-          return { slug, title, category, placement, description, badge, image, video, featured_video, date: dateFormatted, readTime, url: `post.html?id=${slug}` };
-        });
+                  return { slug, title, category, placement, description, badge, image, video, featured_video, date: dateFormatted, rawDate, readTime, url: `post.html?id=${slug}` };
+                });
 
         allPosts = await Promise.all(postPromises);
+
+        // NEU: Hier sortieren wir die Beiträge exakt nach Datum (vom Neuesten zum Ältesten)
+        allPosts.sort((a, b) => b.rawDate - a.rawDate);
 
         // 1. TOP-BANNER RENDERN
         if (bannerContainer) {
