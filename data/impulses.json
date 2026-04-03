@@ -1,6 +1,12 @@
 {
   "daily_impulses": [
-    "Der frische Waage-Vollmond wirkt nach. Ein exzellenter Tag, um Balance zu finden.",
-    "Die Waage-Energie schenkt dir heute Leichtigkeit für Kooperationen."
+    {
+      "date": "2026-04-03",
+      "text": "Der Mond wechselt in den Skorpion. Die Energie wird merklich tiefer. Halte inne, lausche in dich hinein und erlaube verborgenen Gefühlen, an die Oberfläche zu kommen."
+    },
+    {
+      "date": "2026-04-04",
+      "text": "Skorpion-Mond. Ein Tag der Wandlung. Nutze diese kraftvolle Zeitqualität für ehrliche Selbstreflexion."
+    }
   ]
 }
