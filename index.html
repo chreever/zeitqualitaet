@@ -1546,46 +1546,38 @@ section#kontakt button[type="submit"]:active {
     </p>
   </div>
 
-  <script>
-    // Exakt abgestimmt auf die Transite & Mondphasen im April 2026
-    const impulses = [
-      /* 1. April */ "Der frische Waage-Vollmond wirkt nach. Ein exzellenter Tag, um Balance in deinen Beziehungen zu finden und Ungleichgewichte fair auszusprechen.",
-      /* 2. April */ "Die Waage-Energie schenkt dir heute Leichtigkeit für Kooperationen. Manchmal ist der Mut, überhaupt einen Schritt auf andere zuzugehen, wichtiger als die perfekte Entscheidung.",
-      /* 3. April */ "Der Mond wechselt in den Skorpion. Die Energie wird merklich tiefer. Halte inne, lausche in dich hinein und erlaube verborgenen Gefühlen, an die Oberfläche zu kommen.",
-      /* 4. April */ "Skorpion-Mond. Ein Tag der Wandlung. Nutze diese kraftvolle, fast magische Zeitqualität für ehrliche Selbstreflexion und den Mut, Altes endgültig loszulassen.",
-      /* 5. April */ "Die tiefe Skorpion-Schwingung klingt langsam aus. Schaffe mentalen Raum für die neuen feurigen Impulse, die in den nächsten Tagen auf dich warten.",
-      /* 6. April */ "Der Mond steht im Schützen! Der Blick richtet sich wieder nach vorn. Feuerenergie weckt den Optimismus und lädt zu Bewegung oder einer meditativen Wanderung ein.",
-      /* 7. April */ "Schütze-Energie bringt Weitblick. Ideal, um deinen Horizont zu erweitern, ein gutes Buch zu lesen oder visionäre Pläne für die Zukunft zu schmieden.",
-      /* 8. April */ "Bereite dich innerlich auf neue Taten vor. Sammle heute deine Kräfte, denn morgen steht ein massiver planetarer Energiewechsel bevor.",
-      /* 9. April */ "Mars wechselt heute in den Widder! Eine enorme Kraftquelle öffnet sich. Packe jetzt Projekte an, die Mut erfordern, aber achte darauf, dein Feuer klug einzuteilen.",
-      /* 10. April */ "Letztes Mondviertel im Steinbock. Emotionale Überhitzung kühlt ab. Pflichtbewusstsein und Klarheit rücken nach vorn – perfekt, um Struktur in deinen Alltag zu bringen.",
-      /* 11. April */ "Steinbock-Präzision. Fokussiere dich heute auf das Wesentliche. Liegengebliebenes lässt sich jetzt mit kühlem Kopf und großer Ausdauer abarbeiten.",
-      /* 12. April */ "Der Mond im Wassermann bringt frischen Wind und unkonventionelle Ideen. Brich heute aus deiner Routine aus und probiere etwas völlig Neues.",
-      /* 13. April */ "Wassermann-Impulse begünstigen den Austausch. Vernetze dich mit Gleichgesinnten – im Gespräch entstehen heute die genialsten Geistesblitze.",
-      /* 14. April */ "Merkur zieht in den Widder. Worte werden heute direkter, schneller und klarer. Ein perfekter Tag für ehrliche Kommunikation, aber hüte dich vor zu viel Impulsivität.",
-      /* 15. April */ "Der Mond steht in den Fischen. Die Intuition ist enorm stark. Nimm dir heute bewusst Zeit für Ruhe, Meditation und emotionale Einkehr.",
-      /* 16. April */ "Fische-Energie macht durchlässig. Schütze deine energetischen Grenzen, aber bleibe offen für die subtilen Schwingungen und kreativen Eingebungen dieses Tages.",
-      /* 17. April */ "Neumond im Widder! Ein kraftvoller, emotionaler Neustart. Das Universum drückt auf Reset. Setze heute bewusst den Samen für mutige, völlig neue Vorhaben.",
-      /* 18. April */ "Seltene Planetenreihe am Morgenhimmel (Saturn, Mars, Merkur, Neptun). Die Energien bündeln sich. Nutze den Tag für eine tiefe, aufrichtige Standortbestimmung.",
-      /* 19. April */ "Die Sonne wechselt in den Stier. Nach dem wilden Feuereifer der letzten Tage kehrt nun spürbar Erdung, Ruhe und Beständigkeit ein.",
-      /* 20. April */ "Stier-Saison. Richte deinen Fokus heute auf das Sinnliche und Greifbare. Frage dich: Was gibt mir echte Sicherheit, und wo darf ich einfach mal genießen?",
-      /* 21. April */ "Mond in den Zwillingen. Die geistige Energie und Kommunikation fließen leicht. Ein wunderbarer Tag, um Neues zu lernen oder alte Kontakte wieder aufzufrischen.",
-      /* 22. April */ "Zwillinge-Luftigkeit. Bleib heute neugierig und vor allem flexibel, falls sich Pläne oder Gedanken spontan in eine andere Richtung entwickeln.",
-      /* 23. April */ "Der Mond wandert in den Krebs. Der Fokus verschiebt sich nach innen: Familie, dein Zuhause und emotionale Geborgenheit rücken jetzt in den Mittelpunkt.",
-      /* 24. April */ "Erstes Mondviertel im Löwen. Konfrontiere Hürden mit einem Lächeln. Dein Selbstbewusstsein und deine Kreativität steigen heute merklich an. Zeig dich!",
-      /* 25. April */ "Venus (und Uranus) wechseln in die Zwillinge. Beziehungen und Begegnungen werden ab heute spürbar leichter, gesprächiger und wunderbar spielerisch.",
-      /* 26. April */ "Löwe-Mond. Gönn dir heute etwas Besonderes. Dein Herzensprojekt braucht jetzt deine leuchtende, warme Energie und ungeteilte Aufmerksamkeit.",
-      /* 27. April */ "Mond in der Jungfrau. Ein idealer Tag, um Ordnung im Außen und Innen zu schaffen, Details zu prüfen und wohltuende Routinen zu etablieren.",
-      /* 28. April */ "Jungfrau-Präzision. Fokussiere dich auf deine Gesundheit. Was tut deinem Körper heute gut? Ernährung und Bewegung bringen nun besonders gute Resultate.",
-      /* 29. April */ "Der Mond zieht wieder in die Waage. Suche ganz bewusst den Ausgleich zwischen deinen eigenen Bedürfnissen und den Erwartungen anderer.",
-      /* 30. April */ "Waage-Balance. Ein harmonischer Abschluss des Monats. Nutze den Tag für ästhetische Dinge, faire Entscheidungen und friedvolle, ausgleichende Gespräche.",
-      /* 31. Platzhalter */ "Ein Tag der Integration. Spüre nach, welche kosmischen Energien dich gerade am meisten bewegen, und richte deinen inneren Kompass behutsam neu aus."
-    ];
-
-    const today = new Date().getDate(); 
-    const impulseOfTheDay = impulses[today - 1];
+ <script>
+    async function loadDailyImpulse() {
+      const textElement = document.getElementById('daily-impulse-text');
+      try {
+        const res = await fetch('data/impulses.json');
+        if (!res.ok) throw new Error('JSON nicht gefunden');
+        const data = await res.json();
+        
+        const impulses = data.daily_impulses || [];
+        
+        // Holt das heutige Datum im Format "YYYY-MM-DD" (z.B. "2026-04-03")
+        const today = new Date();
+        // Wir berücksichtigen die lokale Zeitzone, damit es nicht um Mitternacht zu Verschiebungen kommt
+        const localOffset = today.getTimezoneOffset() * 60000;
+        const localDate = new Date(today.getTime() - localOffset);
+        const todayString = localDate.toISOString().split('T')[0]; 
+        
+        // Sucht in deiner Liste exakt nach dem Eintrag für heute
+        const todaysImpulse = impulses.find(imp => imp.date === todayString);
+        
+        if (todaysImpulse && todaysImpulse.text) {
+          textElement.innerText = todaysImpulse.text;
+        } else {
+          // Fallback: Wenn du für heute keinen Text eingetragen hast
+          textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien für den nächsten Impuls.";
+        }
+      } catch(e) {
+        textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien für den nächsten Impuls.";
+      }
+    }
     
-    document.getElementById('daily-impulse-text').innerText = impulseOfTheDay;
+    loadDailyImpulse();
   </script>
 </section>
 <div id="dynamic-banner-container"></div>
