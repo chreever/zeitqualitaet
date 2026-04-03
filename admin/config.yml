@@ -39,3 +39,16 @@ collections:
         required: false
         
       - {label: "Inhalt", name: "body", widget: "markdown"}
+
+  # NEU: Einstellungs-Dateien (Für Listen und globale Texte)
+  - name: "settings"
+    label: "Einstellungen"
+    files:
+      - label: "Tages-Impulse"
+        name: "impulses"
+        file: "data/impulses.json"
+        fields:
+          - label: "Liste der Impulse (Tag 1 bis 31)"
+            name: "daily_impulses"
+            widget: "list"
+            field: {label: "Impuls Text", name: "text", widget: "text"}
