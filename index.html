@@ -1480,7 +1480,22 @@ section#kontakt button[type="submit"]:active {
 .featured h2 {
     color: var(--accent) !important;
 }
-  
+.admin-ghost-link {
+    display: inline-block;
+    color: var(--text-dim);
+    opacity: 0.2;
+    text-decoration: none;
+    font-size: 0.8rem;
+    cursor: default;
+    transition: opacity 0.5s;
+    margin-left: 5px;
+  }
+
+  .admin-ghost-link:hover {
+    opacity: 1;
+    color: var(--accent);
+    cursor: pointer;
+  }  
 </style>
 </head>
 <body>
