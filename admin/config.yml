@@ -18,13 +18,16 @@ collections:
         options: ["Mentaltraining", "Transite", "Grundlagen", "Impulse", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
+      # Medien für die Vorschau-Kacheln
       - {label: "Vorschaubild für Kachel (Foto)", name: "image", widget: "image", required: false}
       - {label: "Vorschauvideo für Kachel (MP4)", name: "featured_video", widget: "file", required: false}
       
+      # Medien für die großen Banner
       - {label: "Hintergrund-Video nur für Banner (MP4)", name: "video", widget: "file", required: false}
       
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
       
+      # Krisensicheres Select-Feld
       - label: "Banner-Platzierung"
         name: "placement"
         widget: "select"
@@ -37,7 +40,7 @@ collections:
         
       - {label: "Inhalt", name: "body", widget: "markdown"}
 
-  # NEU: Der datumsbasierte Kalender für Impulse
+  # Der datumsbasierte Kalender für Impulse (Jetzt mit korrektem Widget)
   - name: "settings"
     label: "Einstellungen"
     files:
@@ -51,9 +54,9 @@ collections:
             fields:
               - label: "Datum"
                 name: "date"
-                widget: "date"
-                format: "YYYY-MM-DD"
-                date_format: "DD.MM.YYYY"
+                widget: "datetime"
+                date_format: "YYYY-MM-DD"
+                time_format: false
               - label: "Impuls Text"
                 name: "text"
                 widget: "text"
