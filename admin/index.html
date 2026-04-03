@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Zeitqualität Admin</title>
   
   <link rel="icon" type="image/png" href="../img/zq-favicon.png">
@@ -11,37 +11,52 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   
   <style>
-    /* Styling für den schwebenden Button */
+    /* 1. Fix für den Zurück-Button (Mobil optimiert) */
     .exit-button {
       position: fixed;
       top: 10px;
-      right: 20px;
-      z-index: 9999;
+      right: 10px;
+      z-index: 99999;
       font-family: sans-serif;
-      font-size: 13px;
+      font-size: 11px;
       color: #fff;
-      background: #08090e; /* Deine Website-Farbe */
-      border: 1px solid #d4a56a; /* Gold/Accent */
-      padding: 8px 16px;
+      background: #08090e;
+      border: 1px solid #d4a56a;
+      padding: 6px 12px;
       border-radius: 50px;
       text-decoration: none;
-      transition: 0.3s;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
-    .exit-button:hover {
-      background: #d4a56a;
-      color: #08090e;
+
+    /* 2. CMS-Mobil-Optimierung: Verhindert das "Kreuz und Quer" */
+    /* Wir erzwingen, dass die Eingabefelder untereinander stehen statt nebeneinander */
+    div[class^="Pane"] {
+      display: block !important;
+      width: 100% !important;
+    }
+    
+    /* Blendet die Live-Vorschau auf kleinen Handys standardmäßig aus, 
+       da sie 50% des Platzes raubt und alles zusammquetscht */
+    @media (max-width: 800px) {
+      div[class^="PreviewPane"] {
+        display: none !important;
+      }
+      div[class^="EditorPane"] {
+        width: 100% !important;
+        padding: 10px !important;
+      }
+      /* Button etwas kleiner auf dem Handy */
+      .exit-button {
+        font-size: 10px;
+        top: 5px;
+        right: 5px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <a href="/" class="exit-button">
-    <span>←</span> Zurück zur Website
-  </a>
+  <a href="/" class="exit-button">← Website</a>
 
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
