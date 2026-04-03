@@ -1546,23 +1546,25 @@ section#kontakt button[type="submit"]:active {
     </p>
   </div>
 
- <script>
-   <script>
+  <script>
     async function loadDailyImpulse() {
       const textElement = document.getElementById('daily-impulse-text');
       try {
         const res = await fetch('data/impulses.json');
+        if (!res.ok) throw new Error('Datei nicht gefunden');
         const data = await res.json();
         
-        // Das heutige Datum holen (YYYY-MM-DD)
-        const today = new Date();
-        const offset = today.getTimezoneOffset() * 60000;
-        const todayString = new Date(today.getTime() - offset).toISOString().split('T')[0];
+        // Das heutige Datum holen (YYYY-MM-DD) in lokaler Zeit
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const todayString = `${year}-${month}-${day}`;
 
         // Den gesamten Textblock nehmen
         const block = data.impulses_block || "";
         
-        // Magische Suche: Suche nach dem Datum am Zeilenanfang und nimm den Text dahinter
+        // Suche nach dem Datum am Zeilenanfang
         const regex = new RegExp("^" + todayString + ":\\s*(.*)$", "m");
         const match = block.match(regex);
 
@@ -1572,11 +1574,11 @@ section#kontakt button[type="submit"]:active {
           textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
         }
       } catch(e) {
+        console.error("Impuls-Ladefehler:", e);
         textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
       }
     }
     loadDailyImpulse();
-  </script>
   </script>
 </section>
 <div id="dynamic-banner-container"></div>
