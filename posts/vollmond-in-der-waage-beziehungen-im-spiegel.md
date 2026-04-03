@@ -5,7 +5,7 @@ category: Transite
 date: 2026-04-02
 image: ""
 featured_video: img/37363-413555921_medium.mp4
-placement: Top-Banner (Header)
+placement: Kein Banner
 highlight: true
 video: img/37363-413555921_medium.mp4
 description: Wenn der Vollmond im Zeichen Waage steht, geht ein spürbarer Impuls
