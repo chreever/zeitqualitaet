@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zeitqualität — Kosmische Einflüsse verstehen</title>
-<meta property="og:type" content="website">
+<title>Ein neuer Impuls von Christian — Zeitqualität</title>
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Zeitqualität">
-<meta property="og:url" content="https://xn--zeitqualitt-u8a.at/">
-<meta property="og:title" content="Zeitqualität — Die Qualität der Zeit">
-<meta property="og:description" content="Astrologie als Orientierung, nicht als Orakel. Zyklen verstehen und bewusst entscheiden.">
-<meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/og-teaser.jpg">
+<meta property="og:url" id="og-url" content="https://zeitqualität.at/">
+<meta property="og:title" id="og-title" content="Ein neuer Impuls von Christian — Zeitqualität">
+<meta property="og:description" id="og-desc" content="Was jetzt wichtig wird und wie wir damit umgehen.">
+<meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <link rel="icon" type="image/png" href="img/zq-favicon.png">
 <link rel="apple-touch-icon" href="img/zq-favicon.png">
@@ -128,11 +128,11 @@
     --max-w: 1100px;
     --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* ── TYPOGRAPHY SCALE ── */
+    /* ── TYPOGRAPHY SCALE (Optimiert) ── */
     --fs-hero: clamp(3.5rem, 8.5vw, 6.2rem);
-    --fs-h1: 2.3rem;
-    --fs-h2: 1.75rem;
-    --fs-h3: 1.35rem;
+    --fs-h1: 2.8rem;
+    --fs-h2: 2.2rem;
+    --fs-h3: 1.5rem;
     --fs-body: 1.02rem;
     --fs-small: 0.92rem;
     --fs-label: 0.8rem;
@@ -432,8 +432,7 @@
   }
 
   .hero {
-    padding: 12rem 2rem 3rem; /* 3rem statt 6rem, damit der Impuls näher ranrückt */
-    /* min-height komplett gelöscht! */
+    padding: 12rem 2rem 3rem; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -834,7 +833,8 @@
   /* ── ZODIAC FLIP CARDS ── */
   .zodiac-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* Handyanpassung: minmax auf 160px gesetzt, so passen immer mindestens 2 Karten nebeneinander auf normalen Handys */
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
   }
 
@@ -1534,8 +1534,8 @@ section#kontakt button[type="submit"]:active {
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
     <div class="nav-links">
       <a href="#transite">Transite</a>
-      <a href="#videos">Impulse</a>
       <a href="#beitraege">Beiträge</a>
+      <a href="#videos">Impulse</a>
       <a href="#galerie">Sternzeichen</a>
       <a href="#ueber">Über mich</a>
       <a href="#kontakt">Kontakt</a>
@@ -1556,7 +1556,7 @@ section#kontakt button[type="submit"]:active {
 </header>
 
 <section id="tages-impuls" style="max-width: var(--max-w); margin: 2rem auto 6rem auto; padding: 0 2rem;">
-  <div class="fade-up" style="margin: 0 auto; max-width: 760px; padding: 2rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border-left: 3px solid var(--accent); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+  <div class="fade-up" style="margin: 0 auto; max-width: 760px; padding: 2rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border: 1px solid var(--accent); border-left: 3px solid var(--accent); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(212, 165, 106, 0.15);">
     
     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
       <span style="font-size: 1.5rem; color: var(--accent);">✨</span>
@@ -1629,26 +1629,6 @@ section#kontakt button[type="submit"]:active {
 
 <section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem;"></section>
 
-<section class="tiktok-section" id="videos">
-  <div class="section-header">
-    <h2 class="section-title">Video-Impulse</h2>
-  </div>
-  <div class="video-grid fade-up">
-    <div class="video-card">
-      <video class="local-video" controls preload="metadata">
-        <source src="videos/impuls-erstes-haus.mp4" type="video/mp4">
-        Dein Browser unterstützt keine Videos.
-      </video>
-      <div class="video-card-body">
-        <span class="post-tag">Grundlagen</span>
-        <h3>Das 1. Haus: Dein energetischer Fingerabdruck</h3>
-        <p>Stell dir dein Leben wie ein Haus vor – der Aszendent ist deine Haustür und der Filter, durch den du die Welt erblickst.</p>
-      </div>
-    </div>
-  </div>
-  <p style="color:var(--text-dim);font-size:var(--fs-small);margin-top:1.5rem;">Mehr Impulse findest du auf <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener noreferrer">TikTok</a> und <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
-</section>
-
 <section id="beitraege">
   <div class="section-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem;">
     <h2 class="section-title">Aktuelle Beiträge</h2>
@@ -1668,6 +1648,28 @@ section#kontakt button[type="submit"]:active {
       Zum vollständigen Archiv →
     </a>
   </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<section class="tiktok-section" id="videos">
+  <div class="section-header">
+    <h2 class="section-title">Video-Impulse</h2>
+  </div>
+  <div class="video-grid fade-up">
+    <div class="video-card">
+      <video class="local-video" controls preload="metadata">
+        <source src="videos/impuls-erstes-haus.mp4" type="video/mp4">
+        Dein Browser unterstützt keine Videos.
+      </video>
+      <div class="video-card-body">
+        <span class="post-tag">Grundlagen</span>
+        <h3>Das 1. Haus: Dein energetischer Fingerabdruck</h3>
+        <p>Stell dir dein Leben wie ein Haus vor – der Aszendent ist deine Haustür und der Filter, durch den du die Welt erblickst.</p>
+      </div>
+    </div>
+  </div>
+  <p style="color:var(--text-dim);font-size:var(--fs-small);margin-top:1.5rem;">Mehr Impulse findest du auf <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener noreferrer">TikTok</a> und <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
 </section>
 
 <div class="divider"><hr></div>
@@ -1700,27 +1702,11 @@ section#kontakt button[type="submit"]:active {
       <h3>Vom Takt der Effizienz zum Rhythmus der Zeit</h3>
       <p>Mein Name ist Christian. Nach über 20 Jahren in der analytischen, schnelllebigen Finanzbranche kenne ich den ständigen Druck der Effizienz nur zu gut. Als <strong style="color:var(--accent-light)">ausgebildeter Mentaltrainer</strong> habe ich mich oft gefragt: Leben wir eigentlich im Einklang mit unserer Zeit, oder rennen wir ihr nur atemlos hinterher?</p>
       
-      <p>Aus dieser Frage entstand <em>Zeitqualität</em>. Für mich ist Astrologie keine mystische Zukunftsdeutung und kein esoterisches Orakel, sondern eine jahrtausendealte Symbolsprache. Sie ist ein wunderbares Werkzeug zur Selbstreflexion, das uns hilft, größere Lebenszyklen zu verstehen und Phasen des Umbruchs gelassener zu navigieren.</p>
+      <p>Aus dieser Frage entstand <em>Zeitqualität</em>.</p>
       
-      <p>Mein Ansatz verbindet rationales Mentaltraining mit dem intuitiven Wissen um kosmische Rhythmen. Es geht nicht darum, die Sterne für uns entscheiden zu lassen – sondern darum, durch sie unsere eigenen Entscheidungen wieder bewusster und klarer zu treffen.</p>
-
-      <div class="about-pillars">
-        <div class="about-pillar">
-          <strong>Präsenz</strong>
-          <span>Vom Getriebenen zum bewussten Gestalter des eigenen Lebens werden.</span>
-        </div>
-        <div class="about-pillar">
-          <strong>Intuition</strong>
-          <span>Den richtigen Moment erkennen – für einen Aufbruch oder für die Stille.</span>
-        </div>
-        <div class="about-pillar">
-          <strong>Mentale Kraft</strong>
-          <span>Innere Klarheit und Fokus finden, selbst in turbulenten Zeiten.</span>
-        </div>
-      </div>
-      
-      <p>Auf diesem Blog teile ich meine Beobachtungen mit dir und lade dich ein, die Qualität der Zeit aus einer neuen Perspektive zu betrachten.</p>
-      <p class="about-signoff">Herzlich,<br>Christian</p>
+      <a href="ueber.html" style="display: inline-block; padding: 10px 26px; border: 1px solid var(--accent); border-radius: 100px; color: var(--bg); background: var(--accent); font-family: var(--font-body); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; text-decoration: none; font-weight: 600; margin-top: 1.5rem;">
+        Mehr über meine Reise lesen →
+      </a>
     </div>
   </div>
 </div>
@@ -1742,10 +1728,6 @@ section#kontakt button[type="submit"]:active {
     <input type="hidden" name="form-name" value="gaestebuch" />
 
     <div id="form-fields">
-      <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--text-muted);">
-        <em>Hinweis: Da meine E-Mail-Leitung gerade gewartet wird, nutze bitte dieses Formular für Nachrichten.</em>
-      </p>
-
       <div style="margin-bottom: 1rem;">
         <input type="text" name="name" placeholder="Dein Name" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 5px;">
       </div>
@@ -1772,8 +1754,7 @@ section#kontakt button[type="submit"]:active {
   </form>
 </div>
 <p style="margin-bottom:1.5rem; opacity: 0.6;">
-  <a href="mailto:info@zeitqualität.at" style="font-size:var(--fs-body);font-weight:500; text-decoration: line-through; color: var(--text-dim);">info@zeitqualität.at</a> 
-  <span style="font-size: 0.8rem; display: block; color: var(--text-dim);">(E-Mail-Zustellung aktuell verzögert)</span>
+  <a href="mailto:info@zeitqualität.at" style="font-size:var(--fs-body);font-weight:500; color: var(--text-muted);">info@zeitqualität.at</a> 
 </p>
 
 <div class="social-links">
