@@ -4,16 +4,19 @@
 <meta charset="UTF-8">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ein neuer Impuls von Christian — Zeitqualität</title>
-<meta property="og:type" content="article">
+<title>Zeitqualität — Kosmische Einflüsse verstehen</title>
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="Zeitqualität">
-<meta property="og:url" id="og-url" content="https://zeitqualität.at/">
-<meta property="og:title" id="og-title" content="Ein neuer Impuls von Christian — Zeitqualität">
-<meta property="og:description" id="og-desc" content="Was jetzt wichtig wird und wie wir damit umgehen.">
-<meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
+<meta property="og:url" content="https://xn--zeitqualitt-u8a.at/">
+<meta property="og:title" content="Zeitqualität — Die Qualität der Zeit">
+<meta property="og:description" content="Astrologie als Orientierung, nicht als Orakel. Zyklen verstehen und bewusst entscheiden.">
+<meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/og-teaser.jpg">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link rel="icon" type="image/png" href="img/zq-favicon.png">
+
+<link rel="icon" type="image/svg+xml" href="img/zq-favicon.svg">
+<link rel="alternate icon" href="img/zq-favicon.png">
 <link rel="apple-touch-icon" href="img/zq-favicon.png">
+
 <style>
   /* ── LOCAL FONTS ── */
   @font-face {
@@ -379,26 +382,26 @@
     justify-content: space-between;
   }
 
-  /* ── BILD-LOGO IN DER NAVIGATION ── */
+  /* ── NEUES LOGO-STYLING ── */
   .logo-container {
     display: flex;
     align-items: center;
+    gap: 12px;
     text-decoration: none;
     height: 100%;
   }
 
-  .nav-logo-img {
-    height: 65px;
-    width: auto;
-    display: block;
+  .logo-container svg, .logo-container span {
     transition: var(--transition);
-    border-radius: 4px;
-    mix-blend-mode: lighten; 
   }
 
-  .logo-container:hover .nav-logo-img {
-    transform: scale(1.05);
+  .logo-container:hover svg {
+    transform: scale(1.08) rotate(5deg);
     filter: brightness(1.2);
+  }
+
+  .logo-container:hover span {
+    color: var(--accent);
   }
 
   .nav-links { display: flex; gap: 2.2rem; align-items: center; }
@@ -456,7 +459,7 @@
 
   .hero h1 {
     font-family: var(--font-display);
-    font-size: var(--fs-hero);
+    font-size: var(--fs-h1);
     font-weight: 400;
     line-height: 1.08;
     letter-spacing: -0.01em;
@@ -1268,11 +1271,6 @@
     text-align: center;
   }
 
-  footer .logo {
-    display: inline-block;
-    margin-bottom: 0.8rem;
-  }
-
   .footer-note {
     color: var(--text-dim);
     font-size: var(--fs-label);
@@ -1287,6 +1285,22 @@
     margin: 0.8rem auto 0;
     opacity: 0.7;
     line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 0.8rem;
+  }
+
+  .footer-links a {
+    font-size: var(--fs-fine);
+    color: var(--text-dim);
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
   }
 
   .fade-up {
@@ -1529,15 +1543,30 @@ section#kontakt button[type="submit"]:active {
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo-container">
-      <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
+        <defs>
+          <linearGradient id="gold-logo" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f2d5a3"/>
+            <stop offset="40%" stop-color="#d4a56a"/>
+            <stop offset="100%" stop-color="#a67b45"/>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo)" stroke-width="1.5" opacity="0.25"/>
+        <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo)" stroke-width="0.5" opacity="0.6"/>
+        <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo)" opacity="0.15"/>
+        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo)"/>
+        <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
+      </svg>
+      <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
     </a>
+    
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
     <div class="nav-links">
       <a href="#transite">Transite</a>
       <a href="#beitraege">Beiträge</a>
       <a href="#videos">Impulse</a>
       <a href="#galerie">Sternzeichen</a>
-      <a href="#ueber">Über mich</a>
+      <a href="ueber.html">Über mich</a>
       <a href="#kontakt">Kontakt</a>
     </div>
   </div>
@@ -1688,19 +1717,19 @@ section#kontakt button[type="submit"]:active {
 <div class="about" id="ueber">
   <div class="about-inner">
     <div class="about-aside fade-up">
-      <img src="christian.png" alt="Christian" class="about-photo">
+      <img src="img/christian-portraet.jpg" alt="Christian" class="about-photo" style="border-radius: var(--radius); width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: 80% center;">
       <div class="about-tagline">Wer schreibt hier?</div>
       <h2>Christian Balas</h2>
 <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.5; margin-bottom: 1.5rem;">
   Mein Alltag gehört den Finanzen, meine Leidenschaft der Zeitqualität.<br>
-  Ausgebildeter Mentaltrainer und privater Astrologie-Enthusiast.
+  Diplomierter Mentaltrainer und Astrologie-Enthusiast.
 </p>
 <blockquote>Es ist nicht die Zeit, die uns fehlt, sondern die Tiefe, mit der wir sie erleben.</blockquote>
     </div>
 
     <div class="about-content fade-up">
       <h3>Vom Takt der Effizienz zum Rhythmus der Zeit</h3>
-      <p>Mein Name ist Christian. Nach über 20 Jahren in der analytischen, schnelllebigen Finanzbranche kenne ich den ständigen Druck der Effizienz nur zu gut. Als <strong style="color:var(--accent-light)">ausgebildeter Mentaltrainer</strong> habe ich mich oft gefragt: Leben wir eigentlich im Einklang mit unserer Zeit, oder rennen wir ihr nur atemlos hinterher?</p>
+      <p>Mein Name ist Christian. Nach über 19 Jahren in der analytischen, schnelllebigen Finanzbranche kenne ich den ständigen Druck der Effizienz nur zu gut. Als <strong style="color:var(--accent-light)">ausgebildeter Mentaltrainer</strong> habe ich mich oft gefragt: Leben wir eigentlich im Einklang mit unserer Zeit, oder rennen wir ihr nur atemlos hinterher?</p>
       
       <p>Aus dieser Frage entstand <em>Zeitqualität</em>.</p>
       
@@ -1765,7 +1794,21 @@ section#kontakt button[type="submit"]:active {
 
 <footer>
   <a href="#" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
-    <img src="img/zq-logo.png" alt="Zeitqualität ZQ Logo" class="nav-logo-img">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
+      <defs>
+        <linearGradient id="gold-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#f2d5a3"/>
+          <stop offset="40%" stop-color="#d4a56a"/>
+          <stop offset="100%" stop-color="#a67b45"/>
+        </linearGradient>
+      </defs>
+      <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo-footer)" stroke-width="1.5" opacity="0.25"/>
+      <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo-footer)" stroke-width="0.5" opacity="0.6"/>
+      <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo-footer)" opacity="0.15"/>
+      <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo-footer)"/>
+      <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
+    </svg>
+    <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
   </a>
   <p class="footer-note">
   © 2026 Zeitqualität · Christian Balas 
