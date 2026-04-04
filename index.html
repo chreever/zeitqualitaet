@@ -2327,28 +2327,29 @@ section#kontakt button[type="submit"]:active {
         allPosts.sort((a, b) => b.rawDate - a.rawDate);
 
         // 1. TOP-BANNER RENDERN
-        if (bannerContainer) {
-          const topPost = allPosts.find(p => p.placement === 'Top-Banner (Header)');
-          if (topPost) {
-            bannerContainer.innerHTML = `
-              <a href="${topPost.url}" class="transit-banner fade-up visible" id="transite" style="text-decoration:none;color:inherit;display:block">
-                <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
-                  ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}#t=1" type="video/mp4"></video>` : ''}
-                  <div style="position:relative; z-index:2;">
-                    <div class="transit-label">
-                      <span style="color:var(--accent); font-weight:600;">${topPost.category}</span>
-                      ${topPost.date ? `<span style="opacity:0.3">•</span><span style="color:var(--text-dim)">${topPost.date}</span>` : ''}
-                      <span style="opacity:0.3">•</span><span style="color:var(--text-dim)">${topPost.readTime} Min.</span>
-                    </div>
-                    <div class="transit-title">${topPost.title}</div>
-                    <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr zu erfahren.'}</div>
-                  </div>
-                  ${topPost.badge ? `<div class="transit-badge" style="position:relative; z-index:2;">◯ ${topPost.badge}</div>` : ''}
-                </div>
-              </a>
-            `;
-          }
-        }
+if (bannerContainer) {
+  const topPost = allPosts.find(p => p.placement === 'Top-Banner (Header)');
+  if (topPost) {
+    bannerContainer.innerHTML = `
+      <a href="${topPost.url}" class="transit-banner fade-up visible" id="transite" style="text-decoration:none;color:inherit;display:block">
+        <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
+          ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}#t=1" type="video/mp4"></video>` : ''}
+          <div style="position:relative; z-index:2;">
+            <div class="transit-label">
+              <span style="color:var(--accent); font-weight:600;">${topPost.category}</span>
+              
+              ${topPost.date ? `<span style="color:#ffffff; opacity:0.6;"> • </span><span style="color:#ffffff;">${topPost.date}</span>` : ''}
+              <span style="color:#ffffff; opacity:0.6;"> • </span><span style="color:#ffffff;">${topPost.readTime} Min.</span>
+            </div>
+            <div class="transit-title">${topPost.title}</div>
+            <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr zu erfahren.'}</div>
+          </div>
+          ${topPost.badge ? `<div class="transit-badge" style="position:relative; z-index:2;">◯ ${topPost.badge}</div>` : ''}
+        </div>
+      </a>
+    `;
+  }
+}
 
         // 2. INFO-BANNER RENDERN
 if (infoBannerContainer) {
