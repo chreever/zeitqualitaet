@@ -19,13 +19,11 @@
   <link rel="apple-touch-icon" href="img/zq-favicon.png">
 
   <style>
-    /* ── LOKALE SCHRIFTEN (CORPORATE DESIGN) ── */
+    /* ── SCHRIFTEN ── */
     @font-face { font-family: 'Cormorant Garamond'; src: url('fonts/cormorant-garamond.woff2') format('woff2'); font-weight: 400; font-display: swap; }
     @font-face { font-family: 'Cormorant Garamond'; src: url('fonts/cormorant-garamond-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
-    @font-face { font-family: 'Cormorant Garamond'; src: url('fonts/cormorant-garamond-italic.woff2') format('woff2'); font-style: italic; font-display: swap; }
     @font-face { font-family: 'Figtree'; src: url('fonts/figtree.woff2') format('woff2'); font-weight: 300; font-display: swap; }
     @font-face { font-family: 'Figtree'; src: url('fonts/figtree-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
-    @font-face { font-family: 'Figtree'; src: url('fonts/figtree-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
     @font-face { font-family: 'IBM Plex Mono'; src: url('fonts/ibm-plex-mono.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 
     :root {
@@ -41,46 +39,58 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.8; font-weight: 300; -webkit-font-smoothing: antialiased; }
-    a { color: var(--accent); text-decoration: none; transition: 0.3s; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.85; font-weight: 300; -webkit-font-smoothing: antialiased; }
     
-    .starfield { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-    .starfield canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .starfield { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+    .starfield canvas { width: 100%; height: 100%; }
 
     /* ── NAV ── */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8, 9, 14, 0.85); backdrop-filter: blur(28px); border-bottom: 1px solid var(--border-light); }
     .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 80px; display: flex; align-items: center; justify-content: space-between; }
-    
-    .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; height: 100%; }
-    .logo-container svg, .logo-container span { transition: var(--transition); }
-    .logo-container:hover svg { transform: scale(1.08) rotate(5deg); filter: brightness(1.2); }
-    .logo-container:hover span { color: var(--accent); }
+    .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-container:hover span { color: var(--accent); transition: 0.3s; }
 
     .article-container { max-width: 760px; margin: 120px auto 5rem; padding: 0 2rem; }
-    
     #media-container { width: 100%; margin-bottom: 3rem; }
-    .article-image { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius); background: var(--bg-elevated); border: 1px solid var(--border-light); display: block; }
+    .article-image { width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--border-light); }
     
-    .back-btn { display: inline-block; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); border: 1px solid var(--border-light); padding: 8px 16px; border-radius: 100px; transition: 0.3s; }
+    .back-btn { display: inline-block; margin-bottom: 2rem; font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); border: 1px solid var(--border-light); padding: 8px 18px; border-radius: 100px; text-decoration: none; transition: 0.3s; }
     .back-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
-    /* ════════ CORPORATE DESIGN INHALT ════════ */
-    .post-content h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 3.2rem); margin-bottom: 1.5rem; font-weight: 400; line-height: 1.15; color: var(--accent); letter-spacing: -0.05em; text-transform: uppercase; }
-    .post-content h2 { font-family: var(--font-display); font-size: 2rem; margin: 3.5rem 0 1rem; font-weight: 400; color: var(--accent-light); line-height: 1.3; }
-    .post-content h3 { font-family: var(--font-display); font-size: 1.5rem; margin: 2.5rem 0 0.8rem; font-weight: 500; color: var(--accent-light); }
-    .post-content p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted); line-height: 1.9; }
-    .post-content strong { color: var(--text); font-weight: 500; }
-    .post-content blockquote { border-left: 2px solid var(--accent); padding: 1.2rem 1.5rem; margin: 2.5rem 0; font-family: var(--font-display); font-size: 1.35rem; font-style: italic; color: var(--text-dim); background: linear-gradient(90deg, rgba(212,165,106,0.05) 0%, transparent 100%); }
+    /* ════════ POST CONTENT STYLING ════════ */
+    .post-content h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 1.5rem; color: var(--accent); font-weight: 400; line-height: 1.2; text-transform: uppercase; letter-spacing: -0.02em; }
+    .post-content h2 { font-family: var(--font-display); font-size: 1.85rem; margin: 3rem 0 1rem; color: var(--accent-light); font-weight: 400; }
+    .post-content p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted); }
+    .post-content blockquote { border-left: 2px solid var(--accent); padding: 1.5rem; margin: 2.5rem 0; font-family: var(--font-display); font-size: 1.3rem; font-style: italic; color: var(--text-dim); background: linear-gradient(90deg, var(--accent-dim) 0%, transparent 100%); }
 
-    .share-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 0.6rem 1.4rem; border-radius: 100px; font-family: var(--font-body); font-size: 0.92rem; font-weight: 500; cursor: pointer; transition: var(--transition); margin-top: 3rem; }
+    /* ── DIE GOLDENEN ZIFFERN ── */
+    .post-content ol { list-style: none; counter-reset: post-counter; margin: 2rem 0; padding: 0; }
+    .post-content ol li { counter-increment: post-counter; position: relative; padding-left: 3.2rem; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; }
+    .post-content ol li::before { 
+      content: counter(post-counter); 
+      position: absolute; left: 0; top: 0.1rem; 
+      width: 28px; height: 28px; 
+      border-radius: 50%; 
+      background: var(--accent-dim); 
+      border: 1px solid rgba(212, 165, 106, 0.3); 
+      color: var(--accent); 
+      display: flex; align-items: center; justify-content: center; 
+      font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; 
+    }
+    
+    .post-content ul { list-style: none; margin: 1.5rem 0; padding: 0; }
+    .post-content ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); }
+    .post-content ul li::before { content: '◦'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
+
+    .share-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 0.7rem 1.5rem; border-radius: 100px; font-family: var(--font-body); font-size: 0.9rem; cursor: pointer; transition: 0.3s; margin-top: 2rem; }
     .share-btn:hover { background: var(--accent-dim); transform: translateY(-2px); }
 
-    footer { border-top: 1px solid var(--border-light); padding: 3rem 2rem; text-align: center; color: var(--text-dim); margin-top: 4rem; }
+    footer { border-top: 1px solid var(--border-light); padding: 3rem 2rem; text-align: center; color: var(--text-dim); margin-top: 4rem; font-size: 0.85rem; }
 
     @media (max-width: 768px) {
-      .nav-inner { height: 70px; }
+      .nav-inner { height: 70px; padding: 0 1.5rem; }
       .article-container { margin-top: 100px; }
-      .article-image { height: 250px; }
+      .article-image { height: 260px; }
     }
   </style>
 </head>
@@ -91,175 +101,84 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="logo-container">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
-        <defs>
-          <linearGradient id="gold-logo" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f2d5a3"/>
-            <stop offset="40%" stop-color="#d4a56a"/>
-            <stop offset="100%" stop-color="#a67b45"/>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo)" stroke-width="1.5" opacity="0.25"/>
-        <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo)" stroke-width="0.5" opacity="0.6"/>
-        <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo)" opacity="0.15"/>
-        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo)"/>
-        <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
+      <svg viewBox="0 0 120 120" style="height: 40px; width: 40px;">
+        <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f2d5a3"/><stop offset="100%" stop-color="#a67b45"/></linearGradient></defs>
+        <circle cx="60" cy="60" r="54" fill="none" stroke="url(#g)" stroke-width="1" opacity="0.3"/>
+        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#g)"/>
       </svg>
-      <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
+      <span style="font-family: var(--font-display); font-size: 1.5rem; color: var(--text); letter-spacing: 0.05em;">Zeitqualität</span>
     </a>
-    <a href="index.html" style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em;">← Zurück</a>
+    <a href="index.html" style="font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase;">← Home</a>
   </div>
 </nav>
 
 <div class="article-container">
   <a href="javascript:history.back()" class="back-btn">← Zurück</a>
-  
   <div id="media-container"></div>
-
   <article id="post-content" class="post-content">
     <p>Signal wird gesucht...</p>
   </article>
-
-  <button id="share-btn" class="share-btn">
-    <span class="share-icon">↗</span> Beitrag teilen
-  </button>
+  <button id="share-btn" class="share-btn">↗ Beitrag teilen</button>
 </div>
 
 <footer>
-  <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
-      <defs>
-        <linearGradient id="gold-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f2d5a3"/>
-          <stop offset="40%" stop-color="#d4a56a"/>
-          <stop offset="100%" stop-color="#a67b45"/>
-        </linearGradient>
-      </defs>
-      <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo-footer)" stroke-width="1.5" opacity="0.25"/>
-      <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo-footer)" stroke-width="0.5" opacity="0.6"/>
-      <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo-footer)" opacity="0.15"/>
-      <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo-footer)"/>
-      <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
-    </svg>
-    <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
-  </a>
-  <p style="font-size: 0.85rem; font-family: var(--font-body); margin-top: 0.5rem;">© 2026 Zeitqualität · Christian</p>
+  <p>© 2026 Zeitqualität · Christian Balas</p>
 </footer>
 
 <script>
-  // Sterne Hintergrund
-  (function() {
-    const canvas = document.getElementById('stars'); const ctx = canvas.getContext('2d');
-    let stars = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    function create() { stars = []; for(let i=0; i<150; i++) stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, s:Math.random()*1.5, p:Math.random()*Math.PI*2}); }
-    function draw(t) { ctx.clearRect(0,0,canvas.width,canvas.height); stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.s, 0, Math.PI*2); ctx.fillStyle = "#e2dfd8"; ctx.globalAlpha = Math.sin(t*0.001 + s.p)*0.4+0.6; ctx.fill(); }); requestAnimationFrame(draw); }
-    resize(); create(); draw(0); window.addEventListener('resize', resize);
-  })();
+  // Sternenfeld
+  (function(){const c=document.getElementById('stars'),x=c.getContext('2d');let s=[];function r(){c.width=window.innerWidth;c.height=window.innerHeight}function f(){s=[];for(let i=0;i<120;i++)s.push({x:Math.random()*c.width,y:Math.random()*c.height,z:Math.random()*1.5,p:Math.random()*Math.PI*2})}function d(t){x.clearRect(0,0,c.width,c.height);s.forEach(a=>{x.beginPath();x.arc(a.x,a.y,a.z,0,Math.PI*2);x.fillStyle="#e2dfd8";x.globalAlpha=Math.sin(t*0.001+a.p)*0.4+0.5;x.fill()});requestAnimationFrame(d)}r();f();d(0);window.addEventListener('resize',()=>{r();f()})})();
 
-  function fixPath(path) {
-    if (!path) return "";
-    let clean = path.trim().replace(/['"]/g, ''); 
-    if (clean.startsWith('http') || clean.startsWith('/')) return clean;
-    return '/' + clean;
-  }
+  function fixPath(p) { if(!p) return ""; let c=p.trim().replace(/['"]/g,''); return (c.startsWith('http')||c.startsWith('/'))?c:'/'+c; }
 
   async function renderPost() {
-    const params = new URLSearchParams(window.location.search);
-    let postId = params.get('id');
-    if (!postId) return;
-
-    postId = decodeURIComponent(postId);
+    const p = new URLSearchParams(window.location.search);
+    let id = p.get('id'); if(!id) return;
+    id = decodeURIComponent(id);
 
     try {
-      let response = await fetch(`posts/${postId}.md`);
-      if (!response.ok) {
-        response = await fetch(`https://raw.githubusercontent.com/chreever/zeitqualitaet/main/posts/${postId}.md`);
-      }
-      if (!response.ok) throw new Error("Datei nicht gefunden");
+      let r = await fetch(`posts/${id}.md`);
+      if(!r.ok) r = await fetch(`https://raw.githubusercontent.com/chreever/zeitqualitaet/main/posts/${id}.md`);
+      if(!r.ok) throw new Error();
       
-      const rawText = await response.text();
-      let markdownBody = "";
-      let postTitle = "";
-      let postImage = "";      // Das neue Feld für den Artikel
-      let tileImage = "";      // Vorschaubild Kachel
-      let bannerVideo = "";    // Banner Video
-      let featuredVideo = "";  // Kachel Video
-      let postDescription = "";
+      const t = await r.text();
+      let body = "", title = "", pImg = "", tImg = "", bVid = "", fVid = "", desc = "";
 
-      if (rawText.startsWith('---')) {
-        const parts = rawText.split('---');
-        if (parts.length >= 3) {
-          const lines = parts[1].split('\n');
-          lines.forEach(line => {
-            const separatorIndex = line.indexOf(':');
-            if (separatorIndex !== -1) {
-              const key = line.substring(0, separatorIndex).trim().toLowerCase();
-              const value = line.substring(separatorIndex + 1).trim().replace(/['"]/g, '');
-              if (key === 'title') postTitle = value;
-              if (key === 'post_image') postImage = value; // Neu
-              if (key === 'image') tileImage = value;      
-              if (key === 'video') bannerVideo = value;
-              if (key === 'featured_video') featuredVideo = value;
-              if (key === 'description') postDescription = value;
+      if(t.startsWith('---')) {
+        const parts = t.split('---');
+        if(parts.length >= 3) {
+          parts[1].split('\n').forEach(l => {
+            const i = l.indexOf(':');
+            if(i!==-1) {
+              const k = l.substring(0,i).trim().toLowerCase(), v = l.substring(i+1).trim().replace(/['"]/g,'');
+              if(k==='title') title=v; if(k==='post_image') pImg=v; if(k==='image') tImg=v;
+              if(k==='video') bVid=v; if(k==='featured_video') fVid=v; if(k==='description') desc=v;
             }
           });
-          markdownBody = parts.slice(2).join('---').trim();
+          body = parts.slice(2).join('---').trim();
         }
       }
 
-      // Medien Logik für den Artikel
-      const mediaContainer = document.getElementById('media-container');
-      
-      // Priorität für das Foto im Artikel: 1. post_image, 2. tileImage
-      const finalPhoto = postImage || tileImage;
-      
-      if (finalPhoto && finalPhoto.trim() !== "") {
-        mediaContainer.innerHTML = `<img class="article-image" src="${fixPath(finalPhoto)}" alt="Beitragsbild">`;
-      } else {
-        // Fallback: Nur wenn KEIN Foto da ist, zeigen wir ein Video im Artikel
-        const fallbackVideo = featuredVideo || bannerVideo;
-        if (fallbackVideo) {
-          mediaContainer.innerHTML = `
-            <video class="article-image" autoplay muted loop playsinline>
-              <source src="${fixPath(fallbackVideo)}#t=0.1" type="video/mp4">
-            </video>`;
-        }
-      }
+      const m = document.getElementById('media-container');
+      const img = pImg || tImg;
+      if(img) { m.innerHTML = `<img class="article-image" src="${fixPath(img)}" alt="Beitrag">`; }
+      else { const v = fVid || bVid; if(v) m.innerHTML = `<video class="article-image" autoplay muted loop playsinline><source src="${fixPath(v)}#t=0.1" type="video/mp4"></video>`; }
 
-      // Text rendern
-      document.getElementById('post-content').innerHTML = `<h1>${postTitle || postId}</h1>` + marked.parse(markdownBody);
-      document.title = `${postTitle || 'Beitrag'} — Zeitqualität`;
-
-      // Meta-Tags
-      if (postTitle) document.getElementById('og-title').setAttribute('content', postTitle);
-      if (postDescription) document.getElementById('og-desc').setAttribute('content', postDescription);
-      document.getElementById('og-url').setAttribute('content', window.location.href);
-
-    } catch (e) {
-      console.error(e);
-      document.getElementById('post-content').innerHTML = `
-        <h1>Signal verloren</h1>
-        <p>Der Beitrag "<strong>${postId}</strong>" konnte nicht geladen werden.</p>
-        <p style="font-size: 0.9rem; color: var(--text-dim);">Bitte prüfe den Dateinamen in GitHub.</p>
-      `;
+      document.getElementById('post-content').innerHTML = `<h1>${title || id}</h1>` + marked.parse(body);
+      document.title = `${title || 'Beitrag'} — Zeitqualität`;
+      document.getElementById('og-title').setAttribute('content', title);
+      document.getElementById('og-desc').setAttribute('content', desc);
+    } catch(e) {
+      document.getElementById('post-content').innerHTML = `<h1>Signal verloren</h1><p>Beitrag "${id}" nicht gefunden.</p>`;
     }
   }
-
   renderPost();
 
-  const shareBtn = document.getElementById('share-btn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-      if (navigator.share) {
-        try { await navigator.share({ title: document.title, url: window.location.href }); } catch (err) {}
-      } else {
-        navigator.clipboard.writeText(window.location.href);
-        const originalText = shareBtn.innerHTML;
-        shareBtn.innerHTML = '✨ Link kopiert!';
-        setTimeout(() => { shareBtn.innerHTML = originalText; }, 2500);
-      }
-    });
-  }
+  const sb = document.getElementById('share-btn');
+  if(sb) sb.addEventListener('click', async () => {
+    if(navigator.share) { try { await navigator.share({title:document.title, url:window.location.href}); } catch(e){} }
+    else { navigator.clipboard.writeText(window.location.href); sb.innerHTML = '✨ Link kopiert!'; setTimeout(()=>sb.innerHTML='↗ Beitrag teilen',2000); }
+  });
 </script>
 </body>
 </html>
