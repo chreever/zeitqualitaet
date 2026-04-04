@@ -1,6 +1,6 @@
 ---
 title: "Mentale Resilienz: Die Kraft der Tiefe nutzen"
-category: Mentaltraining
+category: Mentale Stärke
 date: 2026-04-03T17:04:00.000+02:00
 featured_video: /img/journaling.mp4
 video: /img/journaling.mp4
