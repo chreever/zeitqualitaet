@@ -6,7 +6,7 @@ featured_video: /img/erde-all.mp4
 video: /img/erde-all.mp4
 description: Wie ich Zeitqualität im Alltag lebe und warum Astrologie für mich
   wie ein Wetterbericht für die Seele ist.
-placement: Top-Banner (Header)
+placement: Info-Banner (Mitte)
 ---
 Ich nutze das Wissen um die Zeitqualität, um mein Leben nicht gegen den Strom, sondern mit der Strömung zu gestalten. Astrologie ist für mich wie ein Wetterbericht für die Seele.
 
