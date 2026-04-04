@@ -499,7 +499,72 @@
     margin: 0 auto 2.5rem;
     font-weight: 300;
   }
+/* ── TOOLTIP STYLING FÜR DIE TAGLINE ── */
+.tagline-item {
+  position: relative;
+  cursor: help; /* Zeigt dem Nutzer, dass es hier Infos gibt */
+  border-bottom: 1px dotted var(--text-dim); /* Dezenter Hinweis zum Drüberfahren */
+  padding-bottom: 2px;
+}
 
+.tagline-item::after {
+  content: attr(data-info); /* Holt sich den Text aus dem HTML */
+  position: absolute;
+  bottom: 160%; /* Erscheint über dem Wort */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent-dim);
+  color: var(--accent-light);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  text-transform: none; /* Normal lesbar, nicht in Großbuchstaben */
+  letter-spacing: 0.02em;
+  white-space: nowrap; /* Kein Zeilenumbruch im Tooltip */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none; /* Stört nicht beim Bewegen der Maus */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+/* Kleiner Pfeil nach unten am Tooltip */
+.tagline-item::before {
+  content: '';
+  position: absolute;
+  bottom: 135%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: var(--accent-dim) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 101;
+}
+
+/* Sichtbar machen beim Hover */
+.tagline-item:hover::after,
+.tagline-item:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tagline-item:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Auf Handys schalten wir die Tooltips aus, da es dort kein "Hover" gibt */
+@media (max-width: 768px) {
+  .tagline-item::after, .tagline-item::before { display: none !important; }
+  .tagline-item { border-bottom: none; cursor: default; }
+}
   .hero-tagline span {
     opacity: 0.9;
     transition: var(--transition);
