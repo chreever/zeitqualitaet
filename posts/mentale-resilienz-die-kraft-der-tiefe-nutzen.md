@@ -7,7 +7,7 @@ video: /img/journaling.mp4
 description: Der Mond im Skorpion fordert uns heute auf, nicht an der Oberfläche
   zu bleiben. Lerne, wie du durch ehrliche Selbstreflexion deine mentale Stärke
   festigst.
-placement: Top-Banner (Header)
+placement: null
 ---
 Heute, am 03. April, steht der Mond im Tierkreiszeichen **Skorpion**. In der Astrologie gilt diese Zeitqualität als eine der intensivsten. Es geht nicht um seichte Unterhaltungen oder oberflächliche Lösungen – es geht um das Eingemachte. 
 
