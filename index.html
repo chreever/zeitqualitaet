@@ -2336,12 +2336,12 @@ section#kontakt button[type="submit"]:active {
                   ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}#t=1" type="video/mp4"></video>` : ''}
                   <div style="position:relative; z-index:2;">
                     <div class="transit-label">
-                      <span>Aktuelle Zeitqualität</span>
+                      <span style="color:var(--accent); font-weight:600;">${topPost.category}</span>
                       ${topPost.date ? `<span style="opacity:0.3">•</span><span style="color:var(--text-dim)">${topPost.date}</span>` : ''}
                       <span style="opacity:0.3">•</span><span style="color:var(--text-dim)">${topPost.readTime} Min.</span>
                     </div>
                     <div class="transit-title">${topPost.title}</div>
-                    <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr über diese Konstellation zu erfahren.'}</div>
+                    <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr zu erfahren.'}</div>
                   </div>
                   ${topPost.badge ? `<div class="transit-badge" style="position:relative; z-index:2;">◯ ${topPost.badge}</div>` : ''}
                 </div>
