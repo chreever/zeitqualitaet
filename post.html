@@ -10,7 +10,7 @@
   <meta property="og:url" id="og-url" content="https://zeitqualität.at/">
   <meta property="og:title" id="og-title" content="Ein neuer Impuls von Christian — Zeitqualität">
   <meta property="og:description" id="og-desc" content="Was jetzt wichtig wird und wie wir damit umgehen.">
-  <meta property="og:image" id="og-image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/og-teaser.jpg">
+  <meta property="og:image" id="og-image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
   
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" href="img/zq-favicon.png">
 
   <style>
-    /* ── SCHRIFTEN ── */
+    /* ── SCHRIFTEN & DESIGN ── */
     @font-face { font-family: 'Cormorant Garamond'; src: url('fonts/cormorant-garamond.woff2') format('woff2'); font-weight: 400; font-display: swap; }
     @font-face { font-family: 'Cormorant Garamond'; src: url('fonts/cormorant-garamond-500.woff2') format('woff2'); font-weight: 500; font-display: swap; }
     @font-face { font-family: 'Figtree'; src: url('fonts/figtree.woff2') format('woff2'); font-weight: 300; font-display: swap; }
@@ -35,7 +35,6 @@
       --font-body: 'Figtree', system-ui, sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
       --radius: 10px;
-      --transition: 0.3s;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +47,6 @@
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8, 9, 14, 0.85); backdrop-filter: blur(28px); border-bottom: 1px solid var(--border-light); }
     .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 80px; display: flex; align-items: center; justify-content: space-between; }
     .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-container:hover span { color: var(--accent); transition: 0.3s; }
 
     .article-container { max-width: 760px; margin: 120px auto 5rem; padding: 0 2rem; }
     #media-container { width: 100%; margin-bottom: 3rem; }
@@ -63,7 +61,7 @@
     .post-content p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted); }
     .post-content blockquote { border-left: 2px solid var(--accent); padding: 1.5rem; margin: 2.5rem 0; font-family: var(--font-display); font-size: 1.3rem; font-style: italic; color: var(--text-dim); background: linear-gradient(90deg, var(--accent-dim) 0%, transparent 100%); }
 
-    /* ── DIE GOLDENEN ZIFFERN ── */
+    /* ── GOLDENE ZIFFERN (WIE GEWÜNSCHT) ── */
     .post-content ol { list-style: none; counter-reset: post-counter; margin: 2rem 0; padding: 0; }
     .post-content ol li { counter-increment: post-counter; position: relative; padding-left: 3.2rem; margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; }
     .post-content ol li::before { 
@@ -126,7 +124,7 @@
 </footer>
 
 <script>
-  // Sternenfeld
+  // Sternenfeld Hintergrund
   (function(){const c=document.getElementById('stars'),x=c.getContext('2d');let s=[];function r(){c.width=window.innerWidth;c.height=window.innerHeight}function f(){s=[];for(let i=0;i<120;i++)s.push({x:Math.random()*c.width,y:Math.random()*c.height,z:Math.random()*1.5,p:Math.random()*Math.PI*2})}function d(t){x.clearRect(0,0,c.width,c.height);s.forEach(a=>{x.beginPath();x.arc(a.x,a.y,a.z,0,Math.PI*2);x.fillStyle="#e2dfd8";x.globalAlpha=Math.sin(t*0.001+a.p)*0.4+0.5;x.fill()});requestAnimationFrame(d)}r();f();d(0);window.addEventListener('resize',()=>{r();f()})})();
 
   function fixPath(p) { if(!p) return ""; let c=p.trim().replace(/['"]/g,''); return (c.startsWith('http')||c.startsWith('/'))?c:'/'+c; }
@@ -159,15 +157,26 @@
         }
       }
 
+      // Medienanzeige
       const m = document.getElementById('media-container');
-      const img = pImg || tImg;
-      if(img) { m.innerHTML = `<img class="article-image" src="${fixPath(img)}" alt="Beitrag">`; }
+      const finalImg = pImg || tImg;
+      if(finalImg) { m.innerHTML = `<img class="article-image" src="${fixPath(finalImg)}" alt="Beitrag">`; }
       else { const v = fVid || bVid; if(v) m.innerHTML = `<video class="article-image" autoplay muted loop playsinline><source src="${fixPath(v)}#t=0.1" type="video/mp4"></video>`; }
 
       document.getElementById('post-content').innerHTML = `<h1>${title || id}</h1>` + marked.parse(body);
       document.title = `${title || 'Beitrag'} — Zeitqualität`;
+
+      // FACEBOOK FIX: Meta-Tags aktualisieren
       document.getElementById('og-title').setAttribute('content', title);
       document.getElementById('og-desc').setAttribute('content', desc);
+      document.getElementById('og-url').setAttribute('content', window.location.href);
+      
+      // Bild für Facebook absolut machen
+      if (finalImg) {
+        const absoluteImg = window.location.origin + fixPath(finalImg);
+        document.getElementById('og-image').setAttribute('content', absoluteImg);
+      }
+
     } catch(e) {
       document.getElementById('post-content').innerHTML = `<h1>Signal verloren</h1><p>Beitrag "${id}" nicht gefunden.</p>`;
     }
