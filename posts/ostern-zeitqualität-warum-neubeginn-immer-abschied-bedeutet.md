@@ -2,8 +2,10 @@
 title: "Ostern und Zeitqualität: Warum Neubeginn immer Abschied bedeutet"
 category: Reflexion
 date: 2026-04-05T07:30:00.000+02:00
-image: /img/radix-sonne-widder-mond-skorpion-ostern.jpg
+image: ""
+featured_video: /img/ostern-auferstehung-loslassen.mp4
 video: /img/ostern-auferstehung-loslassen.mp4
+post_image: /img/radix-sonne-widder-mond-skorpion-ostern.jpg
 description: Das Prinzip Auferstehung ist mehr als eine Tradition – es ist ein
   kosmisches Gesetz. Erfahre, warum wir erst loslassen müssen, um mental neu
   durchzustarten.
