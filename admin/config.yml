@@ -15,6 +15,7 @@ collections:
       - label: "Kategorie"
         name: "category"
         widget: "select"
+        default: "Zeitqualität"   # Optional: Das ist dann immer vorausgewählt
         options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
