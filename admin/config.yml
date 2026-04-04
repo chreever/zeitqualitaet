@@ -15,20 +15,22 @@ collections:
       - label: "Kategorie"
         name: "category"
         widget: "select"
-        default: "Zeitqualität"   # Optional: Das ist dann immer vorausgewählt
+        default: "Zeitqualität"
         options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
-      # Medien für die Vorschau-Kacheln
+      # MEDIEN FÜR KACHELN (Startseite/Archiv)
       - {label: "Vorschaubild für Kachel (Foto)", name: "image", widget: "image", required: false}
       - {label: "Vorschauvideo für Kachel (MP4)", name: "featured_video", widget: "file", required: false}
       
-      # Medien für die großen Banner
-      - {label: "Hintergrund-Video nur für Banner (MP4)", name: "video", widget: "file", required: false}
+      # MEDIEN FÜR DAS BANNER (Ganz oben auf der Startseite)
+      - {label: "Hintergrund-Video NUR für Banner (MP4)", name: "video", widget: "file", required: false}
+      
+      # DAS EIGENTLICHE FOTO IM BEITRAG
+      - {label: "Hauptfoto im Beitrag (Erscheint im Artikel)", name: "post_image", widget: "image", required: false}
       
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
       
-      # Krisensicheres Select-Feld
       - label: "Banner-Platzierung"
         name: "placement"
         widget: "select"
@@ -41,7 +43,6 @@ collections:
         
       - {label: "Inhalt", name: "body", widget: "markdown"}
 
-  # Der datumsbasierte Kalender für Impulse (Jetzt mit korrektem Widget)
   - name: "settings"
     label: "Einstellungen"
     files:
