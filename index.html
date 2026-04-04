@@ -636,17 +636,7 @@
     gap: 1.5rem;
   }
 
-  .phil-card {
-    padding: 2rem;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    transition: var(--transition);
-  }
-
-  .phil-card:hover {
-    border-color: var(--border);
-    background: var(--bg-card);
-  }
+ 
 
   .phil-icon {
     font-size: 1.4rem;
@@ -667,20 +657,38 @@
     line-height: 1.7;
   }
 
-  /* Zeitversetztes Einblenden für die Philosophie-Karten */
-  .philosophy-inner .phil-card:nth-child(1) { transition-delay: 0.1s; }
-  .philosophy-inner .phil-card:nth-child(2) { transition-delay: 0.3s; }
-  .philosophy-inner .phil-card:nth-child(3) { transition-delay: 0.5s; }
+  /* ── DIE PHILOSOPHIE-KACHELN (ANIMATION & HOVER) ── */
+  .phil-card {
+    padding: 2rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    background: transparent;
+    opacity: 0; /* Unsichtbar vor dem Scrollen */
+    transition: all 0.4s ease; /* Weicher Übergang für den Hover */
+  }
 
-  /* Ein minimaler Zoom-Effekt beim Erscheinen */
-  .phil-card.fade-up {
-    transform: translateY(30px) scale(0.95);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  /* Das passiert, wenn du mit der Maus drüberfährst (Schweben) */
+  .phil-card:hover {
+    border-color: var(--border);
+    background: var(--bg-card);
+    transform: translateY(-8px) !important; 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  }
+
+  /* Keyframe-Animation für das erste Einfliegen beim Scrollen */
+  @keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .phil-card.fade-up.visible {
-    transform: translateY(0) scale(1);
+    animation: slideUpFade 0.8s ease forwards;
   }
+
+  /* Zeitversetztes Einfliegen (1-2-3) */
+  .philosophy-inner .phil-card:nth-child(1).visible { animation-delay: 0.1s; }
+  .philosophy-inner .phil-card:nth-child(2).visible { animation-delay: 0.3s; }
+  .philosophy-inner .phil-card:nth-child(3).visible { animation-delay: 0.5s; }
 
   .posts-grid {
     display: grid;
