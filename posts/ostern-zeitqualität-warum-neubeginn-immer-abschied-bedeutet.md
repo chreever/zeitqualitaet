@@ -1,5 +1,5 @@
 ---
-title: "Ostern & Zeitqualität: Warum Neubeginn immer Abschied bedeutet"
+title: "Ostern und Zeitqualität: Warum Neubeginn immer Abschied bedeutet"
 category: Reflexion
 date: 2026-04-05T07:30:00.000+02:00
 image: /img/radix-sonne-widder-mond-skorpion-ostern.jpg
