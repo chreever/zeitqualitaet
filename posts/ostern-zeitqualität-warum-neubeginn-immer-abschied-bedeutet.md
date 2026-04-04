@@ -7,7 +7,7 @@ video: /img/ostern-auferstehung-loslassen.mp4
 description: Das Prinzip Auferstehung ist mehr als eine Tradition – es ist ein
   kosmisches Gesetz. Erfahre, warum wir erst loslassen müssen, um mental neu
   durchzustarten.
-placement: Top-Banner (Header)
+placement: null
 ---
 Ostern ist das Fest der Auferstehung. Symbolisch feiern wir das Erwachen des Lebens nach der Starre des Winters. Doch betrachten wir das Prinzip der „Auferstehung“ einmal jenseits von Tradition und Religion als mentales Werkzeug: Es ist die radikale Erlaubnis zum Neubeginn.
 
