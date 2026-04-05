@@ -23,7 +23,7 @@ Die Botschaft des Himmels an diesem Wochenende ist klar: **Du kannst kein neues 
 
 ## Mentale Stärke bedeutet Platz schaffen
 
-In meiner Arbeit als Mentaltrainer sehe ich oft, dass Menschen sich nach Veränderung sehnen, aber gleichzeitig versuchen, alle alten Gewohnheiten, Sicherheitsnetze und Glaubenssätze mitzunehmen. Das funktioniert nicht. Echte mentale Stärke zeigt sich nicht nur im Durchhalten, sondern vor allem in der Entscheidung, was wir *nicht* mehr sein wollen.
+Ich beobachte immer wieder: Wir sehnen uns nach echter Veränderung, versuchen aber gleichzeitig, all die alten Gewohnheiten und Sicherheitsnetze mitzuschleppen. Doch wer wirklich neu durchstarten will, muss bereit sein, das Gepäck zu erleichtern.
 
 Auferstehung bedeutet, dass das Alte gehen darf, damit das Neue Raum zum Atmen hat.
 
