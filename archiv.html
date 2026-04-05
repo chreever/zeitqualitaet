@@ -168,18 +168,27 @@
     const searchInput = document.getElementById('post-search');
     
     try {
-      // 1. Inhaltsverzeichnis holen (Krisensicher über Allorigins)
-      const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?t=' + Date.now();
-      const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiURL));
-      const data = await response.json();
-      let files = JSON.parse(data.contents);
+      // 1. Direktes Abrufen von GitHub (ohne den fehleranfälligen allorigins-Proxy)
+      const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?ref=main';
+      const response = await fetch(apiURL);
       
-      if (files && files.items) { files = files.items; }
-      if (!Array.isArray(files)) throw new Error("Keine Dateiliste erhalten");
+      // Fehlerbehandlung, falls GitHub blockiert
+      if (!response.ok) {
+         if (response.status === 403 || response.status === 429) {
+             throw new Error("GitHub-Sicherheitssperre (Zu viele Aufrufe beim Testen). Bitte warte ein paar Minuten.");
+         }
+         if (response.status === 404) {
+             throw new Error("Ordner 'posts' nicht gefunden.");
+         }
+         throw new Error("Fehlercode: " + response.status);
+      }
+
+      const files = await response.json();
+      if (!Array.isArray(files)) throw new Error("Keine gültige Dateiliste von GitHub erhalten.");
 
       let postsData = [];
 
-      // 2. Texte LOKAL laden (Viel schneller, keine API-Limits!)
+      // 2. Texte LOKAL laden (Viel schneller!)
       for (let file of files) {
         if (file.name.endsWith('.md')) {
           try {
@@ -209,7 +218,7 @@
             
             post.title = post.title || post.slug.replace(/-/g, ' ').toUpperCase();
             postsData.push(post);
-          } catch(err) { console.error("Fehler bei lokaler Datei:", file.name); }
+          } catch(err) { console.warn("Fehler bei lokaler Datei:", file.name); }
         }
       }
 
@@ -266,7 +275,11 @@
 
     } catch (e) { 
       console.error(e);
-      container.innerHTML = '<p style="text-align:center; grid-column:1/-1; color: var(--accent);">Archiv konnte nicht geladen werden. Bitte Seite neu laden.</p>'; 
+      // Zeige die Fehlermeldung nun genau an
+      container.innerHTML = `
+        <p style="text-align:center; grid-column:1/-1; color: var(--accent);">Archiv konnte nicht geladen werden.</p>
+        <p style="text-align:center; grid-column:1/-1; color: var(--text-dim); font-size: 0.9rem;">Ursache: ${e.message}</p>
+      `; 
     }
   }
   
