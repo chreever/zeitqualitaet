@@ -17,7 +17,7 @@ Ostern ist das Fest der Auferstehung. Symbolisch feiern wir das Erwachen des Leb
 
 An diesem Ostersonntag erleben wir eine spannungsgeladene, aber kraftvolle energetische Mischung. Während die **Sonne im Widder** uns mit Tatendrang, Feuer und dem Willen zum „Ich will vorwärts“ antreibt, steht der **Mond im Skorpion**. 
 
-Der Skorpion fragt nicht nach dem „Wie schnell?“, sondern nach dem „Wie echt?“. Er steht für die Tiefe, die Transformation und – ganz wichtig – für das Sterbenlassen von Dingen, die uns nicht mehr dienen. 
+Der Skorpion fragt nicht nach dem „Wie schnell?“, sondern nach dem „Wie echt?“. Er steht für die Tiefe, die Transformation und – ganz wichtig – für das Loslassen von Dingen, die uns nicht mehr dienen. 
 
 Die Botschaft des Himmels an diesem Wochenende ist klar: **Du kannst kein neues Feuer entfachen, wenn dein Kamin noch voller alter Asche ist.**
 
