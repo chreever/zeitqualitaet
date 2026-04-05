@@ -60,7 +60,7 @@
     #post-search { width: 100%; padding: 16px 24px; background: rgba(26, 27, 38, 0.5); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: var(--font-body); font-size: 1.1rem; outline: none; transition: 0.3s; backdrop-filter: blur(10px); }
     #post-search:focus { border-color: var(--accent); box-shadow: 0 0 15px var(--accent-dim); background: var(--bg-card); }
 
-    /* ── KACHELN (Wie auf Startseite) ── */
+    /* ── KACHELN ── */
     .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
     .post-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; transition: var(--transition); display: block; color: inherit; }
     .post-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
@@ -123,7 +123,7 @@
     <p style="color:var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Durchsuche alle bisherigen Impulse und Beiträge.</p>
     
     <div class="search-container">
-      <input type="text" id="post-search" placeholder="Begriff eingeben (z.B. Ostern, Mond)...">
+      <input type="text" id="post-search" placeholder="Echtzeitsuche: Begriff eingeben (z.B. Ostern)...">
     </div>
   </div>
   
@@ -141,7 +141,7 @@
     </svg>
     <span style="font-family: var(--font-display); font-size: 1.5rem; color: var(--text); margin-left: 8px;">Zeitqualität</span>
   </a>
-  <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">© 2026 Zeitqualität · Christian</p>
+  <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem;">© 2026 Zeitqualität · Christian Balas</p>
 </footer>
 
 <script>
@@ -168,23 +168,28 @@
     const searchInput = document.getElementById('post-search');
     
     try {
+      // 1. Inhaltsverzeichnis holen (Krisensicher über Allorigins)
       const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?t=' + Date.now();
-      const response = await fetch(apiURL);
-      if (!response.ok) throw new Error("Netzwerkfehler");
+      const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(apiURL));
+      const data = await response.json();
+      let files = JSON.parse(data.contents);
       
-      const files = await response.json();
+      if (files && files.items) { files = files.items; }
+      if (!Array.isArray(files)) throw new Error("Keine Dateiliste erhalten");
+
       let postsData = [];
 
-      // Alle Markdown-Dateien abrufen und Frontmatter auslesen
+      // 2. Texte LOKAL laden (Viel schneller, keine API-Limits!)
       for (let file of files) {
         if (file.name.endsWith('.md')) {
           try {
-            const res = await fetch(file.download_url);
+            const res = await fetch(`posts/${file.name}`);
+            if (!res.ok) continue;
             const text = await res.text();
             
             let post = { 
               slug: file.name.replace('.md', ''),
-              url: `post.html?id=${encodeURIComponent(file.name.replace('.md', ''))}`, // KORREKTER LINK!
+              url: `post.html?id=${encodeURIComponent(file.name.replace('.md', ''))}`,
               title: '', category: 'Impuls', image: '', featured_video: '', description: '', date: ''
             };
 
@@ -204,11 +209,11 @@
             
             post.title = post.title || post.slug.replace(/-/g, ' ').toUpperCase();
             postsData.push(post);
-          } catch(err) { console.error("Fehler bei Datei:", file.name); }
+          } catch(err) { console.error("Fehler bei lokaler Datei:", file.name); }
         }
       }
 
-      // Sortieren (Neueste zuerst)
+      // 3. Sortieren und Rendern
       postsData.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
       allPosts = postsData;
 
@@ -219,7 +224,7 @@
           return;
         }
         
-        items.forEach((p, index) => {
+        items.forEach((p) => {
           const card = document.createElement('a');
           card.href = p.url;
           card.className = 'post-card fade-up visible';
@@ -245,10 +250,10 @@
         });
       };
 
-      // Alle rendern
+      // Alles beim ersten Laden anzeigen
       render(allPosts);
 
-      // Such-Logik
+      // Echtzeitsuche ausführen, wenn getippt wird
       searchInput.addEventListener('input', e => {
         const val = e.target.value.toLowerCase();
         const filtered = allPosts.filter(p => 
@@ -261,7 +266,7 @@
 
     } catch (e) { 
       console.error(e);
-      container.innerHTML = '<p style="text-align:center; grid-column:1/-1; color: var(--accent);">Archiv konnte nicht geladen werden. Bitte lade die Seite neu.</p>'; 
+      container.innerHTML = '<p style="text-align:center; grid-column:1/-1; color: var(--accent);">Archiv konnte nicht geladen werden. Bitte Seite neu laden.</p>'; 
     }
   }
   
