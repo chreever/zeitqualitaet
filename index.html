@@ -701,7 +701,7 @@
     gap: 1.5rem;
   }
 
- 
+  
 
   .phil-icon {
     font-size: 1.4rem;
@@ -995,14 +995,30 @@
     opacity: 0.5;
   }
 
+  /* ── FIX: SCROLLBAR FÜR DIE RÜCKSEITE DER ZODIAC-KARTEN ── */
   .zodiac-back {
     transform: rotateY(180deg);
     background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
     padding: 1.3rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; /* Änderung: Text beginnt oben, nicht zentriert */
     border: 1px solid var(--border);
+    overflow-y: auto; /* NEU: Scrollbar erlauben, wenn Inhalt zu groß ist */
+    scrollbar-width: thin; /* Firefox: Dünne Scrollbar */
+    scrollbar-color: var(--accent-dim) transparent; /* Firefox: Farbe */
+  }
+
+  /* Webkit-Scrollbar (Chrome/Safari/Edge) anpassen, damit es dezent aussieht */
+  .zodiac-back::-webkit-scrollbar {
+    width: 4px;
+  }
+  .zodiac-back::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .zodiac-back::-webkit-scrollbar-thumb {
+    background-color: var(--accent-dim);
+    border-radius: 10px;
   }
 
   .zodiac-back-title {
@@ -1524,6 +1540,15 @@
 
     .video-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* ── ZODIAC MOBILE SCHRIFTANPASSUNG ── */
+    .zodiac-detail-value {
+      font-size: 0.8rem; /* Etwas kleiner für mehr Platz */
+      line-height: 1.3;
+    }
+    .zodiac-detail {
+        margin-bottom: 0.4rem;
     }
 }
 
