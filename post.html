@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impuls — Zeitqualität | Kompass für Kopf und Seele</title>
   
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Zeitqualität">
-  <meta property="og:url" id="og-url" content="https://zeitqualitaet.at/">
-  <meta property="og:title" id="og-title" content="Zeitqualität - Mentale Souveränität & Strategisches Timing">
-  <meta property="og:description" id="og-desc" content="Zeitzyklen nutzen. Mentale Stärke trainieren. Souverän entscheiden in Business & Alltag..">
-  <meta property="og:image" id="og-image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Zeitqualität">
+<meta property="og:url" content="https://zeitqualitaet.at/">
+<meta property="og:title" content="Zeitqualität – Mentale Souveränität & Strategisches Timing">
+<meta property="og:description" content="Zeitzyklen nutzen. Mentale Stärke trainieren. Souverän entscheiden in Business & Alltag.">
+<meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
   
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -166,17 +166,7 @@
       document.getElementById('post-content').innerHTML = `<h1>${title || id}</h1>` + marked.parse(body);
       document.title = `${title || 'Beitrag'} — Zeitqualität`;
 
-      // FACEBOOK FIX: Meta-Tags aktualisieren
-      document.getElementById('og-title').setAttribute('content', title);
-      document.getElementById('og-desc').setAttribute('content', desc);
-      document.getElementById('og-url').setAttribute('content', window.location.href);
       
-      // Bild für Facebook absolut machen
-      if (finalImg) {
-        const absoluteImg = window.location.origin + fixPath(finalImg);
-        document.getElementById('og-image').setAttribute('content', absoluteImg);
-      }
-
     } catch(e) {
       document.getElementById('post-content').innerHTML = `<h1>Signal verloren</h1><p>Beitrag "${id}" nicht gefunden.</p>`;
     }
