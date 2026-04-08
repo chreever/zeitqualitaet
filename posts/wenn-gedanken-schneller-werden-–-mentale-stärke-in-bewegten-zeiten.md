@@ -67,8 +67,8 @@ Nicht jede Bewegung mitgehen.
 
 Gerade in dynamischen Phasen entsteht Klarheit nicht durch mehr Aktivität, sondern durch bewusste Auswahl.
 
-1. **Mein Impuls für dich:**
+**Mein Impuls für dich:**
 
-Beobachte in den kommenden Tagen, wie schnell du auf Gedanken oder äußere Reize reagierst. Wo entsteht der Impuls, sofort zu handeln? Und wo kannst du bewusst einen Moment Abstand schaffen?
+1. Beobachte in den kommenden Tagen, wie schnell du auf Gedanken oder äußere Reize reagierst. Wo entsteht der Impuls, sofort zu handeln? Und wo kannst du bewusst einen Moment Abstand schaffen?
 
 Mentale Stärke zeigt sich genau dort – im Raum zwischen Impuls und Entscheidung.
