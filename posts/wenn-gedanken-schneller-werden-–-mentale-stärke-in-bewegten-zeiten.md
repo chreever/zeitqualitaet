@@ -61,13 +61,13 @@ Wenn Denken schneller wird und Handlungsimpulse zunehmen, braucht es einen Gegen
 
 bewusste Unterbrechung.
 
-Nicht alles sofort umsetzen.  
-Nicht jede Idee weiterverfolgen.  
+Nicht alles sofort umsetzen.\
+Nicht jede Idee weiterverfolgen.\
 Nicht jede Bewegung mitgehen.
 
 Gerade in dynamischen Phasen entsteht Klarheit nicht durch mehr Aktivität, sondern durch bewusste Auswahl.
 
-**Ein Impuls für dich:**
+1. **Mein Impuls für dich:**
 
 Beobachte in den kommenden Tagen, wie schnell du auf Gedanken oder äußere Reize reagierst. Wo entsteht der Impuls, sofort zu handeln? Und wo kannst du bewusst einen Moment Abstand schaffen?
 
