@@ -1,7 +1,7 @@
 ---
 title: "Rückläufiger Merkur: Mythos vs. Realität"
 category: Allgemein
-date: 2026-04-29T14:12:00.000+02:00
+date: 2026-03-29T14:12:00.000+02:00
 image: /img/sternenhimmel-berge.jpg
 post_image: ""
 description: Über das Tempo des Denkens und die Kunst des Rückblicks
