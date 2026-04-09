@@ -2275,10 +2275,10 @@ section#kontakt button[type="submit"]:active {
     window.addEventListener('resize', resize);
   })();
 
-  // ── DIE SCHLAUE CMS LOGIK (MIT DATUM, LESEZEIT, #T=1) ──
+ // ── DIE SCHLAUE CMS LOGIK (AKTUALISIERT FÜR ELEVENTY) ──
   let allPosts = [];
 
- async function loadCMSPosts() {
+  async function loadCMSPosts() {
     const container = document.getElementById('dynamic-posts');
     const bannerContainer = document.getElementById('dynamic-banner-container');
     const infoBannerContainer = document.getElementById('dynamic-info-banner');
@@ -2305,120 +2305,119 @@ section#kontakt button[type="submit"]:active {
           let image = '';
           let video = '';
           let featured_video = '';
-                  let dateFormatted = '';
-                  let rawDate = 0; // NEU: Ein unsichtbarer Datums-Stempel zum Sortieren
-                  let readTime = 1;
+          let dateFormatted = '';
+          let rawDate = 0; 
+          let readTime = 1;
 
-                  try {
-                    const rawRes = await fetch(`posts/${file.name}`);
-                    if (rawRes.ok) {
-                      const rawText = await rawRes.text();
-                      if (rawText.startsWith('---')) {
-                        const parts = rawText.split('---');
-                        if (parts.length >= 3) {
-                          const frontmatter = parts[1];
-                          const bodyText = parts.slice(2).join('---').trim();
-                          
-                          // Daten auslesen per Regex
-                          const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
-                          const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
-                          const placeMatch = frontmatter.match(/placement:\s*['"]?(.*?)['"]?\n/);
-                          const descMatch = frontmatter.match(/description:\s*['"]?(.*?)['"]?\n/);
-                          const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
-                          const imgMatch = frontmatter.match(/image:\s*['"]?(.*?)['"]?\n/);
-                          const vidMatch = frontmatter.match(/video:\s*['"]?(.*?)['"]?\n/);
-                          const featVidMatch = frontmatter.match(/featured_video:\s*['"]?(.*?)['"]?\n/);
-                          const dateMatch = frontmatter.match(/date:\s*['"]?(.*?)['"]?\n/i);
-                          
-                          if (titleMatch) title = titleMatch[1];
-                          if (catMatch) category = catMatch[1];
-                          if (placeMatch) placement = placeMatch[1];
-                          if (descMatch) description = descMatch[1];
-                          if (badgeMatch) badge = badgeMatch[1];
-                          if (imgMatch) image = imgMatch[1];
-                          if (vidMatch) video = vidMatch[1];
-                          if (featVidMatch) featured_video = featVidMatch[1];
-                          if (dateMatch) {
-                            const d = new Date(dateMatch[1]);
-                            if (!isNaN(d)) {
-                              dateFormatted = d.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
-                              rawDate = d.getTime(); // NEU: Speichert die genaue Millisekunde für die perfekte Sortierung
-                            } else {
-                              dateFormatted = dateMatch[1];
-                            }
-                          }
-
-                          const words = bodyText.split(/\s+/).length;
-                          readTime = Math.max(1, Math.ceil(words / 200));
-                        }
-                      }
+          try {
+            // HIER WIRD NUN AUS DEM HILFSORDNER GELADEN
+            const rawRes = await fetch(`raw-posts/${file.name}`);
+            if (rawRes.ok) {
+              const rawText = await rawRes.text();
+              if (rawText.startsWith('---')) {
+                const parts = rawText.split('---');
+                if (parts.length >= 3) {
+                  const frontmatter = parts[1];
+                  const bodyText = parts.slice(2).join('---').trim();
+                  
+                  const titleMatch = frontmatter.match(/title:\s*['"]?(.*?)['"]?\n/);
+                  const catMatch = frontmatter.match(/category:\s*['"]?(.*?)['"]?\n/);
+                  const placeMatch = frontmatter.match(/placement:\s*['"]?(.*?)['"]?\n/);
+                  const descMatch = frontmatter.match(/description:\s*['"]?(.*?)['"]?\n/);
+                  const badgeMatch = frontmatter.match(/badge:\s*['"]?(.*?)['"]?\n/);
+                  const imgMatch = frontmatter.match(/image:\s*['"]?(.*?)['"]?\n/);
+                  const vidMatch = frontmatter.match(/video:\s*['"]?(.*?)['"]?\n/);
+                  const featVidMatch = frontmatter.match(/featured_video:\s*['"]?(.*?)['"]?\n/);
+                  const dateMatch = frontmatter.match(/date:\s*['"]?(.*?)['"]?\n/i);
+                  
+                  if (titleMatch) title = titleMatch[1];
+                  if (catMatch) category = catMatch[1];
+                  if (placeMatch) placement = placeMatch[1];
+                  if (descMatch) description = descMatch[1];
+                  if (badgeMatch) badge = badgeMatch[1];
+                  if (imgMatch) image = imgMatch[1];
+                  if (vidMatch) video = vidMatch[1];
+                  if (featVidMatch) featured_video = featVidMatch[1];
+                  if (dateMatch) {
+                    const d = new Date(dateMatch[1]);
+                    if (!isNaN(d)) {
+                      dateFormatted = d.toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
+                      rawDate = d.getTime(); 
+                    } else {
+                      dateFormatted = dateMatch[1];
                     }
-                  } catch(e) {}
+                  }
 
-                  return { slug, title, category, placement, description, badge, image, video, featured_video, date: dateFormatted, rawDate, readTime, url: `post.html?id=${slug}` };
-                });
+                  const words = bodyText.split(/\s+/).length;
+                  readTime = Math.max(1, Math.ceil(words / 200));
+                }
+              }
+            }
+          } catch(e) {}
+
+          // HIER IST DER MAGISCHE LINK ZUR SEO-SEITE!
+          return { slug, title, category, placement, description, badge, image, video, featured_video, date: dateFormatted, rawDate, readTime, url: `/posts/${slug}/` };
+        });
 
         allPosts = await Promise.all(postPromises);
-
-        // NEU: Hier sortieren wir die Beiträge exakt nach Datum (vom Neuesten zum Ältesten)
         allPosts.sort((a, b) => b.rawDate - a.rawDate);
 
+        // ... Dein Render-Code für Banners & Co bleibt völlig unberührt ...
+        
         // 1. TOP-BANNER RENDERN
-if (bannerContainer) {
-  const topPost = allPosts.find(p => p.placement === 'Top-Banner (Header)');
-  if (topPost) {
-    bannerContainer.innerHTML = `
-      <a href="${topPost.url}" class="transit-banner fade-up visible" id="transite" style="text-decoration:none;color:inherit;display:block">
-        <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
-          ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}#t=1" type="video/mp4"></video>` : ''}
-          <div style="position:relative; z-index:2;">
-            <div class="transit-label">
-              <span style="color:var(--accent); font-weight:600;">${topPost.category}</span>
-              
-              ${topPost.date ? `<span style="color:#ffffff; opacity:0.6;"> • </span><span style="color:#ffffff;">${topPost.date}</span>` : ''}
-              <span style="color:#ffffff; opacity:0.6;"> • </span><span style="color:#ffffff;">${topPost.readTime} Min.</span>
-            </div>
-            <div class="transit-title">${topPost.title}</div>
-            <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr zu erfahren.'}</div>
-          </div>
-          ${topPost.badge ? `<div class="transit-badge" style="position:relative; z-index:2;">◯ ${topPost.badge}</div>` : ''}
-        </div>
-      </a>
-    `;
-  }
-}
+        if (bannerContainer) {
+          const topPost = allPosts.find(p => p.placement === 'Top-Banner (Header)');
+          if (topPost) {
+            bannerContainer.innerHTML = `
+              <a href="${topPost.url}" class="transit-banner fade-up visible" id="transite" style="text-decoration:none;color:inherit;display:block">
+                <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
+                  ${topPost.video ? `<video class="banner-video" autoplay muted loop playsinline><source src="${topPost.video}#t=1" type="video/mp4"></video>` : ''}
+                  <div style="position:relative; z-index:2;">
+                    <div class="transit-label">
+                      <span style="color:var(--accent); font-weight:600;">${topPost.category}</span>
+                      ${topPost.date ? `<span style="color:#ffffff; opacity:0.6;"> • </span><span style="color:#ffffff;">${topPost.date}</span>` : ''}
+                      <span style="color:#ffffff; opacity:0.6;"> • </span><span style="color:#ffffff;">${topPost.readTime} Min.</span>
+                    </div>
+                    <div class="transit-title">${topPost.title}</div>
+                    <div class="transit-desc" style="margin-top:0.4rem">${topPost.description || 'Klicke hier, um mehr zu erfahren.'}</div>
+                  </div>
+                  ${topPost.badge ? `<div class="transit-badge" style="position:relative; z-index:2;">◯ ${topPost.badge}</div>` : ''}
+                </div>
+              </a>
+            `;
+          }
+        }
 
         // 2. INFO-BANNER RENDERN
-if (infoBannerContainer) {
-  const infoPost = allPosts.find(p => p.placement === 'Info-Banner (Mitte)');
-  if (infoPost) {
-    // NEUE LOGIK: Erst Video, dann Bild, sonst nichts (kein Sternenhimmel)
-    let mediaHTML = '';
-    if (infoPost.video) {
-      mediaHTML = `<video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="${infoPost.video}#t=1" type="video/mp4"></video>`;
-    } else if (infoPost.image) {
-      mediaHTML = `<img src="${infoPost.image}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">`;
-    }
+        if (infoBannerContainer) {
+          const infoPost = allPosts.find(p => p.placement === 'Info-Banner (Mitte)');
+          if (infoPost) {
+            let mediaHTML = '';
+            if (infoPost.video) {
+              mediaHTML = `<video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="${infoPost.video}#t=1" type="video/mp4"></video>`;
+            } else if (infoPost.image) {
+              mediaHTML = `<img src="${infoPost.image}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">`;
+            }
 
-    infoBannerContainer.innerHTML = `
-      <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
-        ${mediaHTML}
-        <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
-          <span class="post-tag">${infoPost.category}</span>
-          <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent);">${infoPost.title}</h2>
-          <div class="post-meta" style="margin-bottom: 1.5rem; margin-top: 0;">
-            ${infoPost.date ? `<span>${infoPost.date}</span>` : ''}
-            <span>${infoPost.readTime} Min. Lesezeit</span>
-          </div>
-          <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
-            ${infoPost.description || 'Erfahre mehr über dieses Thema.'}
-          </p>
-          <a href="${infoPost.url}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
-        </div>
-      </div>
-    `;
-  }
-}
+            infoBannerContainer.innerHTML = `
+              <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
+                ${mediaHTML}
+                <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
+                  <span class="post-tag">${infoPost.category}</span>
+                  <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent);">${infoPost.title}</h2>
+                  <div class="post-meta" style="margin-bottom: 1.5rem; margin-top: 0;">
+                    ${infoPost.date ? `<span>${infoPost.date}</span>` : ''}
+                    <span>${infoPost.readTime} Min. Lesezeit</span>
+                  </div>
+                  <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
+                    ${infoPost.description || 'Erfahre mehr über dieses Thema.'}
+                  </p>
+                  <a href="${infoPost.url}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
+                </div>
+              </div>
+            `;
+          }
+        }
 
         // 3. KACHELN RENDERN
         const render = (items, limit = 6) => {
@@ -2438,9 +2437,7 @@ if (infoBannerContainer) {
                   <source src="${p.featured_video}#t=0.1" type="video/mp4">
                 </video>`;
             } else {
-              mediaHTML = `
-                <img class="post-card-img" src="${p.image || 'img/sternenhimmel-berge.jpg'}" 
-                     onerror="this.src='img/sternenhimmel-berge.jpg'">`;
+              mediaHTML = `<img class="post-card-img" src="${p.image || 'img/sternenhimmel-berge.jpg'}" onerror="this.src='img/sternenhimmel-berge.jpg'">`;
             }
 
             card.innerHTML = `
@@ -2459,7 +2456,6 @@ if (infoBannerContainer) {
 
         render(allPosts, 6);
         
-        // Scroll-Position und Suche
         setTimeout(restoreScroll, 100);
         if (searchInput) {
           searchInput.addEventListener('input', (e) => {
