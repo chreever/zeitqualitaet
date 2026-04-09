@@ -1,21 +1,24 @@
 module.exports = function(eleventyConfig) {
-  // Diese Ordner werden von Eleventy einfach 1:1 in die fertige Website kopiert
+  // Diese Ordner werden 1:1 kopiert
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("videos");
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("data");
 
-  // DER TRICK: Wir kopieren die Markdown-Dateien zusätzlich in einen Ordner "raw-posts".
-  // So finden deine bisherigen JavaScript-Suche und Banner die Daten weiterhin, 
-  // während Eleventy gleichzeitig echte HTML-Seiten für Google baut.
-  eleventyConfig.addPassthroughCopy({ "posts": "raw-posts" });
+  // Filter für die Lesezeit (Eleventy rechnet das jetzt aus!)
+  eleventyConfig.addFilter("readingTime", function(content) {
+    const wordsPerMinute = 200;
+    const text = content.replace(/<[^>]*>/g, ''); // HTML entfernen
+    const words = text.split(/\s+/).length;
+    return Math.max(1, Math.ceil(words / wordsPerMinute));
+  });
 
   return {
     dir: {
-      input: ".",          // Deine Arbeitsdateien liegen im Hauptverzeichnis
-      output: "_site",     // Hier baut Eleventy die fertige Website rein
-      includes: "_includes"// Hier liegt dein neues Master-Layout
+      input: ".",
+      output: "_site",
+      includes: "_includes"
     }
   };
 };
