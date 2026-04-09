@@ -17,6 +17,14 @@
     <meta property="og:image" content="https://zeitqualitaet.at/img/christian-portraet.jpg">
   {% endif %}
 
+  {# NEU: Video-Daten für Facebook und Messenger #}
+  {% set ogVideo = featured_video | default(video) %}
+  {% if ogVideo %}
+    <meta property="og:video" content="https://zeitqualitaet.at{{ ogVideo | url }}">
+    <meta property="og:video:secure_url" content="https://zeitqualitaet.at{{ ogVideo | url }}">
+    <meta property="og:video:type" content="video/mp4">
+  {% endif %}
+
   <link rel="icon" type="image/svg+xml" href="/img/zq-favicon.svg?v=2">
   <link rel="alternate icon" href="/img/zq-favicon.png?v=2">
   <link rel="apple-touch-icon" href="/img/zq-favicon.png?v=2">
