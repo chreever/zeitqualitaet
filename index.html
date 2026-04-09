@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="/img/zq-favicon.png">
 
 <style>
-  /* ── LOCAL FONTS ── */
+  /* ── LOCAL FONTS (Pfade korrigiert auf /fonts/) ── */
   @font-face {
     font-family: 'Cormorant Garamond';
     src: url('/fonts/cormorant-garamond.woff2') format('woff2');
@@ -110,6 +110,7 @@
     font-style: normal;
     font-display: swap;
   }
+
   :root {
     --bg: #08090e;
     --bg-warm: #0c0d14;
@@ -135,7 +136,7 @@
     --max-w: 1100px;
     --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* ── TYPOGRAPHY SCALE (Optimiert) ── */
+    /* ── TYPOGRAPHY SCALE ── */
     --fs-hero: clamp(3.5rem, 8.5vw, 6.2rem);
     --fs-h1: 2.8rem;
     --fs-h2: 2.2rem;
@@ -774,6 +775,7 @@
     cursor: pointer;
     text-decoration: none;
     color: inherit;
+    display: block;
   }
 
   .post-card:hover {
@@ -809,7 +811,7 @@
     display: inline-block;
   }
 
-  /* --- GOLD-FIX FÜR ALLE KACHELN (POSTS & VIDEO-IMPULSE) --- */
+  /* --- GOLD-FIX FÜR ALLE KACHELN --- */
   .post-card h3, 
   .video-card h3, 
   #dynamic-posts h3, 
@@ -855,6 +857,9 @@
     overflow: hidden;
     margin-bottom: 3rem;
     transition: var(--transition);
+    position: relative;
+    min-height: 400px;
+    align-items: center;
   }
 
   .featured:hover {
@@ -913,7 +918,6 @@
   /* ── ZODIAC FLIP CARDS ── */
   .zodiac-grid {
     display: grid;
-    /* Handyanpassung: minmax auf 160px gesetzt, so passen immer mindestens 2 Karten nebeneinander auf normalen Handys */
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
   }
@@ -1006,24 +1010,16 @@
     padding: 1.3rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Änderung: Text beginnt oben, nicht zentriert */
+    justify-content: flex-start;
     border: 1px solid var(--border);
-    overflow-y: auto; /* NEU: Scrollbar erlauben, wenn Inhalt zu groß ist */
-    scrollbar-width: thin; /* Firefox: Dünne Scrollbar */
-    scrollbar-color: var(--accent-dim) transparent; /* Firefox: Farbe */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-dim) transparent;
   }
 
-  /* Webkit-Scrollbar (Chrome/Safari/Edge) anpassen, damit es dezent aussieht */
-  .zodiac-back::-webkit-scrollbar {
-    width: 4px;
-  }
-  .zodiac-back::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  .zodiac-back::-webkit-scrollbar-thumb {
-    background-color: var(--accent-dim);
-    border-radius: 10px;
-  }
+  .zodiac-back::-webkit-scrollbar { width: 4px; }
+  .zodiac-back::-webkit-scrollbar-track { background: transparent; }
+  .zodiac-back::-webkit-scrollbar-thumb { background-color: var(--accent-dim); border-radius: 10px; }
 
   .zodiac-back-title {
     font-family: var(--font-display);
@@ -1159,7 +1155,6 @@
     box-shadow: 0 8px 28px rgba(212, 165, 106, 0.2);
   }
 
-  /* ── FOOTER LINKS ── */
   .footer-links {
     display: flex;
     gap: 1.5rem;
@@ -1176,7 +1171,6 @@
     color: var(--accent);
   }
 
-  /* ── VIDEO-IMPULSE ── */
   .tiktok-section {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -1229,7 +1223,6 @@
     line-height: 1.6;
   }
 
-  /* ── ABOUT ── */
   .about {
     max-width: var(--max-w);
     margin: 0 auto;
@@ -1380,22 +1373,6 @@
     line-height: 1.6;
   }
 
-  .footer-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 0.8rem;
-  }
-
-  .footer-links a {
-    font-size: var(--fs-fine);
-    color: var(--text-dim);
-  }
-
-  .footer-links a:hover {
-    color: var(--accent);
-  }
-
   .fade-up {
     opacity: 0;
     transform: translateY(24px);
@@ -1409,9 +1386,7 @@
 
 /* --- RESPONSIVE OPTIMIERUNG --- */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
+    .nav-links { display: none; }
 
     .nav-links.open {
         display: flex;
@@ -1436,28 +1411,10 @@
         word-wrap: break-word; 
     }
 
-    @media (max-width: 400px) {
-        .nav-links.open a {
-            font-size: 0.9rem;
-        }
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .hero {
-        padding: 9rem 1.5rem 3rem;
-        min-height: auto;
-    }
-
-    .orbit-system {
-        opacity: 0.4;
-    }
-
-    section {
-        padding: 3rem 1.5rem;
-    }
+    .menu-toggle { display: block; }
+    .hero { padding: 9rem 1.5rem 3rem; min-height: auto; }
+    .orbit-system { opacity: 0.4; }
+    section { padding: 3rem 1.5rem; }
 
     .hero-tagline {
         display: grid !important;
@@ -1470,9 +1427,7 @@
         padding: 0 !important;
     }
 
-    .hero-tagline .dot {
-        display: none !important;
-    }
+    .hero-tagline .dot { display: none !important; }
 
     .hero-tagline span {
         font-size: 0.82rem !important; 
@@ -1496,129 +1451,51 @@
     .about-aside img {
         width: 100%;
         height: auto !important; 
-        object-fit: cover;       
+        object-fit: cover;        
         border-radius: var(--radius);
     }
 
-    .about-aside {
-        position: static;
-        order: -1; 
-    }
-
-    .featured {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-body {
-        padding: 1.8rem;
-    }
-
-    .featured-img {
-        min-height: 220px;
-    }
-
-    .posts-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-row {
-        flex-direction: column;
-    }
-
-    .transit-banner-inner {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .about {
-        padding: 3rem 1.5rem;
-    }
-
-    .tiktok-section {
-        padding: 2rem 1.5rem 3rem;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
+    .about-aside { position: static; order: -1; }
+    .featured { grid-template-columns: 1fr; }
+    .featured-body { padding: 1.8rem; }
+    .featured-img { min-height: 220px; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; }
+    .transit-banner-inner { flex-direction: column; align-items: flex-start; }
+    .about { padding: 3rem 1.5rem; }
+    .tiktok-section { padding: 2rem 1.5rem 3rem; }
+    .video-grid { grid-template-columns: 1fr; }
     
-    /* ── ZODIAC MOBILE SCHRIFTANPASSUNG ── */
-    .zodiac-detail-value {
-      font-size: 0.8rem; /* Etwas kleiner für mehr Platz */
-      line-height: 1.3;
-    }
-    .zodiac-detail {
-        margin-bottom: 0.4rem;
-    }
+    .zodiac-detail-value { font-size: 0.8rem; line-height: 1.3; }
+    .zodiac-detail { margin-bottom: 0.4rem; }
 }
 
 /* ── HINTERGRUND-DIMMUNG BEIM SCROLLEN ── */
-.orbit-system, .sun-core {
-    transition: opacity 1s ease, filter 1s ease;
-}
-  
-body.scrolled .orbit-system {
-    opacity: 0.15; 
-}
-  
-body.scrolled .sun-core {
-    filter: brightness(0.2) opacity(0.3) blur(4px); 
-}
+.orbit-system, .sun-core { transition: opacity 1s ease, filter 1s ease; }
+body.scrolled .orbit-system { opacity: 0.15; }
+body.scrolled .sun-core { filter: brightness(0.2) opacity(0.3) blur(4px); }
 
 /* --- Animation für den Absende-Button --- */
-section#kontakt button[type="submit"] {
-  transition: all 0.3s ease-in-out; 
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-}
+section#kontakt button[type="submit"] { transition: all 0.3s ease-in-out; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+section#kontakt button[type="submit"]:hover { background-color: #34495e; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); } 
 
-section#kontakt button[type="submit"]:hover {
-  background-color: #34495e; 
-  transform: translateY(-3px); 
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2); 
-}
-
-section#kontakt button[type="submit"]:active {
-  transform: translateY(-1px); 
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-} 
-
-/* --- GOLD-UPDATE FÜR ALLE TITEL AUF DER STARTSEITE --- */
-.transit-title {
-    color: var(--accent) !important;
-}
-
-.post-card h3 {
-    color: var(--accent) !important;
-    text-transform: uppercase; 
-    letter-spacing: 0.02em;
-}
-
-.featured h2 {
-    color: var(--accent) !important;
-}
+/* --- GOLD-UPDATE FÜR TITEL --- */
+.transit-title { color: var(--accent) !important; }
+.post-card h3 { color: var(--accent) !important; text-transform: uppercase; letter-spacing: 0.02em; }
+.featured h2 { color: var(--accent) !important; }
 .admin-access-star {
     display: inline-block;
-    color: var(--accent); /* Dein Gold-Ton */
-    opacity: 0.4; /* Deutlich sichtbarer als vorher, aber immer noch dezent */
+    color: var(--accent);
+    opacity: 0.4;
     text-decoration: none;
     font-size: 1.1rem;
     margin-left: 10px;
     transition: all 0.3s ease;
     vertical-align: middle;
-  }
-
-  .admin-access-star:hover {
-    opacity: 1;
-    transform: scale(1.3) rotate(20deg); /* Stern wird größer und dreht sich leicht */
-    cursor: pointer;
-    filter: drop-shadow(0 0 5px var(--accent)); /* Kleines Leuchten */
-  }
-  
+}
+.admin-access-star:hover { opacity: 1; transform: scale(1.3) rotate(20deg); cursor: pointer; filter: drop-shadow(0 0 5px var(--accent)); }
 </style>
 </head>
 <body>
@@ -1644,7 +1521,7 @@ section#kontakt button[type="submit"]:active {
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo-container">
+    <a href="/" class="logo-container">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
         <defs>
           <linearGradient id="gold-logo" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1667,7 +1544,7 @@ section#kontakt button[type="submit"]:active {
       <a href="#beitraege">Beiträge</a>
       <a href="#videos">Impulse</a>
       <a href="#galerie">Sternzeichen</a>
-      <a href="ueber.html">Über mich</a>
+      <a href="/ueber.html">Über mich</a>
       <a href="#kontakt">Kontakt</a>
     </div>
   </div>
@@ -1678,14 +1555,14 @@ section#kontakt button[type="submit"]:active {
   <h1>Die <em>Qualität</em><br>der Zeit lesen</h1>
   <p class="hero-sub">Kein Horoskop, kein Orakel. Sondern ein Blick auf die Rhythmen der Zeit, Transite und mentale Kraft – als Werkzeug für Orientierung, Reflexion und bewusstes Leben.</p>
   <div class="hero-tagline">
-  <span class="tagline-item" data-info="Der Rhythmus des Lebens im großen Ganzen.">Zyklen</span> 
-  <span class="dot">·</span>
-  <span class="tagline-item" data-info="Die energetische Signatur des Augenblicks.">Zeitqualität</span> 
-  <span class="dot">·</span>
-  <span class="tagline-item" data-info="Der bewusste Blick in die eigene Innenwelt.">Reflexion</span> 
-  <span class="dot">·</span>
-  <span class="tagline-item" data-info="Souveränität und Klarheit durch innere Arbeit.">Mentale Stärke</span>
-</div>
+    <span class="tagline-item" data-info="Der Rhythmus des Lebens im großen Ganzen.">Zyklen</span> 
+    <span class="dot">·</span>
+    <span class="tagline-item" data-info="Die energetische Signatur des Augenblicks.">Zeitqualität</span> 
+    <span class="dot">·</span>
+    <span class="tagline-item" data-info="Der bewusste Blick in die eigene Innenwelt.">Reflexion</span> 
+    <span class="dot">·</span>
+    <span class="tagline-item" data-info="Souveränität und Klarheit durch innere Arbeit.">Mentale Stärke</span>
+  </div>
 </header>
 
 <section id="tages-impuls" style="max-width: var(--max-w); margin: 2rem auto 6rem auto; padding: 0 2rem;">
@@ -1705,21 +1582,17 @@ section#kontakt button[type="submit"]:active {
     async function loadDailyImpulse() {
       const textElement = document.getElementById('daily-impulse-text');
       try {
-        const res = await fetch('data/impulses.json');
+        const res = await fetch('/data/impulses.json');
         if (!res.ok) throw new Error('Datei nicht gefunden');
         const data = await res.json();
         
-        // Das heutige Datum holen (YYYY-MM-DD) in lokaler Zeit
         const now = new Date();
         const year = now.getFullYear();
         const month = String(now.getMonth() + 1).padStart(2, '0');
         const day = String(now.getDate()).padStart(2, '0');
         const todayString = `${year}-${month}-${day}`;
 
-        // Den gesamten Textblock nehmen
         const block = data.impulses_block || "";
-        
-        // Suche nach dem Datum am Zeilenanfang
         const regex = new RegExp("^" + todayString + ":\\s*(.*)$", "m");
         const match = block.match(regex);
 
@@ -1736,7 +1609,30 @@ section#kontakt button[type="submit"]:active {
     loadDailyImpulse();
   </script>
 </section>
-<div id="dynamic-banner-container"></div>
+
+<div id="dynamic-banner-container">
+  {% for post in collections.posts %}
+    {% if post.data.placement == "Top-Banner (Header)" %}
+      <a href="{{ post.url }}" class="transit-banner fade-up visible" style="text-decoration:none;color:inherit;display:block">
+        <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
+          {% if post.data.video %}
+            <video class="banner-video" autoplay muted loop playsinline><source src="/{{ post.data.video | replace('/', '', 1) if post.data.video.startsWith('/') else post.data.video }}#t=1" type="video/mp4"></video>
+          {% endif %}
+          <div style="position:relative; z-index:2;">
+            <div class="transit-label">
+              <span style="color:var(--accent); font-weight:600;">{{ post.data.category }}</span>
+              <span> • </span><span>{{ post.date | date: "%d. %B %Y" }}</span>
+              <span> • </span><span>{{ post.templateContent | readingTime }} Min.</span>
+            </div>
+            <div class="transit-title">{{ post.data.title }}</div>
+            <div class="transit-desc" style="margin-top:0.4rem">{{ post.data.description }}</div>
+          </div>
+          {% if post.data.badge %}<div class="transit-badge" style="position:relative; z-index:2;">◯ {{ post.data.badge }}</div>{% endif %}
+        </div>
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
 
 <div class="philosophy">
   <div class="philosophy-inner">
@@ -1760,9 +1656,33 @@ section#kontakt button[type="submit"]:active {
 
 <div class="divider"><hr></div>
 
-<section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem;"></section>
+<section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem;">
+  {% for post in collections.posts %}
+    {% if post.data.placement == "Info-Banner (Mitte)" %}
+      <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
+        {% if post.data.video %}
+          <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="/{{ post.data.video | replace('/', '', 1) if post.data.video.startsWith('/') else post.data.video }}#t=1" type="video/mp4"></video>
+        {% elif post.data.image %}
+          <img src="/{{ post.data.image | replace('/', '', 1) if post.data.image.startsWith('/') else post.data.image }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
+        {% endif %}
+        <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
+          <span class="post-tag">{{ post.data.category }}</span>
+          <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent);">{{ post.data.title }}</h2>
+          <div class="post-meta" style="margin-bottom: 1.5rem; margin-top: 0;">
+            <span>{{ post.date | date: "%d. %B %Y" }}</span>
+            <span> • </span><span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
+            {{ post.data.description or 'Erfahre mehr über dieses Thema.' }}
+          </p>
+          <a href="{{ post.url }}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</section>
 
-<section id="dynamic-posts">
+<section id="beitraege">
   <div class="section-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem;">
     <h2 class="section-title">Aktuelle Beiträge</h2>
     <div style="position: relative; width: 100%; max-width: 400px;">
@@ -1772,11 +1692,11 @@ section#kontakt button[type="submit"]:active {
     </div>
   </div>
   
-  <div id="dynamic-posts" class="posts-grid">
-   {% for post in collections.posts | reverse %}
+  <div class="posts-grid">
+    {% for post in collections.posts | reverse %}
       <a href="{{ post.url }}" class="post-card fade-up visible" data-title="{{ post.data.title | lower }}" data-category="{{ post.data.category | lower }}" style="opacity: 1;">
         {% if post.data.featured_video %}
-          <video class="post-card-img" autoplay muted loop playsinline>
+          <video class="post-card-img" autoplay muted loop playsinline poster="/{{ post.data.image | replace('/', '', 1) if post.data.image.startsWith('/') else post.data.image }}">
             <source src="/{{ post.data.featured_video | replace('/', '', 1) if post.data.featured_video.startsWith('/') else post.data.featured_video }}#t=0.1" type="video/mp4">
           </video>
         {% else %}
@@ -1786,7 +1706,7 @@ section#kontakt button[type="submit"]:active {
           <span class="post-tag">{{ post.data.category or "Zeitqualität" }}</span>
           <h3>{{ post.data.title }}</h3>
           <div class="post-meta">
-            <span>{{ post.date | date: "%d. %m. %Y" }}</span>
+            <span>{{ post.date | date: "%d. %B %Y" }}</span>
             <span> • </span>
             <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
           </div>
@@ -1796,7 +1716,7 @@ section#kontakt button[type="submit"]:active {
   </div>
   
   <div style="text-align: center; margin-top: 4rem;">
-    <a href="archiv.html" style="display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 100px; color: var(--accent); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s;">
+    <a href="/archiv.html" style="display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 100px; color: var(--accent); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s;">
       Zum vollständigen Archiv →
     </a>
   </div>
@@ -1820,7 +1740,7 @@ section#kontakt button[type="submit"]:active {
         <p>Stell dir dein Leben wie ein Haus vor – der Aszendent ist deine Haustür und der Filter, durch den du die Welt erblickst.</p>
       </div>
     </div>
-  <div class="video-card">
+    <div class="video-card">
       <video class="local-video" controls preload="metadata">
         <source src="/videos/impuls-zweites-haus.mp4" type="video/mp4">
         Dein Browser unterstützt keine Videos.
@@ -1842,7 +1762,6 @@ section#kontakt button[type="submit"]:active {
     <h2 class="section-title">Die 12 Sternzeichen</h2>
     <span class="section-link" style="cursor:default">Klick zum Umdrehen</span>
   </div>
-
   <div class="zodiac-grid" id="zodiacGrid"></div>
 </section>
 
@@ -1854,20 +1773,18 @@ section#kontakt button[type="submit"]:active {
       <img src="/img/christian-portraet.jpg" alt="Christian" class="about-photo" style="border-radius: var(--radius); width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; object-position: 80% center;">
       <div class="about-tagline">Wer schreibt hier?</div>
       <h2>Christian Balas</h2>
-<p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.5; margin-bottom: 1.5rem;">
-  Mein Alltag gehört den Finanzen, meine Leidenschaft der Zeitqualität.<br>
-  Diplomierter Mentaltrainer und Astrologie-Enthusiast.
-</p>
-<blockquote>Es ist nicht die Zeit, die uns fehlt, sondern die Tiefe, mit der wir sie erleben.</blockquote>
+      <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.5; margin-bottom: 1.5rem;">
+        Mein Alltag gehört den Finanzen, meine Leidenschaft der Zeitqualität.<br>
+        Diplomierter Mentaltrainer und Astrologie-Enthusiast.
+      </p>
+      <blockquote>Es ist nicht die Zeit, die uns fehlt, sondern die Tiefe, mit der wir sie erleben.</blockquote>
     </div>
 
     <div class="about-content fade-up">
       <h3>Vom Takt der Effizienz zum Rhythmus der Zeit</h3>
       <p>Mein Name ist Christian. Nach über 19 Jahren in der analytischen, schnelllebigen Finanzbranche kenne ich den ständigen Druck der Effizienz nur zu gut. Als <strong style="color:var(--accent-light)">ausgebildeter Mentaltrainer</strong> habe ich mich oft gefragt: Leben wir eigentlich im Einklang mit unserer Zeit, oder rennen wir ihr nur atemlos hinterher?</p>
-      
       <p>Aus dieser Frage entstand <em>Zeitqualität</em>.</p>
-      
-      <a href="ueber.html" style="display: inline-block; padding: 10px 26px; border: 1px solid var(--accent); border-radius: 100px; color: var(--bg); background: var(--accent); font-family: var(--font-body); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; text-decoration: none; font-weight: 600; margin-top: 1.5rem;">
+      <a href="/ueber.html" style="display: inline-block; padding: 10px 26px; border: 1px solid var(--accent); border-radius: 100px; color: var(--bg); background: var(--accent); font-family: var(--font-body); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; text-decoration: none; font-weight: 600; margin-top: 1.5rem;">
         Mehr über meine Reise lesen →
       </a>
     </div>
@@ -1885,74 +1802,62 @@ section#kontakt button[type="submit"]:active {
     <h3>In Verbindung bleiben</h3>
     <p>Fragen, Gedanken oder Anregungen? Ich freue mich über Austausch — ob inhaltlich, philosophisch oder einfach menschlich.</p>
     
-  <div style="margin: 2rem 0; background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
-  
-  <form name="gaestebuch" id="contact-form" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="gaestebuch" />
-
-    <div id="form-fields">
-      <div style="margin-bottom: 1rem;">
-        <input type="text" name="name" placeholder="Dein Name" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 5px;">
-      </div>
-      
-      <div style="margin-bottom: 1rem;">
-        <textarea name="message" placeholder="Deine Nachricht" rows="4" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 5px; font-family: inherit;"></textarea>
-      </div>
-      
-      <div style="margin-bottom: 1rem; font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;">
-        <input type="checkbox" id="privacy" name="privacy" required style="margin-top: 3px;">
-        <label for="privacy" style="color: var(--text-muted);">Ich stimme zu, dass meine Angaben gespeichert werden (siehe <a href="datenschutz.html" style="color: var(--accent);">Datenschutz</a>).</label>
-      </div>
-      
-      <button type="submit" id="submit-btn" style="background: var(--accent); color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; width: 100%;">
-        Nachricht absenden
-      </button>
+    <div style="margin: 2rem 0; background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+      <form name="gaestebuch" id="contact-form" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="gaestebuch" />
+        <div id="form-fields">
+          <div style="margin-bottom: 1rem;">
+            <input type="text" name="name" placeholder="Dein Name" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 5px;">
+          </div>
+          <div style="margin-bottom: 1rem;">
+            <textarea name="message" placeholder="Deine Nachricht" rows="4" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 5px; font-family: inherit;"></textarea>
+          </div>
+          <div style="margin-bottom: 1rem; font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;">
+            <input type="checkbox" id="privacy" name="privacy" required style="margin-top: 3px;">
+            <label for="privacy" style="color: var(--text-muted);">Ich stimme zu, dass meine Angaben gespeichert werden (siehe <a href="/datenschutz.html" style="color: var(--accent);">Datenschutz</a>).</label>
+          </div>
+          <button type="submit" id="submit-btn" style="background: var(--accent); color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; width: 100%;">
+            Nachricht absenden
+          </button>
+        </div>
+        <div id="form-success" style="display:none; padding: 2rem 1rem; text-align: center;">
+          <h3 style="color: var(--accent); font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem;">Vielen Dank!</h3>
+          <p style="color: var(--text-muted);">Deine Nachricht wurde empfangen. Ich melde mich bald bei dir.</p>
+          <button type="button" onclick="location.reload()" style="margin-top: 1.5rem; background: transparent; border: 1px solid var(--border); color: var(--text-dim); padding: 5px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;">Weitere Nachricht senden</button>
+        </div>
+      </form>
     </div>
-
-    <div id="form-success" style="display:none; padding: 2rem 1rem; text-align: center;">
-      <h3 style="color: var(--accent); font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem;">Vielen Dank!</h3>
-      <p style="color: var(--text-muted);">Deine Nachricht wurde empfangen. Ich melde mich bald bei dir.</p>
-      <button type="button" onclick="location.reload()" style="margin-top: 1.5rem; background: transparent; border: 1px solid var(--border); color: var(--text-dim); padding: 5px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;">Weitere Nachricht senden</button>
+    <p style="margin-bottom:1.5rem; opacity: 0.6;">
+      <a href="mailto:christian@zeitqualitaet.at" style="font-size:var(--fs-body);font-weight:500; color: var(--text-muted);">christian@zeitqualitaet.at</a> 
+    </p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener" class="social-link">Instagram</a>
+      <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener" class="social-link">TikTok</a>
     </div>
-  </form>
-</div>
-<p style="margin-bottom:1.5rem; opacity: 0.6;">
-  <a href="mailto:christian@zeitqualitaet.at" style="font-size:var(--fs-body);font-weight:500; color: var(--text-muted);">christian@zeitqualitaet.at</a> 
-</p>
-
-<div class="social-links">
-  <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener" class="social-link">Instagram</a>
-  <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener" class="social-link">TikTok</a>
-</div>
+  </div>
 </section>
 
 <footer>
-  <a href="#" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
+  <a href="/" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
       <defs>
         <linearGradient id="gold-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f2d5a3"/>
-          <stop offset="40%" stop-color="#d4a56a"/>
-          <stop offset="100%" stop-color="#a67b45"/>
+          <stop offset="0%" stop-color="#f2d5a3"/><stop offset="40%" stop-color="#d4a56a"/><stop offset="100%" stop-color="#a67b45"/>
         </linearGradient>
       </defs>
       <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo-footer)" stroke-width="1.5" opacity="0.25"/>
-      <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo-footer)" stroke-width="0.5" opacity="0.6"/>
-      <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo-footer)" opacity="0.15"/>
       <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo-footer)"/>
-      <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
     </svg>
     <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
   </a>
   <p class="footer-note">
-  © 2026 Zeitqualität · Christian Balas 
-  <a href="/admin/" class="admin-access-star" title="Admin Login">✧</a>
-</p>
-  <p class="footer-disclaimer">Unabhängiger redaktioneller Informationsblog zur thematischen Einordnung astrologischer Inhalte und Zeitqualität. Die Inhalte dienen der Reflexion und Orientierung – sie ersetzen keine professionelle Beratung.</p>
-  <p class="footer-disclaimer" style="margin-top:0.4rem;">Bildnachweis &amp; Transparenz: Visuelle Inhalte und Illustrationen wurden teilweise unter Verwendung von Künstlicher Intelligenz (KI) generiert.</p>
+    © 2026 Zeitqualität · Christian Balas 
+    <a href="/admin/" class="admin-access-star" title="Admin Login">✧</a>
+  </p>
+  <p class="footer-disclaimer">Unabhängiger redaktioneller Informationsblog zur thematischen Einordnung astrologischer Inhalte. Die Inhalte dienen der Reflexion und Orientierung – sie ersetzen keine professionelle Beratung.</p>
   <div class="footer-links">
-    <a href="datenschutz.html">Datenschutz</a>
-    <a href="impressum.html">Impressum / Offenlegung</a>
+    <a href="/datenschutz.html">Datenschutz</a>
+    <a href="/impressum.html">Impressum / Offenlegung</a>
   </div>
 </footer>
 
@@ -1965,7 +1870,7 @@ section#kontakt button[type="submit"]:active {
     });
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-up, .phil-card').forEach(el => observer.observe(el));
 
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
@@ -1973,400 +1878,107 @@ section#kontakt button[type="submit"]:active {
     });
   });
 
-  // ── TWINKLING STARS ──
+  /* ── TWINKLING STARS ── */
   (function() {
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
     let stars = [];
-    const STAR_COUNT = 200;
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     function createStars() {
       stars = [];
-      for (let i = 0; i < STAR_COUNT; i++) {
+      for (let i = 0; i < 200; i++) {
         stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 1.5 + 0.3,
-          opacity: Math.random() * 0.6 + 0.1,
-          speed: Math.random() * 0.003 + 0.001,
-          phase: Math.random() * Math.PI * 2,
+          x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+          size: Math.random() * 1.5 + 0.3, opacity: Math.random() * 0.6 + 0.1,
+          speed: Math.random() * 0.003 + 0.001, phase: Math.random() * Math.PI * 2,
           color: ['#e2dfd8', '#d4a56a', '#7b9cc4', '#c9b97a', '#7abfbf'][Math.floor(Math.random() * 5)]
         });
       }
     }
-
     function draw(time) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       stars.forEach(star => {
         const twinkle = Math.sin(time * star.speed + star.phase) * 0.3 + 0.7;
-        const alpha = star.opacity * twinkle;
-
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = star.color;
-        ctx.globalAlpha = alpha;
-        ctx.fill();
-
-        // subtle glow for bigger stars
-        if (star.size > 1) {
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = star.color;
-          ctx.globalAlpha = alpha * 0.08;
-          ctx.fill();
-        }
+        ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = star.color; ctx.globalAlpha = star.opacity * twinkle; ctx.fill();
       });
-
-      ctx.globalAlpha = 1;
       requestAnimationFrame(draw);
     }
-
-    resize();
-    createStars();
-    requestAnimationFrame(draw);
-
-    window.addEventListener('resize', () => {
-      resize();
-      createStars();
-    });
+    resize(); createStars(); requestAnimationFrame(draw);
+    window.addEventListener('resize', () => { resize(); createStars(); });
   })();
 
-  // ── VIDEO PREVIEW FIX ──
-  document.querySelectorAll('.local-video').forEach(function(v) {
-    v.addEventListener('loadedmetadata', function() {
-      v.currentTime = 1;
+  /* ── SEARCH LOGIC ── */
+  const searchInput = document.getElementById('post-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll('.post-card').forEach(card => {
+        const title = card.getAttribute('data-title') || "";
+        const cat = card.getAttribute('data-category') || "";
+        card.style.display = (title.includes(term) || cat.includes(term)) ? 'block' : 'none';
+      });
     });
-    v.addEventListener('play', function() {
-      if (!v.dataset.started) {
-        v.dataset.started = '1';
-        v.currentTime = 1;
-      }
-    });
-  });
+  }
 
-  // ── ZODIAC FLIP CARDS ──
+  /* ── ZODIAC FLIP CARDS ── */
   (function() {
     const signs = [
-      { symbol: '♈', name: 'Widder', dates: '21.03. – 19.04.', element: 'Feuer', planet: 'Mars', house: '1. Haus (Identität)', qualities: 'Pioniergeist, Mut, Tatendrang, Direktheit', traits: 'Impulsiv, energisch, unabhängig, leidenschaftlich' },
-      { symbol: '♉', name: 'Stier', dates: '20.04. – 20.05.', element: 'Erde', planet: 'Venus', house: '2. Haus (Werte & Besitz)', qualities: 'Beständigkeit, Sinnlichkeit, Geduld, Treue', traits: 'Genussvoll, verlässlich, bodenständig, willensstark' },
-      { symbol: '♊', name: 'Zwillinge', dates: '21.05. – 20.06.', element: 'Luft', planet: 'Merkur', house: '3. Haus (Kommunikation)', qualities: 'Vielseitigkeit, Neugier, Witz, Anpassung', traits: 'Kommunikativ, wissbegierig, beweglich, gesellig' },
-      { symbol: '♋', name: 'Krebs', dates: '21.06. – 22.07.', element: 'Wasser', planet: 'Mond', house: '4. Haus (Zuhause & Wurzeln)', qualities: 'Fürsorge, Empathie, Intuition, Geborgenheit', traits: 'Emotional, schützend, einfühlsam, familienorientiert' },
-      { symbol: '♌', name: 'Löwe', dates: '23.07. – 22.08.', element: 'Feuer', planet: 'Sonne', house: '5. Haus (Kreativität & Freude)', qualities: 'Großzügigkeit, Charisma, Führungskraft, Stolz', traits: 'Kreativ, warmherzig, selbstbewusst, dramatisch' },
-      { symbol: '♍', name: 'Jungfrau', dates: '23.08. – 22.09.', element: 'Erde', planet: 'Merkur', house: '6. Haus (Alltag & Gesundheit)', qualities: 'Analytik, Präzision, Hilfsbereitschaft, Ordnung', traits: 'Gewissenhaft, detailorientiert, praktisch, bescheiden' },
-      { symbol: '♎', name: 'Waage', dates: '23.09. – 22.10.', element: 'Luft', planet: 'Venus', house: '7. Haus (Partnerschaft)', qualities: 'Harmonie, Ästhetik, Diplomatie, Gerechtigkeit', traits: 'Ausgleichend, charmant, beziehungsorientiert, fair' },
-      { symbol: '♏', name: 'Skorpion', dates: '23.10. – 21.11.', element: 'Wasser', planet: 'Pluto (Mars)', house: '8. Haus (Transformation)', qualities: 'Tiefgang, Intensität, Wandlung, Wahrheitssuche', traits: 'Leidenschaftlich, durchdringend, loyal, kompromisslos' },
-      { symbol: '♐', name: 'Schütze', dates: '22.11. – 21.12.', element: 'Feuer', planet: 'Jupiter', house: '9. Haus (Weisheit & Reisen)', qualities: 'Optimismus, Freiheitsdrang, Philosophie, Abenteuerlust', traits: 'Enthusiastisch, weitblickend, ehrlich, großzügig' },
-      { symbol: '♑', name: 'Steinbock', dates: '22.12. – 19.01.', element: 'Erde', planet: 'Saturn', house: '10. Haus (Berufung & Status)', qualities: 'Disziplin, Verantwortung, Ausdauer, Struktur', traits: 'Ehrgeizig, pflichtbewusst, geduldig, zielstrebig' },
-      { symbol: '♒', name: 'Wassermann', dates: '20.01. – 18.02.', element: 'Luft', planet: 'Uranus (Saturn)', house: '11. Haus (Gemeinschaft & Vision)', qualities: 'Originalität, Freiheit, Humanität, Innovation', traits: 'Unkonventionell, idealistisch, unabhängig, visionär' },
-      { symbol: '♓', name: 'Fische', dates: '19.02. – 20.03.', element: 'Wasser', planet: 'Neptun (Jupiter)', house: '12. Haus (Spiritualität & Rückzug)', qualities: 'Mitgefühl, Hingabe, Fantasie, Transzendenz', traits: 'Einfühlsam, kreativ, verträumt, selbstlos' }
+      { symbol: '♈', name: 'Widder', dates: '21.03. – 19.04.', element: 'Feuer', planet: 'Mars', house: '1. Haus', qualities: 'Pioniergeist, Mut, Tatendrang', traits: 'Impulsiv, energisch, unabhängig' },
+      { symbol: '♉', name: 'Stier', dates: '20.04. – 20.05.', element: 'Erde', planet: 'Venus', house: '2. Haus', qualities: 'Beständigkeit, Sinnlichkeit', traits: 'Genussvoll, verlässlich, bodenständig' },
+      { symbol: '♊', name: 'Zwillinge', dates: '21.05. – 20.06.', element: 'Luft', planet: 'Merkur', house: '3. Haus', qualities: 'Vielseitigkeit, Neugier, Witz', traits: 'Kommunikativ, wissbegierig, beweglich' },
+      { symbol: '♋', name: 'Krebs', dates: '21.06. – 22.07.', element: 'Wasser', planet: 'Mond', house: '4. Haus', qualities: 'Fürsorge, Empathie, Intuition', traits: 'Emotional, schützend, einfühlsam' },
+      { symbol: '♌', name: 'Löwe', dates: '23.07. – 22.08.', element: 'Feuer', planet: 'Sonne', house: '5. Haus', qualities: 'Großzügigkeit, Charisma', traits: 'Kreativ, warmherzig, selbstbewusst' },
+      { symbol: '♍', name: 'Jungfrau', dates: '23.08. – 22.09.', element: 'Erde', planet: 'Merkur', house: '6. Haus', qualities: 'Analytik, Präzision', traits: 'Gewissenhaft, detailorientiert, praktisch' },
+      { symbol: '♎', name: 'Waage', dates: '23.09. – 22.10.', element: 'Luft', planet: 'Venus', house: '7. Haus', qualities: 'Harmonie, Ästhetik', traits: 'Ausgleichend, charmant, fair' },
+      { symbol: '♏', name: 'Skorpion', dates: '23.10. – 21.11.', element: 'Wasser', planet: 'Pluto', house: '8. Haus', qualities: 'Tiefgang, Intensität', traits: 'Leidenschaftlich, loyal, kompromisslos' },
+      { symbol: '♐', name: 'Schütze', dates: '22.11. – 21.12.', element: 'Feuer', planet: 'Jupiter', house: '9. Haus', qualities: 'Optimismus, Freiheitsdrang', traits: 'Enthusiastisch, weitblickend, ehrlich' },
+      { symbol: '♑', name: 'Steinbock', dates: '22.12. – 19.01.', element: 'Erde', planet: 'Saturn', house: '10. Haus', qualities: 'Disziplin, Verantwortung', traits: 'Ehrgeizig, pflichtbewusst, geduldig' },
+      { symbol: '♒', name: 'Wassermann', dates: '20.01. – 18.02.', element: 'Luft', planet: 'Uranus', house: '11. Haus', qualities: 'Originalität, Freiheit', traits: 'Unkonventionell, idealistisch, visionär' },
+      { symbol: '♓', name: 'Fische', dates: '19.02. – 20.03.', element: 'Wasser', planet: 'Neptun', house: '12. Haus', qualities: 'Mitgefühl, Hingabe, Fantasie', traits: 'Einfühlsam, kreativ, verträumt' }
     ];
-
     const grid = document.getElementById('zodiacGrid');
-
     signs.forEach(s => {
       const card = document.createElement('div');
       card.className = 'zodiac-card fade-up';
       card.onclick = function() { this.classList.toggle('flipped'); };
-      card.innerHTML = `
-        <div class="zodiac-card-inner">
-          <div class="zodiac-front">
-            <span class="zodiac-symbol">${s.symbol}</span>
-            <div class="zodiac-name">${s.name}</div>
-            <div class="zodiac-dates">${s.dates}</div>
-            <div class="zodiac-element">${s.element}</div>
-            <div class="zodiac-hint">Klick zum Umdrehen</div>
-          </div>
-          <div class="zodiac-back">
-            <div class="zodiac-back-title">${s.symbol} ${s.name}</div>
-            <div class="zodiac-detail">
-              <div class="zodiac-detail-label">Qualitäten</div>
-              <div class="zodiac-detail-value">${s.qualities}</div>
-            </div>
-            <div class="zodiac-detail">
-              <div class="zodiac-detail-label">Charaktereigenschaften</div>
-              <div class="zodiac-detail-value">${s.traits}</div>
-            </div>
-            <div class="zodiac-detail">
-              <div class="zodiac-detail-label">Herrscherplanet</div>
-              <div class="zodiac-detail-value">${s.planet}</div>
-            </div>
-            <div class="zodiac-detail">
-              <div class="zodiac-detail-label">Herrscherhaus</div>
-              <div class="zodiac-detail-value">${s.house}</div>
-            </div>
-            <div class="zodiac-back-hint">Nochmal klicken zum Zurückdrehen</div>
-          </div>
-        </div>`;
+      card.innerHTML = `<div class="zodiac-card-inner"><div class="zodiac-front"><span style="font-size:3.2rem;margin-bottom:0.6rem;">${s.symbol}</span><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:500;">${s.name}</div><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);">${s.dates}</div><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);text-transform:uppercase;margin-top:0.7rem;">${s.element}</div></div><div class="zodiac-back"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--accent);margin-bottom:0.8rem;">${s.symbol} ${s.name}</div><div style="margin-bottom:0.55rem;"><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;">Qualitäten</div><div style="font-size:0.92rem;">${s.qualities}</div></div><div style="margin-bottom:0.55rem;"><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;">Eigenschaften</div><div style="font-size:0.92rem;">${s.traits}</div></div><div style="margin-bottom:0.55rem;"><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;">Planet</div><div style="font-size:0.92rem;">${s.planet}</div></div></div></div>`;
       grid.appendChild(card);
     });
-
-    // observe for fade-up
-    document.querySelectorAll('.zodiac-card.fade-up').forEach(el => observer.observe(el));
   })();
 
-  // ── CURSOR LIGHT VEIL ──
+  /* ── CURSOR & STARDUST ── */
   (function() {
     const glow = document.getElementById('cursorGlow');
-    let glowX = -500, glowY = -500;
-    let targetX = -500, targetY = -500;
-    let isActive = false;
-    let hideTimeout;
-
-    document.addEventListener('mousemove', (e) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
-
-      if (!isActive) {
-        isActive = true;
-        glow.classList.add('active');
-      }
-
-      clearTimeout(hideTimeout);
-      hideTimeout = setTimeout(() => {
-        glow.classList.remove('active');
-        isActive = false;
-      }, 1500);
-    });
-
-    document.addEventListener('mouseleave', () => {
-      glow.classList.remove('active');
-      isActive = false;
-    });
-
-    function animateGlow() {
-      // Smooth lerp for fluid movement
-      glowX += (targetX - glowX) * 0.12;
-      glowY += (targetY - glowY) * 0.12;
-      glow.style.left = glowX + 'px';
-      glow.style.top = glowY + 'px';
-      requestAnimationFrame(animateGlow);
+    document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; glow.classList.add('active'); });
+    const canvas = document.getElementById('stardust'), ctx = canvas.getContext('2d');
+    let pts = [];
+    window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+    window.onresize();
+    document.addEventListener('mousemove', (e) => { for(let i=0; i<3; i++) pts.push({x:e.clientX, y:e.clientY, life:1, vx:(Math.random()-0.5)*2, vy:(Math.random()-0.5)*2}); });
+    function anim() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      pts.forEach((p,i) => { p.life -= 0.02; p.x += p.vx; p.y += p.vy; if(p.life <= 0) pts.splice(i,1); ctx.fillStyle = `rgba(226,223,216,${p.life})`; ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI*2); ctx.fill(); });
+      requestAnimationFrame(anim);
     }
-
-    animateGlow();
+    anim();
   })();
 
-  // ── STARDUST MOUSE TRAIL ──
-  (function() {
-    const canvas = document.getElementById('stardust');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let mouseX = -1000, mouseY = -1000;
-    let lastX = -1000, lastY = -1000;
-    let isMoving = false;
-    let moveTimeout;
-
-    const colors = [
-      { r: 226, g: 223, b: 216 },  // Warmes Weiß (Hauptfarbe)
-      { r: 210, g: 205, b: 195 },  // Sanftes Silber-Grau
-      { r: 212, g: 185, b: 140 }   // Sehr dezentes, blasses Gold
-    ];
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function createParticle(x, y, speed) {
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const angle = Math.random() * Math.PI * 2;
-      const velocity = Math.random() * 1.2 + 0.3;
-      const drift = speed * 0.15;
-
-      particles.push({
-        x: x + (Math.random() - 0.5) * 16,
-        y: y + (Math.random() - 0.5) * 16,
-        vx: Math.cos(angle) * velocity + (Math.random() - 0.5) * drift,
-        vy: Math.sin(angle) * velocity + (Math.random() - 0.5) * drift - 0.4,
-        size: Math.random() * 1.5 + 0.5,
-        life: 1,
-        decay: Math.random() * 0.025 + 0.012,
-        color: color,
-        rotation: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.1,
-        isStar: Math.random() > 0.6
-      });
-    }
-
-    function drawStar(x, y, size, rotation) {
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(rotation);
-      ctx.beginPath();
-      for (let i = 0; i < 4; i++) {
-        const a = (i / 4) * Math.PI * 2;
-        ctx.moveTo(0, 0);
-        ctx.lineTo(Math.cos(a) * size, Math.sin(a) * size);
-      }
-      ctx.stroke();
-      ctx.restore();
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.01; // tiny gravity
-        p.vx *= 0.99;
-        p.life -= p.decay;
-        p.rotation += p.rotSpeed;
-        p.size *= 0.997;
-
-        if (p.life <= 0) {
-          particles.splice(i, 1);
-          continue;
-        }
-
-        const alpha = p.life * p.life; // quadratic fade for smooth disappearance
-        const { r, g, b } = p.color;
-
-        if (p.isStar) {
-          // draw as tiny cross/star shape
-          ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.9})`;
-          ctx.lineWidth = 0.5;
-          drawStar(p.x, p.y, p.size * 1.5, p.rotation);
-
-          // glow
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.1})`;
-          ctx.fill();
-        } else {
-          // draw as soft circle
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.8})`;
-          ctx.fill();
-
-          // outer glow
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.06})`;
-          ctx.fill();
-        }
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      const dx = mouseX - lastX;
-      const dy = mouseY - lastY;
-      const speed = Math.sqrt(dx * dx + dy * dy);
-
-      isMoving = true;
-      clearTimeout(moveTimeout);
-      moveTimeout = setTimeout(() => { isMoving = false; }, 80);
-
-      // spawn particles based on speed
-      const count = Math.min(Math.floor(speed * 0.4) + 1, 6);
-      for (let i = 0; i < count; i++) {
-        // interpolate position for smooth trail
-        const t = i / count;
-        const ix = lastX + dx * t;
-        const iy = lastY + dy * t;
-        createParticle(ix, iy, speed);
-      }
-
-      lastX = mouseX;
-      lastY = mouseY;
-    });
-
-    // Keep particle count reasonable
-    setInterval(() => {
-      if (particles.length > 300) {
-        particles.splice(0, particles.length - 300);
-      }
-    }, 500);
-
-    resize();
-    requestAnimationFrame(animate);
-
-    window.addEventListener('resize', resize);
-  })();
-
- 
-// ── SCROLL-ERKENNUNG (Hintergrund abdunkeln) ──
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 150) {
-      document.body.classList.add('scrolled');
-    } else {
-      document.body.classList.remove('scrolled');
-    }
+    if (window.scrollY > 150) document.body.classList.add('scrolled');
+    else document.body.classList.remove('scrolled');
   });
-  // ── NETLIFY IDENTITY LOGIN REDIRECT ──
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-  // 1. Position merken, wenn die Seite verlassen wird
-window.addEventListener('beforeunload', () => {
-    sessionStorage.setItem('scrollPos', window.scrollY);
-});
 
-// 2. Position wiederherstellen (Diese Funktion rufen wir gleich auf)
-function restoreScroll() {
-    const scrollPos = sessionStorage.getItem('scrollPos');
-    if (scrollPos) {
-        window.scrollTo({
-            top: parseInt(scrollPos),
-            behavior: 'instant' // Sofort springen, nicht weich gleiten
-        });
-        sessionStorage.removeItem('scrollPos'); // Danach vergessen
-    }
-}
-</script>
-<script>
-  // Der "Netlify-Abfangjäger"
   const contactForm = document.getElementById('contact-form');
-  
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-      e.preventDefault(); // Verhindert die Netlify-Systemseite
-      
+      e.preventDefault();
       const btn = document.getElementById('submit-btn');
-      const fields = document.getElementById('form-fields');
-      const success = document.getElementById('form-success');
       const formData = new FormData(contactForm);
-
-      btn.innerText = "Wird gesendet...";
-      btn.disabled = true;
-
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      })
-      .then(response => {
-        if (response.ok) {
-          fields.style.display = "none"; // Versteckt das Formular
-          success.style.display = "block"; // Zeigt deine Danke-Meldung
-        } else {
-          throw new Error("Fehler");
-        }
-      })
-      .catch(error => {
-        alert("Hoppla! Das hat nicht geklappt. Bitte versuche es noch einmal.");
-        btn.innerText = "Nachricht absenden";
-        btn.disabled = false;
-      });
+      btn.innerText = "Wird gesendet..."; btn.disabled = true;
+      fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(formData).toString() })
+      .then(res => { if(res.ok) { document.getElementById('form-fields').style.display = "none"; document.getElementById('form-success').style.display = "block"; }})
+      .catch(err => { btn.innerText = "Nachricht absenden"; btn.disabled = false; });
     });
   }
 </script>
