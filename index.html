@@ -1616,8 +1616,10 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       <a href="{{ post.url }}" class="transit-banner fade-up visible" style="text-decoration:none;color:inherit;display:block">
         <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
           {% if post.data.video %}
-            <video class="banner-video" autoplay muted loop playsinline><source src="/{{ post.data.video | replace('/', '', 1) if post.data.video.startsWith('/') else post.data.video }}#t=1" type="video/mp4"></video>
-          {% endif %}
+  <video class="banner-video" autoplay muted loop playsinline>
+    <source src="/{{ post.data.video | replace: '/', '' }}#t=1" type="video/mp4">
+  </video>
+{% endif %}
           <div style="position:relative; z-index:2;">
             <div class="transit-label">
               <span style="color:var(--accent); font-weight:600;">{{ post.data.category }}</span>
@@ -1658,11 +1660,13 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 
 <section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem;">
   {% for post in collections.posts %}
-    {% if post.data.placement == "Info-Banner (Mitte)" %}
-      <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
-        {% if post.data.video %}
-          <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;"><source src="/{{ post.data.video | replace('/', '', 1) if post.data.video.startsWith('/') else post.data.video }}#t=1" type="video/mp4"></video>
-        {% elif post.data.image %}
+    {% if post.data.video %}
+  <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;">
+    <source src="/{{ post.data.video | replace: '/', '' }}#t=1" type="video/mp4">
+  </video>
+{% elif post.data.image %}
+  <img src="/{{ post.data.image | replace: '/', '' }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
+{% endif %}
           <img src="/{{ post.data.image | replace('/', '', 1) if post.data.image.startsWith('/') else post.data.image }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
         {% endif %}
         <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
@@ -1696,21 +1700,21 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     {% for post in collections.posts | reverse %}
       <a href="{{ post.url }}" class="post-card fade-up visible" data-title="{{ post.data.title | lower }}" data-category="{{ post.data.category | lower }}" style="opacity: 1;">
         {% if post.data.featured_video %}
-          <video class="post-card-img" autoplay muted loop playsinline poster="/{{ post.data.image | replace('/', '', 1) if post.data.image.startsWith('/') else post.data.image }}">
-            <source src="/{{ post.data.featured_video | replace('/', '', 1) if post.data.featured_video.startsWith('/') else post.data.featured_video }}#t=0.1" type="video/mp4">
-          </video>
-        {% else %}
-          <img class="post-card-img" src="/{{ post.data.image | replace('/', '', 1) if post.data.image.startsWith('/') else (post.data.image or 'img/sternenhimmel-berge.jpg') }}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
-        {% endif %}
-        <div class="post-card-body">
-          <span class="post-tag">{{ post.data.category or "Zeitqualität" }}</span>
-          <h3>{{ post.data.title }}</h3>
-          <div class="post-meta">
-            <span>{{ post.date | date: "%d. %B %Y" }}</span>
-            <span> • </span>
-            <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
-          </div>
-        </div>
+  <video class="post-card-img" autoplay muted loop playsinline poster="/{{ post.data.image | replace: '/', '' }}">
+    <source src="/{{ post.data.featured_video | replace: '/', '' }}#t=0.1" type="video/mp4">
+  </video>
+{% else %}
+  <img class="post-card-img" src="{% if post.data.image %}/{{ post.data.image | replace: '/', '' }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
+{% endif %}
+<div class="post-card-body">
+  <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
+  <h3>{{ post.data.title }}</h3>
+  <div class="post-meta">
+    <span>{{ post.date | date: "%d. %m. %Y" }}</span>
+    <span> • </span>
+    <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
+  </div>
+</div>
       </a>
     {% endfor %}
   </div>
