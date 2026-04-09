@@ -1,13 +1,19 @@
 module.exports = function(eleventyConfig) {
-  // Diese Ordner werden 1:1 kopiert
+  // 1. Ordner 1:1 kopieren
   eleventyConfig.addPassthroughCopy("img");
   eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("videos");
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("data");
 
-  // Filter für die Lesezeit (Eleventy rechnet das jetzt aus!)
+  // 2. WICHTIG: Die Gruppe "posts" definieren (Damit collections.posts funktioniert)
+  eleventyConfig.addCollection("posts", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("posts/*.md");
+  });
+
+  // 3. Filter für die Lesezeit (mit Absturz-Schutz)
   eleventyConfig.addFilter("readingTime", function(content) {
+    if (!content) return "1";
     const wordsPerMinute = 200;
     const text = content.replace(/<[^>]*>/g, ''); // HTML entfernen
     const words = text.split(/\s+/).length;
