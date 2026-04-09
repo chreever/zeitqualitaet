@@ -503,6 +503,7 @@ layout: null
     margin: 0 auto 2.5rem;
     font-weight: 300;
   }
+  
 /* ── TOOLTIP STYLING FÜR DIE TAGLINE ── */
 .tagline-item {
   position: relative;
@@ -1383,6 +1384,23 @@ layout: null
     transform: translateY(0);
   }
 
+  /* --- INFO-BANNER PC STYLES --- */
+  .info-banner-box {
+    position: relative; background: var(--bg-card); border: 1px solid var(--border-light); 
+    border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; 
+    min-height: 400px;
+  }
+  .info-banner-media {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; z-index: 0;
+  }
+  .info-banner-content {
+    position: relative; z-index: 1; padding: 4rem; max-width: 650px; width: 100%;
+  }
+  .info-banner-title {
+    font-family: var(--font-display); font-size: 2.5rem; line-height: 1.15; 
+    margin-bottom: 0.8rem; color: var(--accent);
+  }
+
 /* --- RESPONSIVE OPTIMIERUNG --- */
 @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -1414,6 +1432,17 @@ layout: null
     .hero { padding: 9rem 1.5rem 3rem; min-height: auto; }
     .orbit-system { opacity: 0.4; }
     section { padding: 3rem 1.5rem; }
+
+    /* --- INFO-BANNER SMARTPHONE STYLES --- */
+    .info-banner-box {
+      min-height: auto;
+    }
+    .info-banner-content {
+      padding: 2rem 1.5rem;
+    }
+    .info-banner-title {
+      font-size: 1.8rem;
+    }
 
     .hero-tagline {
         display: grid !important;
@@ -1627,23 +1656,25 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 
 <div class="divider"><hr></div>
 
-<section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem;">
+<section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;">
   {% for post in collections.posts %}
     {% if post.data.placement == "Info-Banner (Mitte)" %}
-      <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
+      <div class="info-banner-box fade-up visible">
         
         {% if post.data.video %}
-          <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;">
+          <video autoplay muted loop playsinline class="info-banner-media">
             <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
           </video>
-        {% elsif post.data.image %}
-          <img src="{{ post.data.image | url }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
+        {% else %}
+          <img class="info-banner-media" 
+               src="{% if post.data.image %}{{ post.data.image | url }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" 
+               onerror="this.src='/img/sternenhimmel-berge.jpg'">
         {% endif %}
         
-        <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
+        <div class="info-banner-content">
           <span class="post-tag">{{ post.data.category }}</span>
           
-          <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.15; margin-bottom: 0.8rem; color: var(--accent);">
+          <h2 class="info-banner-title">
             {{ post.data.title }}
           </h2>
           
@@ -1652,11 +1683,11 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
             <span> • </span><span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
           </div>
           
-          <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
+          <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;">
             {{ post.data.description | default: 'Erfahre mehr über dieses Thema.' }}
           </p>
           
-          <a href="{{ post.url | url }}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
+          <a href="{{ post.url | url }}" class="read-more" style="font-weight: 600; letter-spacing: 0.05em;">Den ganzen Artikel lesen →</a>
         </div>
       </div>
     {% endif %}
