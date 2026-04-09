@@ -168,11 +168,9 @@
     const searchInput = document.getElementById('post-search');
     
     try {
-      // 1. Direktes Abrufen von GitHub (ohne den fehleranfälligen allorigins-Proxy)
       const apiURL = 'https://api.github.com/repos/chreever/zeitqualitaet/contents/posts?ref=main';
       const response = await fetch(apiURL);
       
-      // Fehlerbehandlung, falls GitHub blockiert
       if (!response.ok) {
          if (response.status === 403 || response.status === 429) {
              throw new Error("GitHub-Sicherheitssperre (Zu viele Aufrufe beim Testen). Bitte warte ein paar Minuten.");
@@ -188,17 +186,18 @@
 
       let postsData = [];
 
-      // 2. Texte LOKAL laden (Viel schneller!)
       for (let file of files) {
         if (file.name.endsWith('.md')) {
           try {
-            const res = await fetch(`posts/${file.name}`);
+            // HIER WIRD NUN AUS DEM HILFSORDNER GELADEN
+            const res = await fetch(`raw-posts/${file.name}`);
             if (!res.ok) continue;
             const text = await res.text();
             
             let post = { 
               slug: file.name.replace('.md', ''),
-              url: `post.html?id=${encodeURIComponent(file.name.replace('.md', ''))}`,
+              // HIER IST DER NEUE SEO LINK
+              url: `/posts/${encodeURIComponent(file.name.replace('.md', ''))}/`,
               title: '', category: 'Impuls', image: '', featured_video: '', description: '', date: ''
             };
 
@@ -222,7 +221,6 @@
         }
       }
 
-      // 3. Sortieren und Rendern
       postsData.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
       allPosts = postsData;
 
@@ -259,10 +257,8 @@
         });
       };
 
-      // Alles beim ersten Laden anzeigen
       render(allPosts);
 
-      // Echtzeitsuche ausführen, wenn getippt wird
       searchInput.addEventListener('input', e => {
         const val = e.target.value.toLowerCase();
         const filtered = allPosts.filter(p => 
@@ -275,7 +271,6 @@
 
     } catch (e) { 
       console.error(e);
-      // Zeige die Fehlermeldung nun genau an
       container.innerHTML = `
         <p style="text-align:center; grid-column:1/-1; color: var(--accent);">Archiv konnte nicht geladen werden.</p>
         <p style="text-align:center; grid-column:1/-1; color: var(--text-dim); font-size: 0.9rem;">Ursache: ${e.message}</p>
