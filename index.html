@@ -1668,28 +1668,32 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     </div>
   </div>
   
-  <div class="posts-grid">
-    {% for post in collections.posts | reverse %}
-      <a href="{{ post.url }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}" style="opacity: 1;">
-        {% if post.data.featured_video %}
-          <video class="post-card-img" autoplay muted loop playsinline poster="/{{ post.data.image | replace: '/', '' }}">
-            <source src="/{{ post.data.featured_video | replace: '/', '' }}#t=0.1" type="video/mp4">
-          </video>
-        {% else %}
-          <img class="post-card-img" src="{% if post.data.image %}/{{ post.data.image | replace: '/', '' }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
-        {% endif %}
-        <div class="post-card-body">
-          <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
-          <h3>{{ post.data.title }}</h3>
-          <div class="post-meta">
-            <span>{{ post.date | date: "%d. %m. %Y" }}</span>
-            <span> • </span>
-            <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
-          </div>
+ <div class="posts-grid">
+  {% for post in collections.posts reversed limit:6 %}
+    <a href="{{ post.url | url }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}" style="opacity: 1;">
+      
+      {% if post.data.featured_video %}
+        <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
+          <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
+        </video>
+      {% else %}
+        <img class="post-card-img" 
+             src="{% if post.data.image %}{{ post.data.image | url }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" 
+             onerror="this.src='/img/sternenhimmel-berge.jpg'">
+      {% endif %}
+
+      <div class="post-card-body">
+        <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
+        <h3>{{ post.data.title }}</h3>
+        <div class="post-meta">
+          <span>{{ post.date | date: "%d. %m. %Y" }}</span>
+          <span> • </span>
+          <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
         </div>
-      </a>
-    {% endfor %}
-  </div>
+      </div>
+    </a>
+  {% endfor %}
+</div>
   
   <div style="text-align: center; margin-top: 4rem;">
     <a href="/archiv.html" style="display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 100px; color: var(--accent); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s;">
