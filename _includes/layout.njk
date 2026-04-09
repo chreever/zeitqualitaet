@@ -9,11 +9,11 @@
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   
-  {# Logik für das Vorschaubild (Social Media) #}
+  {# Logik für das Vorschaubild (Social Media) - Sauber gelöst mit | url #}
   {% if post_image %}
-    <meta property="og:image" content="https://zeitqualitaet.at/{{ post_image | replace('/', '', 1) if post_image.startsWith('/') else post_image }}">
+    <meta property="og:image" content="https://zeitqualitaet.at{{ post_image | url }}">
   {% elif image %}
-    <meta property="og:image" content="https://zeitqualitaet.at/{{ image | replace('/', '', 1) if image.startsWith('/') else image }}">
+    <meta property="og:image" content="https://zeitqualitaet.at{{ image | url }}">
   {% else %}
     <meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
   {% endif %}
@@ -107,11 +107,10 @@
     {% set finalVideo = featured_video or video %}
 
     {% if finalImage %}
-      {# Wir stellen sicher, dass der Pfad mit einem / beginnt, aber keine zwei // entstehen #}
-      <img class="article-image" src="/{{ finalImage | replace('/', '', 1) if finalImage.startsWith('/') else finalImage }}" alt="{{ title }}">
+      <img class="article-image" src="{{ finalImage | url }}" alt="{{ title }}">
     {% elif finalVideo %}
       <video class="article-image" autoplay muted loop playsinline>
-        <source src="/{{ finalVideo | replace('/', '', 1) if finalVideo.startsWith('/') else finalVideo }}#t=0.1" type="video/mp4">
+        <source src="{{ finalVideo | url }}#t=0.1" type="video/mp4">
       </video>
     {% endif %}
   </div>
