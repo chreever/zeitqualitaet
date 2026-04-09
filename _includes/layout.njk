@@ -9,18 +9,17 @@
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   
-  {# Logik für das Vorschaubild (Social Media) - Sauber gelöst mit | url #}
-  {% if post_image %}
-    <meta property="og:image" content="https://zeitqualitaet.at{{ post_image | url }}">
-  {% elif image %}
-    <meta property="og:image" content="https://zeitqualitaet.at{{ image | url }}">
+  {# Dynamisches Vorschaubild für Social Media #}
+  {% set ogImage = post_image | default(image) %}
+  {% if ogImage %}
+    <meta property="og:image" content="https://zeitqualitaet.at{{ ogImage | url }}">
   {% else %}
-    <meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
+    <meta property="og:image" content="https://zeitqualitaet.at/img/christian-portraet.jpg">
   {% endif %}
 
-  <link rel="icon" type="image/svg+xml" href="/img/zq-favicon.svg">
-  <link rel="alternate icon" href="/img/zq-favicon.png">
-  <link rel="apple-touch-icon" href="/img/zq-favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/img/zq-favicon.svg?v=2">
+  <link rel="alternate icon" href="/img/zq-favicon.png?v=2">
+  <link rel="apple-touch-icon" href="/img/zq-favicon.png?v=2">
 
   <style>
     /* Absolute Pfade mit / am Anfang für die Schriften */
