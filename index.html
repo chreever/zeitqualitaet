@@ -1,5 +1,5 @@
 ---
-# Startseite
+layout: null
 ---
 <!DOCTYPE html>
 <html lang="de">
@@ -1498,6 +1498,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 .admin-access-star:hover { opacity: 1; transform: scale(1.3) rotate(20deg); cursor: pointer; filter: drop-shadow(0 0 5px var(--accent)); }
 </style>
 </head>
+
 <body>
 
 <div class="starfield"><canvas id="stars"></canvas></div>
@@ -1577,37 +1578,6 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       Lade heutigen Impuls...
     </p>
   </div>
-
-  <script>
-    async function loadDailyImpulse() {
-      const textElement = document.getElementById('daily-impulse-text');
-      try {
-        const res = await fetch('/data/impulses.json');
-        if (!res.ok) throw new Error('Datei nicht gefunden');
-        const data = await res.json();
-        
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const todayString = `${year}-${month}-${day}`;
-
-        const block = data.impulses_block || "";
-        const regex = new RegExp("^" + todayString + ":\\s*(.*)$", "m");
-        const match = block.match(regex);
-
-        if (match && match[1]) {
-          textElement.innerText = match[1].trim();
-        } else {
-          textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
-        }
-      } catch(e) {
-        console.error("Impuls-Ladefehler:", e);
-        textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
-      }
-    }
-    loadDailyImpulse();
-  </script>
 </section>
 
 <div id="dynamic-banner-container">
@@ -1617,7 +1587,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
         <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
           {% if post.data.video %}
             <video class="banner-video" autoplay muted loop playsinline>
-              <source src="/{{ post.data.video | lstrip: '/' }}#t=1" type="video/mp4">
+              <source src="/{{ post.data.video | replace: '/', '' }}#t=1" type="video/mp4">
             </video>
           {% endif %}
           <div style="position:relative; z-index:2;">
@@ -1665,10 +1635,10 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
         
         {% if post.data.video %}
           <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;">
-            <source src="/{{ post.data.video | lstrip: '/' }}#t=1" type="video/mp4">
+            <source src="/{{ post.data.video | replace: '/', '' }}#t=1" type="video/mp4">
           </video>
         {% elsif post.data.image %}
-          <img src="/{{ post.data.image | lstrip: '/' }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
+          <img src="/{{ post.data.image | replace: '/', '' }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
         {% endif %}
         
         <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
@@ -1700,23 +1670,23 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
   
   <div class="posts-grid">
     {% for post in collections.posts | reverse %}
-      <a href="{{ post.url }}" class="post-card fade-up visible" data-title="{{ post.data.title | lower }}" data-category="{{ post.data.category | lower }}" style="opacity: 1;">
+      <a href="{{ post.url }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}" style="opacity: 1;">
         {% if post.data.featured_video %}
-  <video class="post-card-img" autoplay muted loop playsinline poster="/{{ post.data.image | lstrip: '/', '' }}">
-    <source src="/{{ post.data.featured_video | lstrip: '/', '' }}#t=0.1" type="video/mp4">
-  </video>
-{% else %}
-  <img class="post-card-img" src="{% if post.data.image %}/{{ post.data.image | lstrip: '/', '' }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
-{% endif %}
-<div class="post-card-body">
-  <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
-  <h3>{{ post.data.title }}</h3>
-  <div class="post-meta">
-    <span>{{ post.date | date: "%d. %m. %Y" }}</span>
-    <span> • </span>
-    <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
-  </div>
-</div>
+          <video class="post-card-img" autoplay muted loop playsinline poster="/{{ post.data.image | replace: '/', '' }}">
+            <source src="/{{ post.data.featured_video | replace: '/', '' }}#t=0.1" type="video/mp4">
+          </video>
+        {% else %}
+          <img class="post-card-img" src="{% if post.data.image %}/{{ post.data.image | replace: '/', '' }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
+        {% endif %}
+        <div class="post-card-body">
+          <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
+          <h3>{{ post.data.title }}</h3>
+          <div class="post-meta">
+            <span>{{ post.date | date: "%d. %m. %Y" }}</span>
+            <span> • </span>
+            <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
+          </div>
+        </div>
       </a>
     {% endfor %}
   </div>
@@ -1921,8 +1891,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       const term = e.target.value.toLowerCase();
       document.querySelectorAll('.post-card').forEach(card => {
         const title = card.getAttribute('data-title') || "";
-        const cat = card.getAttribute('data-category') || "";
-        card.style.display = (title.includes(term) || cat.includes(term)) ? 'block' : 'none';
+        card.style.display = title.includes(term) ? 'block' : 'none';
       });
     });
   }
@@ -1969,6 +1938,38 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     }
     anim();
   })();
+
+  /* ── TAGES-IMPULS SCRIPT (GESICHERT) ── */
+  async function loadDailyImpulse() {
+    const textElement = document.getElementById('daily-impulse-text');
+    try {
+      const res = await fetch('/data/impulses.json');
+      if (!res.ok) throw new Error('Datei nicht gefunden');
+      const data = await res.json();
+      
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const todayString = `${year}-${month}-${day}`;
+
+      const block = data.impulses_block || "";
+      const regex = new RegExp("^" + todayString + ":\\s*(.*)$", "m");
+      const match = block.match(regex);
+
+      if (match && match[1]) {
+        textElement.innerText = match[1].trim();
+      } else {
+        textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
+      }
+    } catch(e) {
+      console.warn("Tagesimpuls konnte nicht geladen werden, verwende Fallback.");
+      textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
+    }
+  }
+  
+  // Script erst ausführen, wenn die Seite komplett geladen ist
+  document.addEventListener('DOMContentLoaded', loadDailyImpulse);
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 150) document.body.classList.add('scrolled');
