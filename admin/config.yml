@@ -20,7 +20,8 @@ collections:
       - {label: "Datum", name: "date", widget: "datetime"}
       
       # MEDIEN FÜR KACHELN (Startseite/Archiv)
-      - {label: "Vorschaubild für Kachel (Foto)", name: "image", widget: "image", required: false}
+     # MEDIEN FÜR KACHELN (Startseite/Archiv)
+      - {label: "Vorschaubild für Kachel (Foto)", name: "image", widget: "image", required: false, hint: "WICHTIG: Wenn du ein Video nutzt, lade hier unbedingt auch ein Bild als Vorschau für Facebook hoch!"}
       - {label: "Vorschauvideo für Kachel (MP4)", name: "featured_video", widget: "file", required: false}
       
       # MEDIEN FÜR DAS BANNER (Ganz oben auf der Startseite)
