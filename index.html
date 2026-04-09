@@ -1649,7 +1649,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
             <span> • </span><span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
           </div>
           <p style="color: var(--text-muted); font-size: 1.1rem; line-height:1.7; margin-bottom: 2rem;">
-            {{ post.data.description | 'Erfahre mehr über dieses Thema.' }}
+            {{ post.data.description | default: 'Erfahre mehr über dieses Thema.' }}
           </p>
           <a href="{{ post.url }}" class="read-more" style="font-weight:600; letter-spacing:0.05em;">Den ganzen Artikel lesen →</a>
         </div>
