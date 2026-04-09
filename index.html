@@ -1773,7 +1773,26 @@ section#kontakt button[type="submit"]:active {
   </div>
   
   <div id="dynamic-posts" class="posts-grid">
-    <p style="color:var(--text-dim);">Sondiere den Kosmos...</p>
+   {% for post in collections.posts | reverse %}
+      <a href="{{ post.url }}" class="post-card fade-up visible" data-title="{{ post.data.title | lower }}" data-category="{{ post.data.category | lower }}" style="opacity: 1;">
+        {% if post.data.featured_video %}
+          <video class="post-card-img" autoplay muted loop playsinline>
+            <source src="/{{ post.data.featured_video | replace('/', '', 1) if post.data.featured_video.startsWith('/') else post.data.featured_video }}#t=0.1" type="video/mp4">
+          </video>
+        {% else %}
+          <img class="post-card-img" src="/{{ post.data.image | replace('/', '', 1) if post.data.image.startsWith('/') else (post.data.image or 'img/sternenhimmel-berge.jpg') }}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
+        {% endif %}
+        <div class="post-card-body">
+          <span class="post-tag">{{ post.data.category or "Zeitqualität" }}</span>
+          <h3>{{ post.data.title }}</h3>
+          <div class="post-meta">
+            <span>{{ post.date | date: "%d. %m. %Y" }}</span>
+            <span> • </span>
+            <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
   </div>
   
   <div style="text-align: center; margin-top: 4rem;">
