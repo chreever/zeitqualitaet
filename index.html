@@ -1616,10 +1616,10 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       <a href="{{ post.url }}" class="transit-banner fade-up visible" style="text-decoration:none;color:inherit;display:block">
         <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
           {% if post.data.video %}
-  <video class="banner-video" autoplay muted loop playsinline>
-    <source src="/{{ post.data.video | replace: '/', '' }}#t=1" type="video/mp4">
-  </video>
-{% endif %}
+            <video class="banner-video" autoplay muted loop playsinline>
+              <source src="/{{ post.data.video | lstrip: '/' }}#t=1" type="video/mp4">
+            </video>
+          {% endif %}
           <div style="position:relative; z-index:2;">
             <div class="transit-label">
               <span style="color:var(--accent); font-weight:600;">{{ post.data.category }}</span>
@@ -1641,17 +1641,17 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     <div class="phil-card fade-up">
       <span class="phil-icon">◎</span>
       <h3>Aufklärung, nicht Esoterik</h3>
-      <p>Astrologie ist für mich eine Symbolsprache – kein Orakel und kein Aberglauben. Hier geht es um Beobachtung, Reflexion und ein tieferes Verständnis für die Rhythmen des Lebens. Keine vagen Prophezeiungen, sondern ein klarer Blick auf kosmische Zyklen.</p>
+      <p>Astrologie ist für mich eine Symbolsprache – kein Orakel und kein Aberglauben. Hier geht es um Beobachtung, Reflexion und ein tieferes Verständnis für die Rhythmen des Lebens.</p>
     </div>
     <div class="phil-card fade-up">
       <span class="phil-icon">◈</span>
       <h3>Transite verstehen</h3>
-      <p>Welche Planeten stehen gerade in Spannung? Was bedeuten Konjunktionen, Quadrate und Oppositionen für kollektive Stimmungen und deine persönliche Entwicklung? Ich übersetze die kosmische Wetterlage in verständliche Impulse für deinen Alltag.</p>
+      <p>Welche Planeten stehen gerade in Spannung? Ich übersetze die kosmische Wetterlage in verständliche Impulse für deinen Alltag.</p>
     </div>
     <div class="phil-card fade-up">
       <span class="phil-icon">⬡</span>
       <h3>Sinn, Orientierung &amp; mentale Stärke</h3>
-      <p>Zeitqualität ist ein Kompass für Kopf und Seele. Kosmische Rhythmen erkennen, die eigene mentale Kraft stärken und den richtigen Moment für Entscheidungen, Ruhe oder Neuanfänge finden – statt sich vom Takt der Maschinen treiben zu lassen.</p>
+      <p>Zeitqualität ist ein Kompass für Kopf und Seele. Kosmische Rhythmen erkennen und die eigene mentale Kraft stärken.</p>
     </div>
   </div>
 </div>
@@ -1660,15 +1660,17 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 
 <section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 2rem;">
   {% for post in collections.posts %}
-    {% if post.data.video %}
-  <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;">
-    <source src="/{{ post.data.video | replace: '/', '' }}#t=1" type="video/mp4">
-  </video>
-{% elif post.data.image %}
-  <img src="/{{ post.data.image | replace: '/', '' }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
-{% endif %}
-          <img src="/{{ post.data.image | replace('/', '', 1) if post.data.image.startsWith('/') else post.data.image }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
+    {% if post.data.placement == "Info-Banner (Mitte)" %}
+      <div class="featured fade-up visible" style="position:relative; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow:hidden; display:flex; align-items:center; min-height:400px;">
+        
+        {% if post.data.video %}
+          <video autoplay muted loop playsinline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.3; z-index:0;">
+            <source src="/{{ post.data.video | lstrip: '/' }}#t=1" type="video/mp4">
+          </video>
+        {% elsif post.data.image %}
+          <img src="/{{ post.data.image | lstrip: '/' }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.4; z-index:0;">
         {% endif %}
+        
         <div style="position:relative; z-index:1; padding: 4rem; max-width: 650px;">
           <span class="post-tag">{{ post.data.category }}</span>
           <h2 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent);">{{ post.data.title }}</h2>
