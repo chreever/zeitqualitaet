@@ -19,16 +19,16 @@ collections:
         options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Sternzeichen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
-      # MEDIEN FÜR KACHELN (Startseite/Archiv)
-     # MEDIEN FÜR KACHELN (Startseite/Archiv)
-      - {label: "Vorschaubild für Kachel (Foto)", name: "image", widget: "image", required: false, hint: "WICHTIG: Wenn du ein Video nutzt, lade hier unbedingt auch ein Bild als Vorschau für Facebook hoch!"}
-      - {label: "Vorschauvideo für Kachel (MP4)", name: "featured_video", widget: "file", required: false}
+    # 1. MEDIEN FÜR DIE STARTSEITEN-KACHELN & SOCIAL MEDIA VORSCHAU
+      - {label: "Kachel-Bild & Social Media (WICHTIG!)", name: "image", widget: "image", required: true, hint: "Das ist das Pflicht-Bild. Es erscheint in den Kacheln auf der Startseite und bei Links auf WhatsApp/Facebook."}
+      - {label: "Optional: Bewegtes Kachel-Video (MP4)", name: "featured_video", widget: "file", required: false, hint: "Wenn du ein GIF/MP4 hochlädst, spielt dieses in der Kachel statt des Bildes ab."}
       
-      # MEDIEN FÜR DAS BANNER (Ganz oben auf der Startseite)
-      - {label: "Hintergrund-Video NUR für Banner (MP4)", name: "video", widget: "file", required: false}
+      # 2. MEDIEN FÜR DEN GROSSEN BANNER (Top-Header oder Mitte)
+      - {label: "Banner-Bild (Hintergrund)", name: "banner_image", widget: "image", required: false, hint: "Erscheint groß im Hintergrund, wenn dieser Beitrag als Banner geschaltet ist."}
+      - {label: "Banner-Video (MP4)", name: "video", widget: "file", required: false, hint: "Wenn du hier ein MP4 hochlädst, überschreibt das Video das Banner-Bild."}
       
-      # DAS EIGENTLICHE FOTO IM BEITRAG
-      - {label: "Hauptfoto im Beitrag (Erscheint im Artikel)", name: "post_image", widget: "image", required: false}
+      # 3. MEDIEN FÜR DEN ARTIKEL SELBST (Wenn man draufklickt)
+      - {label: "Hauptfoto im Blog-Artikel", name: "post_image", widget: "image", required: false, hint: "Erscheint ganz oben, wenn jemand deinen Text liest."}
       
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
       
