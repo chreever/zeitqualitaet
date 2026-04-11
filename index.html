@@ -1615,7 +1615,8 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 </section>
 
 <div id="dynamic-banner-container">
-  {% for post in collections.posts %}
+  {% assign banner_posts = collections.posts | reverse %}
+  {% for post in banner_posts %}
     {% if post.data.placement == "Top-Banner (Header)" %}
       <a href="{{ post.url }}" class="transit-banner fade-up visible" style="text-decoration:none;color:inherit;display:block">
         <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
@@ -1625,9 +1626,9 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
               <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
             </video>
           {% elsif post.data.banner_image %}
-             <img class="banner-video" style="opacity: 0.15;" src="{{ post.data.banner_image | url }}" alt="Banner Hintergrund">
+             <img class="banner-video" style="opacity: 0.3;" src="{{ post.data.banner_image | url }}" alt="Banner Hintergrund">
           {% elsif post.data.image %}
-             <img class="banner-video" style="opacity: 0.15;" src="{{ post.data.image | url }}" alt="Banner Hintergrund">
+             <img class="banner-video" style="opacity: 0.3;" src="{{ post.data.image | url }}" alt="Banner Hintergrund">
           {% endif %}
           
           <div style="position:relative; z-index:2;">
@@ -1642,7 +1643,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
           {% if post.data.badge %}<div class="transit-badge" style="position:relative; z-index:2;">◯ {{ post.data.badge }}</div>{% endif %}
         </div>
       </a>
-    {% endif %}
+      {% break %} {% endif %}
   {% endfor %}
 </div>
 <div class="philosophy">
