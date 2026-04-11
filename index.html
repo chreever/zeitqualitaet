@@ -1694,11 +1694,12 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 <div class="divider"><hr></div>
 
 <section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;">
-  {% for post in collections.posts %}
+  {% assign info_posts = collections.posts | reverse %}
+  {% for post in info_posts %}
     {% if post.data.placement == "Info-Banner (Mitte)" %}
       <div class="info-banner-box fade-up visible">
         
-       {% if post.data.video %}
+        {% if post.data.video %}
           <video autoplay muted loop playsinline class="info-banner-media">
             <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
           </video>
@@ -1723,7 +1724,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
           <a href="{{ post.url | url }}" class="read-more" style="font-weight: 600; letter-spacing: 0.05em;">Den ganzen Artikel lesen →</a>
         </div>
       </div>
-    {% endif %}
+      {% break %} {% endif %}
   {% endfor %}
 </section>
 
