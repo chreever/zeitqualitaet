@@ -150,6 +150,8 @@
     line-height: 1.75;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none; /* VERHINDERT PULL-TO-REFRESH AUF MOBILGERÄTEN */
+    touch-action: pan-x pan-y; /* ERMÖGLICHT NORMALES SCROLLEN ABER SICHERT DAS ZOÓMEN AB */
   }
 
   ::selection { background: var(--accent); color: var(--bg); }
@@ -178,6 +180,13 @@
     pointer-events: none;
     width: 100%;
     height: 100%;
+  }
+
+  /* DEAKTIVIERT STARDUST AUF MOBILGERÄTEN UM ABSTÜRZE ZU VERHINDERN */
+  @media (pointer: coarse) {
+    .stardust-canvas {
+      display: none !important; 
+    }
   }
 
   /* ── CURSOR LIGHT VEIL ── */
