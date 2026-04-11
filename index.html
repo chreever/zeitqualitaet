@@ -1626,6 +1626,8 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
             </video>
           {% elsif post.data.banner_image %}
              <img class="banner-video" style="opacity: 0.15;" src="{{ post.data.banner_image | url }}" alt="Banner Hintergrund">
+          {% elsif post.data.image %}
+             <img class="banner-video" style="opacity: 0.15;" src="{{ post.data.image | url }}" alt="Banner Hintergrund">
           {% endif %}
           
           <div style="position:relative; z-index:2;">
@@ -1695,32 +1697,28 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     {% if post.data.placement == "Info-Banner (Mitte)" %}
       <div class="info-banner-box fade-up visible">
         
-        {% if post.data.video %}
+       {% if post.data.video %}
           <video autoplay muted loop playsinline class="info-banner-media">
             <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
           </video>
         {% elsif post.data.banner_image %}
           <img class="info-banner-media" src="{{ post.data.banner_image | url }}" alt="Info Banner">
+        {% elsif post.data.image %}
+          <img class="info-banner-media" src="{{ post.data.image | url }}" alt="Info Banner">
         {% else %}
           <img class="info-banner-media" src="/img/sternenhimmel-berge.jpg" alt="Info Banner">
         {% endif %}
         
         <div class="info-banner-content">
           <span class="post-tag">{{ post.data.category }}</span>
-          
-          <h2 class="info-banner-title">
-            {{ post.data.title }}
-          </h2>
-          
+          <h2 class="info-banner-title">{{ post.data.title }}</h2>
           <div class="post-meta" style="margin-bottom: 1.5rem; margin-top: 0;">
             <span>{{ post.date | date: "%d. %B %Y" }}</span>
             <span> • </span><span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
           </div>
-          
           <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.2rem;">
             {{ post.data.description | default: 'Erfahre mehr über dieses Thema.' }}
           </p>
-          
           <a href="{{ post.url | url }}" class="read-more" style="font-weight: 600; letter-spacing: 0.05em;">Den ganzen Artikel lesen →</a>
         </div>
       </div>
