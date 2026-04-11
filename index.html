@@ -156,6 +156,8 @@ layout: null
     line-height: 1.75;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: none; /* VERHINDERT PULL-TO-REFRESH AUF MOBILGERÄTEN */
+    touch-action: pan-x pan-y; /* ERMÖGLICHT NORMALES SCROLLEN ABER SICHERT DAS ZOÓMEN AB */
   }
 
   ::selection { background: var(--accent); color: var(--bg); }
