@@ -1624,7 +1624,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
             <video class="banner-video" autoplay muted loop playsinline>
               <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
             </video>
-          {% elsif post.data.image %}
+          {% elsif post.data.banner_image %}
              <img class="banner-video" style="opacity: 0.15;" src="{{ post.data.banner_image | url }}" alt="Banner Hintergrund">
           {% endif %}
           
@@ -1699,10 +1699,10 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
           <video autoplay muted loop playsinline class="info-banner-media">
             <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
           </video>
+        {% elsif post.data.banner_image %}
+          <img class="info-banner-media" src="{{ post.data.banner_image | url }}" alt="Info Banner">
         {% else %}
-          <img class="info-banner-media" 
-               src="{% if post.data.banner_image %}{{ post.data.banner_image | url }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" 
-               onerror="this.src='/img/sternenhimmel-berge.jpg'">
+          <img class="info-banner-media" src="/img/sternenhimmel-berge.jpg" alt="Info Banner">
         {% endif %}
         
         <div class="info-banner-content">
