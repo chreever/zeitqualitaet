@@ -4,6 +4,7 @@ title: "Mars im Widder: Die Psychologie des Aufbruchs und der bewusste Einsatz
 category: Zeitqualität
 date: 2026-04-09T21:58:00.000+02:00
 image: /img/mountain-sun.jpg
+banner_image: /img/mountain-sun.jpg
 post_image: /img/mountain-sun.jpg
 description: Wenn die Mars-Energie in das Zeichen Widder wechselt, markiert dies
   psychologisch den Beginn eines neuen Handlungszyklus. Es ist eine Phase, in
