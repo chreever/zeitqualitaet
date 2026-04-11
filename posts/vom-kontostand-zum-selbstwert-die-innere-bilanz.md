@@ -21,7 +21,7 @@ Ein "Burnout des Selbstwerts" ist oft die Folge, wenn wir externe Performance mi
 ## Das Fundament von innen stärken
 
 Die Zeitqualität und das Prinzip des 2. Hauses laden uns zu einem radikalen Perspektivenwechsel ein. Es stellt uns die essenzielle Frage: Was besitzt du, wenn man dir alles Materielle und alle äußeren Statussymbole wegnimmt?
-Hier geht es um deine wahren, unverlierbaren Ressourcen. Wenn wir als Mentaltrainer auf diese Energien blicken, sehen wir den klaren Auftrag, aufzuhören, unseren inneren Wert wie einen volatilen Aktienkurs zu behandeln. Ein gesundes 2. Haus bedeutet, dass dein innerer Tresor so gut gefüllt ist, dass dich externe Schwankungen – sei es eine geplatzte Verhandlung oder kritisches Feedback – nicht aus der Bahn werfen.
+Hier geht es um deine wahren, unverlierbaren Ressourcen. Wenn ich als Mentaltrainer auf dieses Prinzip blicke, sehe ich einen klaren Auftrag für uns: Wir müssen aufhören, unseren inneren Wert wie einen volatilen Aktienkurs zu behandeln. Ein gesundes 2. Haus bedeutet, dass dein innerer Tresor so gut gefüllt ist, dass dich externe Schwankungen – sei es eine geplatzte Verhandlung oder kritisches Feedback – nicht aus der Bahn werfen.
 
 > Wahrer Reichtum und mentale Stärke beginnen in dem Moment, in dem wir erkennen, dass unser Kontostand nur eine Momentaufnahme ist, unser innerer Selbstwert jedoch das unverrückbare Fundament unseres Lebens darstellt.
 
@@ -32,4 +32,4 @@ Um diese Erkenntnisse geerdet und konstruktiv für deine persönliche Entwicklun
 1. Innere Bilanz: Woran machst du deinen persönlichen Wert an einem ganz normalen, ereignislosen Dienstag fest?
 2. Ressourcen-Check: Welche deiner Fähigkeiten, Talente oder Charakterzüge geben dir Sicherheit, völlig unabhängig von deinem aktuellen Einkommen oder beruflichen Status?
 3. Selbstwirksamkeit: Wie sprichst du mit dir selbst, wenn eine äußere Bestätigung oder ein messbares Ziel einmal ausbleibt? Wo kannst du heute beginnen, dir diese innere Anerkennung selbst zu geben?
-   Möchtest du, dass wir den zweiten Artikel zum Thema "Zyklisches Arbeiten vs. linearer Burnout" direkt im selben Format aufbauen?
+
