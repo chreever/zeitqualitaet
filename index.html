@@ -1386,21 +1386,23 @@ layout: null
     transform: translateY(0);
   }
 
-  /* --- INFO-BANNER PC STYLES --- */
+ /* --- INFO-BANNER PC STYLES --- */
   .info-banner-box {
     position: relative; background: var(--bg-card); border: 1px solid var(--border-light); 
     border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; 
-    min-height: 400px;
+    min-height: 280px; /* HIER REDUZIERT (vorher 400px) */
   }
   .info-banner-media {
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; z-index: 0;
   }
   .info-banner-content {
-    position: relative; z-index: 1; padding: 4rem; max-width: 650px; width: 100%;
+    position: relative; z-index: 1; 
+    padding: 2.5rem 3rem; /* INNENABSTAND REDUZIERT (vorher 4rem) */
+    max-width: 650px; width: 100%;
   }
   .info-banner-title {
-    font-family: var(--font-display); font-size: 2.5rem; line-height: 1.15; 
-    margin-bottom: 0.8rem; color: var(--accent);
+    font-family: var(--font-display); font-size: 2.2rem; line-height: 1.15; 
+    margin-bottom: 0.6rem; color: var(--accent);
   }
 
 /* --- RESPONSIVE OPTIMIERUNG --- */
@@ -1435,15 +1437,16 @@ layout: null
     .orbit-system { opacity: 0.4; }
     section { padding: 3rem 1.5rem; }
 
-    /* --- INFO-BANNER SMARTPHONE STYLES --- */
+   /* --- INFO-BANNER SMARTPHONE STYLES --- */
     .info-banner-box {
       min-height: auto;
     }
     .info-banner-content {
-      padding: 2rem 1.5rem;
+      padding: 1.8rem 1.5rem; /* KOMPAKTERER INNENABSTAND */
     }
     .info-banner-title {
-      font-size: 1.8rem;
+      font-size: 1.6rem; /* ÜBERSCHRIFT ETWAS KLEINER */
+      margin-bottom: 0.5rem;
     }
 
     .hero-tagline {
