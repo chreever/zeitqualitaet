@@ -1,9 +1,9 @@
 ---
 title: "Vom Kontostand zum Selbstwert: Die innere Bilanz"
 category: Mentale Stärke
-date: 2026-04-11T08:48:00.000+02:00
+date: 2026-04-11T16:12:00.000+02:00
 image: /img/img_7946.jpeg
-banner_image: ""
+banner_image: /img/img_7946.jpeg
 video: ""
 post_image: /img/img_7946.jpeg
 description: Im Alltag verwechseln wir oft berufliche Performance mit unserem
