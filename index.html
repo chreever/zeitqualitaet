@@ -1619,11 +1619,15 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     {% if post.data.placement == "Top-Banner (Header)" %}
       <a href="{{ post.url }}" class="transit-banner fade-up visible" style="text-decoration:none;color:inherit;display:block">
         <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
+          
           {% if post.data.video %}
             <video class="banner-video" autoplay muted loop playsinline>
-              <source src="/{{ post.data.video | replace: '/', '' }}#t=1" type="video/mp4">
+              <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
             </video>
+          {% elsif post.data.image %}
+             <img class="banner-video" style="opacity: 0.15;" src="{{ post.data.image | url }}" alt="Banner Hintergrund">
           {% endif %}
+          
           <div style="position:relative; z-index:2;">
             <div class="transit-label">
               <span style="color:var(--accent); font-weight:600;">{{ post.data.category }}</span>
@@ -1639,7 +1643,6 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     {% endif %}
   {% endfor %}
 </div>
-
 <div class="philosophy">
   <div class="philosophy-inner">
     <div class="phil-card fade-up">
