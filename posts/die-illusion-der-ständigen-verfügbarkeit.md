@@ -5,7 +5,7 @@ date: 2026-04-06T07:30:00.000+02:00
 featured_video: /img/ebbe-flut.mp4
 video: /img/ebbe-flut.mp4
 description: Die Natur kennt Ebbe und Flut. Warum ständige Erreichbarkeit uns Kraft kostet.
-placement: Top-Banner (Header)
+placement: Kein Banner
 ---
 Ein Blick in die Natur offenbart ein universelles Gesetz: Alles unterliegt Zyklen. Ebbe und Flut, Tag und Nacht, Einatmen und Ausatmen. Selbst der Kosmos kennt Phasen der scheinbaren Rückläufigkeit, in denen Planeten ihre Energie nach innen richten. 
 
