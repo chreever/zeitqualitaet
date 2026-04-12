@@ -16,7 +16,7 @@ collections:
         name: "category"
         widget: "select"
         default: "Zeitqualität"
-        options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Sternzeichen", "Allgemein"]
+        options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Sternzeichen", "Astro-Experiment", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
     # 1. MEDIEN FÜR DIE STARTSEITEN-KACHELN & SOCIAL MEDIA VORSCHAU
@@ -55,3 +55,22 @@ collections:
             name: "impulses_block"
             widget: "markdown"
             hint: "Format pro Zeile: YYYY-MM-DD: Dein Text"
+            
+      - label: "Kosmischer Ticker (Astro-Experiment)"
+        name: "ticker"
+        file: "data/ticker.json"
+        fields:
+          - label: "Ticker Aktiv?"
+            name: "is_active"
+            widget: "boolean"
+            default: true
+            hint: "Schaltet den Ticker auf der Startseite ein oder aus."
+          - label: "Aktuelle Meldung"
+            name: "message"
+            widget: "string"
+            hint: "Z.B.: 'Mond im Widder – hohe Volatilität an der Wall Street erwartet.'"
+          - label: "Portfolio Stand (Optional)"
+            name: "portfolio"
+            widget: "string"
+            required: false
+            hint: "Z.B.: 'Investiert: 1000 € | Aktuell: 1045 € (+4,5%)'"
