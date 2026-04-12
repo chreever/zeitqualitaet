@@ -1479,6 +1479,17 @@ layout: null
     color: var(--text);
     font-size: var(--fs-small);
     flex: 1;
+    display: flex;
+    flex-direction: column; /* Stapelt Nachricht und Erklärung untereinander */
+    gap: 2px;
+  }
+  
+  .ticker-explanation {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent); /* In Gold für den Astro-Bezug */
+    opacity: 0.8;
+    letter-spacing: 0.02em;
   }
   
   .ticker-portfolio {
