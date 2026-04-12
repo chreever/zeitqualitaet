@@ -76,6 +76,50 @@
     .post-content ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); }
     .post-content ul li::before { content: '◦'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
 
+    /* ── NEU: BILDER & CAPTIONS IM TEXT ── */
+    .post-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      margin: 2rem auto;
+      display: block;
+      cursor: zoom-in;
+      border: 1px solid var(--border-light);
+      transition: transform 0.3s ease;
+    }
+    
+    .post-content img:hover {
+      transform: scale(1.01);
+      border-color: var(--accent-dim);
+    }
+    
+    .post-content figure {
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    
+    .post-content figcaption {
+      margin-top: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      opacity: 0.7;
+      line-height: 1.5;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .post-content img + em {
+      display: block;
+      text-align: center;
+      margin-top: -1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+    }
+
     /* ── AUTO-DISCLAIMER FÜR ASTRO-EXPERIMENT ── */
     .astro-disclaimer { 
       margin-top: 3.5rem; 
@@ -106,6 +150,7 @@
       .nav-inner { height: 70px; padding: 0 1.5rem; }
       .article-container { margin-top: 100px; }
       .article-image { height: 260px; }
+      .post-content figcaption { max-width: 95%; }
     }
   </style>
 </head>
@@ -163,13 +208,54 @@
   <p>© 2026 Zeitqualität · Christian Balas</p>
 </footer>
 
+<div id="image-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(8,9,14,0.95); backdrop-filter:blur(10px); cursor:zoom-out; align-items:center; justify-content:center; padding:2rem; flex-direction:column;">
+  <img id="modal-img" src="" style="max-width:95%; max-height:85vh; border-radius:var(--radius); box-shadow:0 0 50px rgba(0,0,0,0.5); border:1px solid var(--border);">
+  <div id="modal-caption" style="color:var(--accent); font-family:var(--font-mono); margin-top:1.5rem; font-size:0.9rem; text-align:center; max-width:800px;"></div>
+  <div style="position:absolute; top:2rem; right:2rem; color:var(--text-muted); font-family:var(--font-mono); font-size:0.8rem;">ESC ZUM SCHLIESSEN</div>
+</div>
+
 <script>
+  // Hintergrund Sterne
   (function(){const c=document.getElementById('stars'),x=c.getContext('2d');let s=[];function r(){c.width=window.innerWidth;c.height=window.innerHeight}function f(){s=[];for(let i=0;i<120;i++)s.push({x:Math.random()*c.width,y:Math.random()*c.height,z:Math.random()*1.5,p:Math.random()*Math.PI*2})}function d(t){x.clearRect(0,0,c.width,c.height);s.forEach(a=>{x.beginPath();x.arc(a.x,a.y,a.z,0,Math.PI*2);x.fillStyle="#e2dfd8";x.globalAlpha=Math.sin(t*0.001+a.p)*0.4+0.5;x.fill()});requestAnimationFrame(d)}r();f();d(0);window.addEventListener('resize',()=>{r();f()})})();
 
+  // Share Button
   const sb = document.getElementById('share-btn');
   if(sb) sb.addEventListener('click', async () => {
     if(navigator.share) { try { await navigator.share({title:document.title, url:window.location.href}); } catch(e){} }
     else { navigator.clipboard.writeText(window.location.href); sb.innerHTML = '✨ Link kopiert!'; setTimeout(()=>sb.innerHTML='↗ Beitrag teilen',2000); }
+  });
+
+  // ── NEU: LIGHTBOX LOGIK ──
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+    const content = document.getElementById('post-content');
+
+    if(content) {
+      content.querySelectorAll('img').forEach(img => {
+        img.onclick = () => {
+          modal.style.display = 'flex';
+          modalImg.src = img.src;
+          
+          // Versuche eine Bildunterschrift zu finden (Figcaption oder kursiver Text darunter)
+          const parent = img.closest('figure');
+          const caption = parent ? parent.querySelector('figcaption') : img.nextElementSibling;
+          
+          if (caption && (caption.tagName === 'FIGCAPTION' || caption.tagName === 'EM')) {
+            modalCaption.innerText = caption.innerText;
+          } else {
+            modalCaption.innerText = "";
+          }
+        };
+      });
+    }
+
+    // Schließen beim Klick aufs Modal oder Drücken von ESC
+    modal.onclick = () => { modal.style.display = 'none'; };
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modal.style.display = 'none';
+    });
   });
 </script>
 </body>
