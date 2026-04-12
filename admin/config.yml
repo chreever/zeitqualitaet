@@ -19,7 +19,7 @@ collections:
         options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Sternzeichen", "Astro-Experiment", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
-    # 1. MEDIEN FÜR DIE STARTSEITEN-KACHELN & SOCIAL MEDIA VORSCHAU
+      # 1. MEDIEN FÜR DIE STARTSEITEN-KACHELN & SOCIAL MEDIA VORSCHAU
       - {label: "Kachel-Bild & Social Media (WICHTIG!)", name: "image", widget: "image", required: true, hint: "Das ist das Pflicht-Bild. Es erscheint in den Kacheln auf der Startseite und bei Links auf WhatsApp/Facebook."}
       - {label: "Optional: Bewegtes Kachel-Video (MP4)", name: "featured_video", widget: "file", required: false, hint: "Wenn du ein GIF/MP4 hochlädst, spielt dieses in der Kachel statt des Bildes ab."}
       
@@ -56,7 +56,7 @@ collections:
             widget: "markdown"
             hint: "Format pro Zeile: YYYY-MM-DD: Dein Text"
             
-     - label: "Kosmischer Ticker (Astro-Experiment)"
+      - label: "Kosmischer Ticker (Astro-Experiment)"
         name: "ticker"
         file: "data/ticker.json"
         fields:
