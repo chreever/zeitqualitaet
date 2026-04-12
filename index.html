@@ -2108,7 +2108,33 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       anim();
     })();
   }
-
+/* ── ASTRO-TICKER SCRIPT ── */
+  async function loadAstroTicker() {
+    const wrapper = document.getElementById('ticker-wrapper');
+    const msgElement = document.getElementById('ticker-message-text');
+    const pfElement = document.getElementById('ticker-portfolio-text');
+    
+    try {
+      const res = await fetch('/data/ticker.json');
+      if (!res.ok) return; // Wenn die Datei (noch) nicht existiert, still abbrechen
+      const data = await res.json();
+      
+      if (data.is_active && data.message) {
+        wrapper.style.display = 'block'; // Ticker sichtbar machen
+        msgElement.innerHTML = `<strong>${data.message}</strong>`;
+        
+        if (data.portfolio) {
+          pfElement.innerText = data.portfolio;
+          pfElement.style.display = 'block';
+        }
+      }
+    } catch(e) {
+      console.log("Astro-Ticker nicht geladen oder nicht aktiv.");
+    }
+  }
+  
+  // Script zur Ladeliste hinzufügen
+  document.addEventListener('DOMContentLoaded', loadAstroTicker);
   /* ── TAGES-IMPULS SCRIPT (GESICHERT) ── */
   async function loadDailyImpulse() {
     const textElement = document.getElementById('daily-impulse-text');
