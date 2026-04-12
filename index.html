@@ -1404,7 +1404,73 @@ layout: null
     font-family: var(--font-display); font-size: 2.2rem; line-height: 1.15; 
     margin-bottom: 0.6rem; color: var(--accent);
   }
+/* ── ASTRO-TICKER STYLING ── */
+  .astro-ticker-wrapper {
+    max-width: var(--max-w);
+    margin: 0 auto 2rem auto;
+    padding: 0 2rem;
+    display: none; /* Wird via JS aktiviert */
+  }
+  
+  .astro-ticker {
+    background: var(--bg-card);
+    border: 1px solid var(--accent-dim);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    flex-wrap: wrap;
+  }
+  
+  .ticker-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-fine);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  
+  .ticker-pulse {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+  
+  .ticker-message {
+    color: var(--text);
+    font-size: var(--fs-small);
+    flex: 1;
+  }
+  
+  .ticker-portfolio {
+    font-family: var(--font-mono);
+    font-size: var(--fs-fine);
+    color: var(--celestial);
+    background: var(--bg-elevated);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-light);
+    white-space: nowrap;
+  }
 
+  @keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+  }
+  
+  @media (max-width: 768px) {
+    .astro-ticker { flex-direction: column; align-items: flex-start; gap: 0.8rem; padding: 1rem; }
+  }
 /* --- RESPONSIVE OPTIMIERUNG --- */
 @media (max-width: 768px) {
     /* --- PERFORMANCE OPTIMIERUNG FÜR MOBILE --- */
