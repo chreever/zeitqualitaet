@@ -2182,12 +2182,13 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       anim();
     })();
   }
-/* ── ASTRO-TICKER SCRIPT ── */
+/* ── OPTIMIERTES ASTRO-TICKER SCRIPT ── */
   async function loadAstroTicker() {
     const wrapper = document.getElementById('ticker-wrapper');
     const msgElement = document.getElementById('ticker-message-text');
     const explElement = document.getElementById('ticker-explanation-text');
-    const pfElement = document.getElementById('ticker-portfolio-text');
+    const pfBarElement = document.getElementById('ticker-portfolio-bar');
+    const pfTextElement = document.getElementById('ticker-portfolio-text');
     
     try {
       const res = await fetch('/data/ticker.json');
@@ -2196,16 +2197,20 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       
       if (data.is_active && data.message) {
         wrapper.style.display = 'block';
-        msgElement.innerHTML = `<strong>${data.message}</strong>`;
+        msgElement.innerHTML = data.message;
         
-        // Die Astro-Begründung einfügen
-        if (data.explanation) {
+        if (data.explanation && data.explanation !== "") {
           explElement.innerText = `↳ Analyse: ${data.explanation}`;
+          explElement.style.display = 'block';
+        } else {
+          explElement.style.display = 'none';
         }
         
-        if (data.portfolio) {
-          pfElement.innerText = data.portfolio;
-          pfElement.style.display = 'block';
+        if (data.portfolio && data.portfolio !== "") {
+          pfTextElement.innerText = data.portfolio;
+          pfBarElement.style.display = 'flex';
+        } else {
+          pfBarElement.style.display = 'none';
         }
       }
     } catch(e) {
@@ -2213,7 +2218,6 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     }
   }
   
-  // Script zur Ladeliste hinzufügen
   document.addEventListener('DOMContentLoaded', loadAstroTicker);
   /* ── TAGES-IMPULS SCRIPT (GESICHERT) ── */
   async function loadDailyImpulse() {
