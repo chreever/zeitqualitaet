@@ -2157,16 +2157,22 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
   async function loadAstroTicker() {
     const wrapper = document.getElementById('ticker-wrapper');
     const msgElement = document.getElementById('ticker-message-text');
+    const explElement = document.getElementById('ticker-explanation-text');
     const pfElement = document.getElementById('ticker-portfolio-text');
     
     try {
       const res = await fetch('/data/ticker.json');
-      if (!res.ok) return; // Wenn die Datei (noch) nicht existiert, still abbrechen
+      if (!res.ok) return;
       const data = await res.json();
       
       if (data.is_active && data.message) {
-        wrapper.style.display = 'block'; // Ticker sichtbar machen
+        wrapper.style.display = 'block';
         msgElement.innerHTML = `<strong>${data.message}</strong>`;
+        
+        // Die Astro-Begründung einfügen
+        if (data.explanation) {
+          explElement.innerText = `↳ Analyse: ${data.explanation}`;
+        }
         
         if (data.portfolio) {
           pfElement.innerText = data.portfolio;
@@ -2174,7 +2180,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
         }
       }
     } catch(e) {
-      console.log("Astro-Ticker nicht geladen oder nicht aktiv.");
+      console.log("Ticker-Update fehlgeschlagen.");
     }
   }
   
