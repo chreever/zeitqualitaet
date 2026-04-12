@@ -1692,7 +1692,16 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     </p>
   </div>
 </section>
-
+<div class="astro-ticker-wrapper fade-up" id="ticker-wrapper">
+  <div class="astro-ticker">
+    <div class="ticker-header">
+      <div class="ticker-pulse"></div>
+      Markt-Barometer
+    </div>
+    <div class="ticker-message" id="ticker-message-text">Lade Daten...</div>
+    <div class="ticker-portfolio" id="ticker-portfolio-text" style="display:none;"></div>
+  </div>
+</div>
 <div id="dynamic-banner-container">
   {% assign banner_posts = collections.posts | reverse %}
   {% for post in banner_posts %}
