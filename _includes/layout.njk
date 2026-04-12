@@ -17,7 +17,7 @@
     <meta property="og:image" content="https://zeitqualitaet.at/img/christian-portraet.jpg">
   {% endif %}
 
-  {# NEU: Video-Daten für Facebook und Messenger #}
+  {# Video-Daten für Facebook und Messenger #}
   {% set ogVideo = featured_video | default(video) %}
   {% if ogVideo %}
     <meta property="og:video" content="https://zeitqualitaet.at{{ ogVideo | url }}">
@@ -76,6 +76,27 @@
     .post-content ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); }
     .post-content ul li::before { content: '◦'; position: absolute; left: 0; color: var(--accent); font-size: 1.2rem; }
 
+    /* ── AUTO-DISCLAIMER FÜR ASTRO-EXPERIMENT ── */
+    .astro-disclaimer { 
+      margin-top: 3.5rem; 
+      padding: 1.5rem 2rem; 
+      background: var(--bg-elevated); 
+      border-left: 3px solid var(--accent); 
+      border-radius: var(--radius); 
+      font-size: 0.9rem; 
+      color: var(--text-muted); 
+      line-height: 1.6; 
+      font-style: italic; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2); 
+    }
+    .astro-disclaimer strong { 
+      color: var(--accent); 
+      font-style: normal; 
+      letter-spacing: 0.05em; 
+      text-transform: uppercase; 
+      font-size: 0.8rem;
+    }
+
     .share-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 0.7rem 1.5rem; border-radius: 100px; font-family: var(--font-body); font-size: 0.9rem; cursor: pointer; transition: 0.3s; margin-top: 2rem; }
     .share-btn:hover { background: var(--accent-dim); transform: translateY(-2px); }
 
@@ -125,6 +146,14 @@
   <article id="post-content" class="post-content">
     <h1>{{ title }}</h1>
     {{ content | safe }}
+
+    {# --- AUTOMATISCHER DISCLAIMER FÜR EXPERIMENTE --- #}
+    {% if category == "Astro-Experiment" %}
+      <div class="astro-disclaimer">
+        <strong>⚠️ Wichtiger Hinweis</strong><br>
+        Die "Astro-Investment-Tagebücher" sind ein rein redaktionelles Gedankenspiel zur Finanzastrologie und dokumentieren einen privaten Selbstversuch. Dieser Beitrag stellt ausdrücklich <strong>keine Anlageberatung</strong>, Finanzanalyse oder Aufforderung zum Kauf/Verkauf von Wertpapieren dar. Jedes Investment an der Börse birgt Risiken bis hin zum Totalverlust.
+      </div>
+    {% endif %}
   </article>
   
   <button id="share-btn" class="share-btn">↗ Beitrag teilen</button>
