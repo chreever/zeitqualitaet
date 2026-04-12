@@ -1386,24 +1386,54 @@ layout: null
     transform: translateY(0);
   }
 
- /* --- INFO-BANNER PC STYLES --- */
-  .info-banner-box {
-    position: relative; background: var(--bg-card); border: 1px solid var(--border-light); 
-    border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; 
-    min-height: 280px; /* HIER REDUZIERT (vorher 400px) */
-  }
-  .info-banner-media {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; z-index: 0;
-  }
-  .info-banner-content {
-    position: relative; z-index: 1; 
-    padding: 2.5rem 3rem; /* INNENABSTAND REDUZIERT (vorher 4rem) */
-    max-width: 650px; width: 100%;
-  }
-  .info-banner-title {
-    font-family: var(--font-display); font-size: 2.2rem; line-height: 1.15; 
-    margin-bottom: 0.6rem; color: var(--accent);
-  }
+ /* --- INFO-BANNER PC STYLES (Optimiert mit Lesbarkeits-Schutz) --- */
+ .info-banner-box {
+    position: relative; 
+    background: var(--bg-card); 
+    border: 1px solid var(--border-light); 
+    border-radius: var(--radius); 
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    min-height: 280px;
+ }
+
+ /* Der Lesbarkeits-Schutz: Ein dunkler Verlauf von links nach rechts */
+ .info-banner-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Links dunkler (0.8), nach rechts hin auslaufend (0.3) */
+    background: linear-gradient(90deg, rgba(8, 9, 14, 0.8) 0%, rgba(8, 9, 14, 0.3) 100%);
+    z-index: 1;
+    pointer-events: none;
+ }
+
+ .info-banner-media {
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.6; /* Hier kannst du die Helligkeit des Bildes generell steuern */
+    z-index: 0;
+ }
+
+ .info-banner-content {
+    position: relative; 
+    z-index: 2; /* WICHTIG: Muss höher als das ::after (1) sein */
+    padding: 2.5rem 3rem; 
+    max-width: 650px; 
+    width: 100%;
+ }
+
+ .info-banner-title {
+    font-family: var(--font-display); 
+    font-size: 2.2rem; 
+    line-height: 1.15; 
+    margin-bottom: 0.6rem; 
+    color: var(--accent);
+ }
 /* ── ASTRO-TICKER STYLING ── */
   .astro-ticker-wrapper {
     max-width: var(--max-w);
