@@ -56,7 +56,7 @@ collections:
             widget: "markdown"
             hint: "Format pro Zeile: YYYY-MM-DD: Dein Text"
             
-      - label: "Kosmischer Ticker (Astro-Experiment)"
+     - label: "Kosmischer Ticker (Astro-Experiment)"
         name: "ticker"
         file: "data/ticker.json"
         fields:
@@ -64,13 +64,16 @@ collections:
             name: "is_active"
             widget: "boolean"
             default: true
-            hint: "Schaltet den Ticker auf der Startseite ein oder aus."
           - label: "Aktuelle Meldung"
             name: "message"
             widget: "string"
-            hint: "Z.B.: 'Mond im Widder – hohe Volatilität an der Wall Street erwartet.'"
+            hint: "Die Hauptnachricht (z.B. Start des Experiments)"
+          - label: "Astro-Begründung (Kurz)"
+            name: "explanation"
+            widget: "string"
+            hint: "Warum heute? Z.B.: 'Mond im Wassermann / Jupiter-Trigon-Sonne'"
           - label: "Portfolio Stand (Optional)"
             name: "portfolio"
             widget: "string"
             required: false
-            hint: "Z.B.: 'Investiert: 1000 € | Aktuell: 1045 € (+4,5%)'"
+            hint: "Z.B.: 'Investiert: 1000 € | Aktuell: 1045 €'"
