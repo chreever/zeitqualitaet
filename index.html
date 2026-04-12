@@ -1787,15 +1787,16 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     {% if post.data.placement == "Info-Banner (Mitte)" %}
       <div class="info-banner-box fade-up visible">
         
-        {% if post.data.video %}
+        {% if post.data.video and post.data.video != "" %}
           <video autoplay muted loop playsinline class="info-banner-media">
             <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
           </video>
-        {% elsif post.data.banner_image %}
+        {% elsif post.data.banner_image and post.data.banner_image != "" %}
           <img class="info-banner-media" src="{{ post.data.banner_image | url }}" alt="Info Banner">
-        {% elsif post.data.image %}
+        {% elsif post.data.image and post.data.image != "" %}
           <img class="info-banner-media" src="{{ post.data.image | url }}" alt="Info Banner">
         {% else %}
+          {# Falls alle Felder leer sind, greift das Sicherheitsnetz #}
           <img class="info-banner-media" src="/img/sternenhimmel-berge.jpg" alt="Info Banner">
         {% endif %}
         
