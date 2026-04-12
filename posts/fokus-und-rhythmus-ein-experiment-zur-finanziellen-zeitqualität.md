@@ -3,7 +3,7 @@ title: "Fokus und Rhythmus: Ein Experiment zur finanziellen Zeitqualität"
 category: Astro-Experiment
 date: 2026-04-12T12:58:00.000+02:00
 image: /img/horoskop.png
-banner_image: /img/horoskop.png
+banner_image: ""
 post_image: /img/horoskop.png
 description: Zahlen allein erzählen oft nur die halbe Wahrheit. In diesem
   Experiment begleite ich den technologischen Wandel der Intel-Aktie durch die
