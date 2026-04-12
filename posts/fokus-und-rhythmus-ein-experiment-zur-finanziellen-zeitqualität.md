@@ -21,7 +21,7 @@ Intel wurde am 13. Oktober 1971 an der Börse geboren. In der psychologischen Sy
 
 Doch jedes Unternehmen erreicht Punkte, an denen die alte Struktur nicht mehr trägt. Der „Dinosaurier“ der Branche steht vor der Herausforderung, sich komplett neu zu erfinden. Hier kommt die aktuelle Zeitqualität ins Spiel.
 
-![Analyse: Pluto im Quadrat zur Venus (3. Haus) erzwingt strategische Neuausrichtungen. Ein klassisches Signal dafür, dass finanzielle Restrukturierungen schonungslos kommuniziert werden müssen.](/img/horoskop.png)
+![](/img/horoskop_markiert.png "Analyse: Pluto im Quadrat zur Venus (3. Haus) erzwingt strategische Neuausrichtungen. Ein klassisches Signal dafür, dass finanzielle Restrukturierungen schonungslos kommuniziert werden müssen.")
 
 ## 2026: Die Architektur des Wandels
 
