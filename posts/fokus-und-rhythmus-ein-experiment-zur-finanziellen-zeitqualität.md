@@ -11,9 +11,6 @@ description: Zahlen allein erzählen oft nur die halbe Wahrheit. In diesem
   Timing zusammenwirken.
 placement: Info-Banner (Mitte)
 ---
-
-
-
 In einer Welt, die von Nanosekunden-Entscheidungen und algorithmischem Hochfrequenzhandel dominiert wird, scheint der Blick auf natürliche Rhythmen fast anachronistisch. Doch wer sich lange genug mit den Finanzmärkten beschäftigt, erkennt schnell: Märkte atmen. Sie folgen Zyklen von Expansion und Kontraktion, die oft erstaunlich präzise mit den großen symbolischen Zeitqualitäten korrespondieren.
 
 Ich habe mich dazu entschieden, diese Dynamik in einem realen Experiment festzuhalten. Mit einem Einmalkauf von 1.000 Euro und einem begleitenden Sparplan starte ich eine Reise mit der Intel Corporation. Warum gerade jetzt? Weil Intel derzeit das perfekte Symbol für einen technologischen und strukturellen „Häutungsprozess“ ist.
@@ -23,6 +20,8 @@ Ich habe mich dazu entschieden, diese Dynamik in einem realen Experiment festzuh
 Intel wurde am 13. Oktober 1971 an der Börse geboren. In der psychologischen Symbolik trägt dieses Unternehmen eine starke Waage-Signatur. Waage steht für Vernetzung, Balance und das Bestreben, Brücken zu schlagen – Eigenschaften, die für einen Chiphersteller, der die globale Kommunikation ermöglicht, essenziell sind.
 
 Doch jedes Unternehmen erreicht Punkte, an denen die alte Struktur nicht mehr trägt. Der „Dinosaurier“ der Branche steht vor der Herausforderung, sich komplett neu zu erfinden. Hier kommt die aktuelle Zeitqualität ins Spiel.
+
+![Analyse: Pluto im Quadrat zur Venus (3. Haus) erzwingt strategische Neuausrichtungen. Ein klassisches Signal dafür, dass finanzielle Restrukturierungen schonungslos kommuniziert werden müssen.](/img/horoskop.png)
 
 ## 2026: Die Architektur des Wandels
 
