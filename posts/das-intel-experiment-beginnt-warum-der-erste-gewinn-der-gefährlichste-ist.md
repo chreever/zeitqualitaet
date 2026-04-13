@@ -27,6 +27,8 @@ Doch echte **mentale Stärke** bedeutet, diesen Höhenflug als das zu sehen, was
 
 *Analyse: Pluto im Quadrat zur Venus (3. Haus) erzwingt strategische Neuausrichtungen. Ein klassisches Signal für schonungslose finanzielle Umbrüche*
 
+![](/img/intel-eröffnung.jpg)
+
 ## Die Realität: Das Pluto-Quadrat
 
 Wenn wir einen Blick auf das Radix von Intel werfen (siehe Grafik oben), sehen wir ein dominantes Quadrat zwischen Transit-Pluto und der Radix-Venus mit Bezug zum 3. Haus. 
