@@ -21,13 +21,13 @@ Als ich am Sonntag die Strategie festlegte, stand der Mond im Wassermann. Diese 
 
 Dass die Aktie jetzt sofort ins Plus dreht, fühlt sich großartig an. Das Gehirn schüttet Dopamin aus, das Ego flüstert: *"Ich wusste es, ich hätte viel mehr investieren sollen!"* (FOMO – Fear of Missing Out). 
 
+![](/img/intel-eröffnung.jpg)
+
 Doch echte **mentale Stärke** bedeutet, diesen Höhenflug als das zu sehen, was er ist: Schönes Marktwetter, aber noch lange kein Zyklus. Wir dürfen nicht vergessen, unter welchen übergeordneten Spannungen Intel derzeit steht.
 
 ![](/img/horoskop_markiert.png "Analyse: Pluto im Quadrat zur Venus (3. Haus) erzwingt strategische Neuausrichtungen. Ein klassisches Signal für schonungslose finanzielle Umbrüche.")
 
 *Analyse: Pluto im Quadrat zur Venus (3. Haus) erzwingt strategische Neuausrichtungen. Ein klassisches Signal für schonungslose finanzielle Umbrüche*
-
-![](/img/intel-eröffnung.jpg)
 
 ## Die Realität: Das Pluto-Quadrat
 
