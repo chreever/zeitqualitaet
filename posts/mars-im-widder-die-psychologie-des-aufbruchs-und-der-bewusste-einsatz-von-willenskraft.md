@@ -10,7 +10,7 @@ description: Wenn die Mars-Energie in das Zeichen Widder wechselt, markiert dies
   psychologisch den Beginn eines neuen Handlungszyklus. Es ist eine Phase, in
   der innere Impulse nach außen drängen und wir die Chance haben, durch gezielte
   Eigenverantwortung lang gehegte Projekte in die Tat umzusetzen.
-placement: Info-Banner (Mitte)
+placement: Kein Banner
 ---
 
 
