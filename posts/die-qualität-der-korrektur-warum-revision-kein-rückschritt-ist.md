@@ -10,9 +10,6 @@ description: Manchmal fordert uns die Zeitqualität dazu auf, innezuhalten und
   Integrität ist.
 placement: Top-Banner (Header)
 ---
-
-
-
 ## Wenn das Fundament nach Justierung verlangt
 
 In einer Welt, die auf permanente Expansion und fehlerfreie Selbstdarstellung getrimmt ist, wirkt ein Rückzug oft wie eine Schwäche. Doch wenn wir die Natur beobachten, sehen wir, dass Korrekturen überlebensnotwendig sind. Ein Baum, der in die falsche Richtung wächst und seine Statik gefährdet, muss durch äußere Einflüsse oder inneres Wachstum korrigiert werden, um nicht zu brechen.
@@ -35,6 +32,6 @@ Die aktuelle Zeitqualität lädt uns dazu ein, genau hinzusehen: Wo handeln wir 
 
 ## Meine Impulse für dich
 
-* Inventur der Integrität: Gibt es in deinem Leben Projekte oder Aussagen, die sich heute nicht mehr "richtig" anfühlen? Was würde passieren, wenn du sie konsequent entfernst?
-* Reaktion auf Feedback: Wenn dich jemand auf einen Fehler oder einen Konflikt hinweist – ist dein erster Impuls Verteidigung oder Neugier? Versuche, den Hinweis als neutrales Korrektiv für deine Statik zu sehen.
-* Mut zum Leerraum: Hab keine Angst vor der Lücke, die durch eine Löschung oder Absage entsteht. Erst im freien Raum kann eine neue, passendere Qualität wachsen.
+1. Inventur der Integrität: Gibt es in deinem Leben Projekte oder Aussagen, die sich heute nicht mehr "richtig" anfühlen? Was würde passieren, wenn du sie konsequent entfernst?
+2. Reaktion auf Feedback: Wenn dich jemand auf einen Fehler oder einen Konflikt hinweist – ist dein erster Impuls Verteidigung oder Neugier? Versuche, den Hinweis als neutrales Korrektiv für deine Statik zu sehen.
+3. Mut zum Leerraum: Hab keine Angst vor der Lücke, die durch eine Löschung oder Absage entsteht. Erst im freien Raum kann eine neue, passendere Qualität wachsen.
