@@ -1991,7 +1991,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       function draw(time) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         stars.forEach(star => {
-          const twinkle = Math.sin(time * star.speed + star.phase) * 0.3 + 0.7;
+          const twinkle = Math.sin(time * star.speed + star.phase) * 0.2 + 0.3;
           ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
           ctx.fillStyle = star.color; ctx.globalAlpha = star.opacity * twinkle; ctx.fill();
         });
