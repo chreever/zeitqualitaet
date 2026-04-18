@@ -1677,7 +1677,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 <body>
 
 <div class="starfield"><canvas id="stars"></canvas></div>
-<canvas class="stardust-canvas" id="stardust"></canvas>
+
 <div class="cursor-glow" id="cursorGlow"></div>
 <div class="nebula nebula-1"></div>
 <div class="nebula nebula-2"></div>
@@ -2164,24 +2164,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     });
   })();
 
-  /* ── CURSOR & STARDUST ── */
-  if (!isMobile) {
-    (function() {
-      const glow = document.getElementById('cursorGlow');
-      document.addEventListener('mousemove', e => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; glow.classList.add('active'); });
-      const canvas = document.getElementById('stardust'), ctx = canvas.getContext('2d');
-      let pts = [];
-      window.onresize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
-      window.onresize();
-      document.addEventListener('mousemove', (e) => { for(let i=0; i<3; i++) pts.push({x:e.clientX, y:e.clientY, life:1, vx:(Math.random()-0.5)*2, vy:(Math.random()-0.5)*2}); });
-      function anim() {
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        pts.forEach((p,i) => { p.life -= 0.02; p.x += p.vx; p.y += p.vy; if(p.life <= 0) pts.splice(i,1); ctx.fillStyle = `rgba(226,223,216,${p.life})`; ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI*2); ctx.fill(); });
-        requestAnimationFrame(anim);
-      }
-      anim();
-    })();
-  }
+ 
 /* ── OPTIMIERTES ASTRO-TICKER SCRIPT ── */
   async function loadAstroTicker() {
     const wrapper = document.getElementById('ticker-wrapper');
