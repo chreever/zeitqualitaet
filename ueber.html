@@ -6,12 +6,12 @@ layout: null
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christian Balas: Die Geschichte hinter Zeitqualität</title>
+<title>Über mich — Zeitqualität | Christian Balas</title>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Zeitqualität">
 <meta property="og:url" content="https://zeitqualitaet.at/ueber.html">
-<meta property="og:title" content="Christian Balas: Die Geschichte hinter Zeitqualität">
-<meta property="og:description" content="Vom Takt der Effizienz zum Rhythmus der Zeit. Erfahre mehr über meine Reise.">
+<meta property="og:title" content="Christian Balas: Expertise in Zeitqualität & Mentaltraining">
+<meta property="og:description" content="Vom Takt der Effizienz zur Qualität der Zeit. Erfahre mehr über den analytischen Ansatz von Christian Balas.">
 <meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
 
 <link rel="icon" type="image/svg+xml" href="/img/zq-favicon.svg?v=2">
@@ -19,625 +19,103 @@ layout: null
 <link rel="apple-touch-icon" href="/img/zq-favicon.png?v=2">
 
 <style>
-  /* FIX 2: Schriften mit / */
-  @font-face {
-    font-family: 'Cormorant Garamond';
-    src: url('/fonts/cormorant-garamond.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
+  /* ── LOCAL FONTS ── */
+  @font-face { font-family: 'Cormorant Garamond'; src: url('/fonts/cormorant-garamond.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Cormorant Garamond'; src: url('/fonts/cormorant-garamond-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Cormorant Garamond'; src: url('/fonts/cormorant-garamond-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Cormorant Garamond'; src: url('/fonts/cormorant-garamond-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Figtree'; src: url('/fonts/figtree.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Figtree'; src: url('/fonts/figtree-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Figtree'; src: url('/fonts/figtree-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Figtree'; src: url('/fonts/figtree-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('/fonts/ibm-plex-mono-300.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'IBM Plex Mono'; src: url('/fonts/ibm-plex-mono.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 
-  @font-face {
-    font-family: 'Cormorant Garamond';
-    src: url('/fonts/cormorant-garamond-500.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Cormorant Garamond';
-    src: url('/fonts/cormorant-garamond-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Cormorant Garamond';
-    src: url('/fonts/cormorant-garamond-italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Cormorant Garamond';
-    src: url('/fonts/cormorant-garamond-italic-500.woff2') format('woff2');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Figtree';
-    src: url('/fonts/figtree.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Figtree';
-    src: url('/fonts/figtree-400.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Figtree';
-    src: url('/fonts/figtree-500.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Figtree';
-    src: url('/fonts/figtree-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'IBM Plex Mono';
-    src: url('/fonts/ibm-plex-mono-300.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'IBM Plex Mono';
-    src: url('/fonts/ibm-plex-mono.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
   :root {
-    --bg: #08090e;
-    --bg-warm: #0c0d14;
-    --bg-card: #11121a;
-    --bg-card-hover: #161722;
-    --bg-elevated: #1a1b26;
-    --text: #e2dfd8;
-    --text-muted: #918d84;
-    --text-dim: #5c5950;
-    --accent: #d4a56a;
-    --accent-light: #e8c48e;
-    --accent-dim: rgba(212, 165, 106, 0.1);
-    --accent-glow: rgba(212, 165, 106, 0.06);
-    --celestial: #7b9cc4;
-    --celestial-dim: rgba(123, 156, 196, 0.1);
-    --border: #222330;
-    --border-light: #1a1b26;
-    --font-display: 'Cormorant Garamond', Georgia, serif;
-    --font-body: 'Figtree', system-ui, sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-    --radius: 10px;
-    --radius-sm: 6px;
-    --max-w: 1100px;
+    --bg: #08090e; --bg-warm: #0c0d14; --bg-card: #11121a; --bg-card-hover: #161722;
+    --bg-elevated: #1a1b26; --text: #e2dfd8; --text-muted: #918d84; --text-dim: #5c5950;
+    --accent: #d4a56a; --accent-light: #e8c48e; --accent-dim: rgba(212, 165, 106, 0.1);
+    --border: #222330; --border-light: #1a1b26;
+    --font-display: 'Cormorant Garamond', Georgia, serif; --font-body: 'Figtree', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace; --radius: 10px; --max-w: 1100px;
     --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-
-    /* ── TYPOGRAPHY SCALE ── */
-    --fs-hero: clamp(3.5rem, 8.5vw, 6.2rem);
-    --fs-h1: 2.8rem;
-    --fs-h2: 2.2rem;
-    --fs-h3: 1.5rem;
-    --fs-body: 1.02rem;
-    --fs-small: 0.92rem;
-    --fs-label: 0.8rem;
-    --fs-fine: 0.75rem;
+    --fs-hero: clamp(3.5rem, 8.5vw, 6.2rem); --fs-h1: 2.8rem; --fs-h2: 2.2rem;
+    --fs-h3: 1.5rem; --fs-body: 1.02rem; --fs-small: 0.92rem;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font-body);
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.75;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    overscroll-behavior-y: none; /* VERHINDERT PULL-TO-REFRESH AUF MOBILGERÄTEN */
-    touch-action: pan-x pan-y pinch-zoom;
-  }
-
-  ::selection { background: var(--accent); color: var(--bg); }
-
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
   a { color: var(--accent); text-decoration: none; transition: var(--transition); }
   a:hover { color: var(--accent-light); }
-  img { max-width: 100%; display: block; }
+  
+  .starfield { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .starfield canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-  .starfield {
-    position: fixed; inset: 0; z-index: -1;
-    overflow: hidden; pointer-events: none;
-  }
-
-  .starfield canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* ── STARDUST CURSOR ── */
-  .stardust-canvas {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* ── CURSOR LIGHT VEIL ── */
-  .cursor-glow {
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    background: radial-gradient(
-      circle,
-      rgba(212, 165, 106, 0.07) 0%,
-      rgba(123, 156, 196, 0.04) 30%,
-      rgba(160, 138, 173, 0.02) 50%,
-      transparent 70%
-    );
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    will-change: transform;
-    mix-blend-mode: screen;
-  }
-
-  .cursor-glow.active {
-    opacity: 1;
-  }
-
-  /* ── COSMIC GLOW NEBULAS ── */
-  .nebula {
-    position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -1;
-    filter: blur(80px);
-  }
-
-  .nebula-1 {
-    top: -5%; right: -10%;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(123, 156, 196, 0.05) 0%, transparent 65%);
-    animation: nebula-drift 40s ease-in-out infinite alternate;
-  }
-
-  .nebula-2 {
-    bottom: 10%; left: -8%;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(212, 165, 106, 0.04) 0%, transparent 65%);
-    animation: nebula-drift 55s ease-in-out infinite alternate-reverse;
-  }
-
-  .nebula-3 {
-    top: 40%; right: 20%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(160, 120, 196, 0.03) 0%, transparent 65%);
-    animation: nebula-drift 65s ease-in-out infinite alternate;
-  }
-
-  @keyframes nebula-drift {
-    from { transform: translate(0, 0) scale(1); }
-    to { transform: translate(30px, -20px) scale(1.1); }
-  }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(8, 9, 14, 0.85);
-    backdrop-filter: blur(28px);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .nav-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2rem;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  /* ── NEUES LOGO-STYLING ── */
-  .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    height: 100%;
-  }
-
-  .logo-container svg, .logo-container span {
-    transition: var(--transition);
-  }
-
-  .logo-container:hover svg {
-    transform: scale(1.08) rotate(5deg);
-    filter: brightness(1.2);
-  }
-
-  .logo-container:hover span {
-    color: var(--accent);
-  }
-
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8, 9, 14, 0.85); backdrop-filter: blur(28px); border-bottom: 1px solid var(--border-light); }
+  .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; height: 80px; display: flex; align-items: center; justify-content: space-between; }
+  .logo-container { display: flex; align-items: center; gap: 12px; }
   .nav-links { display: flex; gap: 2.2rem; align-items: center; }
-
-  .nav-links a {
-    color: var(--text-muted);
-    font-size: var(--fs-small);
-    font-weight: 400;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    position: relative;
-  }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--accent);
-    transition: var(--transition);
-  }
-
+  .nav-links a { color: var(--text-muted); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.06em; }
   .nav-links a:hover { color: var(--text); }
-  .nav-links a:hover::after { width: 100%; }
+  .menu-toggle { display: none; background: none; border: none; color: var(--text); cursor: pointer; font-size: 1.4rem; }
 
-  .menu-toggle {
-    display: none;
-    background: none; border: none;
-    color: var(--text); cursor: pointer;
-    font-size: 1.4rem;
-  }
+  .hero { padding: 12rem 2rem 3rem; text-align: center; max-width: var(--max-w); margin: 0 auto; }
+  .hero-eyebrow { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
+  .hero h1 { font-family: var(--font-display); font-size: var(--fs-h1); font-weight: 400; line-height: 1.08; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
 
-  .hero {
-    padding: 12rem 2rem 3rem; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-  }
+  .about { max-width: var(--max-w); margin: 0 auto; padding: 5rem 2rem; }
+  .about-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3.5rem; align-items: start; }
+  .about-aside { position: sticky; top: 120px; }
+  .about-photo { width: 240px; height: 240px; border-radius: 50%; margin: 0 auto 1.5rem; object-fit: cover; border: 1px solid var(--border); display: block; }
+  .about-aside h2 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; margin-bottom: 1rem; }
+  .about-tagline { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .about-content h3 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; margin: 2.2rem 0 0.8rem; color: var(--accent-light); }
+  .about-content h3:first-child { margin-top: 0; }
+  .about-content p { color: var(--text-muted); font-size: var(--fs-body); line-height: 1.8; margin-bottom: 1.2rem; }
 
-  .hero-eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    font-weight: 300;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
-  }
+  .divider { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+  .divider hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
 
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h1);
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-  }
+  .action-buttons { margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+  .action-btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 26px; border: 1px solid var(--border); border-radius: 100px; color: var(--accent); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: 0.3s; }
+  .action-btn:hover { border-color: var(--accent); background: rgba(212, 165, 106, 0.05); }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  footer { border-top: 1px solid var(--border-light); padding: 4rem 2rem; text-align: center; }
+  .footer-disclaimer { color: var(--text-dim); font-size: 0.75rem; max-width: 600px; margin: 1rem auto 0; line-height: 1.6; }
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1.2rem; }
+  .footer-links a { font-size: 0.75rem; color: var(--text-dim); }
 
-  /* ── ABOUT BEREICH SPECIFICS ── */
-  .about {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 5rem 2rem;
-  }
+  .fade-up { opacity: 0; transform: translateY(24px); transition: 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  .about-inner {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 3.5rem;
-    align-items: start;
-  }
-
-  .about-aside {
-    position: sticky;
-    top: 100px;
-  }
-
-  .about-photo {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    object-fit: cover;
-    border: 2px solid var(--border);
-    display: block;
-  }
-
-  .about-aside h2 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h1);
-    font-weight: 400;
-    margin-bottom: 1rem;
-  }
-
-  .about-aside .about-tagline {
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-aside blockquote {
-    border-left: 2px solid var(--accent);
-    padding-left: 1.2rem;
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-top: 1.5rem;
-  }
-
-  .about-content h3 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    margin: 2.2rem 0 0.8rem;
-    color: var(--accent-light);
-  }
-
-  .about-content h3:first-child {
-    margin-top: 0;
-  }
-
-  .about-content p {
-    color: var(--text-muted);
-    font-size: var(--fs-body);
-    line-height: 1.8;
-    margin-bottom: 0.8rem;
-  }
-
-  .divider {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .divider hr {
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-  }
-
-  /* ── ACTION BUTTONS ── */
-  .action-buttons {
-    margin-top: 3rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .action-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: var(--accent);
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: var(--transition);
-    text-decoration: none;
-  }
-
-  .action-btn:hover {
-    border-color: var(--accent-dim);
-    background: rgba(212, 165, 106, 0.05);
-    color: var(--accent-light);
-  }
-
-  footer {
-    border-top: 1px solid var(--border-light);
-    padding: 3.5rem 2rem 2.5rem;
-    text-align: center;
-  }
-
-  .footer-note {
-    color: var(--text-dim);
-    font-size: var(--fs-label);
-    margin-bottom: 0.4rem;
-  }
-
-  .footer-disclaimer {
-    color: var(--text-dim);
-    font-size: var(--fs-fine);
-    font-style: italic;
-    max-width: 500px;
-    margin: 0.8rem auto 0;
-    opacity: 0.7;
-    line-height: 1.6;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 0.8rem;
-  }
-
-  .footer-links a {
-    font-size: var(--fs-fine);
-    color: var(--text-dim);
-  }
-
-  .footer-links a:hover {
-    color: var(--accent);
-  }
-
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* --- RESPONSIVE OPTIMIERUNG --- */
   @media (max-width: 768px) {
-    /* --- PERFORMANCE OPTIMIERUNG FÜR MOBILE --- */
-    .nebula {
-      filter: none !important;
-      animation: none !important;
-      opacity: 0.1 !important;
-    }
-    .stardust-canvas, .starfield, .cursor-glow {
-      display: none !important;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: rgba(8, 9, 14, 0.97);
-        backdrop-filter: blur(24px);
-        padding: 1.5rem 1rem;
-        gap: 1.2rem;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .nav-links.open a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        font-size: 0.95rem; 
-        letter-spacing: 0.02em;
-        word-wrap: break-word; 
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .hero {
-        padding: 9rem 1.5rem 3rem;
-        min-height: auto;
-    }
-
-    .about-inner {
-        grid-template-columns: 1fr !important; 
-        gap: 1.5rem; 
-    }
-
-    .about-aside img {
-        width: 200px !important;
-        height: 200px !important;        
-        object-fit: cover;        
-        border-radius: 50% !important;
-        margin: 0 auto 1.5rem !important;
-    }
-
-    .about-aside {
-        position: static;
-        order: -1; 
-    }
-
-    .about {
-        padding: 3rem 1.5rem;
-    }
-  }
-
-  /* --- GOLD-UPDATE --- */
-  .admin-access-star {
-    display: inline-block;
-    color: var(--accent);
-    opacity: 0.4; 
-    text-decoration: none;
-    font-size: 1.1rem;
-    margin-left: 10px;
-    transition: all 0.3s ease;
-    vertical-align: middle;
-  }
-
-  .admin-access-star:hover {
-    opacity: 1;
-    transform: scale(1.3) rotate(20deg); 
-    cursor: pointer;
-    filter: drop-shadow(0 0 5px var(--accent)); 
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .hero { padding-top: 9rem; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-aside { position: static; text-align: center; }
   }
 </style>
 </head>
 <body>
 
+<div class="starfield"><canvas id="stars"></canvas></div>
+
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo-container">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
-        <defs>
-          <linearGradient id="gold-logo" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f2d5a3"/>
-            <stop offset="40%" stop-color="#d4a56a"/>
-            <stop offset="100%" stop-color="#a67b45"/>
-          </linearGradient>
-        </defs>
+      <svg viewBox="0 0 120 120" style="height: 42px; width: 42px;">
+        <defs><linearGradient id="gold-logo" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f2d5a3"/><stop offset="100%" stop-color="#a67b45"/></linearGradient></defs>
         <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo)" stroke-width="1.5" opacity="0.25"/>
-        <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo)" stroke-width="0.5" opacity="0.6"/>
-        <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo)" opacity="0.15"/>
         <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo)"/>
-        <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
       </svg>
-      <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
+      <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400;">Zeitqualität</span>
     </a>
-    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     <div class="nav-links">
       <a href="/#beitraege">Beiträge</a>
-      <a href="/#videos">Impulse</a>
       <a href="/#galerie">Sternzeichen</a>
       <a href="/ueber.html" style="color: var(--text); border-bottom: 1px solid var(--accent);">Über mich</a>
       <a href="/#kontakt">Kontakt</a>
@@ -645,389 +123,87 @@ layout: null
   </div>
 </nav>
 
-<header class="hero" style="padding-top: 10rem; padding-bottom: 2rem; min-height: auto;">
+<header class="hero">
   <div class="hero-eyebrow">Mein Hintergrund & Ansatz</div>
-  <h1 style="font-size: var(--fs-h1);">Vom Takt der Effizienz<br>zur <em>Qualität der Zeit</em></h1>
+  <h1>Vom Takt der Effizienz<br>zur <em>Qualität der Zeit</em></h1>
 </header>
 
 <div class="divider"><hr></div>
 
-<div class="about" style="padding-top: 3rem;">
+<div class="about">
   <div class="about-inner">
-    
     <div class="about-aside fade-up">
-      <img src="/img/christian-portraet.jpg" alt="Christian Balas" class="about-photo" style="object-position: 80% center;">
+      <img src="/img/christian-portraet.jpg" alt="Christian Balas" class="about-photo">
       <h2>Christian Balas</h2>
-      <div class="about-tagline" style="margin-bottom: 0.5rem;">Diplomierter Mentaltrainer & <br>Analytiker für Zeitqualität</div>
-      <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.5;">
-        Ich verbinde psychologisch fundiertes Mentaltraining mit einer analytischen Sicht auf zyklische Zeitmuster.
+      <div class="about-tagline">Diplomierter Mentaltrainer &<br>Analytiker für Zeitqualität</div>
+      <p style="color:var(--text-muted); font-size: 0.95rem;">
+        Ich verbinde 19 Jahre Finanz-Expertise mit psychologischem Mentaltraining und einer systemischen Analyse von Zeitzyklen.
       </p>
     </div>
 
     <div class="about-content fade-up">
-      
       <h3>Zwischen Leistungsdruck und Fokus</h3>
-      <p>Seit über 19 Jahren bewege ich mich im Vertrieb der Finanzbranche. Ein Umfeld, das von klaren Zielen, harten Zahlen und messbaren Ergebnissen geprägt ist. Was dabei im harten Business-Alltag oft in den Hintergrund rückt, ist die mentale Verfassung des Einzelnen. Ich habe immer wieder erlebt, dass die größten Hürden nicht fachlicher Natur sind, sondern im Kopf entstehen. Es ist das Spannungsfeld aus Erwartungshaltungen, hohem Marktdruck und dem eigenen Perfektionismus, das massiv Energie kostet.</p>
+      <p>Seit fast zwei Jahrzehnten bewege ich mich im Vertrieb der Finanzbranche. Ein Umfeld geprägt von harten Zahlen und messbaren Ergebnissen. Doch meine Erfahrung zeigt: Die größten Hürden sind selten fachlicher Natur – sie entstehen im Kopf. Das Spannungsfeld aus hohem Marktdruck und eigenem Perfektionismus ist die eigentliche Herausforderung.</p>
       
-      <p>Auch heute bin ich in dieser Branche aktiv. Gerade diese tägliche Praxis zeigt mir, dass fachliche Exzellenz allein nicht ausreicht, um langfristig belastbar, gesund und strategisch klar zu bleiben.</p>
-
       <h3>Mentale Resilienz als strategisches Fundament</h3>
-      <p>Diese Erkenntnis war mein Impuls für die Ausbildung zum Mentaltrainer. Dabei ging es mir nicht um spirituelle Selbstfindung, sondern um handfeste Werkzeuge: Ich wollte meine eigenen Strukturen ordnen, Entscheidungen bewusster treffen und eine echte, belastbare Resilienz aufbauen.</p>
-      
-      <p>Mentale Stärke entsteht für mich nicht im Ausnahmezustand, sondern durch die tägliche Hygiene unserer Gedanken und Emotionen. Es ist die Fähigkeit, die eigene Wahrnehmung aktiv zu steuern – gerade dann, wenn die Schlagzahl im Außen steigt.</p>
+      <p>Mein Impuls für die Ausbildung zum Mentaltrainer war das Bedürfnis nach handfesten Werkzeugen zur Ordnung innerer Strukturen. Mentale Stärke ist für mich kein Ausnahmezustand, sondern die tägliche Hygiene unserer Gedanken. Es ist die Fähigkeit, die eigene Wahrnehmung aktiv zu steuern, wenn die Schlagzahl im Außen steigt.</p>
 
       <h3>Zeitqualität: Systemik statt Esoterik</h3>
-      <p>Hier schließt sich der Kreis zur <em>Zeitqualität</em>. Ich betrachte die Astrologie als ein präzises, jahrtausendealtes Symbolsystem. Sie ist für mich kein mystisches Orakel und keine Schicksalsdeutung, sondern eine Form der systemischen Analyse zeitlicher Rahmenbedingungen.</p>
-      
-      <p>Sie hilft uns zu verstehen, welche Rhythmen gerade wirken – und wann es strategisch klug ist, in die Reflexion zu gehen, Projekte abzusichern oder aktiv neue Entscheidungen zu forcieren. Es geht mir nicht darum, die Verantwortung an die Sterne abzugeben. Im Gegenteil: Es geht darum, durch das Wissen um diese Zyklen die eigene Handlungsfreiheit zurückzugewinnen und Entscheidungen klarer, reflektierter und im Einklang mit der aktuellen Zeitqualität zu treffen.</p>
+      <p>Hier schließt sich der Kreis zur <em>Zeitqualität</em>. Ich nutze die Astrologie als präzises Symbolsystem für die systemische Analyse zeitlicher Rahmenbedingungen. Es geht nicht um Marktprognosen oder Schicksalsglauben, sondern darum zu verstehen, welche Rhythmen gerade wirken. So gewinnen wir die Handlungsfreiheit zurück, um Entscheidungen klarer und im Einklang mit der aktuellen Phase zu treffen.</p>
 
       <div class="action-buttons">
-        <a href="/#beitraege" class="action-btn">
-          <span>← Zurück zu den Beiträgen</span>
-        </a>
-        <button id="shareButton" class="action-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="18" cy="5" r="3"></circle>
-            <circle cx="6" cy="12" r="3"></circle>
-            <circle cx="18" cy="19" r="3"></circle>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-          </svg>
-          <span id="shareText">Seite Teilen</span>
-        </button>
+        <a href="/#beitraege" class="action-btn">← Zurück zur Übersicht</a>
+        <button id="shareButton" class="action-btn">Seite Teilen</button>
       </div>
-      
     </div>
   </div>
 </div>
 
-<div class="divider"><hr></div>
-
 <footer>
   <a href="/" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
-      <defs>
-        <linearGradient id="gold-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f2d5a3"/>
-          <stop offset="40%" stop-color="#d4a56a"/>
-          <stop offset="100%" stop-color="#a67b45"/>
-        </linearGradient>
-      </defs>
-      <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo-footer)" stroke-width="1.5" opacity="0.25"/>
-      <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo-footer)" stroke-width="0.5" opacity="0.6"/>
-      <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo-footer)" opacity="0.15"/>
-      <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo-footer)"/>
-      <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
-    </svg>
-    <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
+    <span style="font-family: var(--font-display); font-size: 1.5rem; color: var(--text);">Zeitqualität</span>
   </a>
-  <p class="footer-note">
-  © 2026 Zeitqualität · Christian Balas 
-  </p>
-  <p class="footer-disclaimer">Unabhängiger redaktioneller Informationsblog zur thematischen Einordnung astrologischer Inhalte und Zeitqualität. Die Inhalte dienen der Reflexion und Orientierung – sie ersetzen keine professionelle Beratung.</p>
+  <p>© 2026 Zeitqualität · Christian Balas</p>
+  <p class="footer-disclaimer">Privater Blog zur Reflexion. Keine Finanzanalyse, Anlageberatung oder professionelle medizinische Begleitung.</p>
   <div class="footer-links">
     <a href="/datenschutz.html">Datenschutz</a>
-    <a href="/impressum.html">Impressum / Offenlegung</a>
+    <a href="/impressum.html">Impressum</a>
   </div>
 </footer>
 
 <script>
   // Fade-Up Animation
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.08 });
-
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Mobile Menu Fix
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.remove('open');
-    });
-  });
+  // ATMENDES STERNENFELD (VERLANGSAMT)
+  (function() {
+    const canvas = document.getElementById('stars'); const ctx = canvas.getContext('2d');
+    let stars = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    function create() { stars = []; for(let i=0; i<150; i++) stars.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, s:Math.random()*1.2, p:Math.random()*Math.PI*2}); }
+    function draw(t) { 
+      ctx.clearRect(0,0,canvas.width,canvas.height); 
+      stars.forEach(s => { 
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.s, 0, Math.PI*2); ctx.fillStyle = "#e2dfd8"; 
+        ctx.globalAlpha = Math.sin(t*0.0005 + s.p)*0.2 + 0.3; // LANGSAM & DEZENT
+        ctx.fill(); 
+      }); 
+      requestAnimationFrame(draw); 
+    }
+    resize(); create(); draw(0); window.addEventListener('resize', resize);
+  })();
 
-  // Teilen-Button Logik (Web Share API)
+  // Share Logik
   document.getElementById('shareButton').addEventListener('click', async () => {
-    const shareData = {
-      title: 'Christian Balas: Die Geschichte hinter Zeitqualität',
-      text: 'Vom Takt der Effizienz zum Rhythmus der Zeit. Erfahre mehr über meine Reise auf Zeitqualität.',
-      url: window.location.href
-    };
-    
-    const shareText = document.getElementById('shareText');
-
     if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        // Ignorieren, wenn der User den Teilen-Dialog abbricht
-      }
+      try { await navigator.share({ title: 'Christian Balas - Zeitqualität', url: window.location.href }); } catch (err) {}
     } else {
-      // Fallback für alte Browser / Desktop: In die Zwischenablage kopieren
-      navigator.clipboard.writeText(window.location.href).then(() => {
-        const originalText = shareText.innerText;
-        shareText.innerText = 'Link kopiert!';
-        setTimeout(() => { shareText.innerText = originalText; }, 2500);
-      }).catch(err => {
-        console.error('Fehler beim Kopieren: ', err);
-      });
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link kopiert!');
     }
   });
-
-  // PRÜFEN OB MOBILE DEVICE (für Performance-Tweaks)
-  const isMobile = window.innerWidth <= 768;
-
-  // Twinkling Stars
-  if (!isMobile) {
-    (function() {
-      const canvas = document.getElementById('stars');
-      const ctx = canvas.getContext('2d');
-      let stars = [];
-      const STAR_COUNT = 200;
-
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      function createStars() {
-        stars = [];
-        for (let i = 0; i < STAR_COUNT; i++) {
-          stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 1.5 + 0.3,
-            opacity: Math.random() * 0.6 + 0.1,
-            speed: Math.random() * 0.003 + 0.001,
-            phase: Math.random() * Math.PI * 2,
-            color: ['#e2dfd8', '#d4a56a', '#7b9cc4', '#c9b97a', '#7abfbf'][Math.floor(Math.random() * 5)]
-          });
-        }
-      }
-
-      function draw(time) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        stars.forEach(star => {
-          const twinkle = Math.sin(time * star.speed + star.phase) * 0.3 + 0.7;
-          const alpha = star.opacity * twinkle;
-
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-          ctx.fillStyle = star.color;
-          ctx.globalAlpha = alpha;
-          ctx.fill();
-
-          if (star.size > 1) {
-            ctx.beginPath();
-            ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
-            ctx.fillStyle = star.color;
-            ctx.globalAlpha = alpha * 0.08;
-            ctx.fill();
-          }
-        });
-
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(draw);
-      }
-
-      resize();
-      createStars();
-      requestAnimationFrame(draw);
-
-      window.addEventListener('resize', () => {
-        resize();
-        createStars();
-      });
-    })();
-  }
-
-  // Cursor Light Veil
-  if (!isMobile) {
-    (function() {
-      const glow = document.getElementById('cursorGlow');
-      let glowX = -500, glowY = -500;
-      let targetX = -500, targetY = -500;
-      let isActive = false;
-      let hideTimeout;
-
-      document.addEventListener('mousemove', (e) => {
-        targetX = e.clientX;
-        targetY = e.clientY;
-
-        if (!isActive) {
-          isActive = true;
-          glow.classList.add('active');
-        }
-
-        clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(() => {
-          glow.classList.remove('active');
-          isActive = false;
-        }, 1500);
-      });
-
-      document.addEventListener('mouseleave', () => {
-        glow.classList.remove('active');
-        isActive = false;
-      });
-
-      function animateGlow() {
-        glowX += (targetX - glowX) * 0.12;
-        glowY += (targetY - glowY) * 0.12;
-        glow.style.left = glowX + 'px';
-        glow.style.top = glowY + 'px';
-        requestAnimationFrame(animateGlow);
-      }
-
-      animateGlow();
-    })();
-  }
-
-  // Stardust Mouse Trail
-  if (!isMobile) {
-    (function() {
-      const canvas = document.getElementById('stardust');
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      let mouseX = -1000, mouseY = -1000;
-      let lastX = -1000, lastY = -1000;
-      let isMoving = false;
-      let moveTimeout;
-
-      const colors = [
-        { r: 226, g: 223, b: 216 },
-        { r: 210, g: 205, b: 195 },
-        { r: 212, g: 185, b: 140 }
-      ];
-
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-
-      function createParticle(x, y, speed) {
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const angle = Math.random() * Math.PI * 2;
-        const velocity = Math.random() * 1.2 + 0.3;
-        const drift = speed * 0.15;
-
-        particles.push({
-          x: x + (Math.random() - 0.5) * 16,
-          y: y + (Math.random() - 0.5) * 16,
-          vx: Math.cos(angle) * velocity + (Math.random() - 0.5) * drift,
-          vy: Math.sin(angle) * velocity + (Math.random() - 0.5) * drift - 0.4,
-          size: Math.random() * 1.5 + 0.5,
-          life: 1,
-          decay: Math.random() * 0.025 + 0.012,
-          color: color,
-          rotation: Math.random() * Math.PI * 2,
-          rotSpeed: (Math.random() - 0.5) * 0.1,
-          isStar: Math.random() > 0.6
-        });
-      }
-
-      function drawStar(x, y, size, rotation) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(rotation);
-        ctx.beginPath();
-        for (let i = 0; i < 4; i++) {
-          const a = (i / 4) * Math.PI * 2;
-          ctx.moveTo(0, 0);
-          ctx.lineTo(Math.cos(a) * size, Math.sin(a) * size);
-        }
-        ctx.stroke();
-        ctx.restore();
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-
-          p.x += p.vx;
-          p.y += p.vy;
-          p.vy += 0.01;
-          p.vx *= 0.99;
-          p.life -= p.decay;
-          p.rotation += p.rotSpeed;
-          p.size *= 0.997;
-
-          if (p.life <= 0) {
-            particles.splice(i, 1);
-            continue;
-          }
-
-          const alpha = p.life * p.life;
-          const { r, g, b } = p.color;
-
-          if (p.isStar) {
-            ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.9})`;
-            ctx.lineWidth = 0.5;
-            drawStar(p.x, p.y, p.size * 1.5, p.rotation);
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.1})`;
-            ctx.fill();
-          } else {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.8})`;
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${alpha * 0.06})`;
-            ctx.fill();
-          }
-        }
-
-        requestAnimationFrame(animate);
-      }
-
-      document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        const dx = mouseX - lastX;
-        const dy = mouseY - lastY;
-        const speed = Math.sqrt(dx * dx + dy * dy);
-
-        isMoving = true;
-        clearTimeout(moveTimeout);
-        moveTimeout = setTimeout(() => { isMoving = false; }, 80);
-
-        const count = Math.min(Math.floor(speed * 0.4) + 1, 6);
-        for (let i = 0; i < count; i++) {
-          const t = i / count;
-          const ix = lastX + dx * t;
-          const iy = lastY + dy * t;
-          createParticle(ix, iy, speed);
-        }
-
-        lastX = mouseX;
-        lastY = mouseY;
-      });
-
-      setInterval(() => {
-        if (particles.length > 300) {
-          particles.splice(0, particles.length - 300);
-        }
-      }, 500);
-
-      resize();
-      requestAnimationFrame(animate);
-
-      window.addEventListener('resize', resize);
-    })();
-  }
 </script>
 </body>
 </html>
