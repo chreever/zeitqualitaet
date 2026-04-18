@@ -249,109 +249,7 @@ layout: null
     to { transform: translate(30px, -20px) scale(1.1); }
   }
 
-  /* ── REALISTISCHE PLANETEN-GRAFIK & FARBEN ── */
-  .orbit-system { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vmin; height: 100vmin; pointer-events: none; z-index: -1; opacity: 0.8; }
-  .orbit-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 1px solid rgba(255,255,255,0.012); }
-  
-  .orbit-ring::before {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    transform: translateX(-50%);
-    top: 0; left: 50%;
-    box-shadow: inset -2px -2px 5px rgba(0,0,0,0.6), inset 1px 1px 3px rgba(255,255,255,0.2);
-  }
-
-  .orbit-mercury { width: 120px; height: 120px; transform: translate(-50%, -50%); animation: orbit-spin 18s linear infinite; }
-  .orbit-mercury::before {
-    width: 5px; height: 5px;
-    top: -2.5px;
-    background: radial-gradient(circle at 30% 30%, #b3a696 0%, #736d63 40%, #5c5449 100%);
-    filter: drop-shadow(0 0 2px rgba(166, 166, 166, 0.3));
-  }
-
-  .orbit-venus { width: 200px; height: 200px; transform: translate(-50%, -50%); animation: orbit-spin 28s linear infinite reverse; }
-  .orbit-venus::before {
-    width: 8px; height: 8px;
-    top: -4px;
-    background: radial-gradient(circle at 30% 30%, #fff9e6 0%, #e8d9a0 60%, #c9b97a 100%);
-    filter: drop-shadow(0 0 6px rgba(232, 196, 142, 0.35));
-  }
-
-  .orbit-earth { width: 310px; height: 310px; transform: translate(-50%, -50%); animation: orbit-spin 38s linear infinite; }
-  .orbit-earth::before {
-    width: 9px; height: 9px;
-    top: -4.5px;
-    background: radial-gradient(circle at 30% 30%, #fff 5%, #89b4e8 30%, #5b78c4 60%, #4a63a1 100%);
-    filter: drop-shadow(0 0 7px rgba(123, 156, 196, 0.6));
-  }
-
-  .orbit-mars { width: 420px; height: 420px; transform: translate(-50%, -50%); animation: orbit-spin 50s linear infinite; }
-  .orbit-mars::before {
-    width: 6px; height: 6px;
-    top: -3px;
-    background: radial-gradient(circle at 30% 30%, #d6856c 0%, #b85f4b 40%, #8c4233 100%);
-    filter: drop-shadow(0 0 3px rgba(184, 95, 75, 0.4));
-  }
-
-  .orbit-jupiter { width: 580px; height: 580px; transform: translate(-50%, -50%); animation: orbit-spin 70s linear infinite reverse; }
-  .orbit-jupiter::before {
-    width: 22px; height: 22px;
-    top: -11px;
-    background: repeating-linear-gradient(180deg, #d4a56a, #e8c48e 15%, #c49a6c 30%);
-    filter: drop-shadow(0 0 9px rgba(212, 165, 106, 0.25));
-  }
-
-  .orbit-saturn { width: 720px; height: 720px; transform: translate(-50%, -50%); animation: orbit-spin 90s linear infinite; }
-  .orbit-saturn::before {
-    width: 16px; height: 16px;
-    top: -8px;
-    background: radial-gradient(circle at 30% 30%, #e8d9a0, #c9b97a);
-    filter: drop-shadow(0 0 8px rgba(201, 185, 122, 0.4));
-    z-index: 2;
-  }
-  .orbit-saturn::after {
-    content: '';
-    position: absolute;
-    top: -13px;
-    left: 50%;
-    transform: translateX(-50%) rotateX(75deg);
-    width: 26px; height: 26px;
-    border: 1.5px solid rgba(201, 185, 122, 0.35);
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(201, 185, 122, 0.15);
-    z-index: 1;
-  }
-
-  .orbit-uranus { width: 880px; height: 880px; transform: translate(-50%, -50%); animation: orbit-spin 120s linear infinite reverse; }
-  .orbit-uranus::before {
-    width: 12px; height: 12px;
-    top: -6px;
-    background: radial-gradient(circle at 30% 30%, #e0ffff 0%, #a0efef 60%, #7abfbf 100%);
-    filter: drop-shadow(0 0 6px rgba(122, 191, 191, 0.3));
-  }
-
-  .orbit-neptune { width: 1020px; height: 1020px; transform: translate(-50%, -50%); animation: orbit-spin 150s linear infinite; }
-  .orbit-neptune::before {
-    width: 12px; height: 12px;
-    top: -6px;
-    background: radial-gradient(circle at 30% 30%, #8acfff 0%, #7a9ce8 50%, #4a63a1 100%);
-    filter: drop-shadow(0 0 7px rgba(91, 120, 196, 0.4));
-  }
-
-  .orbit-pluto { width: 1160px; height: 1160px; transform: translate(-50%, -50%); animation: orbit-spin 200s linear infinite; border-style: dashed; border-color: rgba(255,255,255,0.01); }
-  .orbit-pluto::before {
-    width: 4px; height: 4px;
-    top: -2px;
-    background: radial-gradient(circle at 30% 30%, #d4c4b0 0%, #a08ead 100%);
-    filter: drop-shadow(0 0 1px rgba(160, 138, 173, 0.2));
-  }
-
-  @keyframes orbit-spin {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-
+ 
   /* ── SUN (center glow) ── */
   .sun-core {
     position: fixed;
@@ -1683,17 +1581,6 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 <div class="nebula nebula-2"></div>
 <div class="nebula nebula-3"></div>
 <div class="sun-core"></div>
-<div class="orbit-system">
-  <div class="orbit-ring orbit-mercury"></div>
-  <div class="orbit-ring orbit-venus"></div>
-  <div class="orbit-ring orbit-earth"></div>
-  <div class="orbit-ring orbit-mars"></div>
-  <div class="orbit-ring orbit-jupiter"></div>
-  <div class="orbit-ring orbit-saturn"></div>
-  <div class="orbit-ring orbit-uranus"></div>
-  <div class="orbit-ring orbit-neptune"></div>
-  <div class="orbit-ring orbit-pluto"></div>
-</div>
 
 <nav>
   <div class="nav-inner">
