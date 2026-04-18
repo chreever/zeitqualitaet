@@ -2130,18 +2130,18 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
  /* ── ZODIAC FLIP CARDS (Unsichtbarkeits-Fix) ── */
   (function() {
     const signs = [
-      { symbol: '♈', name: 'Widder', dates: '21.03. – 19.04.', element: 'Feuer', planet: 'Mars', house: '1. Haus', qualities: 'Pioniergeist, Mut, Tatendrang', traits: 'Impulsiv, energisch, unabhängig' },
-      { symbol: '♉', name: 'Stier', dates: '20.04. – 20.05.', element: 'Erde', planet: 'Venus', house: '2. Haus', qualities: 'Beständigkeit, Sinnlichkeit', traits: 'Genussvoll, verlässlich, bodenständig' },
-      { symbol: '♊', name: 'Zwillinge', dates: '21.05. – 20.06.', element: 'Luft', planet: 'Merkur', house: '3. Haus', qualities: 'Vielseitigkeit, Neugier, Witz', traits: 'Kommunikativ, wissbegierig, beweglich' },
-      { symbol: '♋', name: 'Krebs', dates: '21.06. – 22.07.', element: 'Wasser', planet: 'Mond', house: '4. Haus', qualities: 'Fürsorge, Empathie, Intuition', traits: 'Emotional, schützend, einfühlsam' },
-      { symbol: '♌', name: 'Löwe', dates: '23.07. – 22.08.', element: 'Feuer', planet: 'Sonne', house: '5. Haus', qualities: 'Großzügigkeit, Charisma', traits: 'Kreativ, warmherzig, selbstbewusst' },
-      { symbol: '♍', name: 'Jungfrau', dates: '23.08. – 22.09.', element: 'Erde', planet: 'Merkur', house: '6. Haus', qualities: 'Analytik, Präzision', traits: 'Gewissenhaft, detailorientiert, praktisch' },
-      { symbol: '♎', name: 'Waage', dates: '23.09. – 22.10.', element: 'Luft', planet: 'Venus', house: '7. Haus', qualities: 'Harmonie, Ästhetik', traits: 'Ausgleichend, charmant, fair' },
-      { symbol: '♏', name: 'Skorpion', dates: '23.10. – 21.11.', element: 'Wasser', planet: 'Pluto', house: '8. Haus', qualities: 'Tiefgang, Intensität', traits: 'Leidenschaftlich, loyal, kompromisslos' },
-      { symbol: '♐', name: 'Schütze', dates: '22.11. – 21.12.', element: 'Feuer', planet: 'Jupiter', house: '9. Haus', qualities: 'Optimismus, Freiheitsdrang', traits: 'Enthusiastisch, weitblickend, ehrlich' },
-      { symbol: '♑', name: 'Steinbock', dates: '22.12. – 19.01.', element: 'Erde', planet: 'Saturn', house: '10. Haus', qualities: 'Disziplin, Verantwortung', traits: 'Ehrgeizig, pflichtbewusst, geduldig' },
-      { symbol: '♒', name: 'Wassermann', dates: '20.01. – 18.02.', element: 'Luft', planet: 'Uranus', house: '11. Haus', qualities: 'Originalität, Freiheit', traits: 'Unkonventionell, idealistisch, visionär' },
-      { symbol: '♓', name: 'Fische', dates: '19.02. – 20.03.', element: 'Wasser', planet: 'Neptun', house: '12. Haus', qualities: 'Mitgefühl, Hingabe, Fantasie', traits: 'Einfühlsam, kreativ, verträumt' }
+      { symbol: '♈', name: 'Widder', dates: '21.03. – 19.04.', element: 'Feuer', planet: 'Mars', house: '1. Haus', qualities: 'Initiative, Mut, Tatkraft', traits: 'Entscheidungsfreudig, autonom, direkt' },
+  { symbol: '♉', name: 'Stier', dates: '20.04. – 20.05.', element: 'Erde', planet: 'Venus', house: '2. Haus', qualities: 'Stabilität, Substanz, Realismus', traits: 'Pragmatisch, ausdauernd, werteorientiert' },
+  { symbol: '♊', name: 'Zwillinge', dates: '21.05. – 20.06.', element: 'Luft', planet: 'Merkur', house: '3. Haus', qualities: 'Flexibilität, Vernetzung, Transfer', traits: 'Agil, kommunikationsstark, neugierig' },
+  { symbol: '♋', name: 'Krebs', dates: '21.06. – 22.07.', element: 'Wasser', planet: 'Mond', house: '4. Haus', qualities: 'Empathie, Schutz, Resonanz', traits: 'Intuitiv, loyal, bedürfnisorientiert' },
+  { symbol: '♌', name: 'Löwe', dates: '23.07. – 22.08.', element: 'Feuer', planet: 'Sonne', house: '5. Haus', qualities: 'Souveränität, Ausdruck, Präsenz', traits: 'Selbstbewusst, gestaltungswillig, authentisch' },
+  { symbol: '♍', name: 'Jungfrau', dates: '23.08. – 22.09.', element: 'Erde', planet: 'Merkur', house: '6. Haus', qualities: 'Systematik, Analyse, Optimierung', traits: 'Sorgfältig, qualitätsbewusst, funktional' },
+  { symbol: '♎', name: 'Waage', dates: '23.09. – 22.10.', element: 'Luft', planet: 'Venus', house: '7. Haus', qualities: 'Diplomatie, Balance, Objektivität', traits: 'Ausgleichend, konsensfähig, ästhetikbewusst' },
+  { symbol: '♏', name: 'Skorpion', dates: '23.10. – 21.11.', element: 'Wasser', planet: 'Pluto', house: '8. Haus', qualities: 'Tiefenanalyse, Konsequenz, Fokus', traits: 'Investigativ, krisenfest, verbindlich' },
+  { symbol: '♐', name: 'Schütze', dates: '22.11. – 21.12.', element: 'Feuer', planet: 'Jupiter', house: '9. Haus', qualities: 'Vision, Weitblick, Idealismus', traits: 'Zukunftsorientiert, sinnerfüllt, expansiv' },
+  { symbol: '♑', name: 'Steinbock', dates: '22.12. – 19.01.', element: 'Erde', planet: 'Saturn', house: '10. Haus', qualities: 'Integrität, Disziplin, Ausdauer', traits: 'Zielorientiert, pflichtbewusst, beharrlich' },
+  { symbol: '♒', name: 'Wassermann', dates: '20.01. – 18.02.', element: 'Luft', planet: 'Uranus', house: '11. Haus', qualities: 'Innovation, Autonomie, Wandel', traits: 'Progressiv, systemkritisch, unvoreingenommen' },
+  { symbol: '♓', name: 'Fische', dates: '19.02. – 20.03.', element: 'Wasser', planet: 'Neptun', house: '12. Haus', qualities: 'Intuitive Intelligenz, Ganzheitlichkeit', traits: 'Resonanzfähig, schöpferisch, feinsinnig' }
     ];
     
     const grid = document.getElementById('zodiacGrid');
