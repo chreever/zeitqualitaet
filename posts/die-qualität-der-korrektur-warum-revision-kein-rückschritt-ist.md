@@ -8,7 +8,7 @@ description: Manchmal fordert uns die Zeitqualität dazu auf, innezuhalten und
   die Richtung zu korrigieren. Warum das Löschen von Inhalten und das
   Eingestehen von Interessenskonflikten ein Zeichen von mentaler Stärke und
   Integrität ist.
-placement: Top-Banner (Header)
+placement: Kein Banner
 ---
 ## Wenn das Fundament nach Justierung verlangt
 
