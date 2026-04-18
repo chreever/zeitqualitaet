@@ -1902,7 +1902,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
   
  <div class="posts-grid">
   {% assign latest_posts = collections.posts | reverse %}
-  {% for post in latest_posts limit:6 %}
+  {% for post in latest_posts limit:3 %}
     <a href="{{ post.url | url }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}" style="opacity: 1;">
       
       {% if post.data.featured_video %}
