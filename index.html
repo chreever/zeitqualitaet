@@ -1597,15 +1597,20 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 <header class="hero">
   <div class="hero-eyebrow">Kompass für Klarheit und Fokus</div>
   <h1>Die <em>Qualität</em><br>der Zeit lesen</h1>
-  <p class="hero-sub">Kein Horoskop, kein Orakel. Sondern ein Blick auf die Rhythmen der Zeit, Transite und mentale Kraft – als Werkzeug für Orientierung, Reflexion und bewusstes Leben.</p>
+  <!-- ALT: ... Souverän entscheiden in Business & Alltag. -->
+  <p class="hero-sub">Ein analytischer Blick auf Zeitrhythmen und mentale Kraft. Dein Werkzeug für bewusste Selbstführung, Resilienz und klare Entscheidungen.</p>
+  
   <div class="hero-tagline">
-    <span class="tagline-item" data-info="Systemische Muster und wiederkehrende Phasen erkennen.">Zyklen</span> 
+    <!-- Alt: Systemische Muster... -->
+    <span class="tagline-item" data-info="Wiederkehrende Zyklen erkennen und nutzen.">Rhythmus</span> 
     <span class="dot">·</span>
-    <span class="tagline-item" data-info="Kontextuelle Faktoren für optimales strategisches Timing.">Zeitqualität</span> 
+    <span class="tagline-item" data-info="Fokus auf das, was jetzt wesentlich ist.">Zeitqualität</span> 
     <span class="dot">·</span>
-    <span class="tagline-item" data-info="Objektive Bestandsaufnahme und bewusste Einordnung.">Reflexion</span> 
+    <!-- Alt: Objektive Bestandsaufnahme... -->
+    <span class="tagline-item" data-info="Bewusste Einordnung der eigenen Verfassung.">Reflexion</span> 
     <span class="dot">·</span>
-    <span class="tagline-item" data-info="Psychologische Resilienz und Fokus in dynamischen Zeiten.">Mentale Stärke</span>
+    <!-- Alt: Psychologische Resilienz... -->
+    <span class="tagline-item" data-info="Innere Stabilität in anspruchsvollen Phasen.">Mentale Stärke</span>
   </div>
 </header>
 
@@ -1623,24 +1628,6 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     </p>
   </div>
 </section>
-<div class="astro-ticker-wrapper fade-up" id="ticker-wrapper">
-  <div class="astro-ticker">
-    
-    <div class="ticker-content-wrapper">
-      <div class="ticker-header">
-        <div class="ticker-pulse"></div>
-        Markt-Barometer
-      </div>
-      <div class="ticker-message">
-        <div id="ticker-message-text">Lade Daten...</div>
-        <div id="ticker-explanation-text" class="ticker-explanation"></div>
-      </div>
-    </div>
-    
-    <div class="ticker-portfolio-bar" id="ticker-portfolio-bar" style="display:none;">
-      <span class="portfolio-label">Status:</span>
-      <span id="ticker-portfolio-text"></span>
-    </div>
 
   </div>
 </div>
@@ -1678,22 +1665,22 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 </div>
 <div class="philosophy">
   <div class="philosophy-inner">
-    <div class="phil-card fade-up">
-      <span class="phil-icon">◎</span>
-      <h3>Analyse statt Aberglaube</h3>
-      <p>Astrologie verstehe ich als ein präzises Symbolsystem, nicht als Schicksalsglauben. Ich nutze diese Struktur für psychologische Reflexion und ein tieferes Verständnis der Rhythmen, die unser Handeln beeinflussen.</p>
-    </div>
-    <div class="phil-card fade-up">
-      <span class="phil-icon">◈</span>
-      <h3>Dynamiken erkennen</h3>
-      <p>Welche mentalen und emotionalen Themen stehen aktuell im Vordergrund? Ich analysiere die zeitliche "Großwetterlage" und biete fundierte Impulse, um aktuelle Phasen im Alltag strategisch und bewusst zu nutzen.</p>
-    </div>
-    <div class="phil-card fade-up">
-      <span class="phil-icon">⬡</span>
-      <h3>Mentale Strategie &amp; Fokus</h3>
-      <p>Zeitqualität ist ein Werkzeug für Selbstführung. Es geht darum, äußere Einflüsse einzuordnen, um die eigene mentale Kraft gezielter einzusetzen – für mehr Klarheit in Entscheidungsprozessen.</p>
-    </div>
+  <div class="phil-card fade-up">
+    <span class="phil-icon">◎</span>
+    <h3>Systemik statt Mystik</h3>
+    <p>Ich betrachte Astrologie als ein präzises Symbolsystem. Es dient der psychologischen Reflexion und hilft dabei, eigene Reaktionsmuster besser zu verstehen.</p>
   </div>
+  <div class="phil-card fade-up">
+    <span class="phil-icon">◈</span>
+    <h3>Dynamiken erkennen</h3>
+    <p>Welche Themen fordern uns gerade heraus? Ich analysiere die aktuelle Zeitqualität, um Impulse für einen bewussteren Umgang mit Stress und Herausforderungen zu geben.</p>
+  </div>
+  <div class="phil-card fade-up">
+    <span class="phil-icon">⬡</span>
+    <h3>Fokus &amp; Resilienz</h3>
+    <p>Die Einordnung äußerer Einflüsse ist ein Werkzeug für mentale Stärke. Das Ziel: Energie gezielter einsetzen und innere Souveränität bewahren.</p>
+  </div>
+</div>
 </div>
 
 <div class="divider"><hr></div>
@@ -1996,81 +1983,63 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     });
   }
 
- /* ── ZODIAC FLIP CARDS (Unsichtbarkeits-Fix) ── */
-  (function() {
-    const signs = [
-      { symbol: '♈', name: 'Widder', dates: '21.03. – 19.04.', element: 'Feuer', planet: 'Mars', house: '1. Haus', qualities: 'Initiative, Mut, Tatkraft', traits: 'Entscheidungsfreudig, autonom, direkt' },
-  { symbol: '♉', name: 'Stier', dates: '20.04. – 20.05.', element: 'Erde', planet: 'Venus', house: '2. Haus', qualities: 'Stabilität, Substanz, Realismus', traits: 'Pragmatisch, ausdauernd, werteorientiert' },
-  { symbol: '♊', name: 'Zwillinge', dates: '21.05. – 20.06.', element: 'Luft', planet: 'Merkur', house: '3. Haus', qualities: 'Flexibilität, Vernetzung, Transfer', traits: 'Agil, kommunikationsstark, neugierig' },
-  { symbol: '♋', name: 'Krebs', dates: '21.06. – 22.07.', element: 'Wasser', planet: 'Mond', house: '4. Haus', qualities: 'Empathie, Schutz, Resonanz', traits: 'Intuitiv, loyal, bedürfnisorientiert' },
-  { symbol: '♌', name: 'Löwe', dates: '23.07. – 22.08.', element: 'Feuer', planet: 'Sonne', house: '5. Haus', qualities: 'Souveränität, Ausdruck, Präsenz', traits: 'Selbstbewusst, gestaltungswillig, authentisch' },
-  { symbol: '♍', name: 'Jungfrau', dates: '23.08. – 22.09.', element: 'Erde', planet: 'Merkur', house: '6. Haus', qualities: 'Systematik, Analyse, Optimierung', traits: 'Sorgfältig, qualitätsbewusst, funktional' },
-  { symbol: '♎', name: 'Waage', dates: '23.09. – 22.10.', element: 'Luft', planet: 'Venus', house: '7. Haus', qualities: 'Diplomatie, Balance, Objektivität', traits: 'Ausgleichend, konsensfähig, ästhetikbewusst' },
-  { symbol: '♏', name: 'Skorpion', dates: '23.10. – 21.11.', element: 'Wasser', planet: 'Pluto', house: '8. Haus', qualities: 'Tiefenanalyse, Konsequenz, Fokus', traits: 'Investigativ, krisenfest, verbindlich' },
-  { symbol: '♐', name: 'Schütze', dates: '22.11. – 21.12.', element: 'Feuer', planet: 'Jupiter', house: '9. Haus', qualities: 'Vision, Weitblick, Idealismus', traits: 'Zukunftsorientiert, sinnerfüllt, expansiv' },
-  { symbol: '♑', name: 'Steinbock', dates: '22.12. – 19.01.', element: 'Erde', planet: 'Saturn', house: '10. Haus', qualities: 'Integrität, Disziplin, Ausdauer', traits: 'Zielorientiert, pflichtbewusst, beharrlich' },
-  { symbol: '♒', name: 'Wassermann', dates: '20.01. – 18.02.', element: 'Luft', planet: 'Uranus', house: '11. Haus', qualities: 'Innovation, Autonomie, Wandel', traits: 'Progressiv, systemkritisch, unvoreingenommen' },
-  { symbol: '♓', name: 'Fische', dates: '19.02. – 20.03.', element: 'Wasser', planet: 'Neptun', house: '12. Haus', qualities: 'Intuitive Intelligenz, Ganzheitlichkeit', traits: 'Resonanzfähig, schöpferisch, feinsinnig' }
-    ];
+/* ── ARCHETYPEN LOGIK (Geometrisch & Psychologisch) ── */
+(function() {
+  const signs = [
+    { name: 'Der Initiator', symbol: '◎', quality: 'Handlungskraft', strategy: 'Mut & Pioniergeist', focus: 'Klare Entscheidungen', dates: '21.03. – 19.04.' },
+    { name: 'Der Bewahrer', symbol: '⬚', quality: 'Bodenständigkeit', strategy: 'Ruhe & Beständigkeit', focus: 'Ressourcen-Schutz', dates: '20.04. – 20.05.' },
+    { name: 'Der Vermittler', symbol: '◈', quality: 'Flexibilität', strategy: 'Austausch & Anpassung', focus: 'Wissensvermittlung', dates: '21.05. – 20.06.' },
+    { name: 'Der Beschützer', symbol: '◯', quality: 'Empathie', strategy: 'Intuition & Fürsorge', focus: 'Emotionale Basis', dates: '21.06. – 22.07.' },
+    { name: 'Der Gestalter', symbol: '✧', quality: 'Selbstausdruck', strategy: 'Präsenz & Führung', focus: 'Authentisches Handeln', dates: '23.07. – 22.08.' },
+    { name: 'Der Analyst', symbol: '⬡', quality: 'Struktur', strategy: 'Ordnung & Sorgfalt', focus: 'Detailgenauigkeit', dates: '23.08. – 22.09.' },
+    { name: 'Der Diplomat', symbol: '平衡', quality: 'Ausgleich', strategy: 'Kompromiss & Fairness', focus: 'Harmonische Verbindungen', dates: '23.09. – 22.10.' },
+    { name: 'Der Stratege', symbol: '⧫', quality: 'Tiefgang', strategy: 'Fokus & Transformation', focus: 'Wesentliche Veränderung', dates: '23.10. – 21.11.' },
+    { name: 'Der Visionär', symbol: '△', quality: 'Sinnsuche', strategy: 'Perspektive & Idealismus', focus: 'Geistiges Wachstum', dates: '22.11. – 21.12.' },
+    { name: 'Der Realist', symbol: '□', quality: 'Verantwortung', strategy: 'Disziplin & Ausdauer', focus: 'Struktureller Aufbau', dates: '22.12. – 19.01.' },
+    { name: 'Der Innovator', symbol: '⬢', quality: 'Unabhängigkeit', strategy: 'Erneuerung & Freiraum', focus: 'Alternative Lösungswege', dates: '20.01. – 18.02.' },
+    { name: 'Der Mentor', symbol: '♾', quality: 'Feingefühl', strategy: 'Reflexion & Loslassen', focus: 'Innere Einkehr', dates: '19.02. – 20.03.' }
+  ];
     
-    const grid = document.getElementById('zodiacGrid');
-    if (!grid) return; // Sicherstellen, dass der Container da ist
+   const grid = document.getElementById('zodiacGrid');
+  if (!grid) return;
 
-    signs.forEach(s => {
-      const card = document.createElement('div');
-      card.className = 'zodiac-card fade-up';
-      card.onclick = function() { this.classList.toggle('flipped'); };
-      card.innerHTML = `<div class="zodiac-card-inner"><div class="zodiac-front"><span style="font-size:3.2rem;margin-bottom:0.6rem;">${s.symbol}</span><div style="font-family:var(--font-display);font-size:1.5rem;font-weight:500;">${s.name}</div><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);">${s.dates}</div><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);text-transform:uppercase;margin-top:0.7rem;">${s.element}</div></div><div class="zodiac-back"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--accent);margin-bottom:0.8rem;">${s.symbol} ${s.name}</div><div style="margin-bottom:0.55rem;"><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;">Qualitäten</div><div style="font-size:0.92rem;">${s.qualities}</div></div><div style="margin-bottom:0.55rem;"><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;">Eigenschaften</div><div style="font-size:0.92rem;">${s.traits}</div></div><div style="margin-bottom:0.55rem;"><div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;">Planet</div><div style="font-size:0.92rem;">${s.planet}</div></div></div></div>`;
-      
-      grid.appendChild(card);
-      
-      // DER FIX: Melde die neue Karte sofort beim Animations-Wächter an!
-      if (typeof observer !== 'undefined') {
-        observer.observe(card);
-      } else {
-        card.classList.add('visible'); // Fallback: Sofort sichtbar machen
-      }
-    });
-  })();
+  signs.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'zodiac-card fade-up';
+    card.onclick = function() { this.classList.toggle('flipped'); };
+    card.innerHTML = `
+      <div class="zodiac-card-inner">
+        <div class="zodiac-front">
+          <!-- Geometrisches Icon -->
+          <div style="font-size: 1.8rem; color: var(--accent); margin-bottom: 0.5rem; opacity: 0.8;">${s.symbol}</div>
+          
+          <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em;">${s.name}</div>
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); margin-top: 0.3rem;">${s.quality}</div>
+        </div>
+        
+        <div class="zodiac-back">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+             <span style="color: var(--accent); font-size: 1rem;">${s.symbol}</span>
+             <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--accent); text-transform: uppercase;">${s.name}</div>
+          </div>
+          <div class="zodiac-detail">
+            <div class="zodiac-detail-label">Stärke</div>
+            <div class="zodiac-detail-value">${s.strategy}</div>
+          </div>
+          <div class="zodiac-detail">
+            <div class="zodiac-detail-label">Fokus</div>
+            <div class="zodiac-detail-value">${s.focus}</div>
+          </div>
+          <div class="zodiac-back-hint">Phasen-Rhythmus: ${s.dates}</div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+    if (typeof observer !== 'undefined') observer.observe(card);
+  });
+})();
 
  
-/* ── OPTIMIERTES ASTRO-TICKER SCRIPT ── */
-  async function loadAstroTicker() {
-    const wrapper = document.getElementById('ticker-wrapper');
-    const msgElement = document.getElementById('ticker-message-text');
-    const explElement = document.getElementById('ticker-explanation-text');
-    const pfBarElement = document.getElementById('ticker-portfolio-bar');
-    const pfTextElement = document.getElementById('ticker-portfolio-text');
-    
-    try {
-      const res = await fetch('/data/ticker.json');
-      if (!res.ok) return;
-      const data = await res.json();
-      
-      if (data.is_active && data.message) {
-        wrapper.style.display = 'block';
-        msgElement.innerHTML = data.message;
-        
-        if (data.explanation && data.explanation !== "") {
-          explElement.innerText = `↳ Analyse: ${data.explanation}`;
-          explElement.style.display = 'block';
-        } else {
-          explElement.style.display = 'none';
-        }
-        
-        if (data.portfolio && data.portfolio !== "") {
-          pfTextElement.innerText = data.portfolio;
-          pfBarElement.style.display = 'flex';
-        } else {
-          pfBarElement.style.display = 'none';
-        }
-      }
-    } catch(e) {
-      console.log("Ticker-Update fehlgeschlagen.");
-    }
-  }
-  
-  document.addEventListener('DOMContentLoaded', loadAstroTicker);
+
   /* ── TAGES-IMPULS SCRIPT (GESICHERT) ── */
   async function loadDailyImpulse() {
     const textElement = document.getElementById('daily-impulse-text');
