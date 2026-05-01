@@ -178,44 +178,7 @@ layout: null
     height: 100%;
   }
 
-  /* ── STARDUST CURSOR ── */
-  .stardust-canvas {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* ── CURSOR LIGHT VEIL ── */
-  .cursor-glow {
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-    background: radial-gradient(
-      circle,
-      rgba(212, 165, 106, 0.07) 0%,
-      rgba(123, 156, 196, 0.04) 30%,
-      rgba(160, 138, 173, 0.02) 50%,
-      transparent 70%
-    );
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    will-change: transform;
-    mix-blend-mode: screen;
-  }
-
-  .cursor-glow.active {
-    opacity: 1;
-  }
-
- 
- 
+  
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(8, 9, 14, 0.85);
@@ -1381,11 +1344,7 @@ layout: null
 /* --- RESPONSIVE OPTIMIERUNG --- */
 @media (max-width: 768px) {
     /* --- PERFORMANCE OPTIMIERUNG FÜR MOBILE --- */
-    .nebula {
-      filter: none !important;
-      animation: none !important;
-      opacity: 0.1 !important;
-    }
+   
     .orbit-system {
       display: none !important;
     }
@@ -1523,8 +1482,6 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 
 <div class="starfield"><canvas id="stars"></canvas></div>
 
-<div class="cursor-glow" id="cursorGlow"></div>
-
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo-container">
@@ -1646,27 +1603,27 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 <div class="about" id="ueber">
   <div class="about-inner">
     <div class="about-aside fade-up">
-  <img src="/img/christian-portraet.jpg" alt="Christian Balas" class="about-photo" style="object-position: 80% 20%;">
-  <div class="about-tagline">Wer schreibt hier?</div>
-  <h2>Christian Balas</h2>
-  <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.5; margin-bottom: 1.5rem;">
-    Mentaltrainer mit 19 Jahren Vertriebserfahrung. Fokus auf Resilienz, Selbstführung und das Timing von Entscheidungen.<br>
-  </p>
-  <blockquote>Nicht die Dauer der Zeit entscheidet über unseren Erfolg, sondern die Qualität, mit der wir sie nutzen.</blockquote>
-</div>
+      <img src="/img/christian-portraet.jpg" alt="Christian Balas" class="about-photo" style="object-position: 80% 20%;">
+      <div class="about-tagline">Wer schreibt hier?</div>
+      <h2>Christian Balas</h2>
+      <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.5; margin-bottom: 1.5rem;">
+        Mentaltrainer mit 19 Jahren Vertriebserfahrung. Fokus auf Resilienz, Selbstführung und das Timing von Entscheidungen.
+      </p>
+      <blockquote>Nicht die Dauer der Zeit entscheidet über unseren Erfolg, sondern die Qualität, mit der wir sie nutzen.</blockquote>
+    </div>
 
-<div class="about-content fade-up">
-  <h3>Zwischen hohem Tempo und innerem Fokus</h3>
-  <p>Seit fast zwei Jahrzehnten bewege ich mich im anspruchsvollen Vertriebsumfeld der Finanzbranche. Hier zählen messbare Ergebnisse, Zielorientierung und Performance. Meine Erfahrung zeigt: Fachliches Wissen allein reicht nicht aus, um langfristig gesund, motiviert und souverän zu bleiben. Die größten Hürden – und die stärksten Hebel – entstehen im Kopf.</p>
-  
-  <p>Als <strong style="color:var(--accent-light)">diplomierter Mentaltrainer</strong> nutze ich das Modell der Zeitqualität, um psychologische Phasen und systemische Muster sichtbar zu machen. Es geht nicht um Orakel, sondern um Rhythmus: Wann ist die Zeit reif für Offensive? Wann braucht es strategische Reflexion? Die Einordnung dieser Qualitäten schafft die Basis für echte mentale Resilienz.</p>
-  
-  <a href="/ueber.html" style="display: inline-block; padding: 10px 26px; border: 1px solid var(--accent); border-radius: 100px; color: var(--bg); background: var(--accent); font-family: var(--font-body); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; text-decoration: none; font-weight: 600; margin-top: 1.5rem;">
-    Mehr über meinen Ansatz →
-  </a>
-  </div> <!-- schließt about-content -->
-</div> <!-- NEU: schließt about-inner -->
-</div> <!-- NEU: schließt about -->
+    <div class="about-content fade-up">
+      <h3>Zwischen hohem Tempo und innerem Fokus</h3>
+      <p>Seit fast zwei Jahrzehnten bewege ich mich im anspruchsvollen Vertriebsumfeld der Finanzbranche. Hier zählen messbare Ergebnisse, Zielorientierung und Performance. Meine Erfahrung zeigt: Fachliches Wissen allein reicht nicht aus, um langfristig gesund, motiviert und souverän zu bleiben. Die größten Hürden – und die stärksten Hebel – entstehen im Kopf.</p>
+      
+      <p>Als <strong style="color:var(--accent-light)">diplomierter Mentaltrainer</strong> nutze ich das Modell der Zeitqualität, um psychologische Phasen und systemische Muster sichtbar zu machen. Es geht nicht um Orakel, sondern um Rhythmus: Wann ist die Zeit reif für Offensive? Wann braucht es strategische Reflexion? Die Einordnung dieser Qualitäten schafft die Basis für echte mentale Resilienz.</p>
+      
+      <a href="/ueber.html" style="display: inline-block; padding: 10px 26px; border: 1px solid var(--accent); border-radius: 100px; color: var(--bg); background: var(--accent); font-family: var(--font-body); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; text-decoration: none; font-weight: 600; margin-top: 1.5rem;">
+        Mehr über meinen Ansatz →
+      </a>
+    </div> 
+  </div> 
+</div>
    
 <div class="divider"><hr></div>
 
