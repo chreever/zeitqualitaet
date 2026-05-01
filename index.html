@@ -25,124 +25,93 @@ layout: null
   @font-face {
     font-family: 'Cormorant Garamond';
     src: url('/fonts/cormorant-garamond.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 400; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'Cormorant Garamond';
     src: url('/fonts/cormorant-garamond-500.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 500; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'Cormorant Garamond';
     src: url('/fonts/cormorant-garamond-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 600; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'Cormorant Garamond';
     src: url('/fonts/cormorant-garamond-italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
+    font-weight: 400; font-style: italic; font-display: swap;
   }
-
   @font-face {
     font-family: 'Cormorant Garamond';
     src: url('/fonts/cormorant-garamond-italic-500.woff2') format('woff2');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
+    font-weight: 500; font-style: italic; font-display: swap;
   }
-
   @font-face {
     font-family: 'Figtree';
     src: url('/fonts/figtree.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 300; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'Figtree';
     src: url('/fonts/figtree-400.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 400; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'Figtree';
     src: url('/fonts/figtree-500.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 500; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'Figtree';
     src: url('/fonts/figtree-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 600; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'IBM Plex Mono';
     src: url('/fonts/ibm-plex-mono-300.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 300; font-style: normal; font-display: swap;
   }
-
   @font-face {
     font-family: 'IBM Plex Mono';
     src: url('/fonts/ibm-plex-mono.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+    font-weight: 400; font-style: normal; font-display: swap;
   }
 
   :root {
-    --bg: #08090e;
-    --bg-warm: #0c0d14;
-    --bg-card: #11121a;
-    --bg-card-hover: #161722;
-    --bg-elevated: #1a1b26;
-    --text: #e2dfd8;
-    --text-muted: #918d84;
-    --text-dim: #5c5950;
-    --accent: #d4a56a;
-    --accent-light: #e8c48e;
-    --accent-dim: rgba(212, 165, 106, 0.1);
-    --accent-glow: rgba(212, 165, 106, 0.06);
-    --celestial: #7b9cc4;
-    --celestial-dim: rgba(123, 156, 196, 0.1);
-    --border: #222330;
-    --border-light: #1a1b26;
+    /* PREMIUM BUSINESS COLOR PALETTE */
+    --bg: #07080b; /* Deepest Midnight */
+    --bg-warm: #0a0c11;
+    --bg-card: #10121a;
+    --bg-card-hover: #161924;
+    --bg-elevated: #161924;
+    --text: #F4F4F5; /* Crisp, readable off-white */
+    --text-muted: #A1A1AA; /* Elegant light gray */
+    --text-dim: #71717A;
+    --accent: #D4AF37; /* Pure Classic Gold */
+    --accent-light: #F3E5AB; /* Soft glowing gold */
+    --accent-dim: rgba(212, 175, 55, 0.15);
+    --celestial: #8ba3c7;
+    --border: #272A38;
+    --border-light: #1C1F2B;
+    
     --font-display: 'Cormorant Garamond', Georgia, serif;
     --font-body: 'Figtree', system-ui, sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-    --radius: 10px;
-    --radius-sm: 6px;
-    --max-w: 1100px;
-    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-mono: 'Figtree', system-ui, sans-serif; /* Geändert zu Figtree für einen edleren Look */
+    
+    --radius: 12px;
+    --radius-sm: 8px;
+    --max-w: 1140px; 
+    --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* ── TYPOGRAPHY SCALE ── */
-    --fs-hero: clamp(3.5rem, 8.5vw, 6.2rem);
-    --fs-h1: 2.8rem;
-    --fs-h2: 2.2rem;
-    --fs-h3: 1.5rem;
-    --fs-body: 1.02rem;
-    --fs-small: 0.92rem;
-    --fs-label: 0.8rem;
+    --fs-hero: clamp(3.5rem, 8vw, 6.5rem);
+    --fs-h1: 3.2rem;
+    --fs-h2: 2.4rem;
+    --fs-h3: 1.6rem;
+    --fs-body: 1.1rem; 
+    --fs-small: 0.95rem;
+    --fs-label: 0.85rem;
     --fs-fine: 0.75rem;
   }
 
@@ -153,35 +122,30 @@ layout: null
     font-family: var(--font-body);
     background: var(--bg);
     color: var(--text);
-    line-height: 1.75;
+    line-height: 1.8;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
-    overscroll-behavior-y: none; /* VERHINDERT PULL-TO-REFRESH AUF MOBILGERÄTEN */
+    overscroll-behavior-y: none;
     touch-action: pan-x pan-y pinch-zoom;
   }
 
   ::selection { background: var(--accent); color: var(--bg); }
-
   a { color: var(--accent); text-decoration: none; transition: var(--transition); }
   a:hover { color: var(--accent-light); }
   img { max-width: 100%; display: block; }
 
+  /* ── DISCREET STARFIELD ── */
   .starfield {
     position: fixed; inset: 0; z-index: -1;
     overflow: hidden; pointer-events: none;
+    opacity: 0.6; /* Dezent */
   }
+  .starfield canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-  .starfield canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  
+  /* ── NAVIGATION ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(8, 9, 14, 0.85);
+    background: rgba(7, 8, 11, 0.85);
     backdrop-filter: blur(28px);
     border-bottom: 1px solid var(--border-light);
   }
@@ -190,217 +154,139 @@ layout: null
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 0 2rem;
-    height: 80px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
-  /* ── NEUES LOGO-STYLING ── */
   .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    height: 100%;
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; height: 100%;
   }
+  .logo-container svg, .logo-container span { transition: var(--transition); }
+  .logo-container:hover svg { transform: scale(1.05); filter: brightness(1.2); }
+  .logo-container:hover span { color: var(--accent); }
 
-  .logo-container svg, .logo-container span {
-    transition: var(--transition);
-  }
-
-  .logo-container:hover svg {
-    transform: scale(1.08) rotate(5deg);
-    filter: brightness(1.2);
-  }
-
-  .logo-container:hover span {
-    color: var(--accent);
-  }
-
-  .nav-links { display: flex; gap: 2.2rem; align-items: center; }
-
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
   .nav-links a {
     color: var(--text-muted);
     font-size: var(--fs-small);
-    font-weight: 400;
-    letter-spacing: 0.06em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     position: relative;
   }
-
   .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--accent);
+    content: ''; position: absolute; bottom: -6px; left: 0;
+    width: 0; height: 1px; background: var(--accent);
     transition: var(--transition);
   }
-
   .nav-links a:hover { color: var(--text); }
   .nav-links a:hover::after { width: 100%; }
 
   .menu-toggle {
-    display: none;
-    background: none; border: none;
-    color: var(--text); cursor: pointer;
-    font-size: 1.4rem;
+    display: none; background: none; border: none;
+    color: var(--text); cursor: pointer; font-size: 1.6rem;
   }
 
+  /* ── HERO SECTION ── */
   .hero {
-    padding: 12rem 2rem 3rem; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: var(--max-w);
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
+    padding: 14rem 2rem 5rem; 
+    display: flex; flex-direction: column; justify-content: center;
+    max-width: var(--max-w); margin: 0 auto;
+    text-align: center; position: relative;
   }
 
   .hero-eyebrow {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--fs-label);
-    font-weight: 300;
+    font-weight: 600;
     color: var(--accent);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
     margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
   }
 
   .hero h1 {
     font-family: var(--font-display);
     font-size: var(--fs-hero);
     font-weight: 400;
-    line-height: 1.08;
+    line-height: 1.05;
     letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 1.8rem;
   }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
 
   .hero-sub {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: var(--text-muted);
-    max-width: 540px;
-    margin: 0 auto 2.5rem;
+    max-width: 600px;
+    margin: 0 auto 3rem;
     line-height: 1.8;
-    position: relative;
-    z-index: 1;
   }
 
-  /* --- Desktop Credo-Look --- */
   .hero-tagline {
-    display: inline-flex;
-    align-items: center;
-    gap: 1.5rem;
-    font-family: var(--font-mono);
+    display: inline-flex; align-items: center; gap: 1.5rem;
+    font-family: var(--font-body);
     font-size: 0.85rem; 
     color: var(--text-dim);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    position: relative;
-    z-index: 1;
     justify-content: center;
     margin: 0 auto 2.5rem;
-    font-weight: 300;
+    font-weight: 500;
   }
-  
-/* ── TOOLTIP STYLING FÜR DIE TAGLINE ── */
-.tagline-item {
-  position: relative;
-  cursor: help; /* Zeigt dem Nutzer, dass es hier Infos gibt */
-  border-bottom: 1px dotted var(--text-dim); /* Dezenter Hinweis zum Drüberfahren */
-  padding-bottom: 2px;
-}
+  .hero-tagline span { color: var(--text-muted); }
+  .hero-tagline .dot { color: var(--accent-dim); font-size: 1.2rem; }
 
-.tagline-item::after {
-  content: attr(data-info); /* Holt sich den Text aus dem HTML */
-  position: absolute;
-  bottom: 160%; /* Erscheint über dem Wort */
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: var(--bg-elevated);
-  border: 1px solid var(--accent-dim);
-  color: var(--accent-light);
-  padding: 8px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  font-family: var(--font-body);
-  text-transform: none; /* Normal lesbar, nicht in Großbuchstaben */
-  letter-spacing: 0.02em;
-  white-space: nowrap; /* Kein Zeilenumbruch im Tooltip */
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none; /* Stört nicht beim Bewegen der Maus */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  z-index: 100;
-}
+  /* ── LAYOUT SPACING ── */
+  section {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 7rem 2rem; 
+  }
 
-/* Kleiner Pfeil nach unten am Tooltip */
-.tagline-item::before {
-  content: '';
-  position: absolute;
-  bottom: 135%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px 6px 0 6px;
-  border-style: solid;
-  border-color: var(--accent-dim) transparent transparent transparent;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 101;
-}
+  .section-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 4rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-h1);
+    font-weight: 400;
+  }
 
-/* Sichtbar machen beim Hover */
-.tagline-item:hover::after,
-.tagline-item:hover::before {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
+  .section-link {
+    font-size: var(--fs-label);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 
-.tagline-item:hover {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
-/* Auf Handys schalten wir die Tooltips aus, da es dort kein "Hover" gibt */
-@media (max-width: 768px) {
-  .tagline-item::after, .tagline-item::before { display: none !important; }
-  .tagline-item { border-bottom: none; cursor: default; }
-}
-  .hero-tagline span {
-    opacity: 0.9;
+  /* ── PREMIUM CARDS (Philosphy, Posts, Video, Banners) ── */
+  .phil-card, .post-card, .video-card, .featured, .info-banner-box, .transit-banner-inner {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: var(--transition);
   }
-
-  .hero-tagline .dot {
-    opacity: 0.3;
-    font-size: 1.2rem;
+  .phil-card:hover, .post-card:hover, .video-card:hover, .featured:hover, .transit-banner:hover .transit-banner-inner {
+    border-color: var(--accent-dim);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    transform: translateY(-4px);
+    background: var(--bg-card-hover);
   }
 
-  /* ── BANNER STYLES (FÜR VIDEO UND TEXT ANGEPASST) ── */
+  /* ── DYNAMIC BANNER TOP ── */
   .transit-banner {
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 0 2rem;
   }
-
   .transit-banner-inner {
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
     padding: 2.5rem 2.2rem;
     display: flex;
     align-items: center;
@@ -410,17 +296,12 @@ layout: null
     position: relative;
     z-index: 2;
     height: auto;
+    overflow: hidden;
   }
-
-  .transit-banner:hover .transit-banner-inner {
-    border-color: var(--celestial);
-    box-shadow: 0 8px 30px rgba(123, 156, 196, 0.1);
-  }
-
   .transit-label {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
     font-size: var(--fs-fine);
-    font-weight: 300;
+    font-weight: 600;
     color: var(--celestial);
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -429,14 +310,12 @@ layout: null
     gap: 1rem;
     align-items: center;
   }
-
   .transit-title {
     font-family: var(--font-display);
-    font-size: var(--fs-h3);
+    font-size: var(--fs-h2);
     font-weight: 500;
     color: var(--accent);
   }
-
   .transit-desc {
     color: var(--text-muted);
     font-size: var(--fs-body);
@@ -446,1061 +325,230 @@ layout: null
     line-height: 1.6;
     margin-top: 0.8rem;
   }
-
   .transit-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.55rem 1.2rem;
-    background: var(--celestial-dim);
-    border: 1px solid rgba(123, 156, 196, 0.15);
-    border-radius: 100px;
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    color: var(--celestial);
-    letter-spacing: 0.05em;
-    white-space: nowrap;
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.55rem 1.2rem; background: var(--celestial-dim);
+    border: 1px solid rgba(123, 156, 196, 0.15); border-radius: 100px;
+    font-family: var(--font-body); font-size: var(--fs-label);
+    color: var(--celestial); letter-spacing: 0.05em; white-space: nowrap; font-weight: 600;
   }
-
   .banner-video { 
-    position: absolute; 
-    inset: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    opacity: 0.25; 
-    z-index: 1; 
-    pointer-events: none; 
+    position: absolute; inset: 0; width: 100%; height: 100%; 
+    object-fit: cover; opacity: 0.25; z-index: 1; pointer-events: none; 
     border-radius: var(--radius);
   }
 
-  section {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 5rem 2rem;
+  /* ── PHILOSOPHY ── */
+  .philosophy { max-width: var(--max-w); margin: 0 auto; padding: 4rem 2rem 7rem; }
+  .philosophy-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+  .phil-card { padding: 3rem 2.5rem; opacity: 0; }
+  .phil-icon { font-size: 1.8rem; margin-bottom: 1.5rem; display: block; color: var(--accent); }
+  .phil-card h3 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; margin-bottom: 1rem; color: var(--text); }
+  .phil-card p { color: var(--text-muted); font-size: var(--fs-body); line-height: 1.7; }
+
+  /* ── ABOUT SECTION ── */
+  .about { max-width: var(--max-w); margin: 0 auto; padding: 7rem 2rem; position: relative; z-index: 1; }
+  .about-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+  .about-aside { position: sticky; top: 120px; }
+  .about-photo {
+    width: 260px; height: 260px; border-radius: 50%;
+    margin: 0 auto 2rem; object-fit: cover;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  }
+  .about-aside h2 { font-family: var(--font-display); font-size: var(--fs-h1); font-weight: 400; margin-bottom: 1rem; }
+  .about-aside .about-tagline {
+    font-family: var(--font-body); font-size: var(--fs-label); font-weight: 600;
+    color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .about-aside blockquote {
+    border-left: 2px solid var(--accent); padding-left: 1.5rem;
+    font-family: var(--font-display); font-size: 1.2rem; font-style: italic;
+    color: var(--text-muted); line-height: 1.6; margin-top: 2rem;
+  }
+  .about-content h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 400; margin: 0 0 1.5rem; color: var(--text); }
+  .about-content p { color: var(--text-muted); font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+  /* ── INFO BANNER (MITTE) ── */
+  .info-banner-box {
+    position: relative; display: flex; align-items: center; min-height: 280px;
+  }
+  .info-banner-box::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(7, 8, 11, 0.8) 0%, rgba(7, 8, 11, 0.3) 100%);
+    z-index: 1; pointer-events: none;
+  }
+  .info-banner-media {
+    position: absolute; inset: 0; width: 100%; height: 100%; 
+    object-fit: cover; opacity: 0.6; z-index: 0;
+  }
+  .info-banner-content {
+    position: relative; z-index: 2; padding: 2.5rem 3rem; 
+    max-width: 650px; width: 100%;
+  }
+  .info-banner-title {
+    font-family: var(--font-display); font-size: 2.2rem; 
+    line-height: 1.15; margin-bottom: 0.6rem; color: var(--accent);
   }
 
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .section-title {
-    font-family: var(--font-display);
-    font-size: var(--fs-h1);
-    font-weight: 400;
-    letter-spacing: 0.01em;
-  }
-
-  .section-link {
-    font-size: var(--fs-label);
-    font-weight: 500;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .philosophy {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-
-  .philosophy-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
-  }
-
-  
-
-  .phil-icon {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .phil-card h3 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    margin-bottom: 0.6rem;
-  }
-
-  .phil-card p {
-    color: var(--text-muted);
-    font-size: var(--fs-body);
-    line-height: 1.7;
-  }
-
-  /* ── DIE PHILOSOPHIE-KACHELN (ANIMATION & HOVER) ── */
-  .phil-card {
-    padding: 2rem;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    background: transparent;
-    opacity: 0; /* Unsichtbar vor dem Scrollen */
-    transition: all 0.4s ease; /* Weicher Übergang für den Hover */
-  }
-
-  /* Das passiert, wenn du mit der Maus drüberfährst (Schweben) */
-  .phil-card:hover {
-    border-color: var(--border);
-    background: var(--bg-card);
-    transform: translateY(-8px) !important; 
-    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-  }
-
-  /* Keyframe-Animation für das erste Einfliegen beim Scrollen */
-  @keyframes slideUpFade {
-    from { opacity: 0; transform: translateY(30px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  .phil-card.fade-up.visible {
-    animation: slideUpFade 0.8s ease forwards;
-  }
-
-  /* Zeitversetztes Einfliegen (1-2-3) */
-  .philosophy-inner .phil-card:nth-child(1).visible { animation-delay: 0.1s; }
-  .philosophy-inner .phil-card:nth-child(2).visible { animation-delay: 0.3s; }
-  .philosophy-inner .phil-card:nth-child(3).visible { animation-delay: 0.5s; }
-
-  .posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .post-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: var(--transition);
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .post-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border);
-    transform: translateY(-3px);
-    box-shadow: 0 16px 50px rgba(0,0,0,0.35);
-    color: inherit;
-  }
-
+  /* ── POSTS GRID ── */
+  .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+  .post-card { overflow: hidden; cursor: pointer; display: block; text-decoration: none; color: inherit; }
   .post-card-img {
-    width: 100%;
-    height: 195px;
-    object-fit: cover;
+    width: 100%; height: 220px; object-fit: cover;
     border-bottom: 1px solid var(--border-light);
-    filter: saturate(0.85);
-    transition: filter 0.5s ease;
-    background: var(--bg-elevated);
+    filter: saturate(0.8); transition: filter 0.5s ease; background: var(--bg-elevated);
   }
-
-  .post-card:hover .post-card-img { filter: saturate(1); }
-
-  .post-card-body { padding: 1.5rem; }
-
-  .post-tag {
-    font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    font-weight: 300;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 0.7rem;
-    display: inline-block;
+  .post-card:hover .post-card-img { filter: saturate(1.1); }
+  .post-card-body { padding: 2rem; }
+  
+  /* PREMIUM LABELS */
+  .post-tag, .zodiac-detail-label, .contact-form label {
+    font-family: var(--font-body); font-size: var(--fs-fine); font-weight: 600;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; display: inline-block;
   }
+  .post-tag { margin-bottom: 1rem; }
 
-  /* --- GOLD-FIX FÜR ALLE KACHELN --- */
-  .post-card h3, 
-  .video-card h3, 
-  #dynamic-posts h3, 
-  #video-impulse-container h3 {
-    color: var(--accent) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
-    font-family: var(--font-display) !important;
-    font-weight: 500 !important;
-    line-height: 1.3 !important;
+  .post-card h3, .video-card h3, .featured h2 {
+    color: var(--text) !important; font-family: var(--font-display) !important;
+    font-weight: 500 !important; line-height: 1.3 !important; margin-bottom: 0.8rem;
+    letter-spacing: 0.02em; text-transform: none !important;
   }
-
-  .post-tag {
-    color: var(--accent) !important;
-    opacity: 1 !important;
-  }
-
-  .post-card p {
-    font-size: var(--fs-body);
-    color: var(--text-muted);
-    line-height: 1.65;
-    margin-bottom: 1rem;
-  }
-
+  .post-card p { color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; font-size: var(--fs-body); }
   .post-meta {
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    font-weight: 300;
-    color: var(--text-dim);
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-    margin-top: 1rem;
+    font-family: var(--font-body); font-size: var(--fs-label);
+    font-weight: 500; color: var(--text-dim); text-transform: uppercase;
+    display: flex; gap: 1.2rem; align-items: center; letter-spacing: 0.05em;
   }
 
-  .featured {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 0;
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 3rem;
-    transition: var(--transition);
-    position: relative;
-    min-height: 400px;
-    align-items: center;
+  /* ── TIKTOK / VIDEO SECTION ── */
+  .tiktok-section { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem 4rem; }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .local-video {
+    width: 100%; aspect-ratio: 9/16; max-height: 480px; object-fit: cover;
+    background: var(--bg-elevated); display: block; border-bottom: 1px solid var(--border-light);
   }
+  .video-card-body { padding: 1.5rem; }
+  .video-card-body p { font-size: var(--fs-small); color: var(--text-muted); line-height: 1.6; }
 
-  .featured:hover {
-    border-color: var(--border);
-    box-shadow: 0 20px 70px rgba(0,0,0,0.35);
-  }
-
-  .featured img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-height: 360px;
-    filter: saturate(0.8);
-    transition: filter 0.6s ease;
-    background: var(--bg-elevated);
-  }
-
-  .featured:hover img { filter: saturate(1); }
-
-  .featured-body {
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .featured-body .post-tag { margin-bottom: 1rem; }
-
-  .featured-body h2 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h2);
-    font-weight: 400;
-    line-height: 1.28;
-    margin-bottom: 1rem;
-  }
-
-  .featured-body p {
-    color: var(--text-muted);
-    font-size: var(--fs-body);
-    margin-bottom: 1.5rem;
-    line-height: 1.75;
-  }
-
-  .read-more {
-    font-size: var(--fs-small);
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .read-more:hover { gap: 0.7rem; }
-
-  /* ── ZODIAC FLIP CARDS ── */
-  .zodiac-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-    margin-top: 2rem;
-  }
-
-  /* ── KONTRAST-FIX FÜR TEXTE ── */
-  .zodiac-front div[style*="font-family: var(--font-mono)"] {
-    color: var(--text-muted) !important;
-    opacity: 1 !important;
-    font-weight: 400 !important;
-    letter-spacing: 0.05em;
-  }
-
-  .zodiac-card {
-    perspective: 800px;
-    cursor: pointer;
-    aspect-ratio: 3/4;
-  }
-
+  /* ── ZODIAC FLIP CARDS (ARCHETYPEN) ── */
+  .zodiac-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .zodiac-card { perspective: 1000px; cursor: pointer; aspect-ratio: 4/5; width: 100%; }
   .zodiac-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; width: 100%; height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
   }
+  .zodiac-card.flipped .zodiac-card-inner { transform: rotateY(180deg); }
 
-  .zodiac-card.flipped .zodiac-card-inner {
-    transform: rotateY(180deg);
-  }
-
-  .zodiac-front,
-  .zodiac-back {
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    border-radius: var(--radius);
-    overflow: hidden;
+  .zodiac-front, .zodiac-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: var(--radius); overflow: hidden;
     border: 1px solid var(--border-light);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
-
   .zodiac-front {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-card);
-    text-align: center;
-    padding: 1.5rem;
-    transition: border-color 0.3s, background 0.3s;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: var(--bg-card); text-align: center; padding: 1.5rem; transition: var(--transition);
   }
-
   .zodiac-card:hover .zodiac-front {
-    border-color: var(--border);
-    background: var(--bg-card-hover);
+    border-color: var(--accent-dim); background: var(--bg-card-hover);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
   }
 
-  .zodiac-symbol {
-    font-size: 3.2rem;
-    margin-bottom: 0.6rem;
-    line-height: 1;
-  }
-
-  .zodiac-name {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.25rem;
-  }
-
-  .zodiac-dates {
-    font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    color: var(--text-dim);
-  }
-
-  .zodiac-element {
-    font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.7rem;
-  }
-
-  .zodiac-hint {
-    font-size: var(--fs-fine);
-    color: var(--text-dim);
-    margin-top: 0.8rem;
-    opacity: 0.5;
-  }
-
-  /* ── FIX: SCROLLBAR FÜR DIE RÜCKSEITE DER ZODIAC-KARTEN ── */
   .zodiac-back {
     transform: rotateY(180deg);
     background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
-    padding: 1.3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    border: 1px solid var(--border);
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-dim) transparent;
+    padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: flex-start;
+    border: 1px solid var(--border); overflow-y: auto; scrollbar-width: none;
   }
-
-  .zodiac-back::-webkit-scrollbar { width: 4px; }
-  .zodiac-back::-webkit-scrollbar-track { background: transparent; }
-  .zodiac-back::-webkit-scrollbar-thumb { background-color: var(--accent-dim); border-radius: 10px; }
-
-  .zodiac-back-title {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 0.8rem;
-  }
-
-  /* ── KLARE LESBARKEIT FÜR DIE KARTEN-RÜCKSEITE ── */
-  .zodiac-detail { 
-    margin-bottom: 1rem; 
-  }
-
-  .zodiac-detail-label {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--accent-light) !important;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.2rem;
-    font-weight: 600;
-    opacity: 1 !important;
-  }
-
-  .zodiac-detail-value {
-    font-size: 0.95rem;
-    color: var(--text) !important;
-    line-height: 1.5;
-    font-weight: 400;
-    opacity: 1 !important;
-  }
-
+  .zodiac-detail { margin-bottom: 1.2rem; }
+  .zodiac-detail-value { font-size: 1rem; color: var(--text) !important; line-height: 1.5; font-weight: 400; }
   .zodiac-back-hint {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--accent) !important;
-    margin-top: auto;
-    text-align: center;
-    opacity: 1 !important;
-    padding-top: 1rem;
-    font-weight: 500;
+    font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+    color: var(--accent) !important; text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: auto; text-align: center; padding-top: 1rem; border-top: 1px solid var(--border-light);
   }
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
+  /* ── BUTTONS & LINKS ── */
+  .read-more {
+    font-size: var(--fs-small); font-weight: 600; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.4rem;
   }
+  .read-more:hover { gap: 0.7rem; color: var(--accent-light); }
 
-  .contact-info h3 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h2);
-    font-weight: 400;
-    margin-bottom: 1rem;
+  .btn-primary {
+    display: inline-block; padding: 14px 32px; background: var(--accent); color: #000 !important;
+    border-radius: 100px; font-family: var(--font-body); font-size: var(--fs-small); font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; transition: var(--transition); border: none; cursor: pointer;
   }
-
-  .contact-info p {
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    font-size: var(--fs-body);
-  }
-
-  .social-links { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-
-  .social-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.55rem 1.1rem;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: var(--text-muted);
-    font-size: var(--fs-small);
-    font-weight: 400;
-    transition: var(--transition);
-  }
-
-  .social-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: var(--accent-dim);
-  }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
-  .form-row { display: flex; gap: 1rem; }
-
-  .contact-form label {
-    font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    font-weight: 300;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.3rem;
-    display: block;
-  }
-
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    background: var(--bg-warm);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: var(--fs-body);
-    font-weight: 300;
-    transition: var(--transition);
-    outline: none;
-  }
-
-  .contact-form input:focus,
-  .contact-form textarea:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-dim);
-  }
-
-  .contact-form textarea { resize: vertical; min-height: 110px; }
-  .form-group { flex: 1; }
-
-  .submit-btn {
-    align-self: flex-start;
-    padding: 0.8rem 2.2rem;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 100px;
-    font-family: var(--font-body);
-    font-size: var(--fs-small);
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-    letter-spacing: 0.02em;
-  }
-
-  .submit-btn:hover {
-    background: var(--accent-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(212, 165, 106, 0.2);
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-top: 0.8rem;
-  }
-
-  .footer-links a {
-    font-size: var(--fs-fine);
-    color: var(--text-dim);
-  }
-
-  .footer-links a:hover {
-    color: var(--accent);
-  }
-
-  .tiktok-section {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 3rem 2rem 4rem;
-  }
-
-  .video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .video-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: var(--transition);
-  }
-
-  .video-card:hover {
-    border-color: var(--border);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-  }
-
-  .local-video {
-    width: 100%;
-    aspect-ratio: 9/16;
-    max-height: 480px;
-    object-fit: cover;
-    background: var(--bg-elevated);
-    display: block;
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .video-card-body {
-    padding: 1.2rem 1.5rem;
-  }
-
-  .video-card-body h3 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-  }
-
-  .video-card-body p {
-    font-size: var(--fs-small);
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .about {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 5rem 2rem;
-    position: relative;
-    z-index: 1; 
-  }
-
-  .about-inner {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 3.5rem;
-    align-items: start;
-  }
-
-  .about-aside {
-    position: sticky;
-    top: 100px;
-  }
-
-  .about-photo {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    object-fit: cover;
-    border: 2px solid var(--border);
-    display: block;
-  }
-
-  .about-aside h2 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h1);
-    font-weight: 400;
-    margin-bottom: 1rem;
-  }
-
-  .about-aside .about-tagline {
-    font-family: var(--font-mono);
-    font-size: var(--fs-label);
-    color: var(--accent);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-aside blockquote {
-    border-left: 2px solid var(--accent);
-    padding-left: 1.2rem;
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-top: 1.5rem;
-  }
-
-  .about-content h3 {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-weight: 500;
-    margin: 2.2rem 0 0.8rem;
-    color: var(--accent-light);
-  }
-
-  .about-content h3:first-child {
-    margin-top: 0;
-  }
-
-  .about-content p {
-    color: var(--text-muted);
-    font-size: var(--fs-body);
-    line-height: 1.8;
-    margin-bottom: 0.8rem;
-  }
-
-  .about-pillars {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
-    margin: 1.2rem 0;
-  }
-
-  .about-pillar {
-    padding: 1.2rem;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    transition: var(--transition);
-  }
-
-  .about-pillar:hover {
-    border-color: var(--border);
-    background: var(--bg-card);
-  }
-
-  .about-pillar strong {
-    display: block;
-    font-family: var(--font-display);
-    font-size: var(--fs-body);
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 0.3rem;
-  }
-
-  .about-pillar span {
-    font-size: var(--fs-small);
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .about-signoff {
-    margin-top: 2rem;
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
-    font-style: italic;
-    color: var(--text);
-  }
-
-  .divider {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .divider hr {
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-  }
-
-  footer {
-    border-top: 1px solid var(--border-light);
-    padding: 3.5rem 2rem 2.5rem;
-    text-align: center;
-  }
-
-  .footer-note {
-    color: var(--text-dim);
-    font-size: var(--fs-label);
-    margin-bottom: 0.4rem;
-  }
-
-  .footer-disclaimer {
-    color: var(--text-dim);
-    font-size: var(--fs-fine);
-    font-style: italic;
-    max-width: 500px;
-    margin: 0.8rem auto 0;
-    opacity: 0.7;
-    line-height: 1.6;
-  }
-
-  .fade-up {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
- /* --- INFO-BANNER PC STYLES (Optimiert mit Lesbarkeits-Schutz) --- */
- .info-banner-box {
-    position: relative; 
-    background: var(--bg-card); 
-    border: 1px solid var(--border-light); 
-    border-radius: var(--radius); 
-    overflow: hidden; 
-    display: flex; 
-    align-items: center; 
-    min-height: 280px;
- }
-
- /* Der Lesbarkeits-Schutz: Ein dunkler Verlauf von links nach rechts */
- .info-banner-box::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* Links dunkler (0.8), nach rechts hin auslaufend (0.3) */
-    background: linear-gradient(90deg, rgba(8, 9, 14, 0.8) 0%, rgba(8, 9, 14, 0.3) 100%);
-    z-index: 1;
-    pointer-events: none;
- }
-
- .info-banner-media {
-    position: absolute; 
-    inset: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    opacity: 0.6; /* Hier kannst du die Helligkeit des Bildes generell steuern */
-    z-index: 0;
- }
-
- .info-banner-content {
-    position: relative; 
-    z-index: 2; /* WICHTIG: Muss höher als das ::after (1) sein */
-    padding: 2.5rem 3rem; 
-    max-width: 650px; 
-    width: 100%;
- }
-
- .info-banner-title {
-    font-family: var(--font-display); 
-    font-size: 2.2rem; 
-    line-height: 1.15; 
-    margin-bottom: 0.6rem; 
-    color: var(--accent);
- }
-/* ── OPTIMIERTES ASTRO-TICKER STYLING ── */
-  .astro-ticker-wrapper {
-    max-width: var(--max-w);
-    margin: 0 auto 2.5rem auto;
-    padding: 0 2rem;
-    display: none; /* Wird via JS aktiviert */
+  .btn-primary:hover {
+    background: var(--accent-light); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
   }
   
-  .astro-ticker {
-    background: var(--bg-card);
-    border: 1px solid var(--accent-dim);
-    border-radius: var(--radius);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  .btn-outline {
+    display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 100px;
+    color: var(--text); font-family: var(--font-body); font-weight: 600;
+    font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.1em; transition: var(--transition);
   }
-  
-  .ticker-content-wrapper {
-    padding: 1rem 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 1.8rem;
-    flex-wrap: wrap;
-  }
-  
-  .ticker-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-  }
-  
-  .ticker-pulse {
-    width: 8px; height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--accent);
-    animation: pulse 2s infinite;
-  }
-  
-  .ticker-message {
-    color: var(--text);
-    font-size: var(--fs-small);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  #ticker-message-text {
-    font-weight: 500;
-    line-height: 1.4;
-  }
-  
-  .ticker-explanation {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent);
-    opacity: 0.8;
-    letter-spacing: 0.02em;
-    padding-left: 0.2rem;
-  }
-  
-  .ticker-portfolio-bar {
-    background: var(--bg-elevated);
-    border-top: 1px solid var(--border-light);
-    padding: 0.6rem 1.8rem;
-    font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    color: var(--celestial);
-    display: flex;
-    gap: 0.8rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .portfolio-label {
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-card); }
 
-  @keyframes pulse {
-    0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.2); opacity: 1; }
-    100% { transform: scale(0.95); opacity: 0.8; }
+  /* ── FORMS & CONTACT ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-info h3 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 400; margin-bottom: 1rem; }
+  .contact-form { background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--border-light); }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 1rem 1.2rem; background: var(--bg-warm);
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    color: var(--text); font-family: var(--font-body); font-size: 1rem; transition: var(--transition);
+  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-dim); }
+
+  /* ── DIVIDER & FOOTER ── */
+  .divider { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+  .divider hr { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+  
+  footer { border-top: 1px solid var(--border-light); padding: 5rem 2rem 3rem; text-align: center; }
+  .footer-note { color: var(--text-dim); font-size: var(--fs-label); margin-bottom: 0.5rem; }
+  .footer-disclaimer { color: var(--text-dim); font-size: var(--fs-fine); max-width: 600px; margin: 1rem auto; line-height: 1.7; }
+  .footer-links { display: flex; gap: 2rem; justify-content: center; margin-top: 1.5rem; }
+  .footer-links a { font-size: var(--fs-small); font-weight: 500; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── UTILS & ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  .admin-access-star {
+    display: inline-block; color: var(--accent); opacity: 0.4; text-decoration: none;
+    font-size: 1.1rem; margin-left: 10px; transition: all 0.3s ease; vertical-align: middle;
+  }
+  .admin-access-star:hover { opacity: 1; transform: scale(1.3) rotate(20deg); cursor: pointer; filter: drop-shadow(0 0 5px var(--accent)); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 992px) {
+    .zodiac-grid { grid-template-columns: repeat(3, 1fr); }
+    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-aside { position: static; text-align: center; }
   }
   @media (max-width: 768px) {
-  .zodiac-grid {
-    grid-template-columns: repeat(2, 1fr) !important; /* 2er-Reihe auf Tablets/Handys */
-  }
-}
-
-@media (max-width: 480px) {
-  .zodiac-grid {
-    grid-template-columns: 1fr !important; /* 1er-Reihe auf kleinen Handys */
-  }
-}
-  @media (max-width: 768px) {
-    .ticker-content-wrapper { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1.2rem; }
-    .ticker-message { font-size: 0.85rem; }
-    .ticker-portfolio-bar { padding: 0.8rem 1.2rem; gap: 0.4rem; }
-  }
-/* --- RESPONSIVE OPTIMIERUNG --- */
-@media (max-width: 768px) {
-    /* --- PERFORMANCE OPTIMIERUNG FÜR MOBILE --- */
-    
-    .orbit-system {
-      display: none !important;
-    }
-    .stardust-canvas, .starfield, .cursor-glow {
-      display: none !important;
-    }
-
+    .hero { padding: 10rem 1.5rem 4rem; }
+    .hero-tagline { flex-wrap: wrap; gap: 1rem; }
+    .hero-tagline .dot { display: none; }
+    .philosophy-inner, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .zodiac-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { display: none; }
-
-    .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: rgba(8, 9, 14, 0.97);
-        backdrop-filter: blur(24px);
-        padding: 1.5rem 1rem;
-        gap: 1.2rem;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .nav-links.open a {
-        display: block;
-        width: 100%;
-        text-align: center;
-        font-size: 0.95rem; 
-        letter-spacing: 0.02em;
-        word-wrap: break-word; 
-    }
-
     .menu-toggle { display: block; }
-    .hero { padding: 9rem 1.5rem 3rem; min-height: auto; }
-    .orbit-system { opacity: 0.4; }
-    section { padding: 3rem 1.5rem; }
-
-   /* --- INFO-BANNER SMARTPHONE STYLES --- */
-    .info-banner-box {
-      min-height: auto;
+    .nav-links.open {
+      display: flex; flex-direction: column; position: absolute; top: 90px; left: 0; right: 0;
+      background: rgba(7, 8, 11, 0.98); padding: 2rem; border-bottom: 1px solid var(--border); gap: 1.5rem;
     }
-    .info-banner-content {
-      padding: 1.8rem 1.5rem; /* KOMPAKTERER INNENABSTAND */
-    }
-    .info-banner-title {
-      font-size: 1.6rem; /* ÜBERSCHRIFT ETWAS KLEINER */
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-tagline {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important; 
-        gap: 0.8rem 1rem !important; 
-        max-width: 290px; 
-        margin: 1.5rem auto !important;
-        justify-items: center;
-        opacity: 1 !important;
-        padding: 0 !important;
-    }
-
-    .hero-tagline .dot { display: none !important; }
-
-    .hero-tagline span {
-        font-size: 0.82rem !important; 
-        white-space: nowrap !important;
-        color: var(--text-dim) !important; 
-        opacity: 0.9 !important; 
-        letter-spacing: 0.12em !important; 
-        text-transform: uppercase; 
-        font-weight: 300;
-    }
-
-    .philosophy-inner, 
-    .pillars-grid, 
-    .grid-4, 
-    .about-pillars,
-    .about-inner {
-        grid-template-columns: 1fr !important; 
-        gap: 1.5rem; 
-    }
-
-    .about-aside img {
-        width: 200px !important;
-        height: 200px !important; 
-        object-fit: cover;        
-        border-radius: 50% !important;
-        margin: 0 auto 1.5rem !important;
-    }
-
-    .about-aside { position: static; order: -1; }
-    .featured { grid-template-columns: 1fr; }
-    .featured-body { padding: 1.8rem; }
-    .featured-img { min-height: 220px; }
-    .posts-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .form-row { flex-direction: column; }
-    .transit-banner-inner { flex-direction: column; align-items: flex-start; }
-    .about { padding: 3rem 1.5rem; }
-    .tiktok-section { padding: 2rem 1.5rem 3rem; }
-    .video-grid { grid-template-columns: 1fr; }
-    
-    .zodiac-detail-value { font-size: 0.8rem; line-height: 1.3; }
-    .zodiac-detail { margin-bottom: 0.4rem; }
-}
-
-
-/* --- Animation für den Absende-Button --- */
-section#kontakt button[type="submit"] { transition: all 0.3s ease-in-out; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-section#kontakt button[type="submit"]:hover { background-color: #34495e; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
-section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); } 
-
-/* --- GOLD-UPDATE FÜR TITEL --- */
-.transit-title { color: var(--accent) !important; }
-.post-card h3 { color: var(--accent) !important; text-transform: uppercase; letter-spacing: 0.02em; }
-.featured h2 { color: var(--accent) !important; }
-.admin-access-star {
-    display: inline-block;
-    color: var(--accent);
-    opacity: 0.4;
-    text-decoration: none;
-    font-size: 1.1rem;
-    margin-left: 10px;
-    transition: all 0.3s ease;
-    vertical-align: middle;
-}
-.admin-access-star:hover { opacity: 1; transform: scale(1.3) rotate(20deg); cursor: pointer; filter: drop-shadow(0 0 5px var(--accent)); }
+  }
+  @media (max-width: 480px) {
+    .zodiac-grid { grid-template-columns: 1fr; }
+    .post-card-img { height: 180px; }
+  }
 </style>
 </head>
 
@@ -1514,20 +562,14 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
         <defs>
           <linearGradient id="gold-logo" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f2d5a3"/>
-            <stop offset="40%" stop-color="#d4a56a"/>
-            <stop offset="100%" stop-color="#a67b45"/>
+            <stop offset="0%" stop-color="#f3e5ab"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#997a26"/>
           </linearGradient>
         </defs>
-        <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo)" stroke-width="1.5" opacity="0.25"/>
-        <circle cx="60" cy="60" r="44" fill="none" stroke="url(#gold-logo)" stroke-width="0.5" opacity="0.6"/>
-        <path d="M60 8 Q60 60 8 60 Q60 60 60 112 Q60 60 112 60 Q60 60 60 8 Z" fill="url(#gold-logo)" opacity="0.15"/>
+        <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo)" stroke-width="1.5" opacity="0.4"/>
         <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo)"/>
-        <circle cx="60" cy="60" r="2.5" fill="#ffffff" opacity="0.9"/>
       </svg>
-      <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
+      <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); font-weight: 400; letter-spacing: 0.05em;">Zeitqualität</span>
     </a>
-    
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
     <div class="nav-links">
       <a href="#beitraege">Beiträge</a>
@@ -1541,53 +583,44 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 <header class="hero">
   <div class="hero-eyebrow">Kompass für Klarheit und Fokus</div>
   <h1>Die <em>Qualität</em><br>der Zeit lesen</h1>
-  <!-- ALT: ... Souverän entscheiden in Business & Alltag. -->
   <p class="hero-sub">Ein analytischer Blick auf Zeitrhythmen und mentale Kraft. Dein Werkzeug für bewusste Selbstführung, Resilienz und klare Entscheidungen.</p>
   
   <div class="hero-tagline">
-    <!-- Alt: Systemische Muster... -->
-    <span class="tagline-item" data-info="Wiederkehrende Zyklen erkennen und nutzen.">Rhythmus</span> 
-    <span class="dot">·</span>
-    <span class="tagline-item" data-info="Fokus auf das, was jetzt wesentlich ist.">Zeitqualität</span> 
-    <span class="dot">·</span>
-    <!-- Alt: Objektive Bestandsaufnahme... -->
-    <span class="tagline-item" data-info="Bewusste Einordnung der eigenen Verfassung.">Reflexion</span> 
-    <span class="dot">·</span>
-    <!-- Alt: Psychologische Resilienz... -->
-    <span class="tagline-item" data-info="Innere Stabilität in anspruchsvollen Phasen.">Mentale Stärke</span>
+    <span>Rhythmus</span> <span class="dot">·</span>
+    <span>Zeitqualität</span> <span class="dot">·</span>
+    <span>Reflexion</span> <span class="dot">·</span>
+    <span>Mentale Stärke</span>
   </div>
 </header>
 
-<section id="tages-impuls" style="max-width: var(--max-w); margin: 2rem auto 6rem auto; padding: 0 2rem;">
-  <div class="fade-up" style="margin: 0 auto; max-width: 760px; padding: 2rem; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%); border: 1px solid var(--accent); border-left: 3px solid var(--accent); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(212, 165, 106, 0.15);">
-    
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-  <span style="font-size: 1.2rem; color: var(--accent);">◈</span> 
-  
-  <h3 style="margin: 0; font-family: var(--font-display); font-size: var(--fs-h3); color: var(--accent-light); font-style: italic;">Impuls des Tages</h3>
-</div>
-    
-    <p id="daily-impulse-text" style="font-size: var(--fs-body); color: var(--text); line-height: 1.8; margin: 0; font-weight: 300;">
+<section id="tages-impuls" style="max-width: 800px; padding-top: 0;">
+  <div class="fade-up" style="padding: 2.5rem 3rem; background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;">
+      <span style="font-size: 1.2rem; color: var(--accent);">◈</span> 
+      <h3 style="margin: 0; font-family: var(--font-display); font-size: var(--fs-h3); color: var(--text); font-style: italic; font-weight: 400;">Impuls des Tages</h3>
+    </div>
+    <p id="daily-impulse-text" style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin: 0; font-weight: 300;">
       Lade heutigen Impuls...
     </p>
   </div>
 </section>
 
+<!-- DYNAMIC TOP BANNER -->
 <div id="dynamic-banner-container">
   {% assign banner_posts = collections.posts | reverse %}
   {% for post in banner_posts %}
     {% if post.data.placement == "Top-Banner (Header)" %}
       <a href="{{ post.url }}" class="transit-banner fade-up visible" style="text-decoration:none;color:inherit;display:block">
-        <div class="transit-banner-inner" style="position:relative; overflow:hidden;">
+        <div class="transit-banner-inner">
           
           {% if post.data.video %}
             <video class="banner-video" autoplay muted loop playsinline>
               <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
             </video>
           {% elsif post.data.banner_image %}
-             <img class="banner-video" style="opacity: 0.3;" src="{{ post.data.banner_image | url }}" alt="Banner Hintergrund">
+             <img class="banner-video" src="{{ post.data.banner_image | url }}" alt="Banner Hintergrund">
           {% elsif post.data.image %}
-             <img class="banner-video" style="opacity: 0.3;" src="{{ post.data.image | url }}" alt="Banner Hintergrund">
+             <img class="banner-video" src="{{ post.data.image | url }}" alt="Banner Hintergrund">
           {% endif %}
           
           <div style="position:relative; z-index:2;">
@@ -1597,7 +630,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
               <span> • </span><span>{{ post.templateContent | readingTime }} Min.</span>
             </div>
             <div class="transit-title">{{ post.data.title }}</div>
-            <div class="transit-desc" style="margin-top:0.4rem">{{ post.data.description }}</div>
+            <div class="transit-desc">{{ post.data.description }}</div>
           </div>
           {% if post.data.badge %}<div class="transit-badge" style="position:relative; z-index:2;">◯ {{ post.data.badge }}</div>{% endif %}
         </div>
@@ -1605,34 +638,36 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       {% break %} {% endif %}
   {% endfor %}
 </div>
+
 <div class="philosophy">
   <div class="philosophy-inner">
-  <div class="phil-card fade-up">
-    <span class="phil-icon">◎</span>
-    <h3>Systemik statt Mystik</h3>
-    <p>Ich betrachte Astrologie als ein präzises Symbolsystem. Es dient der psychologischen Reflexion und hilft dabei, eigene Reaktionsmuster besser zu verstehen.</p>
+    <div class="phil-card fade-up">
+      <span class="phil-icon">◎</span>
+      <h3>Systemik statt Mystik</h3>
+      <p>Ich betrachte Astrologie als ein präzises Symbolsystem. Es dient der psychologischen Reflexion und hilft dabei, eigene Reaktionsmuster besser zu verstehen.</p>
+    </div>
+    <div class="phil-card fade-up">
+      <span class="phil-icon">◈</span>
+      <h3>Dynamiken erkennen</h3>
+      <p>Welche Themen fordern uns gerade heraus? Ich analysiere die aktuelle Zeitqualität, um Impulse für einen bewussteren Umgang mit Stress und Herausforderungen zu geben.</p>
+    </div>
+    <div class="phil-card fade-up">
+      <span class="phil-icon">⬡</span>
+      <h3>Fokus &amp; Resilienz</h3>
+      <p>Die Einordnung äußerer Einflüsse ist ein Werkzeug für mentale Stärke. Das Ziel: Energie gezielter einsetzen und innere Souveränität bewahren.</p>
+    </div>
   </div>
-  <div class="phil-card fade-up">
-    <span class="phil-icon">◈</span>
-    <h3>Dynamiken erkennen</h3>
-    <p>Welche Themen fordern uns gerade heraus? Ich analysiere die aktuelle Zeitqualität, um Impulse für einen bewussteren Umgang mit Stress und Herausforderungen zu geben.</p>
-  </div>
-  <div class="phil-card fade-up">
-    <span class="phil-icon">⬡</span>
-    <h3>Fokus &amp; Resilienz</h3>
-    <p>Die Einordnung äußerer Einflüsse ist ein Werkzeug für mentale Stärke. Das Ziel: Energie gezielter einsetzen und innere Souveränität bewahren.</p>
-  </div>
-</div>
 </div>
 
 <div class="divider"><hr></div>
+
 <div class="about" id="ueber">
   <div class="about-inner">
     <div class="about-aside fade-up">
       <img src="/img/christian-portraet.jpg" alt="Christian Balas" class="about-photo" style="object-position: 80% 20%;">
       <div class="about-tagline">Wer schreibt hier?</div>
       <h2>Christian Balas</h2>
-      <p style="color:var(--text-muted);font-size:var(--fs-body);line-height:1.5; margin-bottom: 1.5rem;">
+      <p style="color:var(--text-muted);font-size:1.05rem;line-height:1.7; margin-bottom: 1.5rem;">
         Mentaltrainer mit 19 Jahren Vertriebserfahrung. Fokus auf Resilienz, Selbstführung und das Timing von Entscheidungen.
       </p>
       <blockquote>Nicht die Dauer der Zeit entscheidet über unseren Erfolg, sondern die Qualität, mit der wir sie nutzen.</blockquote>
@@ -1641,18 +676,15 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     <div class="about-content fade-up">
       <h3>Zwischen hohem Tempo und innerem Fokus</h3>
       <p>Seit fast zwei Jahrzehnten bewege ich mich im anspruchsvollen Vertriebsumfeld der Finanzbranche. Hier zählen messbare Ergebnisse, Zielorientierung und Performance. Meine Erfahrung zeigt: Fachliches Wissen allein reicht nicht aus, um langfristig gesund, motiviert und souverän zu bleiben. Die größten Hürden – und die stärksten Hebel – entstehen im Kopf.</p>
-      
-      <p>Als <strong style="color:var(--accent-light)">diplomierter Mentaltrainer</strong> nutze ich das Modell der Zeitqualität, um psychologische Phasen und systemische Muster sichtbar zu machen. Es geht nicht um Orakel, sondern um Rhythmus: Wann ist die Zeit reif für Offensive? Wann braucht es strategische Reflexion? Die Einordnung dieser Qualitäten schafft die Basis für echte mentale Resilienz.</p>
-      
-      <a href="/ueber.html" style="display: inline-block; padding: 10px 26px; border: 1px solid var(--accent); border-radius: 100px; color: var(--bg); background: var(--accent); font-family: var(--font-body); font-size: var(--fs-small); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; text-decoration: none; font-weight: 600; margin-top: 1.5rem;">
-        Mehr über meinen Ansatz →
-      </a>
+      <p>Als <strong style="color:var(--text); font-weight: 500;">diplomierter Mentaltrainer</strong> nutze ich das Modell der Zeitqualität, um psychologische Phasen und systemische Muster sichtbar zu machen. Es geht nicht um Orakel, sondern um Rhythmus: Wann ist die Zeit reif für Offensive? Wann braucht es strategische Reflexion? Die Einordnung dieser Qualitäten schafft die Basis für echte mentale Resilienz.</p>
+      <a href="/ueber.html" class="btn-primary" style="margin-top: 2rem;">Mehr über meinen Ansatz</a>
     </div> 
   </div> 
 </div>
    
 <div class="divider"><hr></div>
 
+<!-- DYNAMIC INFO BANNER -->
 <section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;">
   {% assign info_posts = collections.posts | reverse %}
   {% for post in info_posts %}
@@ -1668,7 +700,6 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
         {% elsif post.data.image and post.data.image != "" %}
           <img class="info-banner-media" src="{{ post.data.image | url }}" alt="Info Banner">
         {% else %}
-          {# Falls alle Felder leer sind, greift das Sicherheitsnetz #}
           <img class="info-banner-media" src="/img/sternenhimmel-berge.jpg" alt="Info Banner">
         {% endif %}
         
@@ -1682,7 +713,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
           <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.2rem;">
             {{ post.data.description | default: 'Erfahre mehr über dieses Thema.' }}
           </p>
-          <a href="{{ post.url | url }}" class="read-more" style="font-weight: 600; letter-spacing: 0.05em;">Den ganzen Artikel lesen →</a>
+          <a href="{{ post.url | url }}" class="read-more">Den ganzen Artikel lesen →</a>
         </div>
       </div>
       {% break %} {% endif %}
@@ -1690,53 +721,47 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 </section>
 
 <section id="beitraege">
-  <div class="section-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem;">
+  <div class="section-header">
     <h2 class="section-title">Aktuelle Beiträge</h2>
-    <div style="position: relative; width: 100%; max-width: 400px;">
+    <div style="position: relative; width: 100%; max-width: 350px;">
       <input type="text" id="post-search" placeholder="Beiträge durchsuchen..." 
-             style="width: 100%; padding: 12px 20px; background: var(--bg-warm); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: var(--font-body); outline: none; transition: 0.3s; border: 1px solid var(--accent-dim);">
-      <span style="position: absolute; right: 20px; top: 12px; color: var(--text-dim);">🔍</span>
+             style="width: 100%; padding: 14px 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; color: var(--text); font-family: var(--font-body); outline: none; transition: 0.3s;">
     </div>
   </div>
   
- <div class="posts-grid">
-  {% assign latest_posts = collections.posts | reverse %}
-  {% for post in latest_posts limit:3 %}
-    <a href="{{ post.url | url }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}" style="opacity: 1;">
-      
-      {% if post.data.featured_video %}
-        <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
-          <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
-        </video>
-      {% else %}
-        <img class="post-card-img" 
-             src="{% if post.data.image %}{{ post.data.image | url }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" 
-             onerror="this.src='/img/sternenhimmel-berge.jpg'">
-      {% endif %}
-
-      <div class="post-card-body">
-        <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
-        <h3>{{ post.data.title }}</h3>
-        <div class="post-meta">
-          <span>{{ post.date | date: "%d. %m. %Y" }}</span>
-          <span> • </span>
-          <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
+  <div class="posts-grid">
+    {% assign latest_posts = collections.posts | reverse %}
+    {% for post in latest_posts limit:3 %}
+      <a href="{{ post.url | url }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
+        {% if post.data.featured_video %}
+          <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
+            <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
+          </video>
+        {% else %}
+          <img class="post-card-img" src="{% if post.data.image %}{{ post.data.image | url }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
+        {% endif %}
+        <div class="post-card-body">
+          <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
+          <h3>{{ post.data.title }}</h3>
+          <div class="post-meta">
+            <span>{{ post.date | date: "%d. %m. %Y" }}</span>
+            <span>•</span>
+            <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
+          </div>
         </div>
-      </div>
-    </a>
-  {% endfor %}
-</div>
+      </a>
+    {% endfor %}
+  </div>
   
-  <div style="text-align: center; margin-top: 4rem;">
-    <a href="/archiv.html" style="display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 100px; color: var(--accent); font-family: var(--font-mono); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s;">
-      Zum vollständigen Archiv →
-    </a>
+  <div style="text-align: center; margin-top: 5rem;">
+    <a href="/archiv.html" class="btn-outline">Zum vollständigen Archiv</a>
   </div>
 </section>
 
 <div class="divider"><hr></div>
 
-<section class="tiktok-section" id="videos" style="display: none;">
+<!-- TIKTOK SECTION -->
+<section class="tiktok-section" id="videos">
   <div class="section-header">
     <h2 class="section-title">Video-Impulse</h2>
   </div>
@@ -1778,111 +803,114 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       </div>
     </div>
     
-  </div> <p style="color:var(--text-dim);font-size:var(--fs-small);margin-top:1.5rem;">Mehr Impulse findest du auf <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener noreferrer">TikTok</a> und <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
+  </div> 
+  <p style="color:var(--text-dim);font-size:var(--fs-small);margin-top:1.5rem;">Mehr Impulse findest du auf <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener noreferrer">TikTok</a> und <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
 </section>
 
 <div class="divider"><hr></div>
 
 <section id="galerie">
-  <div class="section-header">
-    <h2 class="section-title">Systemische Archetypen</h2>
-    <span class="section-link" style="cursor:default">Klick zum Umdrehen</span>
+  <div class="section-header" style="justify-content: center; text-align: center; margin-bottom: 2rem;">
+    <h2 class="section-title" style="width: 100%; margin-bottom: 1rem;">Systemische Archetypen</h2>
+    <span class="section-link" style="color: var(--text-muted); font-size: 0.9rem;">Klick auf die Karten für Details</span>
   </div>
   <div class="zodiac-grid" id="zodiacGrid"></div>
 </section>
 
 <div class="divider"><hr></div>
 
-
 <section id="kontakt">
   <div class="section-header">
     <h2 class="section-title">Kontakt</h2>
   </div>
 
-  <div class="contact-info" style="max-width:600px;">
-    <h3>In Verbindung bleiben</h3>
-    <p>Fragen, Gedanken oder Anregungen? Ich freue mich über Austausch — ob inhaltlich, philosophisch oder einfach menschlich.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>In Verbindung bleiben</h3>
+      <p>Fragen, Gedanken oder Anregungen? Ich freue mich über Austausch — ob inhaltlich, philosophisch oder einfach menschlich.</p>
+      <p style="margin-bottom:2rem;">
+        <a href="mailto:christian@zeitqualitaet.at" style="font-size: 1.2rem; font-weight: 400; color: var(--text); border-bottom: 1px solid var(--accent); padding-bottom: 4px;">christian@zeitqualitaet.at</a> 
+      </p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener" class="btn-outline" style="padding: 10px 24px; font-size: 0.8rem;">Instagram</a>
+        <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener" class="btn-outline" style="padding: 10px 24px; font-size: 0.8rem;">TikTok</a>
+      </div>
+    </div>
     
-    <div style="margin: 2rem 0; background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-light);">
+    <div class="contact-form fade-up">
       <form name="gaestebuch" id="contact-form" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="gaestebuch" />
         <div id="form-fields">
-          <div style="margin-bottom: 1rem;">
-            <input type="text" name="name" placeholder="Dein Name" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 5px;">
+          <div style="margin-bottom: 1.5rem;">
+            <label>Dein Name</label>
+            <input type="text" name="name" required>
           </div>
-          <div style="margin-bottom: 1rem;">
-            <textarea name="message" placeholder="Deine Nachricht" rows="4" required style="width:100%; padding: 0.8rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); border-radius: 5px; font-family: inherit;"></textarea>
+          <div style="margin-bottom: 1.5rem;">
+            <label>Deine Nachricht</label>
+            <textarea name="message" rows="4" required></textarea>
           </div>
-          <div style="margin-bottom: 1rem; font-size: 0.85rem; display: flex; gap: 10px; align-items: flex-start;">
-            <input type="checkbox" id="privacy" name="privacy" required style="margin-top: 3px;">
-            <label for="privacy" style="color: var(--text-muted);">Ich stimme zu, dass meine Angaben gespeichert werden (siehe <a href="datenschutz.html" style="color: var(--accent);">Datenschutz</a>).</label>
+          <div style="margin-bottom: 2rem; display: flex; gap: 12px; align-items: flex-start;">
+            <input type="checkbox" id="privacy" name="privacy" required style="width: auto; margin-top: 4px;">
+            <label for="privacy" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; text-transform: none; letter-spacing: normal;">
+              Ich stimme zu, dass meine Angaben gespeichert werden (siehe <a href="datenschutz.html" style="color: var(--accent);">Datenschutz</a>).
+            </label>
           </div>
-          <button type="submit" id="submit-btn" style="background: var(--accent); color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; width: 100%;">
-            Nachricht absenden
-          </button>
+          <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%;">Nachricht absenden</button>
         </div>
         <div id="form-success" style="display:none; padding: 2rem 1rem; text-align: center;">
-          <h3 style="color: var(--accent); font-family: var(--font-display); font-size: 2rem; margin-bottom: 0.5rem;">Vielen Dank!</h3>
+          <h3 style="color: var(--accent); font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">Vielen Dank!</h3>
           <p style="color: var(--text-muted);">Deine Nachricht wurde empfangen. Ich melde mich bald bei dir.</p>
-          <button type="button" onclick="location.reload()" style="margin-top: 1.5rem; background: transparent; border: 1px solid var(--border); color: var(--text-dim); padding: 5px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;">Weitere Nachricht senden</button>
         </div>
       </form>
-    </div>
-    <p style="margin-bottom:1.5rem; opacity: 0.6;">
-      <a href="mailto:christian@zeitqualitaet.at" style="font-size:var(--fs-body);font-weight:500; color: var(--text-muted);">christian@zeitqualitaet.at</a> 
-    </p>
-    <div class="social-links">
-      <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener" class="social-link">Instagram</a>
-      <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener" class="social-link">TikTok</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <a href="/" class="logo-container" style="display: inline-flex; margin-bottom: 0.8rem;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
+  <a href="/" class="logo-container" style="display: inline-flex; margin-bottom: 1.5rem; justify-content: center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 48px; width: 48px;">
       <defs>
         <linearGradient id="gold-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f2d5a3"/><stop offset="40%" stop-color="#d4a56a"/><stop offset="100%" stop-color="#a67b45"/>
+          <stop offset="0%" stop-color="#f3e5ab"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#997a26"/>
         </linearGradient>
       </defs>
-      <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo-footer)" stroke-width="1.5" opacity="0.25"/>
+      <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo-footer)" stroke-width="1.5" opacity="0.3"/>
       <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo-footer)"/>
     </svg>
-    <span style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text); font-weight: 400; letter-spacing: 0.04em;">Zeitqualität</span>
   </a>
   <p class="footer-note">
     © 2026 Zeitqualität · Christian Balas 
-    <a href="/admin/" class="admin-access-star" title="Admin Login">✧</a>
+    <a href="/admin/" class="admin-access-star" title="Admin Login" style="color: var(--border); margin-left: 10px;">✧</a>
   </p>
-  <p class="footer-disclaimer">Unabhängiger redaktioneller Informationsblog zur thematischen Einordnung systemischer und archetypischer Inhalte. Die Inhalte dienen der Reflexion und Orientierung – sie ersetzen keine professionelle Beratung.</p>
+  <p class="footer-disclaimer">Unabhängiger redaktioneller Informationsblog zur thematischen Einordnung systemischer und archetypischer Inhalte. Die Inhalte dienen der psychologischen Reflexion und Orientierung – sie ersetzen keine professionelle Beratung.</p>
   <div class="footer-links">
     <a href="datenschutz.html">Datenschutz</a>
-    <a href="impressum.html">Impressum / Offenlegung</a>
-</div>
+    <a href="impressum.html">Impressum</a>
+  </div>
 </footer>
 
 <script>
+  // Fade-Up Animation Observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-up, .phil-card').forEach(el => observer.observe(el));
 
+  // Mobile Menu
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
       document.querySelector('.nav-links').classList.remove('open');
     });
   });
 
-  // PRÜFEN OB MOBILE DEVICE (für Performance-Tweaks)
   const isMobile = window.innerWidth <= 768;
 
-  /* ── TWINKLING STARS ── */
+  /* ── DISCREET BACKGROUND STARS ── */
   if (!isMobile) {
     (function() {
       const canvas = document.getElementById('stars');
@@ -1891,19 +919,19 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
       function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
       function createStars() {
         stars = [];
-        for (let i = 0; i < 200; i++) {
+        for (let i = 0; i < 150; i++) {
           stars.push({
             x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-            size: Math.random() * 1.5 + 0.3, opacity: Math.random() * 0.6 + 0.1,
-            speed: Math.random() * 0.003 + 0.001, phase: Math.random() * Math.PI * 2,
-            color: ['#e2dfd8', '#d4a56a', '#7b9cc4', '#c9b97a', '#7abfbf'][Math.floor(Math.random() * 5)]
+            size: Math.random() * 1.2 + 0.2, opacity: Math.random() * 0.5 + 0.1,
+            speed: Math.random() * 0.002 + 0.001, phase: Math.random() * Math.PI * 2,
+            color: ['#ffffff', '#d4af37', '#8ba3c7'][Math.floor(Math.random() * 3)]
           });
         }
       }
       function draw(time) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         stars.forEach(star => {
-          const twinkle = Math.sin(time * star.speed + star.phase) * 0.2 + 0.3;
+          const twinkle = Math.sin(time * star.speed + star.phase) * 0.2 + 0.4;
           ctx.beginPath(); ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
           ctx.fillStyle = star.color; ctx.globalAlpha = star.opacity * twinkle; ctx.fill();
         });
@@ -1926,73 +954,66 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     });
   }
 
-/* ── ARCHETYPEN LOGIK (Geometrisch & Psychologisch) ── */
-(function() {
-  const grid = document.getElementById('zodiacGrid');
-  if (!grid) return;
- const signs = [
-    { name: 'Der Initiator', symbol: '▲', quality: 'Handlungskraft', strategy: 'Mut & Pioniergeist', focus: 'Klare Entscheidungen', dates: '21.03. – 19.04.' },
-    { name: 'Der Bewahrer', symbol: '■', quality: 'Bodenständigkeit', strategy: 'Ruhe & Beständigkeit', focus: 'Ressourcen-Schutz', dates: '20.04. – 20.05.' },
-    { name: 'Der Vermittler', symbol: '││', quality: 'Flexibilität', strategy: 'Austausch & Anpassung', focus: 'Wissensvermittlung', dates: '21.05. – 20.06.' },
-    { name: 'Der Beschützer', symbol: '⌒', quality: 'Empathie', strategy: 'Intuition & Fürsorge', focus: 'Emotionale Basis', dates: '21.06. – 22.07.' },
-    { name: 'Der Gestalter', symbol: '◆', quality: 'Selbstausdruck', strategy: 'Präsenz & Führung', focus: 'Authentisches Handeln', dates: '23.07. – 22.08.' },
-    { name: 'Der Analyst', symbol: '⬢', quality: 'Struktur', strategy: 'Ordnung & Sorgfalt', focus: 'Detailgenauigkeit', dates: '23.08. – 22.09.' },
-    { name: 'Der Diplomat', symbol: '─', quality: 'Ausgleich', strategy: 'Kompromiss & Fairness', focus: 'Harmonische Verbindungen', dates: '23.09. – 22.10.' },
-    { name: 'Der Stratege', symbol: '▼', quality: 'Tiefgang', strategy: 'Fokus & Transformation', focus: 'Wesentliche Veränderung', dates: '23.10. – 21.11.' },
-    { name: 'Der Visionär', symbol: '↗', quality: 'Sinnsuche', strategy: 'Perspektive & Idealismus', focus: 'Geistiges Wachstum', dates: '22.11. – 21.12.' },
-    { name: 'Der Realist', symbol: '∟', quality: 'Verantwortung', strategy: 'Disziplin & Ausdauer', focus: 'Struktureller Aufbau', dates: '22.12. – 19.01.' },
-    { name: 'Der Innovator', symbol: '≋', quality: 'Unabhängigkeit', strategy: 'Erneuerung & Freiraum', focus: 'Alternative Lösungswege', dates: '20.01. – 18.02.' },
-    { name: 'Der Mentor', symbol: '○', quality: 'Feingefühl', strategy: 'Reflexion & Loslassen', focus: 'Innere Einkehr', dates: '19.02. – 20.03.' }
-  ];
+  /* ── ARCHETYPEN LOGIK ── */
+  (function() {
+    const grid = document.getElementById('zodiacGrid');
+    if (!grid) return;
     
-   
-  signs.forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'zodiac-card fade-up';
-    card.onclick = function() { this.classList.toggle('flipped'); };
-    card.innerHTML = `
-      <div class="zodiac-card-inner">
-        <div class="zodiac-front">
-          <!-- Geometrisches Icon -->
-          <div style="font-size: 2.2rem; color: var(--accent); margin-bottom: 0.8rem;">${s.symbol}</div>
-          
-          <!-- Name des Archetyps -->
-          <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em;">${s.name}</div>
-          
-          <!-- Untertitel (Quality) - JETZT DEUTLICH HELLER & OHNE TRANSPARENZ -->
-          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-light); margin-top: 0.5rem; letter-spacing: 0.05em; font-weight: 500; opacity: 1;">${s.quality}</div>
-        </div>
-        
-        <div class="zodiac-back">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1.2rem;">
-             <span style="color: var(--accent); font-size: 1.2rem;">${s.symbol}</span>
-             <div style="font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); text-transform: uppercase; font-weight: 600;">${s.name}</div>
+    const signs = [
+      { name: 'Der Initiator', symbol: '▲', quality: 'Handlungskraft', strategy: 'Mut & Pioniergeist', focus: 'Klare Entscheidungen', dates: '21.03. – 19.04.' },
+      { name: 'Der Bewahrer', symbol: '■', quality: 'Bodenständigkeit', strategy: 'Ruhe & Beständigkeit', focus: 'Ressourcen-Schutz', dates: '20.04. – 20.05.' },
+      { name: 'Der Vermittler', symbol: '◈', quality: 'Flexibilität', strategy: 'Austausch & Anpassung', focus: 'Wissensvermittlung', dates: '21.05. – 20.06.' },
+      { name: 'Der Beschützer', symbol: '⌒', quality: 'Empathie', strategy: 'Intuition & Fürsorge', focus: 'Emotionale Basis', dates: '21.06. – 22.07.' },
+      { name: 'Der Gestalter', symbol: '◆', quality: 'Selbstausdruck', strategy: 'Präsenz & Führung', focus: 'Authentisches Handeln', dates: '23.07. – 22.08.' },
+      { name: 'Der Analyst', symbol: '⬢', quality: 'Struktur', strategy: 'Ordnung & Sorgfalt', focus: 'Detailgenauigkeit', dates: '23.08. – 22.09.' },
+      { name: 'Der Diplomat', symbol: '─', quality: 'Ausgleich', strategy: 'Kompromiss & Fairness', focus: 'Harmonische Verbindungen', dates: '23.09. – 22.10.' },
+      { name: 'Der Stratege', symbol: '▼', quality: 'Tiefgang', strategy: 'Fokus & Transformation', focus: 'Wesentliche Veränderung', dates: '23.10. – 21.11.' },
+      { name: 'Der Visionär', symbol: '↗', quality: 'Sinnsuche', strategy: 'Perspektive & Idealismus', focus: 'Geistiges Wachstum', dates: '22.11. – 21.12.' },
+      { name: 'Der Realist', symbol: '∟', quality: 'Verantwortung', strategy: 'Disziplin & Ausdauer', focus: 'Struktureller Aufbau', dates: '22.12. – 19.01.' },
+      { name: 'Der Innovator', symbol: '≋', quality: 'Unabhängigkeit', strategy: 'Erneuerung & Freiraum', focus: 'Alternative Lösungswege', dates: '20.01. – 18.02.' },
+      { name: 'Der Mentor', symbol: '○', quality: 'Feingefühl', strategy: 'Reflexion & Loslassen', focus: 'Innere Einkehr', dates: '19.02. – 20.03.' }
+    ];
+      
+    signs.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'zodiac-card fade-up';
+      card.onclick = function() { this.classList.toggle('flipped'); };
+      card.innerHTML = `
+        <div class="zodiac-card-inner">
+          <div class="zodiac-front">
+            <div style="font-size: 3.5rem; color: var(--accent); margin-bottom: 1.5rem; line-height: 1;">${s.symbol}</div>
+            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--text); letter-spacing: 0.05em; margin-bottom: 0.5rem;">${s.name}</div>
+            <div class="zodiac-detail-label" style="color: var(--text-muted) !important;">${s.quality}</div>
           </div>
           
-          <div class="zodiac-detail">
-            <div class="zodiac-detail-label">Stärke</div>
-            <div class="zodiac-detail-value">${s.strategy}</div>
+          <div class="zodiac-back">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-light);">
+               <span style="color: var(--accent); font-size: 1.5rem;">${s.symbol}</span>
+               <div style="font-family: var(--font-display); font-size: 1.4rem; color: var(--text); font-weight: 500;">${s.name}</div>
+            </div>
+            
+            <div class="zodiac-detail">
+              <div class="zodiac-detail-label">Stärke</div>
+              <div class="zodiac-detail-value">${s.strategy}</div>
+            </div>
+            
+            <div class="zodiac-detail">
+              <div class="zodiac-detail-label">Fokus</div>
+              <div class="zodiac-detail-value">${s.focus}</div>
+            </div>
+            
+            <div class="zodiac-back-hint">
+              <span style="color: var(--text-dim); font-size: 0.75rem;">PHASEN-RHYTHMUS</span><br>
+              <span style="color: var(--text); font-size: 1rem; font-weight: 400; font-family: var(--font-body); letter-spacing: 0;">${s.dates}</span>
+            </div>
           </div>
-          
-          <div class="zodiac-detail">
-            <div class="zodiac-detail-label">Fokus</div>
-            <div class="zodiac-detail-value">${s.focus}</div>
-          </div>
-          
-          <div class="zodiac-back-hint">
-            Phasen-Rhythmus:<br>
-            <span style="color: var(--text); font-size: 0.95rem; font-weight: 400;">${s.dates}</span>
-          </div>
-        </div>
-      </div>`;
-    grid.appendChild(card);
-    if (typeof observer !== 'undefined') observer.observe(card);
-  });
-})();
+        </div>`;
+      grid.appendChild(card);
+      if (typeof observer !== 'undefined') observer.observe(card);
+    });
+  })();
 
-  
-
-  /* ── TAGES-IMPULS SCRIPT (GESICHERT) ── */
+  /* ── TAGES-IMPULS ── */
   async function loadDailyImpulse() {
     const textElement = document.getElementById('daily-impulse-text');
     try {
@@ -2016,19 +1037,13 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
         textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
       }
     } catch(e) {
-      console.warn("Tagesimpuls konnte nicht geladen werden, verwende Fallback.");
+      console.warn("Tagesimpuls nicht gefunden.");
       textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
     }
   }
-  
-  // Script erst ausführen, wenn die Seite komplett geladen ist
   document.addEventListener('DOMContentLoaded', loadDailyImpulse);
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 150) document.body.classList.add('scrolled');
-    else document.body.classList.remove('scrolled');
-  });
-
+  /* ── KONTAKT FORMULAR ── */
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
