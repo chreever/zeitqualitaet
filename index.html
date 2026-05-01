@@ -732,7 +732,33 @@ layout: null
     gap: 1.2rem;
     margin-top: 2rem;
   }
+/* ── KONTRAST-FIX FÜR TEXTE ── */
+  /* Die kleine Beschriftung auf der Vorderseite (z.B. Handlungskraft) */
+  .zodiac-front div[style*="font-family: var(--font-mono)"] {
+    color: var(--text-muted) !important; /* Heller als vorher */
+    opacity: 1 !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.05em;
+  }
 
+  /* Die Werte auf der Rückseite (Stärke, Fokus) */
+  .zodiac-detail-value {
+    font-size: var(--fs-small);
+    color: var(--text) !important; /* Volles Weiß/Beige für maximale Lesbarkeit */
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* Die Labels auf der Rückseite (STÄRKE, FOKUS) */
+  .zodiac-detail-label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-fine);
+    color: var(--accent); /* Gold statt Dunkelgrau */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+    opacity: 0.9;
+  }
   .zodiac-card {
     perspective: 800px;
     cursor: pointer;
