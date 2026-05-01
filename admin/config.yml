@@ -16,8 +16,8 @@ collections:
         name: "category"
         widget: "select"
         default: "Zeitqualität"
-        # HIER GEÄNDERT: "Sternzeichen" zu "Archetypen"
-        options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Archetypen", "Astro-Experiment", "Allgemein"]
+        # GEÄNDERT: "Astro-Experiment" entfernt, "Archetypen" beibehalten
+        options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Archetypen", "Allgemein"]
       - {label: "Datum", name: "date", widget: "datetime"}
       
       # 1. MEDIEN FÜR DIE STARTSEITEN-KACHELN & SOCIAL MEDIA VORSCHAU
@@ -43,7 +43,11 @@ collections:
         default: "Kein Banner"
         required: false
         
-      - {label: "Inhalt", name: "body", widget: "markdown"}
+      # GEÄNDERT: Default-Text für das Inhaltsfeld hinzugefügt!
+      - label: "Inhalt"
+        name: "body"
+        widget: "markdown"
+        default: "Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich.\n\n## 1. Systemische Analyse (Kontext)\nWas passiert gerade? Der Fokus verschiebt sich...\n\n## 2. Business- & Alltagstransfer (Kairos)\nWas bedeutet das konkret? \n- **Gut für:** \n- **Schwierig für:** \n\n## 3. Dein mentaler Impuls\n> **Reflexionsfrage:** Wo halte ich aktuell an einer Strategie fest, die nicht mehr zur Dynamik passt?\n"
 
   - name: "settings"
     label: "Einstellungen"
