@@ -265,15 +265,15 @@ layout: null
     letter-spacing: 0.1em;
   }
 
-  /* ── PREMIUM CARDS (Philosphy, Posts, Video, Banners) ── */
-  .phil-card, .post-card, .video-card, .featured, .info-banner-box, .transit-banner-inner {
+  /* ── PREMIUM CARDS (Philosphy, Posts, Banners) ── */
+  .phil-card, .post-card, .featured, .info-banner-box, .transit-banner-inner {
     background: var(--bg-card);
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: var(--transition);
   }
-  .phil-card:hover, .post-card:hover, .video-card:hover, .featured:hover, .transit-banner:hover .transit-banner-inner {
+  .phil-card:hover, .post-card:hover, .featured:hover, .transit-banner:hover .transit-banner-inner {
     border-color: var(--accent-dim);
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     transform: translateY(-4px);
@@ -409,7 +409,7 @@ layout: null
   }
   .post-tag { margin-bottom: 1rem; }
 
-  .post-card h3, .video-card h3, .featured h2 {
+  .post-card h3, .featured h2 {
     color: var(--text) !important; font-family: var(--font-display) !important;
     font-weight: 500 !important; line-height: 1.3 !important; margin-bottom: 0.8rem;
     letter-spacing: 0.02em; text-transform: none !important;
@@ -420,16 +420,6 @@ layout: null
     font-weight: 500; color: var(--text-dim); text-transform: uppercase;
     display: flex; gap: 1.2rem; align-items: center; letter-spacing: 0.05em;
   }
-
-  /* ── TIKTOK / VIDEO SECTION ── */
-  .tiktok-section { max-width: var(--max-w); margin: 0 auto; padding: 3rem 2rem 4rem; }
-  .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-  .local-video {
-    width: 100%; aspect-ratio: 9/16; max-height: 480px; object-fit: cover;
-    background: var(--bg-elevated); display: block; border-bottom: 1px solid var(--border-light);
-  }
-  .video-card-body { padding: 1.5rem; }
-  .video-card-body p { font-size: var(--fs-small); color: var(--text-muted); line-height: 1.6; }
 
   /* ── ZODIAC FLIP CARDS (ARCHETYPEN) ── */
   .zodiac-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; }
@@ -756,55 +746,6 @@ layout: null
   <div style="text-align: center; margin-top: 5rem;">
     <a href="/archiv.html" class="btn-outline">Zum vollständigen Archiv</a>
   </div>
-</section>
-
-<div class="divider"><hr></div>
-
-<!-- TIKTOK SECTION -->
-<section class="tiktok-section" id="videos">
-  <div class="section-header">
-    <h2 class="section-title">Video-Impulse</h2>
-  </div>
-  <div class="video-grid fade-up">
-    
-    <div class="video-card">
-      <video class="local-video" controls preload="metadata">
-        <source src="/videos/impuls-erstes-haus.mp4" type="video/mp4">
-        Dein Browser unterstützt keine Videos.
-      </video>
-      <div class="video-card-body">
-        <span class="post-tag">Grundlagen</span>
-        <h3>Das 1. Haus: Dein energetischer Fingerabdruck</h3>
-        <p>Stell dir dein Leben wie ein Haus vor – der Aszendent ist deine Haustür und der Filter, durch den du die Welt erblickst.</p>
-      </div>
-    </div>
-    
-    <div class="video-card">
-      <video class="local-video" controls preload="metadata">
-        <source src="/videos/impuls-zweites-haus.mp4" type="video/mp4">
-        Dein Browser unterstützt keine Videos.
-      </video>
-      <div class="video-card-body">
-        <span class="post-tag">Grundlagen</span>
-        <h3>Das 2. Haus: Dein Fundament & deine Werte</h3>
-        <p>Wenn das 1. Haus deine Haustür ist, dann ist das 2. Haus dein persönlicher Tresor. Es geht um Finanzen, aber vor allem um deinen Selbstwert.</p>
-      </div>
-    </div>  
-    
-    <div class="video-card">
-      <video class="local-video" controls preload="metadata">
-        <source src="/videos/impuls-drittes-haus.mp4" type="video/mp4">
-        Dein Browser unterstützt keine Videos.
-      </video>
-      <div class="video-card-body">
-        <span class="post-tag">Grundlagen</span>
-        <h3>Das 3. Haus: Wie du die Welt verstehst</h3>
-        <p>Nachdem du die Haustür geöffnet und dein Fundament gelegt hast, lernst du im 3. Haus, wie du mit deiner Umgebung interagierst. Es geht um Kommunikation, Neugier und den Austausch.</p>
-      </div>
-    </div>
-    
-  </div> 
-  <p style="color:var(--text-dim);font-size:var(--fs-small);margin-top:1.5rem;">Mehr Impulse findest du auf <a href="https://www.tiktok.com/@zeitqualitaet" target="_blank" rel="noopener noreferrer">TikTok</a> und <a href="https://www.instagram.com/zeitqualitaet.astrologie" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
 </section>
 
 <div class="divider"><hr></div>
