@@ -11,44 +11,43 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   
   <style>
-    /* Der Zurück-Button: Sicher auf der linken Seite am PC platziert */
+    /* Der Zurück-Button im neuen Premium-Design */
     .exit-button {
       position: fixed;
-      top: 10px;
+      top: 12px;
       left: 20px;
-      z-index: 99999; /* Damit er über dem CMS schwebt */
-      font-family: 'Figtree', sans-serif;
-      font-size: 12px;
-      color: #d4a56a; /* Dein Gold-Ton */
-      background: #1a1b26; /* Dunkler Kontrast */
-      border: 1px solid #d4a56a;
-      padding: 8px 16px;
-      border-radius: 4px;
+      z-index: 99999;
+      font-family: 'Figtree', system-ui, sans-serif;
+      font-size: 11px;
+      color: #D4AF37; /* Echtes Gold */
+      background: #161924; /* Edles Nachtblau */
+      border: 1px solid #D4AF37;
+      padding: 10px 20px;
+      border-radius: 100px; /* Abgerundet passend zur Website */
       text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 0.05em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     .exit-button:hover {
-      background: #d4a56a;
-      color: #08090e;
-      transform: translateY(-1px);
+      background: #D4AF37;
+      color: #07080b; /* Tiefstes Nachtblau für Text */
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
     }
 
     /* Kleiner Trick: Wir geben dem CMS-Header links etwas Platz, 
        damit der Button nicht gequetscht wirkt */
     header {
-      padding-left: 150px !important;
+      padding-left: 180px !important;
     }
-    
-    /* Da du nur am PC arbeitest, lassen wir die CMS-Standard-Styles 
-       einfach atmen, ohne sie für Mobilgeräte zu verbiegen. */
   </style>
 </head>
 <body>
-  <a href="/" class="exit-button">← ZUR WEBSITE</a>
+  <a href="/" class="exit-button">← Zur Website</a>
 
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
