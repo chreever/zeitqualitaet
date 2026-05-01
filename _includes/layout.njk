@@ -1,18 +1,32 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beitrag — Zeitqualität | Kompass für Kopf und Seele</title>
+  <title>{{ title }} — Zeitqualität</title>
   
   <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Zeitqualität">
-  <meta property="og:url" content="https://zeitqualitaet.at/">
-  <meta property="og:title" content="Zeitqualität – Mentale Souveränität & Strategisches Timing">
-  <meta property="og:description" content="Zeitzyklen nutzen. Mentale Stärke trainieren. Souverän entscheiden in Business & Alltag.">
-  <meta property="og:image" content="https://raw.githubusercontent.com/chreever/zeitqualitaet/main/img/christian-portraet.jpg">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
   
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  {# Dynamisches Vorschaubild für Social Media #}
+  {% set ogImage = post_image | default(image) %}
+  {% if ogImage %}
+    <meta property="og:image" content="https://zeitqualitaet.at{{ ogImage | url }}">
+  {% else %}
+    <meta property="og:image" content="https://zeitqualitaet.at/img/christian-portraet.jpg">
+  {% endif %}
+
+  {# Video-Daten für Facebook und Messenger #}
+  {% set ogVideo = featured_video | default(video) %}
+  {% if ogVideo %}
+    <meta property="og:video" content="https://zeitqualitaet.at{{ ogVideo | url }}">
+    <meta property="og:video:secure_url" content="https://zeitqualitaet.at{{ ogVideo | url }}">
+    <meta property="og:video:type" content="video/mp4">
+  {% endif %}
 
   <link rel="icon" type="image/svg+xml" href="/img/zq-favicon.svg?v=2">
   <link rel="alternate icon" href="/img/zq-favicon.png?v=2">
@@ -220,7 +234,18 @@
   </div>
   
   <article id="post-content" class="post-content">
-    <p style="text-align: center; color: var(--text-dim); margin-top: 4rem;">Signal wird gesucht...</p>
+    <h1>{{ title }}</h1>
+    
+    {# HIER IST DER WICHTIGSTE PLATZHALTER #}
+    {{ content | safe }}
+
+    {# --- AUTOMATISCHER DISCLAIMER --- #}
+    {% if category == "Astro-Experiment" %}
+      <div class="astro-disclaimer">
+        <strong>⚠️ Wichtiger Hinweis</strong><br>
+        Dieser Beitrag dokumentiert ein redaktionelles Gedankenspiel zur Finanzastrologie. Dies stellt ausdrücklich <strong>keine Anlageberatung</strong> oder Finanzanalyse dar. Investments an der Börse bergen Risiken bis hin zum Totalverlust.
+      </div>
+    {% endif %}
   </article>
   
   <div style="text-align: center;">
@@ -259,69 +284,19 @@
     })();
   }
 
-  function fixPath(p) { if(!p) return ""; let c=p.trim().replace(/['"]/g,''); return (c.startsWith('http')||c.startsWith('/'))?c:'/'+c; }
-
-  async function renderPost() {
-    const p = new URLSearchParams(window.location.search);
-    let id = p.get('id'); if(!id) return;
-    id = decodeURIComponent(id);
-
-    try {
-      let r = await fetch(`posts/${id}.md`);
-      if(!r.ok) r = await fetch(`https://raw.githubusercontent.com/chreever/zeitqualitaet/main/posts/${id}.md`);
-      if(!r.ok) throw new Error();
-      
-      const t = await r.text();
-      let body = "", title = "", pImg = "", tImg = "", bVid = "", fVid = "", desc = "", category = "";
-
-      // Frontmatter parsen
-      if(t.startsWith('---')) {
-        const parts = t.split('---');
-        if(parts.length >= 3) {
-          parts[1].split('\n').forEach(l => {
-            const i = l.indexOf(':');
-            if(i!==-1) {
-              const k = l.substring(0,i).trim().toLowerCase(), v = l.substring(i+1).trim().replace(/['"]/g,'');
-              if(k==='title') title=v; if(k==='post_image') pImg=v; if(k==='image') tImg=v;
-              if(k==='video') bVid=v; if(k==='featured_video') fVid=v; if(k==='description') desc=v;
-              if(k==='category') category=v;
-            }
-          });
-          body = parts.slice(2).join('---').trim();
-        }
-      }
-
-      // Medienanzeige
-      const m = document.getElementById('media-container');
-      const finalImg = pImg || tImg;
-      if(finalImg) { m.innerHTML = `<img class="article-image" src="${fixPath(finalImg)}" alt="Beitrag">`; }
-      else { const v = fVid || bVid; if(v) m.innerHTML = `<video class="article-image" autoplay muted loop playsinline><source src="${fixPath(v)}#t=0.1" type="video/mp4"></video>`; }
-
-      // Content rendern
-      let parsedContent = `<h1>${title || id}</h1>` + marked.parse(body);
-
-      // Astro Disclaimer
-      if (category === "Astro-Experiment") {
-        parsedContent += `
-          <div class="astro-disclaimer fade-up visible">
-            <strong>⚠️ Wichtiger Hinweis</strong><br>
-            Dieser Beitrag dokumentiert ein redaktionelles Gedankenspiel zur Finanzastrologie. Dies stellt ausdrücklich <strong>keine Anlageberatung</strong> oder Finanzanalyse dar. Investments an der Börse bergen Risiken bis hin zum Totalverlust.
-          </div>
-        `;
-      }
-
-      document.getElementById('post-content').innerHTML = parsedContent;
-      document.title = `${title || 'Beitrag'} — Zeitqualität`;
-
-      initLightbox();
-      
-    } catch(e) {
-      document.getElementById('post-content').innerHTML = `<h1>Signal verloren</h1><p>Beitrag "${id}" konnte nicht geladen werden. Möglicherweise wurde die Seite verschoben.</p>`;
+  // Share Button Logik
+  const sb = document.getElementById('share-btn');
+  if(sb) sb.addEventListener('click', async () => {
+    if(navigator.share) { try { await navigator.share({title:document.title, url:window.location.href}); } catch(e){} }
+    else { 
+      navigator.clipboard.writeText(window.location.href); 
+      sb.innerHTML = 'Link kopiert'; 
+      setTimeout(()=>sb.innerHTML='↗ Beitrag teilen',2000); 
     }
-  }
+  });
 
   // Lightbox Logik
-  function initLightbox() {
+  document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
     const modalCaption = document.getElementById('modal-caption');
@@ -339,19 +314,6 @@
     }
     modal.onclick = () => { modal.style.display = 'none'; };
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.style.display = 'none'; });
-  }
-
-  renderPost();
-
-  // Share Button Logik
-  const sb = document.getElementById('share-btn');
-  if(sb) sb.addEventListener('click', async () => {
-    if(navigator.share) { try { await navigator.share({title:document.title, url:window.location.href}); } catch(e){} }
-    else { 
-      navigator.clipboard.writeText(window.location.href); 
-      sb.innerHTML = 'Link kopiert'; 
-      setTimeout(()=>sb.innerHTML='↗ Beitrag teilen',2000); 
-    }
   });
 </script>
 </body>
