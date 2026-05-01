@@ -1364,7 +1364,17 @@ layout: null
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(0.95); opacity: 0.8; }
   }
-  
+  @media (max-width: 768px) {
+  .zodiac-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2er-Reihe auf Tablets/Handys */
+  }
+}
+
+@media (max-width: 480px) {
+  .zodiac-grid {
+    grid-template-columns: 1fr !important; /* 1er-Reihe auf kleinen Handys */
+  }
+}
   @media (max-width: 768px) {
     .ticker-content-wrapper { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1.2rem; }
     .ticker-message { font-size: 0.85rem; }
