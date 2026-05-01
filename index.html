@@ -1902,19 +1902,19 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
 (function() {
   const grid = document.getElementById('zodiacGrid');
   if (!grid) return;
-  const signs = [
-    { name: 'Der Initiator', symbol: '◎', quality: 'Handlungskraft', strategy: 'Mut & Pioniergeist', focus: 'Klare Entscheidungen', dates: '21.03. – 19.04.' },
-    { name: 'Der Bewahrer', symbol: '⬚', quality: 'Bodenständigkeit', strategy: 'Ruhe & Beständigkeit', focus: 'Ressourcen-Schutz', dates: '20.04. – 20.05.' },
-    { name: 'Der Vermittler', symbol: '◈', quality: 'Flexibilität', strategy: 'Austausch & Anpassung', focus: 'Wissensvermittlung', dates: '21.05. – 20.06.' },
-    { name: 'Der Beschützer', symbol: '◯', quality: 'Empathie', strategy: 'Intuition & Fürsorge', focus: 'Emotionale Basis', dates: '21.06. – 22.07.' },
-    { name: 'Der Gestalter', symbol: '✧', quality: 'Selbstausdruck', strategy: 'Präsenz & Führung', focus: 'Authentisches Handeln', dates: '23.07. – 22.08.' },
-    { name: 'Der Analyst', symbol: '⬡', quality: 'Struktur', strategy: 'Ordnung & Sorgfalt', focus: 'Detailgenauigkeit', dates: '23.08. – 22.09.' },
-    { name: 'Der Diplomat', symbol: '平衡', quality: 'Ausgleich', strategy: 'Kompromiss & Fairness', focus: 'Harmonische Verbindungen', dates: '23.09. – 22.10.' },
-    { name: 'Der Stratege', symbol: '⧫', quality: 'Tiefgang', strategy: 'Fokus & Transformation', focus: 'Wesentliche Veränderung', dates: '23.10. – 21.11.' },
-    { name: 'Der Visionär', symbol: '△', quality: 'Sinnsuche', strategy: 'Perspektive & Idealismus', focus: 'Geistiges Wachstum', dates: '22.11. – 21.12.' },
-    { name: 'Der Realist', symbol: '□', quality: 'Verantwortung', strategy: 'Disziplin & Ausdauer', focus: 'Struktureller Aufbau', dates: '22.12. – 19.01.' },
-    { name: 'Der Innovator', symbol: '⬢', quality: 'Unabhängigkeit', strategy: 'Erneuerung & Freiraum', focus: 'Alternative Lösungswege', dates: '20.01. – 18.02.' },
-    { name: 'Der Mentor', symbol: '♾', quality: 'Feingefühl', strategy: 'Reflexion & Loslassen', focus: 'Innere Einkehr', dates: '19.02. – 20.03.' }
+ const signs = [
+    { name: 'Der Initiator', symbol: '▲', quality: 'Handlungskraft', strategy: 'Mut & Pioniergeist', focus: 'Klare Entscheidungen', dates: '21.03. – 19.04.' },
+    { name: 'Der Bewahrer', symbol: '■', quality: 'Bodenständigkeit', strategy: 'Ruhe & Beständigkeit', focus: 'Ressourcen-Schutz', dates: '20.04. – 20.05.' },
+    { name: 'Der Vermittler', symbol: '││', quality: 'Flexibilität', strategy: 'Austausch & Anpassung', focus: 'Wissensvermittlung', dates: '21.05. – 20.06.' },
+    { name: 'Der Beschützer', symbol: '⌒', quality: 'Empathie', strategy: 'Intuition & Fürsorge', focus: 'Emotionale Basis', dates: '21.06. – 22.07.' },
+    { name: 'Der Gestalter', symbol: '◆', quality: 'Selbstausdruck', strategy: 'Präsenz & Führung', focus: 'Authentisches Handeln', dates: '23.07. – 22.08.' },
+    { name: 'Der Analyst', symbol: '⬢', quality: 'Struktur', strategy: 'Ordnung & Sorgfalt', focus: 'Detailgenauigkeit', dates: '23.08. – 22.09.' },
+    { name: 'Der Diplomat', symbol: '─', quality: 'Ausgleich', strategy: 'Kompromiss & Fairness', focus: 'Harmonische Verbindungen', dates: '23.09. – 22.10.' },
+    { name: 'Der Stratege', symbol: '▼', quality: 'Tiefgang', strategy: 'Fokus & Transformation', focus: 'Wesentliche Veränderung', dates: '23.10. – 21.11.' },
+    { name: 'Der Visionär', symbol: '↗', quality: 'Sinnsuche', strategy: 'Perspektive & Idealismus', focus: 'Geistiges Wachstum', dates: '22.11. – 21.12.' },
+    { name: 'Der Realist', symbol: '∟', quality: 'Verantwortung', strategy: 'Disziplin & Ausdauer', focus: 'Struktureller Aufbau', dates: '22.12. – 19.01.' },
+    { name: 'Der Innovator', symbol: 'approx;', quality: 'Unabhängigkeit', strategy: 'Erneuerung & Freiraum', focus: 'Alternative Lösungswege', dates: '20.01. – 18.02.' },
+    { name: 'Der Mentor', symbol: '○', quality: 'Feingefühl', strategy: 'Reflexion & Loslassen', focus: 'Innere Einkehr', dates: '19.02. – 20.03.' }
   ];
     
    
