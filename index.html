@@ -732,33 +732,15 @@ layout: null
     gap: 1.2rem;
     margin-top: 2rem;
   }
-/* ── KONTRAST-FIX FÜR TEXTE ── */
-  /* Die kleine Beschriftung auf der Vorderseite (z.B. Handlungskraft) */
+
+  /* ── KONTRAST-FIX FÜR TEXTE ── */
   .zodiac-front div[style*="font-family: var(--font-mono)"] {
-    color: var(--text-muted) !important; /* Heller als vorher */
+    color: var(--text-muted) !important;
     opacity: 1 !important;
     font-weight: 400 !important;
     letter-spacing: 0.05em;
   }
 
-  /* Die Werte auf der Rückseite (Stärke, Fokus) */
-  .zodiac-detail-value {
-    font-size: var(--fs-small);
-    color: var(--text) !important; /* Volles Weiß/Beige für maximale Lesbarkeit */
-    line-height: 1.5;
-    font-weight: 400;
-  }
-
-  /* Die Labels auf der Rückseite (STÄRKE, FOKUS) */
-  .zodiac-detail-label {
-    font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    color: var(--accent); /* Gold statt Dunkelgrau */
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.2rem;
-    opacity: 0.9;
-  }
   .zodiac-card {
     perspective: 800px;
     cursor: pointer;
@@ -866,30 +848,39 @@ layout: null
     margin-bottom: 0.8rem;
   }
 
-  .zodiac-detail { margin-bottom: 0.55rem; }
+  /* ── KLARE LESBARKEIT FÜR DIE KARTEN-RÜCKSEITE ── */
+  .zodiac-detail { 
+    margin-bottom: 1rem; 
+  }
 
   .zodiac-detail-label {
     font-family: var(--font-mono);
-    font-size: var(--fs-fine);
-    color: var(--text-dim);
+    font-size: 0.85rem;
+    color: var(--accent-light) !important;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    opacity: 1 !important;
   }
 
   .zodiac-detail-value {
-    font-size: var(--fs-small);
-    color: var(--text);
-    line-height: 1.45;
+    font-size: 0.95rem;
+    color: var(--text) !important;
+    line-height: 1.5;
+    font-weight: 400;
+    opacity: 1 !important;
   }
 
   .zodiac-back-hint {
-    font-size: var(--fs-fine);
-    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent) !important;
     margin-top: auto;
     text-align: center;
-    opacity: 0.5;
-    padding-top: 0.4rem;
+    opacity: 1 !important;
+    padding-top: 1rem;
+    font-weight: 500;
   }
 
   .contact-grid {
@@ -1383,7 +1374,7 @@ layout: null
 /* --- RESPONSIVE OPTIMIERUNG --- */
 @media (max-width: 768px) {
     /* --- PERFORMANCE OPTIMIERUNG FÜR MOBILE --- */
-   
+    
     .orbit-system {
       display: none !important;
     }
@@ -1959,33 +1950,39 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
     const card = document.createElement('div');
     card.className = 'zodiac-card fade-up';
     card.onclick = function() { this.classList.toggle('flipped'); };
-   card.innerHTML = `
-  <div class="zodiac-card-inner">
-    <div class="zodiac-front">
-      <!-- Geometrisches Icon -->
-      <div style="font-size: 2.2rem; color: var(--accent); margin-bottom: 0.8rem;">${s.symbol}</div>
-      
-      <!-- Name des Archetyps -->
-      <div style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em;">${s.name}</div>
-      
-      <!-- Untertitel (Quality) - JETZT HELLER -->
-      <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-light); margin-top: 0.5rem; opacity: 0.9; letter-spacing: 0.05em;">${s.quality}</div>
-    </div>
-    
-    <div class="zodiac-back">
-          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
-             <span style="color: var(--accent); font-size: 1rem;">${s.symbol}</span>
-             <div style="font-family: var(--font-display); font-size: 1.2rem; color: var(--accent); text-transform: uppercase;">${s.name}</div>
+    card.innerHTML = `
+      <div class="zodiac-card-inner">
+        <div class="zodiac-front">
+          <!-- Geometrisches Icon -->
+          <div style="font-size: 2.2rem; color: var(--accent); margin-bottom: 0.8rem;">${s.symbol}</div>
+          
+          <!-- Name des Archetyps -->
+          <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em;">${s.name}</div>
+          
+          <!-- Untertitel (Quality) - JETZT DEUTLICH HELLER & OHNE TRANSPARENZ -->
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-light); margin-top: 0.5rem; letter-spacing: 0.05em; font-weight: 500; opacity: 1;">${s.quality}</div>
+        </div>
+        
+        <div class="zodiac-back">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1.2rem;">
+             <span style="color: var(--accent); font-size: 1.2rem;">${s.symbol}</span>
+             <div style="font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); text-transform: uppercase; font-weight: 600;">${s.name}</div>
           </div>
+          
           <div class="zodiac-detail">
             <div class="zodiac-detail-label">Stärke</div>
             <div class="zodiac-detail-value">${s.strategy}</div>
           </div>
+          
           <div class="zodiac-detail">
             <div class="zodiac-detail-label">Fokus</div>
             <div class="zodiac-detail-value">${s.focus}</div>
           </div>
-          <div class="zodiac-back-hint">Phasen-Rhythmus: ${s.dates}</div>
+          
+          <div class="zodiac-back-hint">
+            Phasen-Rhythmus:<br>
+            <span style="color: var(--text); font-size: 0.95rem; font-weight: 400;">${s.dates}</span>
+          </div>
         </div>
       </div>`;
     grid.appendChild(card);
@@ -1993,7 +1990,7 @@ section#kontakt button[type="submit"]:active { transform: translateY(-1px); box-
   });
 })();
 
- 
+  
 
   /* ── TAGES-IMPULS SCRIPT (GESICHERT) ── */
   async function loadDailyImpulse() {
