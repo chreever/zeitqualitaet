@@ -17,10 +17,11 @@ Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich: Der unbedin
 2. Business- & Alltagstransfer (Kairos)
    Was bedeutet das konkret für dein Entscheidungs-Timing (Kairos)? Wer den Widerstand im Außen als persönliches Scheitern interpretiert, verkennt die Lage. Es ist kein Stillstand, es ist ein Härtetest der Strukturen.
 
-* **Gut für:** Deep Work, das Optimieren bestehender Prozesse, das Ausmisten von "To-Do-Leichen" und die finanzielle Konsolidierung. Es ist die perfekte Zeit, um Verträge zu prüfen, Grenzen zu ziehen und Ressourcen zu schützen.
-* **Schwierig für:** Überstürzte Neugründungen, das Erzwingen von Abschlüssen bei zögerlichen Partnern oder das Starten großer, unstrukturierter Kreativ-Kampagnen. 
+**Gut für:** Deep Work, das Optimieren bestehender Prozesse, das Ausmisten von "To-Do-Leichen" und die finanzielle Konsolidierung. Es ist die perfekte Zeit, um Verträge zu prüfen, Grenzen zu ziehen und Ressourcen zu schützen.
 
-###### Dein mentaler Impuls
+**Schwierig für:** Überstürzte Neugründungen, das Erzwingen von Abschlüssen bei zögerlichen Partnern oder das Starten großer, unstrukturierter Kreativ-Kampagnen. 
+
+## Dein mentaler Impuls
 
 Mentale Stärke bedeutet aufzuhören, gegen den Rhythmus der Zeit anzukämpfen. Pausen und Konsolidierungsphasen sind kein Fehler im System, sondern dessen wichtigste Schutzfunktion.
 
