@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-# NEU: Setzt die Sprache des Admin-Panels auf Deutsch
+# Setzt die Sprache des Admin-Panels auf Deutsch
 locale: "de"
 
 media_folder: "img"
@@ -21,7 +21,7 @@ collections:
         default: "Zeitqualität"
         options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Archetypen", "Allgemein"]
       
-      # OPTIMIERT: Benutzerfreundliches Datumsformat im Editor
+      # Benutzerfreundliches Datumsformat im Editor
       - label: "Datum"
         name: "date"
         widget: "datetime"
@@ -57,18 +57,13 @@ collections:
         widget: "markdown"
         default: "Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich.\n\n## 1. Systemische Analyse (Kontext)\nWas passiert gerade? Der Fokus verschiebt sich...\n\n## 2. Business- & Alltagstransfer (Kairos)\nWas bedeutet das konkret? \n- **Gut für:** \n- **Schwierig für:** \n\n## 3. Dein mentaler Impuls\n> **Reflexionsfrage:** Wo halte ich aktuell an einer Strategie fest, die nicht mehr zur Dynamik passt?\n"
 
-  - name: "settings"
-    label: "Einstellungen"
-    files:
-      - label: "Tages-Impulse"
-        name: "impulses"
-        file: "data/impulses.json"
-        fields:
-          # OPTIMIERT: Listen-Widget für sauberes, fehlerfreies JSON-Format
-          - label: "Alle Impulse für den Monat"
-            name: "impulses_list"
-            widget: "list"
-            summary: '{{fields.date}} - {{fields.text}}'
-            fields:
-              - {label: "Datum", name: "date", widget: "date", date_format: "DD.MM.YYYY", format: "YYYY-MM-DD"}
-              - {label: "Impuls-Text", name: "text", widget: "string"}
+  - name: "tagesimpulse"
+    label: "Tagesimpulse"
+    folder: "impulses" # Die Impulse werden jetzt als einzelne, saubere Dateien gespeichert
+    create: true # Aktiviert den großen "+ Neuer Eintrag" Button
+    slug: "{{year}}-{{month}}-{{day}}" # Benennt die Datei automatisch nach dem Datum
+    sortable_fields: ['date']
+    view_filters: []
+    fields:
+      - { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Tagesimpuls Text", name: "body", widget: "text" }
