@@ -14,7 +14,7 @@ Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich. Wenn sich d
 
 
 
-\## 1. Systemische Analyse (Kontext)
+\## 1. Systemische Analyse
 
 Vom \*\*17. Mai bis zum 26. Mai\*\* steht die aktuelle Zeitqualität unter dem dominierenden Einfluss von \*\*Uranus Quadrat Merkur\*\*. Wenn der kosmische Innovator und Rebell (Uranus) in mühsamer Reibung auf unseren Verstand und unsere Kommunikation (Merkur) trifft, entsteht ein intellektueller Druckkessel. 
 
@@ -24,7 +24,7 @@ Dieses Quadrat wirkt wie ein energetischer Gewittersturm im Nervensystem. Plötz
 
 
 
-\## 2. Business- & Alltagstransfer (Kairos)
+\## 2. Business- & Alltagstransfer
 
 In der Praxis fordert dich diese Zeitqualität auf, dich von linearem Denken zu verabschieden. Strategische Kurskorrekturen, die du wochenlang vor dir hergeschoben hast, verlangen jetzt nach sofortiger Aufmerksamkeit. Es ist die beste Zeit des Jahres, um verkrustete Strukturen aufzubrechen – aber Vorsicht vor verbalen Kurzschlüssen.
 
