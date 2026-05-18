@@ -130,6 +130,18 @@
 
       document.getElementById('post-content').innerHTML = parsedContent;
       document.title = `${title || 'Beitrag'} — Zeitqualität`;
+      // Social Media Tags dynamisch anpassen
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      const metaDesc = document.querySelector('meta[name="description"]');
+
+      if (finalImg && ogImage) ogImage.setAttribute('content', window.location.origin + fixPath(finalImg));
+      if (title && ogTitle) ogTitle.setAttribute('content', title);
+      if (desc) {
+        if (ogDesc) ogDesc.setAttribute('content', desc);
+        if (metaDesc) metaDesc.setAttribute('content', desc);
+      }
 
       initLightbox();
       
