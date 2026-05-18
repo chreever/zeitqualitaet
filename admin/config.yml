@@ -57,11 +57,13 @@ collections:
         widget: "markdown"
         default: "Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich.\n\n## 1. Systemische Analyse (Kontext)\nWas passiert gerade? Der Fokus verschiebt sich...\n\n## 2. Business- & Alltagstransfer (Kairos)\nWas bedeutet das konkret? \n- **Gut für:** \n- **Schwierig für:** \n\n## 3. Dein mentaler Impuls\n> **Reflexionsfrage:** Wo halte ich aktuell an einer Strategie fest, die nicht mehr zur Dynamik passt?\n"
 
- - name: "tagesimpulse"
+- name: "tagesimpulse"
     label: "Tagesimpulse (Monats-Listen)"
-    folder: "impulses"
+    folder: "data/impulses" # Legt die Datei direkt im Datenordner ab
+    extension: "json"
+    format: "json"
     create: true
-    slug: "{{year}}-{{month}}" # Speichert die Datei automatisch im Format "2026-06.md"
+    slug: "{{year}}-{{month}}" # Benennt die Datei z.B. "2026-06.json"
     fields:
-      - { label: "Wähle den Monat aus (Beliebiges Datum in diesem Monat)", name: "date", widget: "date", format: "YYYY-MM" }
-      - { label: "Ganze Monats-Liste hier reinkopieren", name: "body", widget: "text", hint: "Format pro Zeile zwingend: DD.MM.YYYY - Dein Text" }
+      - { label: "Wähle den Monat aus", name: "date", widget: "date", format: "YYYY-MM" }
+      - { label: "Ganze Monats-Liste hier reinkopieren", name: "text_list", widget: "text", hint: "Format pro Zeile zwingend: DD.MM.YYYY - Dein Text" }
