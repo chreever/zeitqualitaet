@@ -16,6 +16,11 @@ layout: null
 
   <!-- Hier laden wir dein ausgelagertes, globales Design -->
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+  .post-card-media { width: 100%; height: 220px; position: relative; background: var(--bg-elevated); border-bottom: 1px solid var(--border-light); overflow: hidden; }
+  .post-card-media img, .post-card-media video { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8); transition: filter 0.5s ease; }
+  .post-card-desc { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 1.5rem; }
+</style>
 </head>
 <body>
 
