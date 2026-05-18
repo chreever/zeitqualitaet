@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
+# NEU: Setzt die Sprache des Admin-Panels auf Deutsch
+locale: "de"
+
 media_folder: "img"
 public_folder: "/img"
 
@@ -16,9 +19,15 @@ collections:
         name: "category"
         widget: "select"
         default: "Zeitqualität"
-        # GEÄNDERT: "Astro-Experiment" entfernt, "Archetypen" beibehalten
         options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Archetypen", "Allgemein"]
-      - {label: "Datum", name: "date", widget: "datetime"}
+      
+      # OPTIMIERT: Benutzerfreundliches Datumsformat im Editor
+      - label: "Datum"
+        name: "date"
+        widget: "datetime"
+        date_format: "DD.MM.YYYY"
+        time_format: "HH:mm"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
       
       # 1. MEDIEN FÜR DIE STARTSEITEN-KACHELN & SOCIAL MEDIA VORSCHAU
       - {label: "Kachel-Bild & Social Media (WICHTIG!)", name: "image", widget: "image", required: true, hint: "Das ist das Pflicht-Bild. Es erscheint in den Kacheln auf der Startseite und bei Links auf WhatsApp/Facebook."}
@@ -43,7 +52,6 @@ collections:
         default: "Kein Banner"
         required: false
         
-      # GEÄNDERT: Default-Text für das Inhaltsfeld hinzugefügt!
       - label: "Inhalt"
         name: "body"
         widget: "markdown"
@@ -56,7 +64,11 @@ collections:
         name: "impulses"
         file: "data/impulses.json"
         fields:
+          # OPTIMIERT: Listen-Widget für sauberes, fehlerfreies JSON-Format
           - label: "Alle Impulse für den Monat"
-            name: "impulses_block"
-            widget: "markdown"
-            hint: "Format pro Zeile: YYYY-MM-DD: Dein Text"
+            name: "impulses_list"
+            widget: "list"
+            summary: '{{fields.date}} - {{fields.text}}'
+            fields:
+              - {label: "Datum", name: "date", widget: "date", date_format: "DD.MM.YYYY", format: "YYYY-MM-DD"}
+              - {label: "Impuls-Text", name: "text", widget: "string"}
