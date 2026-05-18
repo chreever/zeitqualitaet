@@ -55,7 +55,7 @@ layout: null
   <div id="dynamic-posts" class="posts-grid">
     {% assign sorted_posts = collections.posts | sort: 'date' | reverse %}
     {% for post in sorted_posts %}
-      <a href="{{ post.url }}" 
+      <a href="/post.html?id={{ post.fileSlug }}" 
          class="post-card fade-up visible" 
          data-title="{{ post.data.title | downcase }}" 
          data-category="{{ post.data.category | downcase }}"
