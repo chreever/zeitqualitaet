@@ -961,7 +961,7 @@ layout: null
     });
   })();
 
-  /* ── TAGES-IMPULS ── */
+  /* ── TAGES-IMPULS SKRIPT (OPTIMIERT FÜR DIE NEUE LISTENSTRUKTUR) ── */
   async function loadDailyImpulse() {
     const textElement = document.getElementById('daily-impulse-text');
     try {
@@ -975,12 +975,12 @@ layout: null
       const day = String(now.getDate()).padStart(2, '0');
       const todayString = `${year}-${month}-${day}`;
 
-      const block = data.impulses_block || "";
-      const regex = new RegExp("^" + todayString + ":\\s*(.*)$", "m");
-      const match = block.match(regex);
+      // Durchsucht das neue, sichere Array nach dem heutigen Datum
+      const list = data.impulses_list || [];
+      const found = list.find(item => item.date === todayString);
 
-      if (match && match[1]) {
-        textElement.innerText = match[1].trim();
+      if (found && found.text) {
+        textElement.innerText = found.text;
       } else {
         textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
       }
