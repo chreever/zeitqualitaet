@@ -63,7 +63,6 @@ collections:
     create: true # Aktiviert den großen "+ Neuer Eintrag" Button
     slug: "{{year}}-{{month}}-{{day}}" # Benennt die Datei automatisch nach dem Datum
     sortable_fields: ['date']
-    view_filters: []
     fields:
       - { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD" }
       - { label: "Tagesimpuls Text", name: "body", widget: "text" }
