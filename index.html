@@ -961,31 +961,39 @@ layout: null
     });
   })();
 
-  /* ── TAGES-IMPULS SKRIPT (OPTIMIERT FÜR DIE NEUE LISTENSTRUKTUR) ── */
+ /* ── TAGES-IMPULS SKRIPT (VOLLAUTOMATISCHE MONATS-FILTERUNG) ── */
   async function loadDailyImpulse() {
     const textElement = document.getElementById('daily-impulse-text');
     try {
-      const res = await fetch('/data/impulses.json');
-      if (!res.ok) throw new Error('Datei nicht gefunden');
-      const data = await res.json();
-      
       const now = new Date();
       const year = now.getFullYear();
       const month = String(now.getMonth() + 1).padStart(2, '0');
       const day = String(now.getDate()).padStart(2, '0');
-      const todayString = `${year}-${month}-${day}`;
+      
+      // Such-Format für die Zeile: "DD.MM.YYYY"
+      const todaySearchString = `${day}.${month}.${year}`;
 
-      // Durchsucht das neue, sichere Array nach dem heutigen Datum
-      const list = data.impulses_list || [];
-      const found = list.find(item => item.date === todayString);
+      // Lädt die JSON-Datei des aktuellen Monats direkt aus dem Daten-Ordner
+      const res = await fetch(`/data/impulses/${year}-${month}.json`);
+      if (!res.ok) throw new Error('Monatsdatei nicht gefunden');
+      const data = await res.json();
+      
+      // Holt den gesamten Textblock und splittet ihn in einzelne Zeilen
+      const fullText = data.text_list || "";
+      const lines = fullText.split('\n');
+      
+      // Sucht nach der Zeile, die mit dem heutigen Datum beginnt
+      const foundLine = lines.find(line => line.trim().startsWith(todaySearchString));
 
-      if (found && found.text) {
-        textElement.innerText = found.text;
+      if (foundLine) {
+        // Schneidet das Datum und den Bindestrich ab ("DD.MM.YYYY - ")
+        const impulseText = foundLine.substring(foundLine.indexOf('-') + 1).trim();
+        textElement.innerText = impulseText;
       } else {
         textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
       }
     } catch(e) {
-      console.warn("Tagesimpuls nicht gefunden.");
+      console.warn("Tagesimpuls für diesen Monat noch nicht angelegt.");
       textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
     }
   }
