@@ -4,28 +4,50 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zeitqualität Admin</title>
+  
   <link rel="icon" type="image/png" href="../img/zq-favicon.png">
   <link rel="apple-touch-icon" href="../img/zq-favicon.png">
+
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
   <style>
+    /* Der Zurück-Button im neuen Premium-Design */
     .exit-button {
-      position: fixed; top: 12px; left: 20px; z-index: 99999;
-      font-family: 'Figtree', system-ui, sans-serif; font-size: 11px;
-      color: #D4AF37; background: #161924; border: 1px solid #D4AF37;
-      padding: 10px 20px; border-radius: 100px; text-decoration: none;
-      font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
-      transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      position: fixed;
+      top: 12px;
+      left: 20px;
+      z-index: 99999;
+      font-family: 'Figtree', system-ui, sans-serif;
+      font-size: 11px;
+      color: #D4AF37; /* Echtes Gold */
+      background: #161924; /* Edles Nachtblau */
+      border: 1px solid #D4AF37;
+      padding: 10px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
+
     .exit-button:hover {
-      background: #D4AF37; color: #07080b; transform: translateY(-2px);
+      background: #D4AF37;
+      color: #07080b; /* Tiefstes Nachtblau für Text */
+      transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
     }
-    header { padding-left: 180px !important; }
+
+    header {
+      padding-left: 180px !important;
+    }
   </style>
 </head>
 <body>
   <a href="/" class="exit-button">← Zur Website</a>
-  
+
+  <!-- Das Haupt-Script für das CMS -->
   <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
   <!-- Das deutsche Sprachpaket -->
@@ -34,10 +56,11 @@
   <script>
     // CMS auf Deutsch schalten
     CMS.registerLocale('de', de);
-    
-    // Lade dein Website-Design in die Live-Vorschau
+
+    // Lade dein Website-Design in die Live-Vorschau!
     CMS.registerPreviewStyle("/css/style.css");
-    
+
+    // Netlify Identity Login-Logik
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
