@@ -1,14 +1,10 @@
 ---
-title: "Mentale Hochspannung: Wie du das Uranus-Merkur-Quadrat als
-  Innovations-Katalysator nutzt"
-category: Zeitqualität
-date: 2026-05-18T19:10:00+02:00
-image: /img/uranus-merkur.jpeg
-post_image: /img/uranus-merkur.jpeg
-description: "Wenn der Verstand unter Hochspannung steht: Erfahre, warum die
-  aktuelle Uranus-Merkur-Reibung dir plötzliche Geistesblitze liefert und wie du
-  mentale Überreizung im Business jetzt verhinderst."
-placement: Kein Banner
+title: "Mentale Hochspannung: Wie du das Uranus-Merkur-Quadrat als Innovations-Katalysator nutzt"
+category: "Zeitqualität"
+date: 2026-05-18T15:00:00Z
+image: "/img/image_c2df08.png"
+placement: "Kein Banner"
+description: "Wenn der Verstand unter Hochspannung steht: Erfahre, warum die aktuelle Uranus-Merkur-Reibung dir plötzliche Geistesblitze liefert und wie du mentale Überreizung im Business jetzt verhinderst."
 ---
 Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich. Wenn sich das Tempo in deinem Kopf in den letzten Tagen drastisch beschleunigt hat und festgefahrene Gewissheiten plötzlich ins Wanken geraten, erlebst du die unbändige Kraft einer kosmischen Hochspannung.
 
@@ -20,8 +16,8 @@ Dieses Quadrat wirkt wie ein energetischer Gewittersturm im Nervensystem. Plötz
 ## 2. Business- & Alltagstransfer (Kairos)
 In der Praxis fordert dich diese Zeitqualität auf, dich von linearem Denken zu verabschieden. Strategische Kurskorrekturen, die du wochenlang vor dir hergeschoben hast, verlangen jetzt nach sofortiger Aufmerksamkeit. Es ist die beste Zeit des Jahres, um verkrustete Strukturen aufzubrechen – aber Vorsicht vor verbalen Kurzschlüssen.
 
-- **Gut für:** Radikale Innovationen, das Finden unkonventioneller Lösungen für scheinbar unlösbare Probleme, technologische Neuausrichtung (Agentic AI, Prozessautomatisierung) und das mutige Aussprechen von unbequemen Wahrheiten.
-- **Schwierig für:** Geduldige Detailarbeit, bürokratische Routineaufgaben, diplomatische Verhandlungen zwischen Tür und Angel sowie das blinde Unterschreiben von Verträgen aus einem reinen Impuls heraus.
+* **Gut für:** Radikale Innovationen, das Finden unkonventioneller Lösungen für scheinbar unlösbare Probleme, technologische Neuausrichtung (Agentic AI, Prozessautomatisierung) und das mutige Aussprechen von unbequemen Wahrheiten.
+* **Schwierig für:** Geduldige Detailarbeit, bürokratische Routineaufgaben, diplomatische Verhandlungen zwischen Tür und Angel sowie das blinde Unterschreiben von Verträgen aus einem reinen Impuls heraus.
 
 ## 3. Dein mentaler Impuls
 Nutze die verbleibenden Tage dieser Phase, um dich von mentalem Ballast zu befreien. Wo die Energie unruhig wird, hilft nur radikaler Fokus auf die Substanz.
