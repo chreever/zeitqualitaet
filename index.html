@@ -722,7 +722,7 @@ layout: null
   </div>
   
   <div class="posts-grid">
-    {% assign latest_posts = collections.posts | reverse %}
+    {% assign latest_posts = collections.posts | sort: 'date' | reverse %}
     {% for post in latest_posts limit:3 %}
       <a href="/post.html?id={{ post.fileSlug }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
         {% if post.data.featured_video %}
