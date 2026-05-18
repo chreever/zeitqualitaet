@@ -705,7 +705,7 @@ layout: null
           <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.2rem;">
             {{ post.data.description | default: 'Erfahre mehr über dieses Thema.' }}
           </p>
-          <a href="{{ post.url | url }}" class="read-more">Den ganzen Artikel lesen →</a>
+          <a href="/post.html?id={{ post.fileSlug }}" class="read-more">Den ganzen Artikel lesen →</a>
         </div>
       </div>
       {% break %} {% endif %}
@@ -724,7 +724,7 @@ layout: null
   <div class="posts-grid">
     {% assign latest_posts = collections.posts | reverse %}
     {% for post in latest_posts limit:3 %}
-      <a href="{{ post.url | url }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
+      <a href="/post.html?id={{ post.fileSlug }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
         {% if post.data.featured_video %}
           <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
             <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
