@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("videos");
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("data");
+  eleventyConfig.addPassthroughCopy("posts");
   
   // NEU: Damit auch dein Design (CSS) kopiert wird!
   eleventyConfig.addPassthroughCopy("css"); 
