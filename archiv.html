@@ -76,7 +76,7 @@ layout: null
           <h3>{{ post.data.title }}</h3>
           <p class="post-card-desc">{{ post.data.description | default: 'Klicke hier, um den ganzen Beitrag zu lesen.' }}</p>
           <div class="post-meta">
-            <span>{{ post.date | date: "%d. %m. %Y" }}</span>
+           <span>{{ post.date | formatDate }}</span>
             <span> • </span>
             <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
           </div>
