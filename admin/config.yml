@@ -57,12 +57,11 @@ collections:
         widget: "markdown"
         default: "Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich.\n\n## 1. Systemische Analyse (Kontext)\nWas passiert gerade? Der Fokus verschiebt sich...\n\n## 2. Business- & Alltagstransfer (Kairos)\nWas bedeutet das konkret? \n- **Gut für:** \n- **Schwierig für:** \n\n## 3. Dein mentaler Impuls\n> **Reflexionsfrage:** Wo halte ich aktuell an einer Strategie fest, die nicht mehr zur Dynamik passt?\n"
 
-  - name: "tagesimpulse"
-    label: "Tagesimpulse"
-    folder: "impulses" # Die Impulse werden jetzt als einzelne, saubere Dateien gespeichert
-    create: true # Aktiviert den großen "+ Neuer Eintrag" Button
-    slug: "{{year}}-{{month}}-{{day}}" # Benennt die Datei automatisch nach dem Datum
-    sortable_fields: ['date']
+ - name: "tagesimpulse"
+    label: "Tagesimpulse (Monats-Listen)"
+    folder: "impulses"
+    create: true
+    slug: "{{year}}-{{month}}" # Speichert die Datei automatisch im Format "2026-06.md"
     fields:
-      - { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD" }
-      - { label: "Tagesimpuls Text", name: "body", widget: "text" }
+      - { label: "Wähle den Monat aus (Beliebiges Datum in diesem Monat)", name: "date", widget: "date", format: "YYYY-MM" }
+      - { label: "Ganze Monats-Liste hier reinkopieren", name: "body", widget: "text", hint: "Format pro Zeile zwingend: DD.MM.YYYY - Dein Text" }
