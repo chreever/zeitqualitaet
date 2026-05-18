@@ -125,17 +125,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 }
 .post-content img + em { margin-top: -1.5rem; margin-bottom: 3rem; text-align: center; }
 
-/* ── AUTO-DISCLAIMER FÜR ASTRO-EXPERIMENT ── */
-.astro-disclaimer { 
-  margin-top: 4rem; padding: 2rem; background: var(--bg-elevated); 
-  border-left: 3px solid var(--accent); border-radius: var(--radius); 
-  font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; 
-  font-style: italic; box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-}
-.astro-disclaimer strong { 
-  color: var(--accent); font-style: normal; letter-spacing: 0.1em; 
-  text-transform: uppercase; font-size: 0.85rem; display: block; margin-bottom: 0.5rem; font-family: var(--font-body);
-}
 
 /* ── SHARE BUTTON ── */
 .share-btn { 
