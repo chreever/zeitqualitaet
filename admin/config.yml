@@ -2,7 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-# Setzt die Sprache des Admin-Panels auf Deutsch
 locale: "de"
 
 media_folder: "img"
@@ -20,28 +19,18 @@ collections:
         widget: "select"
         default: "Zeitqualität"
         options: ["Mentale Stärke", "Zeitqualität", "Reflexion", "Persönlich", "Archetypen", "Allgemein"]
-      
-      # Benutzerfreundliches Datumsformat im Editor
       - label: "Datum"
         name: "date"
         widget: "datetime"
         date_format: "DD.MM.YYYY"
         time_format: "HH:mm"
         format: "YYYY-MM-DDTHH:mm:ssZ"
-      
-      # 1. MEDIEN FÜR DIE STARTSEITEN-KACHELN & SOCIAL MEDIA VORSCHAU
-      - {label: "Kachel-Bild & Social Media (WICHTIG!)", name: "image", widget: "image", required: true, hint: "Das ist das Pflicht-Bild. Es erscheint in den Kacheln auf der Startseite und bei Links auf WhatsApp/Facebook."}
-      - {label: "Optional: Bewegtes Kachel-Video (MP4)", name: "featured_video", widget: "file", required: false, hint: "Wenn du ein GIF/MP4 hochlädst, spielt dieses in der Kachel statt des Bildes ab."}
-      
-      # 2. MEDIEN FÜR DEN GROSSEN BANNER (Top-Header oder Mitte)
-      - {label: "Banner-Bild (Hintergrund)", name: "banner_image", widget: "image", required: false, hint: "Erscheint groß im Hintergrund, wenn dieser Beitrag als Banner geschaltet ist."}
-      - {label: "Banner-Video (MP4)", name: "video", widget: "file", required: false, hint: "Wenn du hier ein MP4 hochlädst, überschreibt das Video das Banner-Bild."}
-      
-      # 3. MEDIEN FÜR DEN ARTIKEL SELBST (Wenn man draufklickt)
-      - {label: "Hauptfoto im Blog-Artikel", name: "post_image", widget: "image", required: false, hint: "Erscheint ganz oben, wenn jemand deinen Text liest."}
-      
+      - {label: "Kachel-Bild & Social Media (WICHTIG!)", name: "image", widget: "image", required: true}
+      - {label: "Optional: Bewegtes Kachel-Video (MP4)", name: "featured_video", widget: "file", required: false}
+      - {label: "Banner-Bild (Hintergrund)", name: "banner_image", widget: "image", required: false}
+      - {label: "Banner-Video (MP4)", name: "video", widget: "file", required: false}
+      - {label: "Hauptfoto im Blog-Artikel", name: "post_image", widget: "image", required: false}
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
-      
       - label: "Banner-Platzierung"
         name: "placement"
         widget: "select"
@@ -51,7 +40,6 @@ collections:
           - { label: "Info-Banner (Mitte)", value: "Info-Banner (Mitte)" }
         default: "Kein Banner"
         required: false
-        
       - label: "Inhalt"
         name: "body"
         widget: "markdown"
@@ -65,5 +53,10 @@ collections:
     create: true
     slug: "{{year}}-{{month}}"
     fields:
-      - { label: "Wähle den Monat aus", name: "date", widget: "date", format: "YYYY-MM" }
-      - { label: "Ganze Monats-Liste hier reinkopieren", name: "text_list", widget: "text", hint: "Format pro Zeile zwingend: DD.MM.YYYY - Dein Text" }
+      - label: "Monat auswählen (Klicke einfach irgendeinen Tag in dem gewünschten Monat an)"
+        name: "date"
+        widget: "datetime"
+        date_format: "MM.YYYY"
+        time_format: false
+        format: "YYYY-MM-DD"
+      - { label: "Ganze Monats-Liste hier reinkopieren", name: "text_list", widget: "text" }
