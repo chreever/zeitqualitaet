@@ -1,10 +1,14 @@
 ---
-title: "Mentale Hochspannung: Wie du das Uranus-Merkur-Quadrat als Innovations-Katalysator nutzt"
-category: "Zeitqualität"
-date: 2026-05-18T15:00:00Z
-image: "/img/image_c2df08.png"
-placement: "Kein Banner"
-description: "Wenn der Verstand unter Hochspannung steht: Erfahre, warum die aktuelle Uranus-Merkur-Reibung dir plötzliche Geistesblitze liefert und wie du mentale Überreizung im Business jetzt verhinderst."
+title: "Mentale Hochspannung: Wie du das Uranus-Merkur-Quadrat als
+  Innovations-Katalysator nutzt"
+category: Zeitqualität
+date: 2026-05-18T15:00:00.000Z
+image: /img/uranus-merkur.jpeg
+post_image: /img/uranus-merkur.jpeg
+description: "Wenn der Verstand unter Hochspannung steht: Erfahre, warum die
+  aktuelle Uranus-Merkur-Reibung dir plötzliche Geistesblitze liefert und wie du
+  mentale Überreizung im Business jetzt verhinderst."
+placement: Kein Banner
 ---
 Die aktuelle Zeitqualität bringt spürbare Veränderungen mit sich. Wenn sich das Tempo in deinem Kopf in den letzten Tagen drastisch beschleunigt hat und festgefahrene Gewissheiten plötzlich ins Wanken geraten, erlebst du die unbändige Kraft einer kosmischen Hochspannung.
 
