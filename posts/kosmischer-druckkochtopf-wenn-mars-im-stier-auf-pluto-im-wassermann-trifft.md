@@ -8,7 +8,7 @@ post_image: /img/mars-pluto-quadrat.png
 description: "Spürst du auch diese enorme Spannung in der Luft? Die
   astrologische Zeitqualität dieser Woche hat es in sich und verlangt unsere
   volle Aufmerksamkeit. "
-placement: Top-Banner (Header)
+placement: Kein Banner
 ---
 Der Himmel serviert uns einen Aspekt, der sich wie ein kosmisches Kräftemessen anfühlt: Mars im Stier bildet ein exaktes Quadrat zu Pluto im Wassermann.
 
