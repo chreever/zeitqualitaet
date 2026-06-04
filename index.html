@@ -961,7 +961,7 @@ layout: null
     });
   })();
 
- /* ── TAGES-IMPULS SKRIPT (VOLLAUTOMATISCHE MONATS-FILTERUNG) ── */
+/* ── TAGES-IMPULS SKRIPT (VOLLAUTOMATISCHE MONATS-FILTERUNG) ── */
   async function loadDailyImpulse() {
     const textElement = document.getElementById('daily-impulse-text');
     try {
@@ -973,28 +973,31 @@ layout: null
       // Such-Format für die Zeile: "DD.MM.YYYY"
       const todaySearchString = `${day}.${month}.${year}`;
 
-      // Lädt die JSON-Datei des aktuellen Monats direkt aus dem Daten-Ordner
-      const res = await fetch(`/data/impulses/${year}-${month}.json`);
+      // NEU: Lädt die Datei aus dem garantierten öffentlichen Bilder-Ordner
+      const res = await fetch(`/img/impulses/${year}-${month}.json`);
       if (!res.ok) throw new Error('Monatsdatei nicht gefunden');
       const data = await res.json();
       
-      // Holt den gesamten Textblock und splittet ihn in einzelne Zeilen
       const fullText = data.text_list || "";
       const lines = fullText.split('\n');
       
-      // Sucht nach der Zeile, die mit dem heutigen Datum beginnt
       const foundLine = lines.find(line => line.trim().startsWith(todaySearchString));
 
       if (foundLine) {
-        // Schneidet das Datum und den Bindestrich ab ("DD.MM.YYYY - ")
-        const impulseText = foundLine.substring(foundLine.indexOf('-') + 1).trim();
-        textElement.innerText = impulseText;
+        // Schneidet das Datum ab
+        let impulseText = foundLine.substring(foundLine.indexOf('-') + 1).trim();
+        
+        // NEU: Wandelt die **Markdown-Sternchen** in echtes HTML-Fettgedrucktes um
+        impulseText = impulseText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        
+        // NEU: innerHTML statt innerText, damit Formatierungen wirken
+        textElement.innerHTML = impulseText;
       } else {
-        textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
+        textElement.innerHTML = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
       }
     } catch(e) {
-      console.warn("Tagesimpuls für diesen Monat noch nicht angelegt.");
-      textElement.innerText = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
+      console.warn("Tagesimpuls nicht gefunden oder Pfad blockiert.");
+      textElement.innerHTML = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
     }
   }
   document.addEventListener('DOMContentLoaded', loadDailyImpulse);
