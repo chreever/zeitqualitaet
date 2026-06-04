@@ -47,12 +47,12 @@ collections:
 
   - name: "tagesimpulse"
     label: "Tagesimpulse (Monats-Listen)"
-    folder: "data/impulses"
+    folder: "img/impulses"
     extension: "json"
     format: "json"
     create: true
     slug: "{{year}}-{{month}}"
-    summary: "Monatsliste: {{date}}" # Zwingt das CMS, den Monat als Kachel-Überschrift anzuzeigen
+    summary: "Monatsliste: {{date}}"
     fields:
       - label: "Monat auswählen (Klicke einfach irgendeinen Tag in dem gewünschten Monat an)"
         name: "date"
