@@ -961,7 +961,7 @@ layout: null
     });
   })();
 
-/* ── TAGES-IMPULS SKRIPT (VOLLAUTOMATISCHE MONATS-FILTERUNG) ── */
+/* ── TAGES-IMPULS SKRIPT (ROBUST GEGEN TEXT-WÜRSTE) ── */
   async function loadDailyImpulse() {
     const textElement = document.getElementById('daily-impulse-text');
     try {
@@ -970,27 +970,31 @@ layout: null
       const month = String(now.getMonth() + 1).padStart(2, '0');
       const day = String(now.getDate()).padStart(2, '0');
       
-      // Such-Format für die Zeile: "DD.MM.YYYY"
-      const todaySearchString = `${day}.${month}.${year}`;
-
-      // NEU: Lädt die Datei aus dem garantierten öffentlichen Bilder-Ordner
+      const todayString = `${day}.${month}.${year} - `;
+      
       const res = await fetch(`/img/impulses/${year}-${month}.json`);
       if (!res.ok) throw new Error('Monatsdatei nicht gefunden');
       const data = await res.json();
       
       const fullText = data.text_list || "";
-      const lines = fullText.split('\n');
       
-      const foundLine = lines.find(line => line.trim().startsWith(todaySearchString));
-
-      if (foundLine) {
-        // Schneidet das Datum ab
-        let impulseText = foundLine.substring(foundLine.indexOf('-') + 1).trim();
+      // Sucht den Start des heutigen Impulses im Text
+      const startIndex = fullText.indexOf(todayString);
+      
+      if (startIndex !== -1) {
+        // Wir schneiden den Text ab dem heutigen Tag aus (ohne das Datum selbst)
+        let impulseText = fullText.substring(startIndex + todayString.length);
         
-        // NEU: Wandelt die **Markdown-Sternchen** in echtes HTML-Fettgedrucktes um
+        // Wir suchen, wo der nächste Tag beginnt (z.B. "05.06.2026"), um dort den Text abzuschneiden
+        // Wenn es der letzte Tag im Monat ist, gibt es keinen nächsten Tag, dann nimmt er den Rest.
+        const nextDayMatch = impulseText.match(/\d{2}\.\d{2}\.\d{4} - /);
+        if (nextDayMatch) {
+          impulseText = impulseText.substring(0, nextDayMatch.index).trim();
+        }
+        
+        // Markdown-Sternchen in Fettgedruckt umwandeln
         impulseText = impulseText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         
-        // NEU: innerHTML statt innerText, damit Formatierungen wirken
         textElement.innerHTML = impulseText;
       } else {
         textElement.innerHTML = "Heute steht keine akute Dynamik im Vordergrund. Nutze diesen Raum für strategische Reflexion und mentale Regeneration.";
