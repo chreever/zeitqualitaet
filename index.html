@@ -993,11 +993,11 @@ layout: null
         // NEU: innerHTML statt innerText, damit Formatierungen wirken
         textElement.innerHTML = impulseText;
       } else {
-        textElement.innerHTML = "Spüre heute nach innen. Das Universum sammelt seine Kräfte für den nächsten Impuls.";
+        textElement.innerHTML = "Heute steht keine akute Dynamik im Vordergrund. Nutze diesen Raum für strategische Reflexion und mentale Regeneration.";
       }
     } catch(e) {
       console.warn("Tagesimpuls nicht gefunden oder Pfad blockiert.");
-      textElement.innerHTML = "Spüre heute nach innen. Das Universum sammelt seine Energien.";
+      textElement.innerHTML = "Heute steht keine akute Dynamik im Vordergrund. Nutze diesen Raum für strategische Reflexion und mentale Regeneration.";
     }
   }
   document.addEventListener('DOMContentLoaded', loadDailyImpulse);
