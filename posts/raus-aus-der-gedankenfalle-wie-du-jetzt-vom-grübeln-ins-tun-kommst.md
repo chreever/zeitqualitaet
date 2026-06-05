@@ -8,7 +8,7 @@ post_image: /img/glühbirne.png
 description: Der Verstand läuft aktuell auf Hochtouren. Erfahre, wie du das
   ständige Gedankenkarussell stoppst und die aktuelle geistige Beweglichkeit für
   echte Umsetzung nutzt.
-placement: Top-Banner (Header)
+placement: Kein Banner
 ---
 Vielleicht hast du es in den letzten Tagen selbst gespürt: Das Tempo zieht an. Tausend neue Ideen poppen auf, Gespräche verdichten sich und der Verstand läuft regelrecht auf Hochtouren. Wir befinden uns in einer Zeitqualität, die archetypisch für enorme geistige Beweglichkeit, Neugier und schnelle Informationsverarbeitung steht. 
 
