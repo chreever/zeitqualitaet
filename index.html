@@ -721,9 +721,10 @@ layout: null
     </div>
   </div>
   
-  <div class="posts-grid">
+ <div class="posts-grid">
     {% assign latest_posts = collections.posts | sort: 'date' | reverse %}
-    {% for post in latest_posts limit:3 %}
+    {% assign count = 0 %}
+    {% for post in latest_posts %}
       {% if not post.data.draft %}
         <a href="/post.html?id={{ post.fileSlug }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
           {% if post.data.featured_video %}
@@ -743,6 +744,12 @@ layout: null
             </div>
           </div>
         </a>
+        
+        {% assign count = count | plus: 1 %}
+        {% if count == 3 %}
+          {% break %}
+        {% endif %}
+        
       {% endif %}
     {% endfor %}
   </div>
