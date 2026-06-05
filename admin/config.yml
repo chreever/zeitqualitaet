@@ -14,6 +14,7 @@ collections:
     create: true
     fields:
       - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Als Entwurf speichern (nicht veröffentlichen)", name: "draft", widget: "boolean", default: true, required: false}
       - label: "Kategorie"
         name: "category"
         widget: "select"
