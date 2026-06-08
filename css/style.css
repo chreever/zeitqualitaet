@@ -9,24 +9,26 @@
 @font-face { font-family: 'Figtree'; src: url('/fonts/figtree-600.woff2') format('woff2'); font-weight: 600; font-display: swap; }
 
 :root {
-    /* PREMIUM CONSULTING COLOR PALETTE (Light Mode) */
+    /* PREMIUM CONSULTING COLOR PALETTE (Deep Slate) */
     --bg: #F8F9FA; 
     --bg-warm: #FFFFFF;
     --bg-card: #FFFFFF;
     --bg-elevated: #F1F3F5;
     
-    --text: #1F2937; 
+    /* Klarer, dunkler Text für perfekte Lesbarkeit */
+    --text: #111827; 
     --text-muted: #4B5563; 
     --text-dim: #9CA3AF;
     
-    --accent: #2563EB; 
-    --accent-light: #3B82F6; 
-    --accent-dim: rgba(37, 99, 235, 0.1);
+    /* Ein tiefes, elegantes Schiefer-Marineblau statt hellem Blau */
+    --accent: #0F172A; 
+    --accent-light: #334155; 
+    --accent-dim: rgba(15, 23, 42, 0.05);
     
     --border: #E5E7EB;
     --border-light: #F3F4F6;
     
-    /* TYPOGRAFIE-SWITCH */
+    /* TYPOGRAFIE */
     --font-display: 'Figtree', system-ui, sans-serif;
     --font-body: 'Figtree', system-ui, sans-serif;
     --font-quote: 'Cormorant Garamond', Georgia, serif; 
