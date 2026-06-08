@@ -262,16 +262,11 @@ layout: null
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo-container">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 42px; width: 42px;">
-        <defs>
-          <linearGradient id="gold-logo" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f3e5ab"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#997a26"/>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo)" stroke-width="1.5" opacity="0.4"/>
-        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo)"/>
+      <svg viewBox="0 0 120 120" style="height: 42px; width: 42px;">
+        <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.4"/>
+        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="var(--accent)"/>
       </svg>
-      <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); font-weight: 400; letter-spacing: 0.05em;">Zeitqualität</span>
+      <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); font-weight: 600; letter-spacing: 0.05em;">Zeitqualität</span>
     </a>
     <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menü">☰</button>
     <div class="nav-links">
@@ -528,14 +523,9 @@ layout: null
 
 <footer>
   <a href="/" class="logo-container" style="display: inline-flex; margin-bottom: 1.5rem; justify-content: center;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="height: 48px; width: 48px;">
-      <defs>
-        <linearGradient id="gold-logo-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#f3e5ab"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#997a26"/>
-        </linearGradient>
-      </defs>
-      <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold-logo-footer)" stroke-width="1.5" opacity="0.3"/>
-      <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="url(#gold-logo-footer)"/>
+    <svg viewBox="0 0 120 120" style="height: 48px; width: 48px;">
+      <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.3"/>
+      <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="var(--accent)"/>
     </svg>
   </a>
   <p class="footer-note">
