@@ -428,38 +428,40 @@ layout: null
     </div>
   </div>
   
- <div class="posts-grid">
-    {% assign latest_posts = collections.posts | sort: 'date' | reverse %}
-    {% assign count = 0 %}
-    {% for post in latest_posts %}
-      {% if not post.data.draft %}
-        <a href="/post.html?id={{ post.fileSlug }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
-          {% if post.data.featured_video %}
-            <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
-              <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
-            </video>
-          {% else %}
-            <img class="post-card-img" src="{% if post.data.image %}{{ post.data.image | url }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
-          {% endif %}
-          <div class="post-card-body">
-            <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
-            <h3>{{ post.data.title }}</h3>
-            <div class="post-meta">
-              <span>{{ post.date | formatDate }}</span>
-              <span>•</span>
-              <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
-            </div>
-          </div>
-        </a>
+<div class="posts-grid">
+  {% assign latest_posts = collections.posts | sort: 'date' | reverse %}
+  {% assign count = 0 %}
+  {% for post in latest_posts %}
+    {% if not post.data.draft %}
+      <a href="/post.html?id={{ post.fileSlug }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
         
-        {% assign count = count | plus: 1 %}
-        {% if count == 3 %}
-          {% break %}
+        {% if post.data.featured_video %}
+          <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
+            <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
+          </video>
+        {% elif post.data.image %}
+          <img class="post-card-img" src="{{ post.data.image | url }}" alt="{{ post.data.title }}">
+        {% else %}
+          <!-- HIER IST DER NEUE DESIGN-BLOCK FÜR KACHELN OHNE BILD -->
+          <div class="post-card-fallback"></div>
         {% endif %}
-        
-      {% endif %}
-    {% endfor %}
-  </div>
+
+        <div class="post-card-body">
+          <span class="post-tag">{{ post.data.category | default: "Zeitqualität" }}</span>
+          <h3>{{ post.data.title }}</h3>
+          <div class="post-meta">
+            <span>{{ post.date | formatDate }}</span>
+            <span>•</span>
+            <span>{{ post.templateContent | readingTime }} Min. Lesezeit</span>
+          </div>
+        </div>
+      </a>
+      
+      {% assign count = count | plus: 1 %}
+      {% if count == 3 %}{% break %}{% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
   
   <div style="text-align: center; margin-top: 5rem;">
     <a href="/archiv.html" class="btn-outline">Zum vollständigen Archiv</a>
