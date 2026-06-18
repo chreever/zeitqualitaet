@@ -1,7 +1,8 @@
 ---
-title: "Fokus & Klarheit"
-icon: "ziel"
-description: "Radikales Mono-Tasking"
+title: Fokus & Klarheit
+featured: true
+icon: ziel
+description: Radikales Mono-Tasking
 ---
 ### Der Fokus-Tunnel
 
