@@ -1,11 +1,13 @@
 ---
 title: "Raus aus der Gedankenfalle: Wie du Analyse-Lähmung überwindest"
 draft: false
-category: "Strategie & Fokus"
+category: Strategie & Fokus
 date: 2026-06-04T19:36:00+02:00
-image: /img/gluehbirne.png
-description: "Der Verstand läuft bei vielen Führungskräften auf Hochtouren. Erfahre, wie du das ständige Gedankenkarussell stoppst und die aktuelle Informationsflut in echte Umsetzung verwandelst."
-placement: "Kein Banner"
+image: ""
+description: Der Verstand läuft bei vielen Führungskräften auf Hochtouren.
+  Erfahre, wie du das ständige Gedankenkarussell stoppst und die aktuelle
+  Informationsflut in echte Umsetzung verwandelst.
+placement: Kein Banner
 ---
 
 In vielen beruflichen Umfeldern zieht das Tempo spürbar an. Tausend neue Impulse, komplexe Daten und die permanente Anforderung, auf dem neuesten Stand zu sein, lassen den Verstand oft auf Hochtouren laufen. Das ist ein großartiger Motor für neue Perspektiven – doch genau hier lauert eine klassische Falle: das Gedankenkarussell.
