@@ -433,7 +433,7 @@ layout: null
     {% if not post.data.draft %}
       <a href="/post.html?id={{ post.fileSlug }}" class="post-card fade-up visible" data-title="{{ post.data.title | downcase }}">
         
-        {% if post.data.featured_video %}
+        {% if post.data.featured_video and post.data.featured_video != "" %}
           <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
             <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
           </video>
