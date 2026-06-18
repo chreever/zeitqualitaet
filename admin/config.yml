@@ -44,6 +44,16 @@ collections:
       - label: "Inhalt"
         name: "body"
         widget: "markdown"
+
+  - name: "exercises"
+    label: "Mentaltraining-Übungen"
+    folder: "exercises"
+    create: true
+    fields:
+      - {label: "Titel der Übung", name: "title", widget: "string"}
+      - {label: "Icon (z.B. 🎯, ⚡, ⚖️, 🧠)", name: "icon", widget: "string"}
+      - {label: "Kurzbeschreibung (Vorderseite der Karte)", name: "description", widget: "string"}
+      - {label: "Anleitung / Übungstext (Rückseite)", name: "body", widget: "markdown"}
         
   - name: "tagesimpulse"
     label: "Tagesimpulse (Monats-Listen)"
