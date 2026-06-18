@@ -1,0 +1,322 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentaltraining — Zeitqualität | Interaktive Werkzeuge</title>
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    /* ── BASE & ROOT VARIABLES ── */
+    :root {
+      --bg: #F8F9FA; 
+      --bg-warm: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --bg-elevated: #F1F3F5;
+      --text: #111827; 
+      --text-muted: #4B5563; 
+      --text-dim: #9CA3AF;
+      --accent: #0F172A; 
+      --accent-light: #334155; 
+      --accent-dim: rgba(15, 23, 42, 0.05);
+      --border: #E5E7EB;
+      --border-light: #F3F4F6;
+      --font-display: 'Figtree', system-ui, sans-serif;
+      --font-body: 'Figtree', system-ui, sans-serif;
+      --radius: 12px;
+      --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header-spacer { height: 140px; }
+    section { max-width: 1140px; margin: 0 auto; padding: 4rem 2rem; }
+    
+    .tool-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: var(--accent);
+    }
+
+    .tool-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      margin-bottom: 5rem;
+    }
+
+    /* ════════ TOOL 1: KARTENDECK STYLES ════════ */
+    .deck-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    .mental-card { perspective: 1000px; cursor: pointer; aspect-ratio: 4/5; width: 100%; }
+    .mental-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
+    .mental-card.flipped .mental-card-inner { transform: rotateY(180deg); }
+    .m-front, .m-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: var(--radius); border: 1px solid var(--border-light); padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+    .m-front { background: var(--bg-card); transition: var(--transition); }
+    .mental-card:hover .m-front { border-color: var(--accent-dim); background: var(--bg-elevated); transform: translateY(-2px); }
+    .m-back { transform: rotateY(180deg); background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; justify-content: flex-start; padding-top: 3rem; overflow-y: auto; }
+    
+    /* ════════ TOOL 2: ATEM-ANKE STYLES ════════ */
+    .breathing-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px; }
+    .breath-circle {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 1.2rem; color: var(--accent);
+      transition: all 4s linear;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    /* Klassen für die Animationstufen via JS */
+    .breath-circle.inhale { transform: scale(1.4); background: rgba(15, 23, 42, 0.15); color: var(--accent); }
+    .breath-circle.hold { color: var(--accent); }
+    .breath-circle.exhale { transform: scale(1.0); background: var(--accent-dim); color: var(--accent); }
+    
+    .btn-breath {
+      padding: 12px 30px; background: var(--accent); color: #FFFFFF; border: none;
+      border-radius: 100px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+      cursor: pointer; transition: var(--transition); font-size: 0.85rem;
+    }
+    .btn-breath:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+    /* ════════ TOOL 3: CHECK-IN STYLES ════════ */
+    .wizard-card { max-width: 600px; margin: 0 auto; text-align: center; }
+    .wizard-options { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .wizard-btn {
+      width: 100%; padding: 16px; background: var(--bg-elevated); border: 1px solid var(--border);
+      border-radius: var(--radius); text-align: left; font-size: 1.05rem; color: var(--text);
+      cursor: pointer; transition: var(--transition); font-family: var(--font-body);
+    }
+    .wizard-btn:hover { background: var(--accent); color: #FFFFFF; border-color: var(--accent); padding-left: 24px; }
+    .wizard-step { display: none; }
+    .wizard-step.active { display: block; }
+    
+    @media (max-width: 768px) {
+      .deck-grid { grid-template-columns: 1fr; }
+      .mental-card { aspect-ratio: 5/4; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo-container">
+      <svg viewBox="0 0 120 120" style="height: 42px; width: 42px;">
+        <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.4"/>
+        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="var(--accent)"/>
+      </svg>
+      <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); font-weight: 600; letter-spacing: 0.05em;">Zeitqualität</span>
+    </a>
+    <div class="nav-links">
+        <a href="/">← Zurück zur Startseite</a>
+    </div>
+  </div>
+</nav>
+
+<div class="header-spacer"></div>
+
+<section id="mental-tools">
+  <div style="text-align: center; margin-bottom: 5rem;">
+    <h1 style="font-family: var(--font-display); font-size: 3rem; font-weight: 600; margin-bottom: 1rem;">Mentale Werkzeuge</h1>
+    <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 0 auto;">Praktische, interaktive Methoden zur Erhöhung deiner Resilienz, Selbstführung und mentalen Klarheit im Alltag.</p>
+  </div>
+
+  <div class="tool-box">
+    <h2 class="tool-title">1. Mental-Impuls-Kartendeck</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Wähle einen Fokus-Bereich und klicke auf die Karte, um deine heutige Reflexionsübung aufzudecken.</p>
+    
+    <div class="deck-grid">
+      <div class="mental-card" onclick="this.classList.toggle('flipped')">
+        <div class="mental-card-inner">
+          <div class="m-front">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+            <h3 style="font-weight: 600; font-size: 1.3rem;">Akuter Stress</h3>
+            <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem;">Sofort-Distanz finden</p>
+          </div>
+          <div class="m-back">
+            <h3 style="margin-bottom: 1rem; font-weight: 600;">Die 5-Sekunden-Regel</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Wenn dich eine Situation überfordert: Halte inne. Atme tief aus und zähle rückwärts: 5, 4, 3, 2, 1. Triff erst danach eine bewusste Entscheidung, anstatt impulsiv oder emotional zu reagieren.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mental-card" onclick="this.classList.toggle('flipped')">
+        <div class="mental-card-inner">
+          <div class="m-front">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎯</div>
+            <h3 style="font-weight: 600; font-size: 1.3rem;">Fokus &amp; Fokus</h3>
+            <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem;">Klarheit herstellen</p>
+          </div>
+          <div class="m-back">
+            <h3 style="margin-bottom: 1rem; font-weight: 600;">Radikales Mono-Tasking</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Schließe für die nächsten 20 Minuten alle Browser-Tabs bis auf einen. Lege dein Smartphone außer Sichtweite. Arbeite ausschließlich an einer einzigen, priorisierten Aufgabe. Reduziere das Rauschen.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mental-card" onclick="this.classList.toggle('flipped')">
+        <div class="mental-card-inner">
+          <div class="m-front">
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚖️</div>
+            <h3 style="font-weight: 600; font-size: 1.3rem;">Entscheidungen</h3>
+            <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem;">Souveränität gewinnen</p>
+          </div>
+          <div class="m-back">
+            <h3 style="margin-bottom: 1rem; font-weight: 600;">Der externe Berater</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Betrachte dein aktuelles Problem aus der Adlerperspektive: Welchen Rat würdest du einem geschätzten Kollegen geben, der in genau dieser Situation steckt? Diese Distanz eliminiert die emotionale Befangenheit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <h2 class="tool-title">2. Der 60-Sekunden Fokus-Anker</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Nutze diese Box-Breathing-Methode vor wichtigen Terminen, um dein vegetatives Nervensystem sofort in die Balance zu bringen.</p>
+    
+    <div class="breathing-wrapper">
+      <div id="breathCircle" class="breath-circle">Bereit?</div>
+      <button id="breathBtn" class="btn-primary" onclick="toggleBreathing()">Übung Starten</button>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <h2 class="tool-title">3. Minimalistischer Mental-Check-In</h2>
+    
+    <div class="wizard-card">
+      <div id="step1" class="wizard-step active">
+        <h3 style="font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem;">Wie nimmst du deine aktuelle Dynamik wahr?</h3>
+        <div class="wizard-options">
+          <button class="wizard-btn" onclick="nextStep(2, 'high')">▲ Hochfrequent (Sehr viel Tempo, Druck oder Chaos)</button>
+          <button class="wizard-btn" onclick="nextStep(2, 'low')">▼ Blockiert (Zähflüssig, unproduktiv oder unklar)</button>
+        </div>
+      </div>
+
+      <div id="step2" class="wizard-step">
+        <h3 style="font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem;">Was brauchst du im Moment am dringendsten?</h3>
+        <div class="wizard-options">
+          <button class="wizard-btn" onclick="showResult('focus')">🎯 Sofortigen Fokus &amp; Priorisierung</button>
+          <button class="wizard-btn" onclick="showResult('calm')">🛑 Innere Ruhe &amp; strategische Distanz</button>
+        </div>
+      </div>
+
+      <div id="stepResult" class="wizard-step">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">◈</div>
+        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--accent);">Dein mentaler Handlungsimpuls</h3>
+        <p id="resultText" style="color: var(--text-muted); font-size: 1.1rem; max-width: 550px; margin: 0 auto 2rem; line-height: 1.7;"></p>
+        <button class="btn-outline" onclick="resetWizard()">Test wiederholen</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border-light);">© 2026 Zeitqualität · Christian Balas</p>
+</footer>
+
+<script>
+  /* ════════ REGLER FÜR DAS ATEM-TOOL ════════ */
+  let breathInterval;
+  let breathRunning = false;
+  const circle = document.getElementById('breathCircle');
+  const btn = document.getElementById('breathBtn');
+
+  function toggleBreathing() {
+    if (breathRunning) {
+      clearInterval(breathInterval);
+      circle.className = "breath-circle";
+      circle.innerText = "Bereit?";
+      btn.innerText = "Übung Starten";
+      breathRunning = false;
+    } else {
+      breathRunning = true;
+      btn.innerText = "Übung Beenden";
+      runBreathingCycle();
+      breathInterval = setInterval(runBreathingCycle, 16000); // Ein voller Zyklus dauert 16 Sekunden
+    }
+  }
+
+  function runBreathingCycle() {
+    if (!breathRunning) return;
+    
+    // 1. Einatmen (4s)
+    circle.className = "breath-circle inhale";
+    circle.innerText = "Einatmen...";
+    
+    // 2. Halten (4s)
+    setTimeout(() => {
+      if (!breathRunning) return;
+      circle.className = "breath-circle inhale hold";
+      circle.innerText = "Halten";
+    }, 4000);
+    
+    // 3. Ausatmen (4s)
+    setTimeout(() => {
+      if (!breathRunning) return;
+      circle.className = "breath-circle exhale";
+      circle.innerText = "Ausatmen...";
+    }, 8000);
+    
+    // 4. Halten (4s)
+    setTimeout(() => {
+      if (!breathRunning) return;
+      circle.className = "breath-circle exhale hold";
+      circle.innerText = "Halten";
+    }, 12000);
+  }
+
+  /* ════════ REGLER FÜR DEN SELBSTTEST (WIZARD) ════════ */
+  let userChoice = "";
+
+  function nextStep(step, choice) {
+    if(choice) userChoice = choice;
+    document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+    document.getElementById('step' + step).classList.add('active');
+  }
+
+  function showResult(need) {
+    document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+    const resultCard = document.getElementById('stepResult');
+    const txt = document.getElementById('resultText');
+    resultCard.classList.add('active');
+
+    if (userChoice === 'high' && need === 'focus') {
+      txt.innerHTML = "<strong>Strategischer Tunnelblick:</strong> Du stehst unter hohem Tempo. Schwenke jetzt nicht in blinden Aktionismus um. Nimm dir 5 Minuten, schreibe die 3 absolut kritischsten Aufgaben auf und blende alles andere konsequent aus. Qualität schlägt Quantität.";
+    } else if (userChoice === 'high' && need === 'calm') {
+      txt.innerHTML = "<strong>Radikaler Break:</strong> Deine Frequenz ist zu hoch, um souverän zu entscheiden. Verlasse für 2 Minuten deinen Schreibtisch, verändere deine physische Position und richte den Blick ins Weite. Reduziere das mentale Rauschen ganz bewusst.";
+    } else if (userChoice === 'low' && need === 'focus') {
+      txt.innerHTML = "<strong>Aktivierungs-Impuls:</strong> Wenn Energie und Klarheit blockiert sind, hilft Bewegung. Setze dir einen künstlichen Timer auf exakt 10 Minuten (Micro-Pomodoro) und fange ohne Anspruch auf Perfektion an. Der Fokus kommt beim Tun.";
+    } else {
+      txt.innerHTML = "<strong>Systemische Reflexion:</strong> Nutze die zähe Phase nicht zum Verzweifeln, sondern für strukturelle Analyse. Wo genau klemmt das System? Nutze die Zeit, um Prozesse zu optimieren, Ordnung zu schaffen und Energie für die nächste offensive Phase zu tanken.";
+    }
+  }
+
+  function resetWizard() {
+    userChoice = "";
+    document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+    document.getElementById('step1').classList.add('active');
+  }
+</script>
+
+</body>
+</html>
