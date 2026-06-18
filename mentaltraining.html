@@ -147,7 +147,17 @@ layout: null
         <div class="mental-card" onclick="this.classList.toggle('flipped')">
           <div class="mental-card-inner">
             <div class="m-front">
-              <div style="font-size: 2.8rem; margin-bottom: 1rem;">{{ ex.data.icon | default: "🧠" }}</div>
+              <div style="margin-bottom: 1rem; display: flex; justify-content: center; align-items: center; min-height: 50px;">
+                {% if ex.data.icon == 'blitz' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                {% elsif ex.data.icon == 'ziel' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                {% elsif ex.data.icon == 'kompass' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                {% else %}
+                  <span style="font-size: 2.8rem; line-height: 1;">{{ ex.data.icon | default: "🧠" }}</span>
+                {% endif %}
+              </div>
               <h3 style="font-weight: 600; font-size: 1.3rem; color: var(--text);">{{ ex.data.title }}</h3>
               <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">{{ ex.data.description }}</p>
             </div>
@@ -161,7 +171,6 @@ layout: null
         </div>
       {% endfor %}
     </div>
-  </div>
 
   <div class="tool-box">
     <h2 class="tool-title">2. Der 60-Sekunden Fokus-Anker</h2>
