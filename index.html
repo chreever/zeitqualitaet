@@ -438,13 +438,18 @@ layout: null
     .wizard-step { display: none; }
     .wizard-step.active { display: block; }
 
-    /* NEU: Styles für das EFT Tool */
+   /* NEU: Styles für das EFT Tool */
     .eft-card { background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05); max-width: 650px; margin: 2rem auto 0; text-align: center; position: relative; }
     .eft-step-indicator { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
     .eft-slider { width: 100%; max-width: 400px; margin: 2rem auto; cursor: pointer; accent-color: var(--accent); }
-    .eft-point-display { font-size: 1.8rem; font-family: var(--font-display); font-weight: 600; color: var(--text); margin: 2rem 0; padding: 1.5rem; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); }
     .eft-btn { padding: 12px 32px; background: var(--accent); color: #FFF; border: none; border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); margin-top: 1rem; }
     .eft-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+    /* Die angepassten und neuen Klassen für die Vektorgrafik */
+    .eft-point-display { font-size: 1.6rem; font-family: var(--font-display); font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+    .eft-point-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; }
+    .eft-graphic-container { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); padding: 2rem; margin-bottom: 2rem; }
+    .eft-dot { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
   </style>
 
   <!-- WEICHE WECHSEL-LOGIK -->
