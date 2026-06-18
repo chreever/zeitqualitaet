@@ -147,8 +147,120 @@ layout: null
     .wizard-btn:hover { background: var(--accent); color: #FFFFFF; border-color: var(--accent); padding-left: 24px; }
     .wizard-step { display: none; }
     .wizard-step.active { display: block; }
+  </style>
+</head>
+<body>
 
-   <!-- ════════ TOOL 4: EFT KLOPFAKUPRESSUR ════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo-container">
+      <svg viewBox="0 0 120 120" style="height: 42px; width: 42px;">
+        <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.4"/>
+        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="var(--accent)"/>
+      </svg>
+      <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); font-weight: 600; letter-spacing: 0.05em;">Zeitqualität</span>
+    </a>
+    <div class="nav-links">
+        <a href="/">← Zurück zur Startseite</a>
+    </div>
+  </div>
+</nav>
+
+<div class="header-spacer"></div>
+
+<section id="mental-tools">
+  <div style="text-align: center; margin-bottom: 5rem;">
+    <h1 style="font-family: var(--font-display); font-size: 3rem; font-weight: 600; margin-bottom: 1rem;">Mentale Werkzeuge</h1>
+    <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 0 auto;">Deine Workspace-Sammlung für psychologische Selbstführung, Akut-Resilienz und strategischen Fokus.</p>
+  </div>
+
+  <!-- TOOL 1 -->
+  <div class="tool-box">
+    <h2 class="tool-title">1. Mental-Impuls-Kartendeck</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Klicke auf eine Karte, um die jeweilige Mentalübung und Reflexionsanleitung anzuzeigen.</p>
+    
+   <div class="deck-grid">
+      {% assign archive_exercises = collections.exercises | reverse %}
+      {% for ex in archive_exercises %}
+        <div class="mental-card" onclick="this.classList.toggle('flipped')">
+          <div class="mental-card-inner">
+            <div class="m-front">
+              <div style="margin-bottom: 1rem; display: flex; justify-content: center; align-items: center; min-height: 50px;">
+                {% if ex.data.icon == 'blitz' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                {% elsif ex.data.icon == 'ziel' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                {% elsif ex.data.icon == 'kompass' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                {% elsif ex.data.icon == 'anker' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
+                {% elsif ex.data.icon == 'uhr' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                {% elsif ex.data.icon == 'schild' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                {% elsif ex.data.icon == 'auge' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                {% else %}
+                  <span style="font-size: 2.8rem; line-height: 1; color: var(--accent);">{{ ex.data.icon | default: "🧠" }}</span>
+                {% endif %}
+              </div>
+              <h3 style="font-weight: 600; font-size: 1.3rem; color: var(--text);">{{ ex.data.title }}</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">{{ ex.data.description }}</p>
+            </div>
+            <div class="m-back">
+              <h3 style="margin-bottom: 1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; width: 100%;">{{ ex.data.title }}</h3>
+              <div style="font-size: 0.95rem; line-height: 1.6; opacity: 0.95; text-align: left;">
+                {{ ex.templateContent }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- TOOL 2 -->
+  <div class="tool-box">
+    <h2 class="tool-title">2. Der 60-Sekunden Fokus-Anker</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Nutze diese 4-7-8-Methode vor wichtigen Terminen, um dein vegetatives Nervensystem sofort in die Balance zu bringen.</p>
+    
+    <div class="breathing-wrapper">
+      <div id="breathCircle" class="breath-circle">Bereit?</div>
+      <button id="breathBtn" class="btn-breath" onclick="toggleBreathing()">Übung Starten</button>
+    </div>
+  </div>
+
+  <!-- TOOL 3 -->
+  <div class="tool-box">
+    <h2 class="tool-title">3. Minimalistischer Mental-Check-In</h2>
+    
+    <div class="wizard-card">
+      <div id="step1" class="wizard-step active">
+        <h3 style="font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem;">Wie nimmst du deine aktuelle Dynamik wahr?</h3>
+        <div class="wizard-options">
+          <button class="wizard-btn" onclick="nextStep(2, 'high')">▲ Hochfrequent (Sehr viel Tempo, Druck oder Chaos)</button>
+          <button class="wizard-btn" onclick="nextStep(2, 'low')">▼ Blockiert (Zähflüssig, unproduktiv oder unklar)</button>
+        </div>
+      </div>
+
+      <div id="step2" class="wizard-step">
+        <h3 style="font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem;">Was brauchst du im Moment am dringendsten?</h3>
+        <div class="wizard-options">
+          <button class="wizard-btn" onclick="showResult('focus')">🎯 Sofortigen Fokus &amp; Priorisierung</button>
+          <button class="wizard-btn" onclick="showResult('calm')">🛑 Innere Ruhe &amp; strategische Distanz</button>
+        </div>
+      </div>
+
+      <div id="stepResult" class="wizard-step">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">◈</div>
+        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--accent);">Dein mentaler Handlungsimpuls</h3>
+        <p id="resultText" style="color: var(--text-muted); font-size: 1.1rem; max-width: 550px; margin: 0 auto 2rem; line-height: 1.7;"></p>
+        <button class="btn-outline" onclick="resetWizard()">Test wiederholen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ TOOL 4: EFT KLOPFAKUPRESSUR ════════ -->
   <div class="tool-box">
     <h2 class="tool-title">4. EFT Klopfakupressur</h2>
     <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Die Ursache emotionaler Probleme ist eine Störung im Energiesystem. Nutze diese geführte Sequenz, um Blockaden systematisch aufzulösen.</p>
@@ -160,7 +272,7 @@ layout: null
       .eft-point-display { font-size: 1.6rem; font-family: var(--font-display); font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
       .eft-point-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; }
       
-      /* NEU: Premium Buttons */
+      /* Premium Buttons */
       .eft-btn { padding: 12px 32px; background: var(--accent); color: #FFF; border: none; border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); font-family: var(--font-body); }
       .eft-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
       .eft-btn-secondary { padding: 12px 32px; background: transparent; color: var(--text-muted); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); font-family: var(--font-body); }
@@ -169,7 +281,7 @@ layout: null
       .eft-step { display: none; }
       .eft-step.active { display: block; }
 
-      /* NEU: Grafik Layout */
+      /* Grafik Layout */
       .eft-graphic-container { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); padding: 2rem; margin-bottom: 2rem; }
       .eft-dot { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
@@ -249,153 +361,6 @@ layout: null
 
     </div>
   </div>
-</nav>
-
-<div class="header-spacer"></div>
-
-<section id="mental-tools">
-  <div style="text-align: center; margin-bottom: 5rem;">
-    <h1 style="font-family: var(--font-display); font-size: 3rem; font-weight: 600; margin-bottom: 1rem;">Mentale Werkzeuge</h1>
-    <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 0 auto;">Deine Workspace-Sammlung für psychologische Selbstführung, Akut-Resilienz und strategischen Fokus.</p>
-  </div>
-
-  <div class="tool-box">
-    <h2 class="tool-title">1. Mental-Impuls-Kartendeck</h2>
-    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Klicke auf eine Karte, um die jeweilige Mentalübung und Reflexionsanleitung anzuzeigen.</p>
-    
-   <div class="deck-grid">
-      {% assign archive_exercises = collections.exercises | reverse %}
-      {% for ex in archive_exercises %}
-        <div class="mental-card" onclick="this.classList.toggle('flipped')">
-          <div class="mental-card-inner">
-            <div class="m-front">
-              <div style="margin-bottom: 1rem; display: flex; justify-content: center; align-items: center; min-height: 50px;">
-                {% if ex.data.icon == 'blitz' %}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                {% elsif ex.data.icon == 'ziel' %}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                {% elsif ex.data.icon == 'kompass' %}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-                {% elsif ex.data.icon == 'anker' %}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
-                {% elsif ex.data.icon == 'uhr' %}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                {% elsif ex.data.icon == 'schild' %}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                {% elsif ex.data.icon == 'auge' %}
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                {% else %}
-                  <span style="font-size: 2.8rem; line-height: 1; color: var(--accent);">{{ ex.data.icon | default: "🧠" }}</span>
-                {% endif %}
-              </div>
-              <h3 style="font-weight: 600; font-size: 1.3rem; color: var(--text);">{{ ex.data.title }}</h3>
-              <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">{{ ex.data.description }}</p>
-            </div>
-            <div class="m-back">
-              <h3 style="margin-bottom: 1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; width: 100%;">{{ ex.data.title }}</h3>
-              <div style="font-size: 0.95rem; line-height: 1.6; opacity: 0.95; text-align: left;">
-                {{ ex.templateContent }}
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <div class="tool-box">
-    <h2 class="tool-title">2. Der 60-Sekunden Fokus-Anker</h2>
-    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Nutze diese 4-7-8-Methode vor wichtigen Terminen, um dein vegetatives Nervensystem sofort in die Balance zu bringen.</p>
-    
-    <div class="breathing-wrapper">
-      <div id="breathCircle" class="breath-circle">Bereit?</div>
-      <button id="breathBtn" class="btn-breath" onclick="toggleBreathing()">Übung Starten</button>
-    </div>
-  </div>
-
-  <div class="tool-box">
-    <h2 class="tool-title">3. Minimalistischer Mental-Check-In</h2>
-    
-    <div class="wizard-card">
-      <div id="step1" class="wizard-step active">
-        <h3 style="font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem;">Wie nimmst du deine aktuelle Dynamik wahr?</h3>
-        <div class="wizard-options">
-          <button class="wizard-btn" onclick="nextStep(2, 'high')">▲ Hochfrequent (Sehr viel Tempo, Druck oder Chaos)</button>
-          <button class="wizard-btn" onclick="nextStep(2, 'low')">▼ Blockiert (Zähflüssig, unproduktiv oder unklar)</button>
-        </div>
-      </div>
-
-      <div id="step2" class="wizard-step">
-        <h3 style="font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem;">Was brauchst du im Moment am dringendsten?</h3>
-        <div class="wizard-options">
-          <button class="wizard-btn" onclick="showResult('focus')">🎯 Sofortigen Fokus &amp; Priorisierung</button>
-          <button class="wizard-btn" onclick="showResult('calm')">🛑 Innere Ruhe &amp; strategische Distanz</button>
-        </div>
-      </div>
-
-      <div id="stepResult" class="wizard-step">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">◈</div>
-        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--accent);">Dein mentaler Handlungsimpuls</h3>
-        <p id="resultText" style="color: var(--text-muted); font-size: 1.1rem; max-width: 550px; margin: 0 auto 2rem; line-height: 1.7;"></p>
-        <button class="btn-outline" onclick="resetWizard()">Test wiederholen</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="tool-box">
-    <h2 class="tool-title">4. EFT Klopfakupressur</h2>
-    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Die Ursache emotionaler Probleme ist eine Störung im Energiesystem. Nutze diese geführte Sequenz, um Blockaden systematisch aufzulösen.</p>
-    
-    <div class="eft-card">
-      
-      <div id="pageEftStep1" class="eft-step active">
-        <div class="eft-step-indicator">Schritt 1 von 3</div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Bestimme die aktuelle Belastung</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">Benenne das Thema für dich im Geist (Was belastet dich? Welches Gefühl löst es aus?). Schätze nun deine subjektive Belastung auf der Stress-Skala ein.</p>
-        <div style="margin: 2.5rem 0;">
-          <span style="font-weight: 600; font-size: 1.2rem; color: var(--accent);" id="pageEftScaleValue">Wert: 8</span>
-          <br>
-          <input type="range" id="pageEftSlider" class="eft-slider" min="0" max="10" value="8" oninput="document.getElementById('pageEftScaleValue').innerText = 'Wert: ' + this.value">
-          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); max-width: 400px; margin: 0 auto;">
-            <span>0 = Entspannt</span>
-            <span>10 = Höchster Stress</span>
-          </div>
-        </div>
-        <button class="eft-btn" onclick="nextPageEftStep(2)">Thema fixieren & Weiter</button>
-      </div>
-
-      <div id="pageEftStep2" class="eft-step">
-        <div class="eft-step-indicator">Schritt 2 von 3</div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Der Einstimmungssatz (Set-up)</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Klopfe nun sanft mit zwei Fingern auf den <strong>Handkantenpunkt</strong>. Sprich dabei <strong>dreimal laut</strong> den folgenden Satz, um das Thema im System aufzurufen:</p>
-        <div class="eft-point-display" style="font-size: 1.2rem; font-style: italic;">
-          "Auch wenn ich dieses Problem habe, das dieses Gefühl wachruft, akzeptiere ich mich voll und ganz."
-        </div>
-        <button class="eft-btn" onclick="startPageEftTapping()">Atme tief aus & Starte Sequenz</button>
-      </div>
-
-      <div id="pageEftStep3" class="eft-step">
-        <div class="eft-step-indicator">Schritt 3 von 3: Die Klopfsequenz</div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Klopfe jeden Punkt 5-10 mal</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">Wiederhole beim Klopfen gedanklich dein Gefühl (z.B. "diese Wut").</p>
-        
-        <div id="pageEftCurrentPoint" class="eft-point-display">1. Scheitel-Punkt (TOH)</div>
-        
-        <div style="display: flex; gap: 1rem; justify-content: center;">
-          <button class="btn-outline" onclick="prevPageEftPoint()">Zurück</button>
-          <button id="pageEftNextBtn" class="eft-btn" style="margin-top: 0;" onclick="nextPageEftPoint()">Nächster Punkt</button>
-        </div>
-      </div>
-
-      <div id="pageEftStep4" class="eft-step">
-        <div class="eft-step-indicator">Abschluss</div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Überprüfung</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Atme tief durch. Spüre in dich hinein. Wie hoch ist der Wert auf der Stress-Skala jetzt? Ist er noch nicht bei Null, wiederhole die Sequenz.</p>
-        <button class="eft-btn" onclick="resetPageEft()">Neuer Durchgang</button>
-      </div>
-
-    </div>
-  </div>
 
 </section>
 
@@ -412,14 +377,14 @@ layout: null
     if (breathRunning) {
       clearInterval(breathInterval); 
       circle.className = "breath-circle"; 
-      circle.style.transition = "all 1s ease"; // Zurücksetzen
+      circle.style.transition = "all 1s ease";
       circle.innerText = "Bereit?"; 
       btn.innerText = "Übung Starten"; 
       breathRunning = false;
     } else {
       breathRunning = true; btn.innerText = "Übung Beenden"; 
       runBreathingCycle(); 
-      breathInterval = setInterval(runBreathingCycle, 19000); // Zyklus dauert jetzt 19 Sekunden
+      breathInterval = setInterval(runBreathingCycle, 19000);
     }
   }
   
@@ -441,10 +406,10 @@ layout: null
     // 3. Ausatmen (8 Sekunden)
     setTimeout(() => { 
       if (!breathRunning) return; 
-      circle.style.transition = "all 8s cubic-bezier(0.4, 0, 0.2, 1)"; // Kreis zieht sich extrem langsam zusammen
+      circle.style.transition = "all 8s cubic-bezier(0.4, 0, 0.2, 1)";
       circle.className = "breath-circle exhale"; 
       circle.innerText = "Ausatmen..."; 
-    }, 11000); // Startet nach 11 Sekunden
+    }, 11000);
   }
 
   /* ════════ SELF-CHECK WIZARD ════════ */
@@ -472,9 +437,14 @@ layout: null
 
   /* ════════ EFT KLOPFAKUPRESSUR STEUERUNG ════════ */
   const pageEftPoints = [
-    "1. Scheitel-Punkt (TOH)", "2. Augenbrauen-Punkt (EB)", "3. Seitlicher Augen-Punkt (SE)",
-    "4. Jochbein-Punkt (UE)", "5. Unter-Nasen-Punkt (UN)", "6. Unter-Lippen-Punkt (Ch)",
-    "7. Schlüsselbein-Punkt (CB)", "8. Unter-dem-Arm-Punkt (UA)"
+    { title: "1. Scheitel-Punkt (TOH)", desc: "Klopfe sanft mit der flachen Hand oder den Fingerspitzen auf den höchsten Punkt deines Kopfes.", x: 100, y: 20 },
+    { title: "2. Augenbrauen-Punkt (EB)", desc: "Klopfe direkt am inneren Rand der Augenbraue (zur Nasenwurzel hin).", x: 75, y: 70 },
+    { title: "3. Seitlicher Augen-Punkt (SE)", desc: "Klopfe auf den Knochen direkt am äußeren Augenwinkel.", x: 50, y: 80 },
+    { title: "4. Jochbein-Punkt (UE)", desc: "Klopfe auf den Knochen mittig direkt unter dem Auge.", x: 75, y: 95 },
+    { title: "5. Unter-Nasen-Punkt (UN)", desc: "Klopfe mittig auf die Stelle zwischen der Nase und der Oberlippe.", x: 100, y: 112 },
+    { title: "6. Unter-Lippen-Punkt (Ch)", desc: "Klopfe in die kleine Einbuchtung zwischen Unterlippe und Kinn.", x: 100, y: 132 },
+    { title: "7. Schlüsselbein-Punkt (CB)", desc: "Klopfe in die weiche Vertiefung im Winkel direkt unterhalb deines Schlüsselbeins.", x: 70, y: 180 },
+    { title: "8. Unter-dem-Arm-Punkt (UA)", desc: "Klopfe an der Körperseite, etwa eine Handbreit unter der Achselhöhle.", x: 25, y: 200 }
   ];
   let currentPageEftIndex = 0;
 
@@ -490,7 +460,16 @@ layout: null
   }
 
   function updatePageEftDisplay() {
-    document.getElementById('pageEftCurrentPoint').innerText = pageEftPoints[currentPageEftIndex];
+    const pointData = pageEftPoints[currentPageEftIndex];
+    document.getElementById('pageEftCurrentPoint').innerText = pointData.title;
+    document.getElementById('pageEftCurrentDesc').innerText = pointData.desc;
+    
+    const dot = document.getElementById('pageEftDot');
+    if(dot) {
+      dot.setAttribute('cx', pointData.x);
+      dot.setAttribute('cy', pointData.y);
+    }
+
     const btn = document.getElementById('pageEftNextBtn');
     if(currentPageEftIndex === pageEftPoints.length - 1) {
       btn.innerText = "Abschließen";
