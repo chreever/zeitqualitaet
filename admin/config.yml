@@ -51,7 +51,8 @@ collections:
     create: true
     fields:
       - {label: "Titel der Übung", name: "title", widget: "string"}
-      - {label: "Icon (z.B. 🎯, ⚡, ⚖️, 🧠)", name: "icon", widget: "string"}
+      - {label: "Auf der Startseite anzeigen (Max. 3)", name: "featured", widget: "boolean", default: false, required: false}
+      - {label: "Icon (z.B. blitz, ziel, kompass, anker, uhr, schild, auge)", name: "icon", widget: "string"}
       - {label: "Kurzbeschreibung (Vorderseite der Karte)", name: "description", widget: "string"}
       - {label: "Anleitung / Übungstext (Rückseite)", name: "body", widget: "markdown"}
         
