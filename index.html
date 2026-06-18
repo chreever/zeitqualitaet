@@ -418,61 +418,146 @@ layout: null
   {% endfor %}
 </section>
 <!-- INTERAKTIVER MENTALTRAINING TEASER -->
-<section id="mentaltraining-teaser" style="padding-bottom: 2rem;">
+<section id="mentaltraining-teaser" style="padding-bottom: 4rem;">
   <div class="section-header">
     <h2 class="section-title">Mentale Werkzeuge</h2>
   </div>
-  <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: -2rem 0 3rem 0;">Erste Impulse für mentale Klarheit und Resilienz im Alltag. Klicke auf eine Karte, um die Übung umzudrehen.</p>
-  
-  <div class="posts-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
-    {% assign active_exercises = collections.exercises | reverse %}
-    {% assign ex_count = 0 %}
-    {% for ex in active_exercises %}
-      {% if ex.data.featured == true %}
-      <div class="zodiac-card visible" style="perspective: 1000px; cursor: pointer; aspect-ratio: 4/5; width: 100%;" onclick="this.classList.toggle('flipped')">
-        <div class="zodiac-card-inner">
-          <!-- Vorderseite -->
-          <div class="zodiac-front" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-            <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; align-items: center; min-height: 60px;">
-              {% if ex.data.icon == 'blitz' %}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              {% elsif ex.data.icon == 'ziel' %}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-              {% elsif ex.data.icon == 'kompass' %}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
-              {% elsif ex.data.icon == 'anker' %}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
-              {% elsif ex.data.icon == 'uhr' %}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              {% elsif ex.data.icon == 'schild' %}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              {% elsif ex.data.icon == 'auge' %}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-              {% else %}
-                <span style="font-size: 3.5rem; line-height: 1; color: var(--accent);">{{ ex.data.icon | default: "🧠" }}</span>
-              {% endif %}
+
+  <style>
+    .breathing-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 320px; margin-top: 2rem; }
+    .breath-circle {
+      width: 160px; height: 160px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08), inset 0 0 0 2px var(--border-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--accent);
+      transition: all 4s cubic-bezier(0.4, 0, 0.2, 1); margin-bottom: 2.5rem;
+    }
+    .breath-circle.inhale { transform: scale(1.4); background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2); }
+    .breath-circle.hold { color: rgba(255,255,255,0.7); }
+    .breath-circle.exhale { transform: scale(1.0); background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%); color: var(--accent); }
+    
+    .wizard-card { max-width: 600px; margin: 2rem auto 0; text-align: center; }
+    .wizard-options { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .wizard-btn {
+      width: 100%; padding: 16px; background: var(--bg-elevated); border: 1px solid var(--border);
+      border-radius: var(--radius); text-align: left; font-size: 1.05rem; color: var(--text);
+      cursor: pointer; transition: var(--transition); font-family: var(--font-body);
+    }
+    .wizard-btn:hover { background: var(--accent); color: #FFFFFF; border-color: var(--accent); padding-left: 24px; }
+    .wizard-step { display: none; }
+    .wizard-step.active { display: block; }
+  </style>
+
+  {% if homepage.active_tool == 'breath' %}
+    <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: -2rem 0 3rem 0;">Nutze diese Box-Breathing-Methode vor wichtigen Terminen, um dein Nervensystem sofort in die Balance zu bringen.</p>
+    <div class="breathing-wrapper">
+      <div id="indexBreathCircle" class="breath-circle">Bereit?</div>
+      <button id="indexBreathBtn" class="btn-outline" style="background: var(--accent); color: #FFF; border: none; padding: 12px 32px; border-radius: 100px; font-weight: 600; letter-spacing: 0.1em; cursor: pointer;" onclick="toggleIndexBreathing()">Übung Starten</button>
+    </div>
+
+  {% elsif homepage.active_tool == 'wizard' %}
+    <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: -2rem 0 3rem 0;">Kurzer mentaler Status-Check. Klicke auf deine aktuelle Situation, um einen gezielten Impuls zu erhalten.</p>
+    <div class="wizard-card">
+      <div id="idxStep1" class="wizard-step active">
+        <h3 style="font-size: 1.3rem; font-weight: 500;">Wie nimmst du deine aktuelle Dynamik wahr?</h3>
+        <div class="wizard-options">
+          <button class="wizard-btn" onclick="nextIdxStep(2, 'high')">▲ Hochfrequent (Sehr viel Tempo, Druck oder Chaos)</button>
+          <button class="wizard-btn" onclick="nextIdxStep(2, 'low')">▼ Blockiert (Zähflüssig, unproduktiv oder unklar)</button>
+        </div>
+      </div>
+      <div id="idxStep2" class="wizard-step">
+        <h3 style="font-size: 1.3rem; font-weight: 500;">Was brauchst du im Moment am dringendsten?</h3>
+        <div class="wizard-options">
+          <button class="wizard-btn" onclick="showIdxResult('focus')">🎯 Sofortigen Fokus &amp; Priorisierung</button>
+          <button class="wizard-btn" onclick="showIdxResult('calm')">🛑 Innere Ruhe &amp; strategische Distanz</button>
+        </div>
+      </div>
+      <div id="idxStepResult" class="wizard-step">
+        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">◈</div>
+        <h3 style="font-size: 1.4rem; font-weight: 600; color: var(--accent); margin-bottom: 1rem;">Dein mentaler Handlungsimpuls</h3>
+        <p id="idxResultText" style="color: var(--text-muted); font-size: 1.05rem; max-width: 550px; margin: 0 auto 2rem; line-height: 1.7;"></p>
+        <button class="btn-outline" onclick="resetIdxWizard()">Test wiederholen</button>
+      </div>
+    </div>
+
+  {% else %}
+    <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: -2rem 0 3rem 0;">Erste Impulse für mentale Klarheit und Resilienz im Alltag. Klicke auf eine Karte, um die Übung umzudrehen.</p>
+    <div class="posts-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+      {% assign active_exercises = collections.exercises | reverse %}
+      {% assign ex_count = 0 %}
+      {% for ex in active_exercises %}
+        <div class="zodiac-card visible" style="perspective: 1000px; cursor: pointer; aspect-ratio: 4/5; width: 100%;" onclick="this.classList.toggle('flipped')">
+          <div class="zodiac-card-inner">
+            <div class="zodiac-front" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+              <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; align-items: center; min-height: 60px;">
+                {% if ex.data.icon == 'blitz' %}
+                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                {% elsif ex.data.icon == 'ziel' %}
+                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                {% elsif ex.data.icon == 'kompass' %}
+                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                {% elsif ex.data.icon == 'anker' %}
+                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
+                {% elsif ex.data.icon == 'uhr' %}
+                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                {% elsif ex.data.icon == 'schild' %}
+                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                {% elsif ex.data.icon == 'auge' %}
+                  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                {% else %}
+                  <span style="font-size: 3.5rem; line-height: 1; color: var(--accent);">{{ ex.data.icon | default: "🧠" }}</span>
+                {% endif %}
+              </div>
+              <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">{{ ex.data.title }}</div>
+              <div class="zodiac-detail-label" style="color: var(--text-dim) !important;">Klicken zum Aufdecken</div>
             </div>
-            <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">{{ ex.data.title }}</div>
-            <div class="zodiac-detail-label" style="color: var(--text-dim) !important;">Klicken zum Aufdecken</div>
-          </div>
-          <!-- Rückseite -->
-          <div class="zodiac-back" style="transform: rotateY(180deg); background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: flex-start; border: 1px solid var(--border); overflow-y: auto;">
-            <div style="font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;">{{ ex.data.title }}</div>
-            <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
-              {{ ex.templateContent }}
+            <div class="zodiac-back" style="transform: rotateY(180deg); background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: flex-start; border: 1px solid var(--border); overflow-y: auto;">
+              <div style="font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;">{{ ex.data.title }}</div>
+              <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">{{ ex.templateContent }}</div>
             </div>
           </div>
         </div>
-      </div>
-      {% assign ex_count = ex_count | plus: 1 %}
-      {% if ex_count == 3 %}{% break %}{% endif %}
-      {% endif %}
-    {% endfor %}
-  </div>
+        {% assign ex_count = ex_count | plus: 1 %}
+        {% if ex_count == 3 %}{% break %}{% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
   
   <div style="text-align: center; margin-top: 4rem;">
     <a href="/mentaltraining/" class="btn-outline">Alle Werkzeuge in der Toolbox öffnen</a>
   </div>
+
+  <script>
+    let idxBreathInterval; let idxBreathRunning = false;
+    function toggleIndexBreathing() {
+      const c = document.getElementById('indexBreathCircle'); const b = document.getElementById('indexBreathBtn');
+      if (idxBreathRunning) {
+        clearInterval(idxBreathInterval); c.className = "breath-circle"; c.innerText = "Bereit?"; b.innerText = "Übung Starten"; idxBreathRunning = false;
+      } else {
+        idxBreathRunning = true; b.innerText = "Übung Beenden"; runIdxBreath(); idxBreathInterval = setInterval(runIdxBreath, 16000);
+      }
+    }
+    function runIdxBreath() {
+      const c = document.getElementById('indexBreathCircle'); if (!idxBreathRunning || !c) return;
+      c.className = "breath-circle inhale"; c.innerText = "Einatmen...";
+      setTimeout(() => { if (!idxBreathRunning) return; c.className = "breath-circle inhale hold"; c.innerText = "Halten"; }, 4000);
+      setTimeout(() => { if (!idxBreathRunning) return; c.className = "breath-circle exhale"; c.innerText = "Ausatmen..."; }, 8000);
+      setTimeout(() => { if (!idxBreathRunning) return; c.className = "breath-circle exhale hold"; c.innerText = "Halten"; }, 12000);
+    }
+
+    let idxUserChoice = "";
+    function nextIdxStep(s, c) { if(c) idxUserChoice = c; document.querySelectorAll('#mentaltraining-teaser .wizard-step').forEach(el => el.classList.remove('active')); const target = document.getElementById('idxStep' + s); if(target) target.classList.add('active'); }
+    function showIdxResult(n) {
+      document.querySelectorAll('#mentaltraining-teaser .wizard-step').forEach(el => el.classList.remove('active'));
+      document.getElementById('idxStepResult').classList.add('active'); const t = document.getElementById('idxResultText');
+      if (idxUserChoice === 'high' && n === 'focus') { t.innerHTML = "<strong>Strategischer Tunnelblick:</strong> Du stehst unter hohem Tempo. Schwenke jetzt nicht in blinden Aktionismus um. Nimm dir 5 Minuten, schreibe die 3 absolut kritischsten Aufgaben auf und blende alles andere konsequent aus."; }
+      else if (idxUserChoice === 'high' && n === 'calm') { t.innerHTML = "<strong>Radikaler Break:</strong> Deine Frequenz ist zu hoch. Verlasse für 2 Minuten deinen Schreibtisch, verändere deine physische Position und richte den Blick ins Weite. Reduziere das Rauschen ganz bewusst."; }
+      else if (idxUserChoice === 'low' && n === 'focus') { t.innerHTML = "<strong>Aktivierungs-Impuls:</strong> Wenn Energie blockiert sind, hilft Bewegung. Setze dir einen Timer auf exakt 10 Minuten und fange ohne Anspruch auf Perfektion an. Der Fokus kommt beim Tun."; }
+      else { t.innerHTML = "<strong>Systemische Reflexion:</strong> Nutze die zähe Phase für strukturelle Analyse. Wo genau klemmt das System? Nutze die Zeit, um Prozesse zu optimieren und Energie für die nächste Phase zu tanken."; }
+    }
+    function resetIdxWizard() { idxUserChoice = ""; document.querySelectorAll('#mentaltraining-teaser .wizard-step').forEach(el => el.classList.remove('active')); document.getElementById('idxStep1').classList.add('active'); }
+  </script>
 </section>
 <section id="beitraege">
   <div class="section-header">
