@@ -399,7 +399,7 @@ layout: null
         {% elsif post.data.image and post.data.image != "" %}
           <img class="info-banner-media" src="{{ post.data.image | url }}" alt="Info Banner">
         {% else %}
-          <img class="info-banner-media" src="/img/sternenhimmel-berge.jpg" alt="Info Banner">
+          <div class="info-banner-media" style="background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);"></div>
         {% endif %}
         
         <div class="info-banner-content">
