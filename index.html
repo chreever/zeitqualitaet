@@ -903,9 +903,9 @@ layout: null
         </div>
 
         <div class="cta-box">
-          <h4>Bringen wir dein System ins Gleichgewicht</h4>
-          <p>Theorie ist gut, Umsetzung ist besser. Lass uns gemeinsam ausloten, wie du diese Archetypen-Energie in deinem konkreten Berufs- oder Lebensalltag strategisch verankerst.</p>
-          <a href="mailto:christian@zeitqualitaet.at?subject=Anfrage:%20Resilienz-Analyse" class="cta-btn">Schreibe mir für eine Ersteinschätzung</a>
+          <h4>Ein kurzer Gedanke dazu?</h4>
+          <p>Hast du dich im Ergebnis wiedererkannt? Oft reicht schon ein kleiner Perspektivenwechsel von außen, um mentale Knoten zu lösen. Wenn du magst, schreib mir völlig unverbindlich – ich teile gerne 1-2 konkrete Gedanken zu deiner Situation mit dir.</p>
+          <a href="#" id="dynamic-mailto" class="cta-btn">Kurzen Impuls per Mail anfragen</a>
         </div>
         
         <div style="text-align: center; margin-top: 2rem;">
@@ -1250,6 +1250,11 @@ layout: null
     document.getElementById('res-title').innerText = res.title;
     document.getElementById('res-quality').innerText = res.quality;
     document.getElementById('res-text').innerHTML = res.text;
+    
+    // Dynamischen Mail-Link generieren (Nimmt dem User die Schreibarbeit ab)
+    const mailSubject = encodeURIComponent("Mein Ergebnis aus dem Resilienz-Kompass");
+    const mailBody = encodeURIComponent(`Hallo Christian,\n\nich habe gerade deinen Resilienz-Kompass gemacht und fand das Ergebnis sehr spannend.\n\nMeine systemische Basis: ${userBaseArchetype.name}\nMomentan brauche ich: ${res.title}\n\nHast du dazu vielleicht noch einen kurzen, unverbindlichen Gedanken oder Impuls für mich?\n\nViele Grüße`);
+    document.getElementById('dynamic-mailto').href = `mailto:christian@zeitqualitaet.at?subject=${mailSubject}&body=${mailBody}`;
     
     // UI Update
     document.getElementById('quiz-progress').style.display = 'none';
