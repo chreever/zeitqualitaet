@@ -311,7 +311,7 @@ layout: null
       <a href="{{ post.url }}" class="transit-banner fade-up visible" style="text-decoration:none;color:inherit;display:block">
         <div class="transit-banner-inner">
           
-          {% if post.data.video %}
+          {% if post.data.video and post.data.video != "" %}
             <video class="banner-video" autoplay muted loop playsinline>
               <source src="{{ post.data.video | url }}#t=1" type="video/mp4">
             </video>
