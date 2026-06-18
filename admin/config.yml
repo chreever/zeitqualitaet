@@ -72,3 +72,19 @@ collections:
         time_format: false
         format: "YYYY-MM-DD"
       - { label: "Ganze Monats-Liste hier reinkopieren", name: "text_list", widget: "text" }
+- name: "settings"
+    label: "Seiten-Einstellungen"
+    delete: false
+    files:
+      - title: "Startseite Optionen"
+        name: "homepage"
+        file: "_data/homepage.json"
+        fields:
+          - label: "Aktives Mentaltraining-Werkzeug auf der Startseite"
+            name: "active_tool"
+            widget: "select"
+            default: "deck"
+            options:
+              - { label: "Mental-Impuls-Kartendeck (Die 3 Fokus-Karten)", value: "deck" }
+              - { label: "60-Sekunden Fokus-Anker (Der Atem-Guide)", value: "breath" }
+              - { label: "Minimalistischer Mental-Check-In (Der Selbsttest)", value: "wizard" }
