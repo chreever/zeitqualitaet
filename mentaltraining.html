@@ -65,7 +65,11 @@ layout: null
     }
 
     /* ════════ TOOL 1: KARTENDECK STYLES ════════ */
-    .deck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .deck-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    
+    @media (max-width: 850px) {
+      .deck-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    }
     .mental-card { perspective: 1000px; cursor: pointer; aspect-ratio: 4/5; width: 100%; }
     .mental-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
     .mental-card.flipped .mental-card-inner { transform: rotateY(180deg); }
