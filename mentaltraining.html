@@ -78,30 +78,65 @@ layout: null
     .mental-card:hover .m-front { border-color: var(--accent-dim); background: var(--bg-elevated); transform: translateY(-2px); }
     .m-back { transform: rotateY(180deg); background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; justify-content: flex-start; padding-top: 2.5rem; overflow-y: auto; }
     
-    /* ════════ TOOL 2: ATEM-ANKE STYLES ════════ */
-    .breathing-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px; }
+   /* ════════ TOOL 2: ATEM-ANKER STYLES (PREMIUM) ════════ */
+    .breathing-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px; position: relative; }
+    
     .breath-circle {
-      width: 160px; height: 160px;
+      width: 180px; height: 180px;
       border-radius: 50%;
-      background: var(--accent-dim);
-      border: 2px solid var(--accent);
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+      box-shadow: 
+        0 20px 40px rgba(15, 23, 42, 0.08), 
+        inset 0 0 0 2px var(--border-light),
+        inset 0 0 20px rgba(255,255,255,0.8);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-display);
-      font-weight: 600; font-size: 1.2rem; color: var(--accent);
-      transition: all 4s linear;
-      margin-bottom: 2rem;
+      font-weight: 600; font-size: 1.3rem; color: var(--accent);
+      transition: all 4s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 3.5rem;
       position: relative;
+      z-index: 2;
     }
-    .breath-circle.inhale { transform: scale(1.4); background: rgba(15, 23, 42, 0.15); color: var(--accent); }
-    .breath-circle.hold { color: var(--accent); }
-    .breath-circle.exhale { transform: scale(1.0); background: var(--accent-dim); color: var(--accent); }
     
-    .btn-breath {
-      padding: 12px 30px; background: var(--accent); color: #FFFFFF; border: none;
-      border-radius: 100px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
-      cursor: pointer; transition: var(--transition); font-size: 0.85rem;
+    /* Weiche, organische Animationen */
+    .breath-circle.inhale { 
+      transform: scale(1.5); 
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); 
+      color: #FFFFFF; 
+      box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2), inset 0 0 0 1px rgba(255,255,255,0.1); 
     }
-    .btn-breath:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .breath-circle.hold { color: rgba(255,255,255,0.7); }
+    .breath-circle.exhale { 
+      transform: scale(1.0); 
+      background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%); 
+      color: var(--accent); 
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.05), inset 0 0 0 2px var(--border-light); 
+    }
+    .breath-circle.exhale.hold { color: var(--text-muted); }
+    
+    /* Der Premium-Button */
+    .btn-breath {
+      padding: 14px 38px; 
+      background: var(--accent); 
+      color: #FFFFFF; 
+      border: none;
+      border-radius: 100px; 
+      font-weight: 600; 
+      font-family: var(--font-body);
+      text-transform: uppercase; 
+      letter-spacing: 0.15em;
+      cursor: pointer; 
+      transition: var(--transition); 
+      font-size: 0.85rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+      position: relative;
+      z-index: 3;
+    }
+    .btn-breath:hover { 
+      background: var(--accent-light); 
+      transform: translateY(-3px); 
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.25); 
+    }
 
     /* ════════ TOOL 3: CHECK-IN STYLES ════════ */
     .wizard-card { max-width: 600px; margin: 0 auto; text-align: center; }
