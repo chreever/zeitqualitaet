@@ -264,22 +264,47 @@ layout: null
 </footer>
 
 <script>
-  /* ATEM-TOOL STEUERUNG */
+ /* ════════ ATEM-TOOL STEUERUNG (4-7-8 METHODE) ════════ */
   let breathInterval; let breathRunning = false;
   const circle = document.getElementById('breathCircle'); const btn = document.getElementById('breathBtn');
+  
   function toggleBreathing() {
     if (breathRunning) {
-      clearInterval(breathInterval); circle.className = "breath-circle"; circle.innerText = "Bereit?"; btn.innerText = "Übung Starten"; breathRunning = false;
+      clearInterval(breathInterval); 
+      circle.className = "breath-circle"; 
+      circle.style.transition = "all 1s ease"; // Zurücksetzen
+      circle.innerText = "Bereit?"; 
+      btn.innerText = "Übung Starten"; 
+      breathRunning = false;
     } else {
-      breathRunning = true; btn.innerText = "Übung Beenden"; runBreathingCycle(); breathInterval = setInterval(runBreathingCycle, 16000);
+      breathRunning = true; btn.innerText = "Übung Beenden"; 
+      runBreathingCycle(); 
+      breathInterval = setInterval(runBreathingCycle, 19000); // Zyklus dauert jetzt 19 Sekunden
     }
   }
+  
   function runBreathingCycle() {
     if (!breathRunning) return;
-    circle.className = "breath-circle inhale"; circle.innerText = "Einatmen...";
-    setTimeout(() => { if (!breathRunning) return; circle.className = "breath-circle inhale hold"; circle.innerText = "Halten"; }, 4000);
-    setTimeout(() => { if (!breathRunning) return; circle.className = "breath-circle exhale"; circle.innerText = "Ausatmen..."; }, 8000);
-    setTimeout(() => { if (!breathRunning) return; circle.className = "breath-circle exhale hold"; circle.innerText = "Halten"; }, 12000);
+    
+    // 1. Einatmen (4 Sekunden)
+    circle.style.transition = "all 4s cubic-bezier(0.4, 0, 0.2, 1)";
+    circle.className = "breath-circle inhale"; 
+    circle.innerText = "Einatmen...";
+    
+    // 2. Halten (7 Sekunden)
+    setTimeout(() => { 
+      if (!breathRunning) return; 
+      circle.className = "breath-circle inhale hold"; 
+      circle.innerText = "Halten"; 
+    }, 4000);
+    
+    // 3. Ausatmen (8 Sekunden)
+    setTimeout(() => { 
+      if (!breathRunning) return; 
+      circle.style.transition = "all 8s cubic-bezier(0.4, 0, 0.2, 1)"; // Kreis zieht sich extrem langsam zusammen
+      circle.className = "breath-circle exhale"; 
+      circle.innerText = "Ausatmen..."; 
+    }, 11000); // Startet nach 11 Sekunden (4s Einatmen + 7s Halten)
   }
 
   /* SELF-CHECK WIZARD */
