@@ -1,7 +1,8 @@
 ---
-title: "Akuter Stress"
-icon: "blitz"
-description: "Sofort-Distanz finden"
+title: Akuter Stress
+featured: true
+icon: blitz
+description: Sofort-Distanz finden
 ---
 ### Die 5-Sekunden-Regel
 
