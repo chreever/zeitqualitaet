@@ -78,7 +78,7 @@ layout: null
     .mental-card:hover .m-front { border-color: var(--accent-dim); background: var(--bg-elevated); transform: translateY(-2px); }
     .m-back { transform: rotateY(180deg); background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; justify-content: flex-start; padding-top: 2.5rem; overflow-y: auto; }
     
-   /* ════════ TOOL 2: ATEM-ANKER STYLES (PREMIUM) ════════ */
+   /* ════════ TOOL 2: ATEM-ANKER STYLES ════════ */
     .breathing-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px; position: relative; }
     
     .breath-circle {
@@ -98,7 +98,6 @@ layout: null
       z-index: 2;
     }
     
-    /* Weiche, organische Animationen */
     .breath-circle.inhale { 
       transform: scale(1.5); 
       background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); 
@@ -114,7 +113,6 @@ layout: null
     }
     .breath-circle.exhale.hold { color: var(--text-muted); }
     
-    /* Der Premium-Button */
     .btn-breath {
       padding: 14px 38px; 
       background: var(--accent); 
@@ -149,6 +147,16 @@ layout: null
     .wizard-btn:hover { background: var(--accent); color: #FFFFFF; border-color: var(--accent); padding-left: 24px; }
     .wizard-step { display: none; }
     .wizard-step.active { display: block; }
+
+    /* ════════ TOOL 4: EFT STYLES ════════ */
+    .eft-card { background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05); max-width: 650px; margin: 0 auto; text-align: center; position: relative; }
+    .eft-step-indicator { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+    .eft-slider { width: 100%; max-width: 400px; margin: 2rem auto; cursor: pointer; accent-color: var(--accent); }
+    .eft-point-display { font-size: 1.8rem; font-family: var(--font-display); font-weight: 600; color: var(--text); margin: 2rem 0; padding: 1.5rem; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); }
+    .eft-btn { padding: 12px 32px; background: var(--accent); color: #FFF; border: none; border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); margin-top: 1rem; font-family: var(--font-body); }
+    .eft-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .eft-step { display: none; }
+    .eft-step.active { display: block; }
   </style>
 </head>
 <body>
@@ -176,7 +184,61 @@ layout: null
     <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 0 auto;">Deine Workspace-Sammlung für psychologische Selbstführung, Akut-Resilienz und strategischen Fokus.</p>
   </div>
 
- <div class="tool-box">
+  <div class="tool-box">
+    <h2 class="tool-title">1. Mental-Impuls-Kartendeck</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Klicke auf eine Karte, um die jeweilige Mentalübung und Reflexionsanleitung anzuzeigen.</p>
+    
+   <div class="deck-grid">
+      {% assign archive_exercises = collections.exercises | reverse %}
+      {% for ex in archive_exercises %}
+        <div class="mental-card" onclick="this.classList.toggle('flipped')">
+          <div class="mental-card-inner">
+            <div class="m-front">
+              <div style="margin-bottom: 1rem; display: flex; justify-content: center; align-items: center; min-height: 50px;">
+                {% if ex.data.icon == 'blitz' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                {% elsif ex.data.icon == 'ziel' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                {% elsif ex.data.icon == 'kompass' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                {% elsif ex.data.icon == 'anker' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="5" r="3"></circle><line x1="12" y1="22" x2="12" y2="8"></line><path d="M5 12H2a10 10 0 0 0 20 0h-3"></path></svg>
+                {% elsif ex.data.icon == 'uhr' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                {% elsif ex.data.icon == 'schild' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                {% elsif ex.data.icon == 'auge' %}
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                {% else %}
+                  <span style="font-size: 2.8rem; line-height: 1; color: var(--accent);">{{ ex.data.icon | default: "🧠" }}</span>
+                {% endif %}
+              </div>
+              <h3 style="font-weight: 600; font-size: 1.3rem; color: var(--text);">{{ ex.data.title }}</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">{{ ex.data.description }}</p>
+            </div>
+            <div class="m-back">
+              <h3 style="margin-bottom: 1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; width: 100%;">{{ ex.data.title }}</h3>
+              <div style="font-size: 0.95rem; line-height: 1.6; opacity: 0.95; text-align: left;">
+                {{ ex.templateContent }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <h2 class="tool-title">2. Der 60-Sekunden Fokus-Anker</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Nutze diese 4-7-8-Methode vor wichtigen Terminen, um dein vegetatives Nervensystem sofort in die Balance zu bringen.</p>
+    
+    <div class="breathing-wrapper">
+      <div id="breathCircle" class="breath-circle">Bereit?</div>
+      <button id="breathBtn" class="btn-breath" onclick="toggleBreathing()">Übung Starten</button>
+    </div>
+  </div>
+
+  <div class="tool-box">
     <h2 class="tool-title">3. Minimalistischer Mental-Check-In</h2>
     
     <div class="wizard-card">
@@ -205,25 +267,12 @@ layout: null
     </div>
   </div>
 
-  <!-- ════════ TOOL 4: EFT KLOPFAKUPRESSUR ════════ -->
   <div class="tool-box">
     <h2 class="tool-title">4. EFT Klopfakupressur</h2>
     <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Die Ursache emotionaler Probleme ist eine Störung im Energiesystem. Nutze diese geführte Sequenz, um Blockaden systematisch aufzulösen.</p>
-
-    <style>
-      .eft-card { background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05); max-width: 650px; margin: 0 auto; text-align: center; position: relative; }
-      .eft-step-indicator { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
-      .eft-slider { width: 100%; max-width: 400px; margin: 2rem auto; cursor: pointer; accent-color: var(--accent); }
-      .eft-point-display { font-size: 1.8rem; font-family: var(--font-display); font-weight: 600; color: var(--text); margin: 2rem 0; padding: 1.5rem; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); }
-      .eft-btn { padding: 12px 32px; background: var(--accent); color: #FFF; border: none; border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); margin-top: 1rem; font-family: var(--font-body); }
-      .eft-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
-      .eft-step { display: none; }
-      .eft-step.active { display: block; }
-    </style>
     
     <div class="eft-card">
       
-      <!-- EFT Schritt 1: Problem & Skala -->
       <div id="pageEftStep1" class="eft-step active">
         <div class="eft-step-indicator">Schritt 1 von 3</div>
         <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Bestimme die aktuelle Belastung</h3>
@@ -240,7 +289,6 @@ layout: null
         <button class="eft-btn" onclick="nextPageEftStep(2)">Thema fixieren & Weiter</button>
       </div>
 
-      <!-- EFT Schritt 2: Set-up-Satz -->
       <div id="pageEftStep2" class="eft-step">
         <div class="eft-step-indicator">Schritt 2 von 3</div>
         <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Der Einstimmungssatz (Set-up)</h3>
@@ -251,7 +299,6 @@ layout: null
         <button class="eft-btn" onclick="startPageEftTapping()">Atme tief aus & Starte Sequenz</button>
       </div>
 
-      <!-- EFT Schritt 3: Die 8 Punkte -->
       <div id="pageEftStep3" class="eft-step">
         <div class="eft-step-indicator">Schritt 3 von 3: Die Klopfsequenz</div>
         <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Klopfe jeden Punkt 5-10 mal</h3>
@@ -265,7 +312,6 @@ layout: null
         </div>
       </div>
 
-      <!-- EFT Abschluss: Überprüfung -->
       <div id="pageEftStep4" class="eft-step">
         <div class="eft-step-indicator">Abschluss</div>
         <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Überprüfung</h3>
@@ -276,7 +322,7 @@ layout: null
     </div>
   </div>
 
-</section> <!-- Hier endet die Haupt-Sektion korrekt! -->
+</section>
 
 <footer>
   <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border-light);">© 2026 Zeitqualität · Christian Balas</p>
@@ -291,33 +337,39 @@ layout: null
     if (breathRunning) {
       clearInterval(breathInterval); 
       circle.className = "breath-circle"; 
-      circle.style.transition = "all 1s ease";
+      circle.style.transition = "all 1s ease"; // Zurücksetzen
       circle.innerText = "Bereit?"; 
       btn.innerText = "Übung Starten"; 
       breathRunning = false;
     } else {
       breathRunning = true; btn.innerText = "Übung Beenden"; 
       runBreathingCycle(); 
-      breathInterval = setInterval(runBreathingCycle, 19000);
+      breathInterval = setInterval(runBreathingCycle, 19000); // Zyklus dauert jetzt 19 Sekunden
     }
   }
   
   function runBreathingCycle() {
     if (!breathRunning) return;
+    
+    // 1. Einatmen (4 Sekunden)
     circle.style.transition = "all 4s cubic-bezier(0.4, 0, 0.2, 1)";
     circle.className = "breath-circle inhale"; 
     circle.innerText = "Einatmen...";
+    
+    // 2. Halten (7 Sekunden)
     setTimeout(() => { 
       if (!breathRunning) return; 
       circle.className = "breath-circle inhale hold"; 
       circle.innerText = "Halten"; 
     }, 4000);
+    
+    // 3. Ausatmen (8 Sekunden)
     setTimeout(() => { 
       if (!breathRunning) return; 
-      circle.style.transition = "all 8s cubic-bezier(0.4, 0, 0.2, 1)";
+      circle.style.transition = "all 8s cubic-bezier(0.4, 0, 0.2, 1)"; // Kreis zieht sich extrem langsam zusammen
       circle.className = "breath-circle exhale"; 
       circle.innerText = "Ausatmen..."; 
-    }, 11000);
+    }, 11000); // Startet nach 11 Sekunden
   }
 
   /* ════════ SELF-CHECK WIZARD ════════ */
