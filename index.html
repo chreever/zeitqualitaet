@@ -518,10 +518,20 @@ layout: null
       <!-- EFT Schritt 3: Die 8 Punkte -->
       <div id="eftStep3" class="wizard-step">
         <div class="eft-step-indicator">Schritt 3 von 3: Die Klopfsequenz</div>
-        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Klopfe jeden Punkt 5-10 mal</h3>
-        <p style="color: var(--text-muted); font-size: 0.95rem;">Wiederhole beim Klopfen gedanklich dein Gefühl (z.B. "diese Wut").</p>
+        <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Klopfe jeden Punkt 5-10 mal</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Wiederhole beim Klopfen gedanklich dein Gefühl (z.B. "diese Wut").</p>
         
-        <div id="eftCurrentPoint" class="eft-point-display">1. Scheitel-Punkt (TOH)</div>
+        <div class="eft-graphic-container">
+          <svg viewBox="0 0 200 260" style="width: 100%; max-width: 160px; height: auto; display: block; margin: 0 auto 2rem;">
+            <ellipse cx="100" cy="80" rx="45" ry="60" fill="none" stroke="var(--border)" stroke-width="3"/>
+            <path d="M80 135 L80 160 M120 135 L120 160" stroke="var(--border)" stroke-width="3" fill="none"/>
+            <path d="M80 160 Q40 160 20 220 M120 160 Q160 160 180 220" stroke="var(--border)" stroke-width="3" fill="none"/>
+            <path d="M85 75 Q100 85 115 75" stroke="var(--border-light)" stroke-width="2" fill="none"/> <path d="M100 75 L100 105" stroke="var(--border-light)" stroke-width="2"/> <path d="M90 120 Q100 125 110 120" stroke="var(--border-light)" stroke-width="2" fill="none"/> <circle id="eftDot" class="eft-dot" cx="100" cy="20" r="8" fill="#EF4444" style="box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);"/>
+          </svg>
+
+          <div id="eftCurrentPoint" class="eft-point-display">1. Scheitel-Punkt (TOH)</div>
+          <div id="eftCurrentDesc" class="eft-point-desc">Klopfe sanft mit der flachen Hand oder den Fingerspitzen auf den höchsten Punkt deines Kopfes.</div>
+        </div>
         
         <div style="display: flex; gap: 1rem; justify-content: center;">
           <button class="btn-outline" onclick="prevEftPoint()">Zurück</button>
