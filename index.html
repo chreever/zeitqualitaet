@@ -254,6 +254,33 @@ layout: null
     .nav-links { display: none; } .menu-toggle { display: block; }
     .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 90px; left: 0; right: 0; background: rgba(255,255,255, 0.98); padding: 2rem; border-bottom: 1px solid var(--border); gap: 1.5rem; }
   }
+  /* ── MOBILE OPTIMIERUNG (Strafferes Layout) ── */
+  @media (max-width: 768px) {
+    /* Generelle Abstände reduzieren */
+    section { padding: 4rem 1.5rem !important; }
+    .hero { padding: 8rem 1.5rem 3rem !important; }
+    
+    /* Beitragskacheln kompakter machen */
+    .post-card-img { height: 160px !important; }
+    .post-card-body { padding: 1.5rem !important; }
+    .post-card p { margin-bottom: 1rem !important; font-size: 1rem !important; line-height: 1.5 !important; }
+    
+    /* Assessment / Fragebogen straffen */
+    #resilienz-check { padding: 4rem 1.5rem !important; }
+    .quiz-container { padding: 1.5rem !important; }
+    .quiz-question { font-size: 1.25rem !important; margin-bottom: 1.5rem !important; }
+    .quiz-btn { padding: 12px 16px !important; font-size: 0.95rem !important; }
+    .result-box { padding: 1.5rem !important; }
+    .cta-box { padding: 1.8rem 1.2rem !important; }
+    .res-icon { font-size: 2rem !important; }
+    .res-name { font-size: 1.4rem !important; }
+    
+    /* Überschriften generell minimal verkleinern */
+    :root {
+      --fs-h1: 2.2rem;
+      --fs-h2: 1.8rem;
+    }
+  }
   @media (max-width: 480px) { .zodiac-grid { grid-template-columns: 1fr; } .post-card-img { height: 180px; } }
 </style>
 </head>
@@ -1112,20 +1139,20 @@ layout: null
   let quizAnswers = [];
   let userBaseArchetype = null;
 
-  // Datenbank der Archetypen (Sternzeichen Mapping)
+ // Datenbank der Archetypen (Systemische Grundstruktur)
   const archetypeData = [
-    { sign: 'Aries', name: 'Der Initiator', symbol: '▲', quality: 'Handlungskraft', text: 'Deine angeborene Struktur ist dynamisch und direkt. Du blühst auf, wenn es darum geht, Dinge ins Rollen zu bringen und mutige Entscheidungen zu treffen.' },
-    { sign: 'Taurus', name: 'Der Bewahrer', symbol: '■', quality: 'Bodenständigkeit', text: 'Du besitzt die Fähigkeit, Dinge zu konsolidieren und abzusichern. Deine Stärke liegt in der Ruhe, Beständigkeit und dem Schaffen von Werten.' },
-    { sign: 'Gemini', name: 'Der Vermittler', symbol: '◈', quality: 'Flexibilität', text: 'Du bist der systemische Netzwerker. Deine Basis ist auf ständigen Austausch, Anpassungsfähigkeit und intellektuelle Beweglichkeit ausgerichtet.' },
-    { sign: 'Cancer', name: 'Der Beschützer', symbol: '⌒', quality: 'Empathie', text: 'Deine Kernkompetenz ist das Schaffen einer sicheren Basis. Du führst und handelst stark aus der Intuition und Fürsorge heraus.' },
-    { sign: 'Leo', name: 'Der Gestalter', symbol: '◆', quality: 'Selbstausdruck', text: 'Deine Energie ist zentriert und strahlend. Du gehst gerne in Führung, übernimmst Verantwortung und gestaltest dein Umfeld aktiv.' },
-    { sign: 'Virgo', name: 'Der Analyst', symbol: '⬢', quality: 'Struktur', text: 'Du hast einen klaren Blick für Optimierung. Deine Basis ist von Detailgenauigkeit, Ordnung und dem Streben nach Effizienz geprägt.' },
-    { sign: 'Libra', name: 'Der Diplomat', symbol: '─', quality: 'Ausgleich', text: 'Deine systemische Aufgabe ist die Harmonie. Du bist hervorragend darin, Perspektiven abzuwägen und faire Kompromisse zu finden.' },
-    { sign: 'Scorpio', name: 'Der Stratege', symbol: '▼', quality: 'Tiefgang', text: 'Du scheust keine Krisen. Deine Basis ist analytisch tiefgreifend und stark transformatorisch – du gehst den Dingen konsequent auf den Grund.' },
-    { sign: 'Sagittarius', name: 'Der Visionär', symbol: '↗', quality: 'Sinnsuche', text: 'Dein Blick richtet sich immer auf das große Ganze. Deine systemische Stärke liegt in der Expansion, dem Optimismus und der Sinnstiftung.' },
-    { sign: 'Capricorn', name: 'Der Realist', symbol: '∟', quality: 'Verantwortung', text: 'Struktureller Aufbau und Disziplin sind dein Fundament. Du denkst langfristig und setzt Ziele mit großer Ausdauer um.' },
-    { sign: 'Aquarius', name: 'Der Innovator', symbol: '≋', quality: 'Unabhängigkeit', text: 'Deine Struktur bricht alte Muster auf. Du stehst für Freiraum, unkonventionelle Lösungswege und zukunftsorientiertes Denken.' },
-    { sign: 'Pisces', name: 'Der Mentor', symbol: '○', quality: 'Feingefühl', text: 'Deine Basis ist tief mit dem Unterbewussten verbunden. Deine Stärke liegt im Loslassen, im Vertrauen und in einer hohen emotionalen Intelligenz.' }
+    { sign: 'Aries', name: 'Der Initiator', symbol: '▲', quality: 'Handlungskraft & Pioniergeist', text: 'Deine systemische Grundstruktur ist dynamisch und direkt. Du blühst auf, wenn es darum geht, Widerstände zu durchbrechen, Projekte aus dem Stand ins Rollen zu bringen und schnelle, mutige Entscheidungen zu treffen.' },
+    { sign: 'Taurus', name: 'Der Bewahrer', symbol: '■', quality: 'Stabilität & Konsolidierung', text: 'Du bist der systemische Anker. Deine Stärke liegt darin, volatile Phasen zu beruhigen, Strukturen abzusichern und aus flüchtigen Ideen verlässliche, beständige Werte zu formen.' },
+    { sign: 'Gemini', name: 'Der Vermittler', symbol: '◈', quality: 'Agilität & Wissenstransfer', text: 'Du bist das systemische Bindeglied. Deine Basis ist auf ständigen Informationsaustausch, extrem hohe Anpassungsfähigkeit und intellektuelle Beweglichkeit im Umgang mit neuen Situationen ausgerichtet.' },
+    { sign: 'Cancer', name: 'Der Beschützer', symbol: '⌒', quality: 'Intuition & Fundament', text: 'Deine Kernkompetenz ist das Schaffen einer sicheren Basis für dich und dein Team. Du analysierst weniger rein rational, sondern triffst hochpräzise Entscheidungen aus einer starken situativen Intuition heraus.' },
+    { sign: 'Leo', name: 'Der Gestalter', symbol: '◆', quality: 'Führung & Selbstausdruck', text: 'Deine Energie ist zentriert und strahlend. Du gehst ganz natürlich in die strategische Führung, übernimmst Verantwortung und prägst dein berufliches Umfeld durch authentische Präsenz.' },
+    { sign: 'Virgo', name: 'Der Analyst', symbol: '⬢', quality: 'Struktur & Optimierung', text: 'Dein Blick für systemische Reibungsverluste ist messerscharf. Deine Basis ist von Detailgenauigkeit, methodischer Ordnung und einem unermüdlichen Streben nach Effizienz und Qualität geprägt.' },
+    { sign: 'Libra', name: 'Der Diplomat', symbol: '─', quality: 'Ausgleich & Kooperation', text: 'Deine systemische Aufgabe ist die Balance. Du besitzt die seltene Fähigkeit, in Konflikten völlig unterschiedliche Perspektiven zu neutralisieren und strategisch faire, tragfähige Kompromisse auszuhandeln.' },
+    { sign: 'Scorpio', name: 'Der Stratege', symbol: '▼', quality: 'Tiefgang & Transformation', text: 'Du scheust keine Unternehmenskrisen. Deine Basis ist extrem resilient, analytisch tiefgreifend und transformatorisch. Du kletterst nicht an der Oberfläche, sondern gehst den Dingen radikal auf den Grund.' },
+    { sign: 'Sagittarius', name: 'Der Visionär', symbol: '↗', quality: 'Perspektive & Sinnstiftung', text: 'Dein Blick richtet sich immer auf den Horizont. Deine systemische Stärke liegt in der gedanklichen Expansion, dem Setzen von visionären Zielen und der Fähigkeit, andere für den tieferen Sinn zu begeistern.' },
+    { sign: 'Capricorn', name: 'Der Realist', symbol: '∟', quality: 'Verantwortung & Disziplin', text: 'Struktureller Aufbau ist dein Fundament. Du lässt dich nicht von kurzfristigen Hypes ablenken, denkst in großen zeitlichen Zyklen und setzt deine Strategien mit eiserner Ausdauer und klarem Fokus um.' },
+    { sign: 'Aquarius', name: 'Der Innovator', symbol: '≋', quality: 'Disruption & Freiraum', text: 'Deine Denkstruktur bricht veraltete Muster auf. Du stehst für radikalen Freiraum, unkonventionelle Lösungswege und eine zukunftsorientierte Draufsicht, die dem Status Quo meist einen Schritt voraus ist.' },
+    { sign: 'Pisces', name: 'Der Mentor', symbol: '○', quality: 'Feingefühl & Reflexion', text: 'Deine Basis ist tief mit den unsichtbaren Strömungen im System verbunden. Deine größte Stärke ist das Vertrauen in den Prozess, das bewusste Loslassen und eine außergewöhnlich hohe emotionale Intelligenz.' }
   ];
 
   function getZodiacSign(day, month) {
@@ -1198,25 +1225,25 @@ layout: null
       if (value > max) { max = value; dominant = key; }
     }
 
-    // Lösungs-Archetypen mappen
-    const resultData = {
-      'overload': {
-        icon: '○', title: 'Der Mentor', quality: 'Innere Einkehr & Loslassen',
-        text: '<strong>Dein System ist überhitzt.</strong> Dein Nervensystem ist im Alarmbereitschaftsmodus. Du brauchst jetzt nicht noch mehr Disziplin, sondern die Energie des <em>Mentors</em>. Die Strategie lautet radikales Loslassen. Schaffe dir künstliche Pausen und reduziere das mentale Rauschen.'
-      },
-      'stagnation': {
-        icon: '▲', title: 'Der Initiator', quality: 'Handlungskraft',
-        text: '<strong>Dein System stagniert.</strong> Du hängst in einer blockierten Energie fest. Du benötigst jetzt die durchschlagende Kraft des <em>Initiators</em>. Weg von der Perfektion! Setze dir einen Timer auf exakt 10 Minuten und beginne einfach. Der Fokus folgt der Handlung.'
-      },
-      'control': {
-        icon: '↗', title: 'Der Visionär', quality: 'Perspektive',
-        text: '<strong>Du steckst im Detail fest.</strong> Du versuchst Stress durch Kontrolle zu bewältigen. Dir fehlt momentan die Energie des <em>Visionärs</em>. Tritt mental einen Schritt zurück, wechsle in die Meta-Perspektive und frage dich: Was ist auf lange Sicht wirklich wichtig?'
-      },
-      'boundary': {
-        icon: '∟', title: 'Der Realist', quality: 'Abgrenzung',
-        text: '<strong>Deine Grenzen verschwimmen.</strong> Du reagierst primär auf andere. Es ist Zeit für die strukturelle Klarheit des <em>Realisten</em>. Übernimm wieder Verantwortung für deine Ressourcen. Setze einen Puffer zwischen Reiz und Reaktion und lerne, strategisch "Nein" zu sagen.'
-      }
-    };
+    // Lösungs-Archetypen mappen (Stress-Auswertung)
+  const resultData = {
+    'overload': {
+      icon: '○', title: 'Der Mentor', quality: 'Innere Einkehr & Loslassen',
+      text: '<strong>Dein System läuft im roten Drehzahlbereich.</strong> Dein Nervensystem ist im ständigen Alarmbereitschaftsmodus, was zu Reizbarkeit und mentaler Erschöpfung führt. Du versuchst den Druck mit noch mehr Tempo zu lösen.<br><br><strong>Dein Lösungs-Impuls:</strong> Du brauchst jetzt nicht noch mehr Disziplin oder Zeitmanagement, sondern die Energie des <em>Mentors</em>. Die strategische Antwort lautet: Radikales Loslassen. Schaffe dir künstliche Pausen, blende äußere Anforderungen für einen Moment rigoros aus und reduziere das mentale Rauschen.'
+    },
+    'stagnation': {
+      icon: '▲', title: 'Der Initiator', quality: 'Pioniergeist & Handlungskraft',
+      text: '<strong>Dein mentaler Motor stockt.</strong> Du hängst in einer zähen, blockierten Energie fest. Häufig entsteht das, wenn Ziele unklar sind oder der Aufgabenberg so massiv wirkt, dass das Gehirn in eine Art analytische Schockstarre verfällt.<br><br><strong>Dein Lösungs-Impuls:</strong> Du benötigst jetzt die durchschlagende Kraft des <em>Initiators</em>. Brich aus dem theoretischen Planen aus! Setze dir einen Timer auf exakt 10 Minuten und beginne mit der kleinsten, primitivsten Aufgabe. Der Fokus und die Energie folgen der Handlung – nicht umgekehrt.'
+    },
+    'control': {
+      icon: '↗', title: 'Der Visionär', quality: 'Perspektivewechsel & Flughöhe',
+      text: '<strong>Du verlierst dich im Mikro-Management.</strong> Du versuchst aktuell, äußere Unsicherheit und Stress durch ein hohes Maß an Kontrolle zu bewältigen. Das kostet enorm viel Ressourcen und nimmt dir die souveräne Flexibilität.<br><br><strong>Dein Lösungs-Impuls:</strong> Dir fehlt momentan die Flughöhe des <em>Visionärs</em>. Tritt mental einen Schritt zurück. Verlasse die operative Ebene und wechsle in die Meta-Perspektive: Was ist auf lange Sicht wirklich wichtig? Welcher Kampf lohnt sich, und wo darfst du die Zügel bewusst lockern?'
+    },
+    'boundary': {
+      icon: '∟', title: 'Der Realist', quality: 'Abgrenzung & Eigenschutz',
+      text: '<strong>Deine Grenzen sind zu durchlässig.</strong> Du bist stark im Außen orientiert und reagierst momentan fast nur noch auf die Erwartungen und Dringlichkeiten anderer. Deine eigene strategische Ausrichtung bleibt auf der Strecke.<br><br><strong>Dein Lösungs-Impuls:</strong> Es ist Zeit für die strukturelle Klarheit und Härte des <em>Realisten</em>. Übernimm wieder das Kommando über deine Ressourcen. Setze einen bewussten Puffer zwischen Reiz und Reaktion: Sag nicht sofort "Ja", sondern erbitte dir Bedenkzeit. Schütze dein Fundament.'
+    }
+  };
 
     const res = resultData[dominant];
     document.getElementById('res-icon').innerText = res.icon;
