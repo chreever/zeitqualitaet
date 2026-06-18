@@ -72,7 +72,8 @@ collections:
         time_format: false
         format: "YYYY-MM-DD"
       - { label: "Ganze Monats-Liste hier reinkopieren", name: "text_list", widget: "text" }
-- name: "settings"
+
+  - name: "settings"
     label: "Seiten-Einstellungen"
     delete: false
     files:
