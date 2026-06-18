@@ -529,21 +529,37 @@ layout: null
   </div>
 
   <script>
+    /* STARTSEITEN ATEM-TOOL STEUERUNG (4-7-8 METHODE) */
     let idxBreathInterval; let idxBreathRunning = false;
+    
     function toggleIndexBreathing() {
       const c = document.getElementById('indexBreathCircle'); const b = document.getElementById('indexBreathBtn');
       if (idxBreathRunning) {
-        clearInterval(idxBreathInterval); c.className = "breath-circle"; c.innerText = "Bereit?"; b.innerText = "Übung Starten"; idxBreathRunning = false;
+        clearInterval(idxBreathInterval); 
+        c.className = "breath-circle"; 
+        c.style.transition = "all 1s ease";
+        c.innerText = "Bereit?"; 
+        b.innerText = "Übung Starten"; 
+        idxBreathRunning = false;
       } else {
-        idxBreathRunning = true; b.innerText = "Übung Beenden"; runIdxBreath(); idxBreathInterval = setInterval(runIdxBreath, 16000);
+        idxBreathRunning = true; b.innerText = "Übung Beenden"; 
+        runIdxBreath(); 
+        idxBreathInterval = setInterval(runIdxBreath, 19000); // 19 Sekunden Zyklus
       }
     }
+    
     function runIdxBreath() {
       const c = document.getElementById('indexBreathCircle'); if (!idxBreathRunning || !c) return;
+      
+      // Einatmen (4s)
+      c.style.transition = "all 4s cubic-bezier(0.4, 0, 0.2, 1)";
       c.className = "breath-circle inhale"; c.innerText = "Einatmen...";
+      
+      // Halten (7s)
       setTimeout(() => { if (!idxBreathRunning) return; c.className = "breath-circle inhale hold"; c.innerText = "Halten"; }, 4000);
-      setTimeout(() => { if (!idxBreathRunning) return; c.className = "breath-circle exhale"; c.innerText = "Ausatmen..."; }, 8000);
-      setTimeout(() => { if (!idxBreathRunning) return; c.className = "breath-circle exhale hold"; c.innerText = "Halten"; }, 12000);
+      
+      // Ausatmen (8s)
+      setTimeout(() => { if (!idxBreathRunning) return; c.style.transition = "all 8s cubic-bezier(0.4, 0, 0.2, 1)"; c.className = "breath-circle exhale"; c.innerText = "Ausatmen..."; }, 11000);
     }
 
     let idxUserChoice = "";
