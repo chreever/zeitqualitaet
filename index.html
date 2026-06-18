@@ -304,7 +304,6 @@ layout: null
   </div>
 </section>
 
-<!-- DYNAMIC TOP BANNER -->
 <div id="dynamic-banner-container">
   {% assign banner_posts = collections.posts | reverse %}
   {% for post in banner_posts %}
@@ -383,7 +382,6 @@ layout: null
    
 <div class="divider"><hr></div>
 
-<!-- DYNAMIC INFO BANNER -->
 <section id="dynamic-info-banner" style="max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;">
   {% assign info_posts = collections.posts | reverse %}
   {% for post in info_posts %}
@@ -439,10 +437,9 @@ layout: null
           <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
             <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
           </video>
-        {% elif post.data.image %}
+        {% elsif post.data.image %}
           <img class="post-card-img" src="{{ post.data.image | url }}" alt="{{ post.data.title }}">
         {% else %}
-          <!-- HIER IST DER NEUE DESIGN-BLOCK FÜR KACHELN OHNE BILD -->
           <div class="post-card-fallback"></div>
         {% endif %}
 
