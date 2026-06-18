@@ -258,7 +258,130 @@ layout: null
     </div>
   </div>
 </section>
+<!-- ════════ TOOL 4: EFT KLOPFAKUPRESSUR ════════ -->
+<section style="margin-top: 6rem; margin-bottom: 4rem;">
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--text);">EFT Klopfakupressur</h2>
+    <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0.5rem auto 0;">Die Ursache emotionaler Probleme ist eine Störung im Energiesystem. Nutze diese geführte Sequenz, um Blockaden systematisch aufzulösen.</p>
+  </div>
 
+  <style>
+    .eft-card { background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05); max-width: 650px; margin: 0 auto; text-align: center; position: relative; }
+    .eft-step-indicator { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+    .eft-slider { width: 100%; max-width: 400px; margin: 2rem auto; cursor: pointer; accent-color: var(--accent); }
+    .eft-point-display { font-size: 1.8rem; font-family: var(--font-display); font-weight: 600; color: var(--text); margin: 2rem 0; padding: 1.5rem; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); }
+    .eft-btn { padding: 12px 32px; background: var(--accent); color: #FFF; border: none; border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); margin-top: 1rem; font-family: var(--font-body); }
+    .eft-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+    .eft-step { display: none; }
+    .eft-step.active { display: block; }
+  </style>
+  
+  <div class="eft-card">
+    
+    <!-- EFT Schritt 1: Problem & Skala -->
+    <div id="pageEftStep1" class="eft-step active">
+      <div class="eft-step-indicator">Schritt 1 von 3</div>
+      <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Bestimme die aktuelle Belastung</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">Benenne das Thema für dich im Geist (Was belastet dich? Welches Gefühl löst es aus?). Schätze nun deine subjektive Belastung auf der Stress-Skala ein.</p>
+      <div style="margin: 2.5rem 0;">
+        <span style="font-weight: 600; font-size: 1.2rem; color: var(--accent);" id="pageEftScaleValue">Wert: 8</span>
+        <br>
+        <input type="range" id="pageEftSlider" class="eft-slider" min="0" max="10" value="8" oninput="document.getElementById('pageEftScaleValue').innerText = 'Wert: ' + this.value">
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); max-width: 400px; margin: 0 auto;">
+          <span>0 = Entspannt</span>
+          <span>10 = Höchster Stress</span>
+        </div>
+      </div>
+      <button class="eft-btn" onclick="nextPageEftStep(2)">Thema fixieren & Weiter</button>
+    </div>
+
+    <!-- EFT Schritt 2: Set-up-Satz -->
+    <div id="pageEftStep2" class="eft-step">
+      <div class="eft-step-indicator">Schritt 2 von 3</div>
+      <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Der Einstimmungssatz (Set-up)</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Klopfe nun sanft mit zwei Fingern auf den <strong>Handkantenpunkt</strong>. Sprich dabei <strong>dreimal laut</strong> den folgenden Satz, um das Thema im System aufzurufen:</p>
+      <div class="eft-point-display" style="font-size: 1.2rem; font-style: italic;">
+        "Auch wenn ich dieses Problem habe, das dieses Gefühl wachruft, akzeptiere ich mich voll und ganz."
+      </div>
+      <button class="eft-btn" onclick="startPageEftTapping()">Atme tief aus & Starte Sequenz</button>
+    </div>
+
+    <!-- EFT Schritt 3: Die 8 Punkte -->
+    <div id="pageEftStep3" class="eft-step">
+      <div class="eft-step-indicator">Schritt 3 von 3: Die Klopfsequenz</div>
+      <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Klopfe jeden Punkt 5-10 mal</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">Wiederhole beim Klopfen gedanklich dein Gefühl (z.B. "diese Wut").</p>
+      
+      <div id="pageEftCurrentPoint" class="eft-point-display">1. Scheitel-Punkt (TOH)</div>
+      
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button class="btn-outline" onclick="prevPageEftPoint()">Zurück</button>
+        <button id="pageEftNextBtn" class="eft-btn" style="margin-top: 0;" onclick="nextPageEftPoint()">Nächster Punkt</button>
+      </div>
+    </div>
+
+    <!-- EFT Abschluss: Überprüfung -->
+    <div id="pageEftStep4" class="eft-step">
+      <div class="eft-step-indicator">Abschluss</div>
+      <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Überprüfung</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Atme tief durch. Spüre in dich hinein. Wie hoch ist der Wert auf der Stress-Skala jetzt? Ist er noch nicht bei Null, wiederhole die Sequenz.</p>
+      <button class="eft-btn" onclick="resetPageEft()">Neuer Durchgang</button>
+    </div>
+
+  </div>
+
+  <script>
+    const pageEftPoints = [
+      "1. Scheitel-Punkt (TOH)", "2. Augenbrauen-Punkt (EB)", "3. Seitlicher Augen-Punkt (SE)",
+      "4. Jochbein-Punkt (UE)", "5. Unter-Nasen-Punkt (UN)", "6. Unter-Lippen-Punkt (Ch)",
+      "7. Schlüsselbein-Punkt (CB)", "8. Unter-dem-Arm-Punkt (UA)"
+    ];
+    let currentPageEftIndex = 0;
+
+    function nextPageEftStep(step) {
+      document.querySelectorAll('#pageEftStep1, #pageEftStep2, #pageEftStep3, #pageEftStep4').forEach(el => el.classList.remove('active'));
+      document.getElementById('pageEftStep' + step).classList.add('active');
+    }
+
+    function startPageEftTapping() {
+      currentPageEftIndex = 0;
+      updatePageEftDisplay();
+      nextPageEftStep(3);
+    }
+
+    function updatePageEftDisplay() {
+      document.getElementById('pageEftCurrentPoint').innerText = pageEftPoints[currentPageEftIndex];
+      const btn = document.getElementById('pageEftNextBtn');
+      if(currentPageEftIndex === pageEftPoints.length - 1) {
+        btn.innerText = "Abschließen";
+      } else {
+        btn.innerText = "Nächster Punkt";
+      }
+    }
+
+    function nextPageEftPoint() {
+      if (currentPageEftIndex < pageEftPoints.length - 1) {
+        currentPageEftIndex++;
+        updatePageEftDisplay();
+      } else {
+        nextPageEftStep(4);
+      }
+    }
+
+    function prevPageEftPoint() {
+      if (currentPageEftIndex > 0) {
+        currentPageEftIndex--;
+        updatePageEftDisplay();
+      }
+    }
+
+    function resetPageEft() {
+      document.getElementById('pageEftSlider').value = 8;
+      document.getElementById('pageEftScaleValue').innerText = 'Wert: 8';
+      nextPageEftStep(1);
+    }
+  </script>
+</section>
 <footer>
   <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--border-light);">© 2026 Zeitqualität · Christian Balas</p>
 </footer>
