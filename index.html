@@ -824,14 +824,24 @@ layout: null
     </style>
 
     <div class="quiz-container">
-      <div class="quiz-progress" id="quiz-progress">
+      
+      <div class="quiz-step active" id="q-step-intro" style="text-align: center; padding: 2rem 0;">
+        <span style="font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; display: block;">🧭</span>
+        <h3 class="quiz-question" style="font-size: 1.8rem; margin-bottom: 1rem;">Stehst du dir gerade selbst im Weg?</h3>
+        <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7;">
+          Finde in 3 kurzen Fragen heraus, ob dein System gerade überhitzt oder stagniert – und welcher Archetyp dir jetzt hilft, den mentalen Knoten zu lösen.
+        </p>
+        <button class="btn-primary" onclick="openAssessment()">Analyse starten</button>
+      </div>
+
+      <div class="quiz-progress" id="quiz-progress" style="display: none;">
         <div class="quiz-dot active"></div>
         <div class="quiz-dot"></div>
         <div class="quiz-dot"></div>
         <div class="quiz-dot"></div>
       </div>
 
-      <div class="quiz-step active" id="q-step-0" style="text-align: center;">
+      <div class="quiz-step" id="q-step-0" style="text-align: center;">
         <h3 class="quiz-question">Beginnen wir mit deiner systemischen Basis.</h3>
         <p style="color: var(--text-muted); margin-bottom: 2rem;">Bitte wähle deinen Geburtstag, um deinen angeborenen Archetypen zu bestimmen.</p>
         
@@ -1169,7 +1179,14 @@ layout: null
     if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return 10; // Aquarius
     return 11; // Pisces
   }
-
+function openAssessment() {
+    // Blendet das Intro-Cover aus
+    document.getElementById('q-step-intro').classList.remove('active');
+    
+    // Blendet den Fortschrittsbalken und die erste Frage (Datum) ein
+    document.getElementById('quiz-progress').style.display = 'flex';
+    document.getElementById('q-step-0').classList.add('active');
+  }
   function startQuiz() {
     const day = document.getElementById('birth-day').value;
     const month = document.getElementById('birth-month').value;
@@ -1277,8 +1294,8 @@ layout: null
       else dot.classList.remove('active');
     });
     
-    document.getElementById('quiz-progress').style.display = 'flex';
-    document.getElementById('q-step-0').classList.add('active');
+    document.getElementById('quiz-progress').style.display = 'none';
+    document.getElementById('q-step-intro').classList.add('active');
   }
 </script>
 </body>
