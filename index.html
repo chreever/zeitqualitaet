@@ -417,7 +417,41 @@ layout: null
       {% break %} {% endif %}
   {% endfor %}
 </section>
-
+<section id="mentaltraining-teaser" style="padding-bottom: 2rem;">
+  <div class="section-header">
+    <h2 class="section-title">Mentale Werkzeuge</h2>
+    <a href="/mentaltraining/" class="section-link">Zur gesamten Toolbox →</a>
+  </div>
+  <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: -2rem 0 3rem 0;">Erste Impulse für mentale Klarheit und Resilienz im Alltag. Klicke auf eine Karte, um die Übung umzudrehen.</p>
+  
+  <div class="posts-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;">
+    {% assign active_exercises = collections.exercises | reverse %}
+    {% assign ex_count = 0 %}
+    {% for ex in active_exercises %}
+      <div class="zodiac-card visible" style="perspective: 1000px; cursor: pointer; aspect-ratio: 4/5; width: 100%;" onclick="this.classList.toggle('flipped')">
+        <div class="zodiac-card-inner">
+          <div class="zodiac-front" style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <div style="font-size: 3.5rem; color: var(--accent); margin-bottom: 1.5rem; line-height: 1;">{{ ex.data.icon | default: "🧠" }}</div>
+            <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">{{ ex.data.title }}</div>
+            <div class="zodiac-detail-label" style="color: var(--text-dim) !important;">Klicken zum Aufdecken</div>
+          </div>
+          <div class="zodiac-back" style="transform: rotateY(180deg); background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 2.5rem 2rem; display: flex; flex-direction: column; justify-content: flex-start; border: 1px solid var(--border); overflow-y: auto;">
+            <div style="font-family: var(--font-display); font-size: 1.3rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;">{{ ex.data.title }}</div>
+            <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+              {{ ex.templateContent }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% assign ex_count = ex_count | plus: 1 %}
+      {% if ex_count == 3 %}{% break %}{% endif %}
+    {% endfor %}
+  </div>
+  
+  <div style="text-align: center; margin-top: 4rem;">
+    <a href="/mentaltraining/" class="btn-outline">Alle Werkzeuge in der Toolbox öffnen</a>
+  </div>
+</section>
 <section id="beitraege">
   <div class="section-header">
     <h2 class="section-title">Aktuelle Beiträge</h2>
