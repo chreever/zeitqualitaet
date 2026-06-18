@@ -63,14 +63,14 @@ layout: null
     }
 
     /* ════════ TOOL 1: KARTENDECK STYLES ════════ */
-    .deck-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
+    .deck-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .mental-card { perspective: 1000px; cursor: pointer; aspect-ratio: 4/5; width: 100%; }
     .mental-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
     .mental-card.flipped .mental-card-inner { transform: rotateY(180deg); }
     .m-front, .m-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: var(--radius); border: 1px solid var(--border-light); padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
     .m-front { background: var(--bg-card); transition: var(--transition); }
     .mental-card:hover .m-front { border-color: var(--accent-dim); background: var(--bg-elevated); transform: translateY(-2px); }
-    .m-back { transform: rotateY(180deg); background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; justify-content: flex-start; padding-top: 3rem; overflow-y: auto; }
+    .m-back { transform: rotateY(180deg); background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); color: #FFFFFF; justify-content: flex-start; padding-top: 2.5rem; overflow-y: auto; }
     
     /* ════════ TOOL 2: ATEM-ANKE STYLES ════════ */
     .breathing-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 350px; }
@@ -86,7 +86,6 @@ layout: null
       margin-bottom: 2rem;
       position: relative;
     }
-    /* Klassen für die Animationstufen via JS */
     .breath-circle.inhale { transform: scale(1.4); background: rgba(15, 23, 42, 0.15); color: var(--accent); }
     .breath-circle.hold { color: var(--accent); }
     .breath-circle.exhale { transform: scale(1.0); background: var(--accent-dim); color: var(--accent); }
@@ -109,11 +108,6 @@ layout: null
     .wizard-btn:hover { background: var(--accent); color: #FFFFFF; border-color: var(--accent); padding-left: 24px; }
     .wizard-step { display: none; }
     .wizard-step.active { display: block; }
-    
-    @media (max-width: 768px) {
-      .deck-grid { grid-template-columns: 1fr; }
-      .mental-card { aspect-ratio: 5/4; }
-    }
   </style>
 </head>
 <body>
@@ -138,55 +132,32 @@ layout: null
 <section id="mental-tools">
   <div style="text-align: center; margin-bottom: 5rem;">
     <h1 style="font-family: var(--font-display); font-size: 3rem; font-weight: 600; margin-bottom: 1rem;">Mentale Werkzeuge</h1>
-    <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 0 auto;">Praktische, interaktive Methoden zur Erhöhung deiner Resilienz, Selbstführung und mentalen Klarheit im Alltag.</p>
+    <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 0 auto;">Deine Workspace-Sammlung für psychologische Selbstführung, Akut-Resilienz und strategischen Fokus.</p>
   </div>
 
   <div class="tool-box">
     <h2 class="tool-title">1. Mental-Impuls-Kartendeck</h2>
-    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Wähle einen Fokus-Bereich und klicke auf die Karte, um deine heutige Reflexionsübung aufzudecken.</p>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Klicke auf eine Karte, um die jeweilige Mentalübung und Reflexionsanleitung anzuzeigen.</p>
     
     <div class="deck-grid">
-      <div class="mental-card" onclick="this.classList.toggle('flipped')">
-        <div class="mental-card-inner">
-          <div class="m-front">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
-            <h3 style="font-weight: 600; font-size: 1.3rem;">Akuter Stress</h3>
-            <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem;">Sofort-Distanz finden</p>
-          </div>
-          <div class="m-back">
-            <h3 style="margin-bottom: 1rem; font-weight: 600;">Die 5-Sekunden-Regel</h3>
-            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Wenn dich eine Situation überfordert: Halte inne. Atme tief aus und zähle rückwärts: 5, 4, 3, 2, 1. Triff erst danach eine bewusste Entscheidung, anstatt impulsiv oder emotional zu reagieren.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mental-card" onclick="this.classList.toggle('flipped')">
-        <div class="mental-card-inner">
-          <div class="m-front">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎯</div>
-            <h3 style="font-weight: 600; font-size: 1.3rem;">Fokus &amp; Fokus</h3>
-            <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem;">Klarheit herstellen</p>
-          </div>
-          <div class="m-back">
-            <h3 style="margin-bottom: 1rem; font-weight: 600;">Radikales Mono-Tasking</h3>
-            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Schließe für die nächsten 20 Minuten alle Browser-Tabs bis auf einen. Lege dein Smartphone außer Sichtweite. Arbeite ausschließlich an einer einzigen, priorisierten Aufgabe. Reduziere das Rauschen.</p>
+      {% assign archive_exercises = collections.exercises | reverse %}
+      {% for ex in archive_exercises %}
+        <div class="mental-card" onclick="this.classList.toggle('flipped')">
+          <div class="mental-card-inner">
+            <div class="m-front">
+              <div style="font-size: 2.8rem; margin-bottom: 1rem;">{{ ex.data.icon | default: "🧠" }}</div>
+              <h3 style="font-weight: 600; font-size: 1.3rem; color: var(--text);">{{ ex.data.title }}</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">{{ ex.data.description }}</p>
+            </div>
+            <div class="m-back">
+              <h3 style="margin-bottom: 1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; width: 100%;">{{ ex.data.title }}</h3>
+              <div style="font-size: 0.95rem; line-height: 1.6; opacity: 0.95; text-align: left;">
+                {{ ex.templateContent }}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="mental-card" onclick="this.classList.toggle('flipped')">
-        <div class="mental-card-inner">
-          <div class="m-front">
-            <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚖️</div>
-            <h3 style="font-weight: 600; font-size: 1.3rem;">Entscheidungen</h3>
-            <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem;">Souveränität gewinnen</p>
-          </div>
-          <div class="m-back">
-            <h3 style="margin-bottom: 1rem; font-weight: 600;">Der externe Berater</h3>
-            <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.9;">Betrachte dein aktuelles Problem aus der Adlerperspektive: Welchen Rat würdest du einem geschätzten Kollegen geben, der in genau dieser Situation steckt? Diese Distanz eliminiert die emotionale Befangenheit.</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 
@@ -235,71 +206,35 @@ layout: null
 </footer>
 
 <script>
-  /* ════════ REGLER FÜR DAS ATEM-TOOL ════════ */
-  let breathInterval;
-  let breathRunning = false;
-  const circle = document.getElementById('breathCircle');
-  const btn = document.getElementById('breathBtn');
-
+  /* ATEM-TOOL STEUERUNG */
+  let breathInterval; let breathRunning = false;
+  const circle = document.getElementById('breathCircle'); const btn = document.getElementById('breathBtn');
   function toggleBreathing() {
     if (breathRunning) {
-      clearInterval(breathInterval);
-      circle.className = "breath-circle";
-      circle.innerText = "Bereit?";
-      btn.innerText = "Übung Starten";
-      breathRunning = false;
+      clearInterval(breathInterval); circle.className = "breath-circle"; circle.innerText = "Bereit?"; btn.innerText = "Übung Starten"; breathRunning = false;
     } else {
-      breathRunning = true;
-      btn.innerText = "Übung Beenden";
-      runBreathingCycle();
-      breathInterval = setInterval(runBreathingCycle, 16000); // Ein voller Zyklus dauert 16 Sekunden
+      breathRunning = true; btn.innerText = "Übung Beenden"; runBreathingCycle(); breathInterval = setInterval(runBreathingCycle, 16000);
     }
   }
-
   function runBreathingCycle() {
     if (!breathRunning) return;
-    
-    // 1. Einatmen (4s)
-    circle.className = "breath-circle inhale";
-    circle.innerText = "Einatmen...";
-    
-    // 2. Halten (4s)
-    setTimeout(() => {
-      if (!breathRunning) return;
-      circle.className = "breath-circle inhale hold";
-      circle.innerText = "Halten";
-    }, 4000);
-    
-    // 3. Ausatmen (4s)
-    setTimeout(() => {
-      if (!breathRunning) return;
-      circle.className = "breath-circle exhale";
-      circle.innerText = "Ausatmen...";
-    }, 8000);
-    
-    // 4. Halten (4s)
-    setTimeout(() => {
-      if (!breathRunning) return;
-      circle.className = "breath-circle exhale hold";
-      circle.innerText = "Halten";
-    }, 12000);
+    circle.className = "breath-circle inhale"; circle.innerText = "Einatmen...";
+    setTimeout(() => { if (!breathRunning) return; circle.className = "breath-circle inhale hold"; circle.innerText = "Halten"; }, 4000);
+    setTimeout(() => { if (!breathRunning) return; circle.className = "breath-circle exhale"; circle.innerText = "Ausatmen..."; }, 8000);
+    setTimeout(() => { if (!breathRunning) return; circle.className = "breath-circle exhale hold"; circle.innerText = "Halten"; }, 12000);
   }
 
-  /* ════════ REGLER FÜR DEN SELBSTTEST (WIZARD) ════════ */
+  /* SELF-CHECK WIZARD */
   let userChoice = "";
-
   function nextStep(step, choice) {
     if(choice) userChoice = choice;
     document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
     document.getElementById('step' + step).classList.add('active');
   }
-
   function showResult(need) {
     document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
-    const resultCard = document.getElementById('stepResult');
+    document.getElementById('stepResult').classList.add('active');
     const txt = document.getElementById('resultText');
-    resultCard.classList.add('active');
-
     if (userChoice === 'high' && need === 'focus') {
       txt.innerHTML = "<strong>Strategischer Tunnelblick:</strong> Du stehst unter hohem Tempo. Schwenke jetzt nicht in blinden Aktionismus um. Nimm dir 5 Minuten, schreibe die 3 absolut kritischsten Aufgaben auf und blende alles andere konsequent aus. Qualität schlägt Quantität.";
     } else if (userChoice === 'high' && need === 'calm') {
@@ -310,13 +245,7 @@ layout: null
       txt.innerHTML = "<strong>Systemische Reflexion:</strong> Nutze die zähe Phase nicht zum Verzweifeln, sondern für strukturelle Analyse. Wo genau klemmt das System? Nutze die Zeit, um Prozesse zu optimieren, Ordnung zu schaffen und Energie für die nächste offensive Phase zu tanken.";
     }
   }
-
-  function resetWizard() {
-    userChoice = "";
-    document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
-    document.getElementById('step1').classList.add('active');
-  }
+  function resetWizard() { userChoice = ""; document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active')); document.getElementById('step1').classList.add('active'); }
 </script>
-
 </body>
 </html>
