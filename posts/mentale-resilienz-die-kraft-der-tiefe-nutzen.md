@@ -3,8 +3,10 @@ title: "Mentale Resilienz: Warum wahre Stärke bei der Ehrlichkeit beginnt"
 draft: false
 category: Mentale Stärke
 date: 2026-04-03T17:04:00.000+02:00
-image: /img/journaling.mp4
-description: Echte psychologische Resilienz wächst, wenn wir unsere Schattenseiten integrieren. Warum radikale Selbstreflexion das mächtigste Werkzeug für Führungskräfte ist.
+image: ""
+description: Echte psychologische Resilienz wächst, wenn wir unsere
+  Schattenseiten integrieren. Warum radikale Selbstreflexion das mächtigste
+  Werkzeug für Führungskräfte ist.
 placement: Kein Banner
 ---
 
