@@ -6,7 +6,7 @@ date: 2026-06-18T09:45:00+02:00
 image: /img/overload.jpeg
 description: Dauerstress und Schlafmangel rauben dir den Fokus. Wie du den
   mentalen Overload stoppst und wieder in die Gestaltungskraft kommst.
-placement: Kein Banner
+placement: Top-Banner (Header)
 ---
 
 Es ist 2:30 Uhr nachts. Dein Körper verlangt nach Erholung, doch dein Verstand läuft einen Marathon. Du gehst das morgige Board-Meeting durch, strukturierst ungelöste Projekte im Kopf und ärgerst dich gleichzeitig darüber, dass du nicht schläfst. Dieses Phänomen ist im modernen Business-Alltag kein Zeichen von Schwäche, sondern das klassische Symptom eines überreizten Systems. Wenn der Dauerstress die Regie übernimmt, verschwimmen die Grenzen zwischen produktiver Leistung und toxischem Overload. Du funktionierst nur noch, statt zu gestalten.
