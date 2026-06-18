@@ -1,9 +1,9 @@
 ---
-title: weewefwef
+title: "Wenn der Kopf nie abschaltet: Wege aus dem Overload"
 draft: true
 category: Mentale Stärke
 date: 2026-06-18T11:35:00+02:00
-image: /img/mentaler-overload-reset.jpg
+image: ""
 description: Dauerstress und Schlafmangel rauben dir den Fokus. Wie du den
   mentalen Overload stoppst und wieder in die Gestaltungskraft kommst.
 placement: Kein Banner
