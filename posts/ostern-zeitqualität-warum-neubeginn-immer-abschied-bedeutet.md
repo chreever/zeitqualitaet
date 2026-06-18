@@ -1,10 +1,11 @@
 ---
 title: "Strategisches Loslassen: Warum jeder Neubeginn einen Abschied braucht"
 draft: false
-category: "Strategie & Fokus"
+category: Strategie & Fokus
 date: 2026-04-05T07:30:00.000+02:00
-image: /img/ostern-auferstehung-loslassen.mp4
-description: "Echte Veränderung scheitert oft nicht am Mangel an Vision, sondern an der Unfähigkeit, Altes loszulassen. Ein Plädoyer für den bewussten Schnitt."
+image: ""
+description: Echte Veränderung scheitert oft nicht am Mangel an Vision, sondern
+  an der Unfähigkeit, Altes loszulassen. Ein Plädoyer für den bewussten Schnitt.
 placement: null
 ---
 
