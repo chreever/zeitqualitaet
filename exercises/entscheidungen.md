@@ -1,7 +1,8 @@
 ---
-title: "Entscheidungen"
-icon: "kompass"
-description: "Souveränität gewinnen"
+title: Entscheidungen
+featured: true
+icon: kompass
+description: Souveränität gewinnen
 ---
 ### Der externe Berater
 
