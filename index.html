@@ -616,10 +616,16 @@ layout: null
     function resetIdxWizard() { idxUserChoice = ""; nextIdxStep(1); }
 
     /* 3. EFT KLOPFAKUPRESSUR */
+    /* 3. EFT KLOPFAKUPRESSUR */
     const eftPoints = [
-      "1. Scheitel-Punkt (TOH)", "2. Augenbrauen-Punkt (EB)", "3. Seitlicher Augen-Punkt (SE)",
-      "4. Jochbein-Punkt (UE)", "5. Unter-Nasen-Punkt (UN)", "6. Unter-Lippen-Punkt (Ch)",
-      "7. Schlüsselbein-Punkt (CB)", "8. Unter-dem-Arm-Punkt (UA)"
+      { title: "1. Scheitel-Punkt (TOH)", desc: "Klopfe sanft mit der flachen Hand oder den Fingerspitzen auf den höchsten Punkt deines Kopfes.", x: 100, y: 20 },
+      { title: "2. Augenbrauen-Punkt (EB)", desc: "Klopfe direkt am inneren Rand der Augenbraue (zur Nasenwurzel hin).", x: 75, y: 70 },
+      { title: "3. Seitlicher Augen-Punkt (SE)", desc: "Klopfe auf den Knochen direkt am äußeren Augenwinkel.", x: 50, y: 80 },
+      { title: "4. Jochbein-Punkt (UE)", desc: "Klopfe auf den Knochen mittig direkt unter dem Auge.", x: 75, y: 95 },
+      { title: "5. Unter-Nasen-Punkt (UN)", desc: "Klopfe mittig auf die Stelle zwischen der Nase und der Oberlippe.", x: 100, y: 112 },
+      { title: "6. Unter-Lippen-Punkt (Ch)", desc: "Klopfe in die kleine Einbuchtung zwischen Unterlippe und Kinn.", x: 100, y: 132 },
+      { title: "7. Schlüsselbein-Punkt (CB)", desc: "Klopfe in die weiche Vertiefung im Winkel direkt unterhalb deines Schlüsselbeins.", x: 70, y: 180 },
+      { title: "8. Unter-dem-Arm-Punkt (UA)", desc: "Klopfe an der Körperseite, etwa eine Handbreit unter der Achselhöhle.", x: 25, y: 200 }
     ];
     let currentEftIndex = 0;
 
@@ -635,7 +641,16 @@ layout: null
     }
 
     function updateEftDisplay() {
-      document.getElementById('eftCurrentPoint').innerText = eftPoints[currentEftIndex];
+      const pointData = eftPoints[currentEftIndex];
+      document.getElementById('eftCurrentPoint').innerText = pointData.title;
+      document.getElementById('eftCurrentDesc').innerText = pointData.desc;
+      
+      const dot = document.getElementById('eftDot');
+      if(dot) {
+        dot.setAttribute('cx', pointData.x);
+        dot.setAttribute('cy', pointData.y);
+      }
+
       const btn = document.getElementById('eftNextBtn');
       if(currentEftIndex === eftPoints.length - 1) {
         btn.innerText = "Abschließen";
