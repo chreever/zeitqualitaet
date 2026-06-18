@@ -746,6 +746,150 @@ layout: null
 </section>
 
 <div class="divider"><hr></div>
+  
+<!-- ════════ SYSTEMISCHER RESILIENZ-KOMPASS (ASSESSMENT PRO) ════════ -->
+<section id="resilienz-check" style="background: var(--bg-card); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 6rem 2rem;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    
+    <div class="section-header" style="text-align: center; justify-content: center; margin-bottom: 3rem; flex-direction: column;">
+      <h2 class="section-title" style="margin-bottom: 1rem;">Systemischer Resilienz-Kompass</h2>
+      <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 650px; margin: 0 auto;">
+        Wir verbinden deine angeborene systemische Grundstruktur mit deiner aktuellen mentalen Dynamik. Finde heraus, wo dein Engpass liegt und welche Energie du jetzt zum Ausgleich brauchst.
+      </p>
+    </div>
+
+    <style>
+      .quiz-container { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; position: relative; overflow: hidden; }
+      .quiz-step { display: none; animation: fadeIn 0.5s ease; }
+      .quiz-step.active { display: block; }
+      .quiz-progress { display: flex; gap: 6px; margin-bottom: 2.5rem; justify-content: center; }
+      .quiz-dot { height: 6px; flex: 1; max-width: 50px; background: var(--border); border-radius: 10px; transition: var(--transition); }
+      .quiz-dot.active { background: var(--accent); }
+      .quiz-question { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; text-align: center; margin-bottom: 2rem; color: var(--text); line-height: 1.4; }
+      .quiz-options { display: flex; flex-direction: column; gap: 1rem; }
+      .quiz-btn { width: 100%; padding: 16px 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); text-align: left; font-size: 1rem; color: var(--text); cursor: pointer; transition: var(--transition); font-family: var(--font-body); display: flex; align-items: center; gap: 1rem; line-height: 1.5; }
+      .quiz-btn:hover { border-color: var(--accent); background: var(--bg-card-hover); transform: translateX(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+      .quiz-btn-letter { font-weight: 600; color: var(--accent); opacity: 0.5; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; min-width: 20px; }
+      
+      /* Date Input Layout */
+      .date-input-group { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2.5rem; }
+      .date-input-group select { padding: 14px 20px; font-size: 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-family: var(--font-body); cursor: pointer; outline: none; transition: var(--transition); }
+      .date-input-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+      
+      /* Result Styles */
+      .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; text-align: left; }
+      .result-box { background: var(--bg-card); padding: 2rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light); }
+      .result-box-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dim); margin-bottom: 1.5rem; font-weight: 600; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; }
+      
+      .res-icon { font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
+      .res-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+      .res-quality { font-size: 0.85rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+      .res-text { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
+      
+      .cta-box { background: linear-gradient(135deg, var(--accent) 0%, #1E293B 100%); padding: 2.5rem; border-radius: var(--radius-sm); color: #FFFFFF; text-align: center; }
+      .cta-box h4 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 1rem; font-weight: 600; color: #FFFFFF; }
+      .cta-box p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.7; max-width: 500px; margin-left: auto; margin-right: auto; }
+      .cta-btn { display: inline-block; padding: 12px 30px; background: #FFFFFF; color: var(--accent) !important; border-radius: 100px; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: var(--transition); border: none; cursor: pointer; text-decoration: none; }
+      .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+      
+      @media (max-width: 768px) { .result-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+
+    <div class="quiz-container">
+      <div class="quiz-progress" id="quiz-progress">
+        <div class="quiz-dot active"></div>
+        <div class="quiz-dot"></div>
+        <div class="quiz-dot"></div>
+        <div class="quiz-dot"></div>
+      </div>
+
+      <div class="quiz-step active" id="q-step-0" style="text-align: center;">
+        <h3 class="quiz-question">Beginnen wir mit deiner systemischen Basis.</h3>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Bitte wähle deinen Geburtstag, um deinen angeborenen Archetypen zu bestimmen.</p>
+        
+        <div class="date-input-group">
+          <select id="birth-day">
+            <option value="" disabled selected>Tag</option>
+            <script>for(let i=1; i<=31; i++) document.write(`<option value="${i}">${i}</option>`);</script>
+          </select>
+          <select id="birth-month">
+            <option value="" disabled selected>Monat</option>
+            <option value="1">Januar</option> <option value="2">Februar</option>
+            <option value="3">März</option> <option value="4">April</option>
+            <option value="5">Mai</option> <option value="6">Juni</option>
+            <option value="7">Juli</option> <option value="8">August</option>
+            <option value="9">September</option> <option value="10">Oktober</option>
+            <option value="11">November</option> <option value="12">Dezember</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="startQuiz()">Weiter zur Analyse</button>
+      </div>
+
+      <div class="quiz-step" id="q-step-1">
+        <h3 class="quiz-question">Wie nimmst du deine aktuelle Dynamik im Alltag primär wahr?</h3>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="selectAnswer(1, 'overload')"><span class="quiz-btn-letter">A</span> Pulsierend, getrieben, fast schon chaotisch. Der Druck ist hoch.</button>
+          <button class="quiz-btn" onclick="selectAnswer(1, 'stagnation')"><span class="quiz-btn-letter">B</span> Zähflüssig, blockiert oder unproduktiv. Mir fehlt der klare Antrieb.</button>
+          <button class="quiz-btn" onclick="selectAnswer(1, 'control')"><span class="quiz-btn-letter">C</span> Strukturiert, aber ich verliere mich in Details und Perfektionismus.</button>
+          <button class="quiz-btn" onclick="selectAnswer(1, 'boundary')"><span class="quiz-btn-letter">D</span> Ich reagiere ständig auf andere und komme kaum zu eigenen Themen.</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" id="q-step-2">
+        <h3 class="quiz-question">Wie reagierst du momentan auf unvorhergesehene Planänderungen?</h3>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="selectAnswer(2, 'overload')"><span class="quiz-btn-letter">A</span> Gereizt. Jede neue Anforderung bringt das Fass zum Überlaufen.</button>
+          <button class="quiz-btn" onclick="selectAnswer(2, 'boundary')"><span class="quiz-btn-letter">B</span> Ich passe mich an und stelle eigene Bedürfnisse sofort hinten an.</button>
+          <button class="quiz-btn" onclick="selectAnswer(2, 'control')"><span class="quiz-btn-letter">C</span> Ich versuche sofort, die Situation analytisch zu kontrollieren.</button>
+          <button class="quiz-btn" onclick="selectAnswer(2, 'stagnation')"><span class="quiz-btn-letter">D</span> Eher passiv oder mit Rückzug. Es ist mir fast zu anstrengend.</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" id="q-step-3">
+        <h3 class="quiz-question">Wo liegt aktuell dein größter mentaler Engpass?</h3>
+        <div class="quiz-options">
+          <button class="quiz-btn" onclick="selectAnswer(3, 'stagnation')"><span class="quiz-btn-letter">A</span> Den ersten Schritt machen und wieder ins Handeln kommen.</button>
+          <button class="quiz-btn" onclick="selectAnswer(3, 'overload')"><span class="quiz-btn-letter">B</span> Abends den Kopf ausschalten, loslassen und echte Ruhe finden.</button>
+          <button class="quiz-btn" onclick="selectAnswer(3, 'control')"><span class="quiz-btn-letter">C</span> Die Vogelperspektive einnehmen, statt sich im Klein-Klein zu verlieren.</button>
+          <button class="quiz-btn" onclick="selectAnswer(3, 'boundary')"><span class="quiz-btn-letter">D</span> Ein klares "Nein" kommunizieren, ohne mich schlecht zu fühlen.</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" id="q-step-result">
+        <div class="result-grid">
+          <div class="result-box">
+            <div class="result-box-title">Deine systemische Basis</div>
+            <div id="base-icon" class="res-icon">...</div>
+            <div id="base-title" class="res-name">Wird berechnet...</div>
+            <div id="base-quality" class="res-quality">...</div>
+            <div id="base-text" class="res-text"></div>
+          </div>
+          
+          <div class="result-box" style="border-color: var(--accent);">
+            <div class="result-box-title" style="color: var(--accent);">Dein aktueller Lösungs-Impuls</div>
+            <div id="res-icon" class="res-icon">...</div>
+            <div id="res-title" class="res-name">Wird berechnet...</div>
+            <div id="res-quality" class="res-quality">...</div>
+            <div id="res-text" class="res-text"></div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h4>Bringen wir dein System ins Gleichgewicht</h4>
+          <p>Theorie ist gut, Umsetzung ist besser. Lass uns gemeinsam ausloten, wie du diese Archetypen-Energie in deinem konkreten Berufs- oder Lebensalltag strategisch verankerst.</p>
+          <a href="mailto:christian@zeitqualitaet.at?subject=Anfrage:%20Resilienz-Analyse" class="cta-btn">Schreibe mir für eine Ersteinschätzung</a>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+          <button class="btn-outline" onclick="resetQuiz()">Test wiederholen</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+            
 
 <section id="kontakt">
   <div class="section-header">
@@ -963,6 +1107,146 @@ layout: null
       .then(res => { if(res.ok) { document.getElementById('form-fields').style.display = "none"; document.getElementById('form-success').style.display = "block"; }})
       .catch(err => { btn.innerText = "Nachricht absenden"; btn.disabled = false; });
     });
+  }
+  /* ════════ SYSTEMISCHER RESILIENZ-KOMPASS (ASSESSMENT PRO) LOGIK ════════ */
+  let quizAnswers = [];
+  let userBaseArchetype = null;
+
+  // Datenbank der Archetypen (Sternzeichen Mapping)
+  const archetypeData = [
+    { sign: 'Aries', name: 'Der Initiator', symbol: '▲', quality: 'Handlungskraft', text: 'Deine angeborene Struktur ist dynamisch und direkt. Du blühst auf, wenn es darum geht, Dinge ins Rollen zu bringen und mutige Entscheidungen zu treffen.' },
+    { sign: 'Taurus', name: 'Der Bewahrer', symbol: '■', quality: 'Bodenständigkeit', text: 'Du besitzt die Fähigkeit, Dinge zu konsolidieren und abzusichern. Deine Stärke liegt in der Ruhe, Beständigkeit und dem Schaffen von Werten.' },
+    { sign: 'Gemini', name: 'Der Vermittler', symbol: '◈', quality: 'Flexibilität', text: 'Du bist der systemische Netzwerker. Deine Basis ist auf ständigen Austausch, Anpassungsfähigkeit und intellektuelle Beweglichkeit ausgerichtet.' },
+    { sign: 'Cancer', name: 'Der Beschützer', symbol: '⌒', quality: 'Empathie', text: 'Deine Kernkompetenz ist das Schaffen einer sicheren Basis. Du führst und handelst stark aus der Intuition und Fürsorge heraus.' },
+    { sign: 'Leo', name: 'Der Gestalter', symbol: '◆', quality: 'Selbstausdruck', text: 'Deine Energie ist zentriert und strahlend. Du gehst gerne in Führung, übernimmst Verantwortung und gestaltest dein Umfeld aktiv.' },
+    { sign: 'Virgo', name: 'Der Analyst', symbol: '⬢', quality: 'Struktur', text: 'Du hast einen klaren Blick für Optimierung. Deine Basis ist von Detailgenauigkeit, Ordnung und dem Streben nach Effizienz geprägt.' },
+    { sign: 'Libra', name: 'Der Diplomat', symbol: '─', quality: 'Ausgleich', text: 'Deine systemische Aufgabe ist die Harmonie. Du bist hervorragend darin, Perspektiven abzuwägen und faire Kompromisse zu finden.' },
+    { sign: 'Scorpio', name: 'Der Stratege', symbol: '▼', quality: 'Tiefgang', text: 'Du scheust keine Krisen. Deine Basis ist analytisch tiefgreifend und stark transformatorisch – du gehst den Dingen konsequent auf den Grund.' },
+    { sign: 'Sagittarius', name: 'Der Visionär', symbol: '↗', quality: 'Sinnsuche', text: 'Dein Blick richtet sich immer auf das große Ganze. Deine systemische Stärke liegt in der Expansion, dem Optimismus und der Sinnstiftung.' },
+    { sign: 'Capricorn', name: 'Der Realist', symbol: '∟', quality: 'Verantwortung', text: 'Struktureller Aufbau und Disziplin sind dein Fundament. Du denkst langfristig und setzt Ziele mit großer Ausdauer um.' },
+    { sign: 'Aquarius', name: 'Der Innovator', symbol: '≋', quality: 'Unabhängigkeit', text: 'Deine Struktur bricht alte Muster auf. Du stehst für Freiraum, unkonventionelle Lösungswege und zukunftsorientiertes Denken.' },
+    { sign: 'Pisces', name: 'Der Mentor', symbol: '○', quality: 'Feingefühl', text: 'Deine Basis ist tief mit dem Unterbewussten verbunden. Deine Stärke liegt im Loslassen, im Vertrauen und in einer hohen emotionalen Intelligenz.' }
+  ];
+
+  function getZodiacSign(day, month) {
+    if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) return 0; // Aries
+    if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) return 1; // Taurus
+    if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) return 2; // Gemini
+    if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) return 3; // Cancer
+    if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) return 4; // Leo
+    if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) return 5; // Virgo
+    if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) return 6; // Libra
+    if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) return 7; // Scorpio
+    if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) return 8; // Sagittarius
+    if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) return 9; // Capricorn
+    if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) return 10; // Aquarius
+    return 11; // Pisces
+  }
+
+  function startQuiz() {
+    const day = document.getElementById('birth-day').value;
+    const month = document.getElementById('birth-month').value;
+    
+    if(!day || !month) {
+      alert("Bitte wähle Tag und Monat deines Geburtstags aus.");
+      return;
+    }
+
+    const zodiacIndex = getZodiacSign(parseInt(day), parseInt(month));
+    userBaseArchetype = archetypeData[zodiacIndex];
+
+    document.getElementById('q-step-0').classList.remove('active');
+    document.getElementById('q-step-1').classList.add('active');
+    updateProgress(1);
+  }
+
+  function selectAnswer(stepIndex, category) {
+    quizAnswers.push(category);
+    document.getElementById('q-step-' + stepIndex).classList.remove('active');
+    
+    const nextStep = document.getElementById('q-step-' + (stepIndex + 1));
+    updateProgress(stepIndex + 1);
+
+    if (nextStep) {
+      nextStep.classList.add('active');
+    } else {
+      calculateResult();
+    }
+  }
+
+  function updateProgress(index) {
+    const dots = document.querySelectorAll('.quiz-dot');
+    dots.forEach((dot, i) => {
+      if(i <= index) dot.classList.add('active');
+    });
+  }
+
+  function calculateResult() {
+    // 1. Basis Archetyp abfüllen
+    document.getElementById('base-icon').innerText = userBaseArchetype.symbol;
+    document.getElementById('base-title').innerText = userBaseArchetype.name;
+    document.getElementById('base-quality').innerText = userBaseArchetype.quality;
+    document.getElementById('base-text').innerHTML = userBaseArchetype.text;
+
+    // 2. Stress-Level auswerten
+    const counts = { overload: 0, stagnation: 0, control: 0, boundary: 0 };
+    quizAnswers.forEach(ans => counts[ans]++);
+    
+    let dominant = 'overload';
+    let max = 0;
+    for (const [key, value] of Object.entries(counts)) {
+      if (value > max) { max = value; dominant = key; }
+    }
+
+    // Lösungs-Archetypen mappen
+    const resultData = {
+      'overload': {
+        icon: '○', title: 'Der Mentor', quality: 'Innere Einkehr & Loslassen',
+        text: '<strong>Dein System ist überhitzt.</strong> Dein Nervensystem ist im Alarmbereitschaftsmodus. Du brauchst jetzt nicht noch mehr Disziplin, sondern die Energie des <em>Mentors</em>. Die Strategie lautet radikales Loslassen. Schaffe dir künstliche Pausen und reduziere das mentale Rauschen.'
+      },
+      'stagnation': {
+        icon: '▲', title: 'Der Initiator', quality: 'Handlungskraft',
+        text: '<strong>Dein System stagniert.</strong> Du hängst in einer blockierten Energie fest. Du benötigst jetzt die durchschlagende Kraft des <em>Initiators</em>. Weg von der Perfektion! Setze dir einen Timer auf exakt 10 Minuten und beginne einfach. Der Fokus folgt der Handlung.'
+      },
+      'control': {
+        icon: '↗', title: 'Der Visionär', quality: 'Perspektive',
+        text: '<strong>Du steckst im Detail fest.</strong> Du versuchst Stress durch Kontrolle zu bewältigen. Dir fehlt momentan die Energie des <em>Visionärs</em>. Tritt mental einen Schritt zurück, wechsle in die Meta-Perspektive und frage dich: Was ist auf lange Sicht wirklich wichtig?'
+      },
+      'boundary': {
+        icon: '∟', title: 'Der Realist', quality: 'Abgrenzung',
+        text: '<strong>Deine Grenzen verschwimmen.</strong> Du reagierst primär auf andere. Es ist Zeit für die strukturelle Klarheit des <em>Realisten</em>. Übernimm wieder Verantwortung für deine Ressourcen. Setze einen Puffer zwischen Reiz und Reaktion und lerne, strategisch "Nein" zu sagen.'
+      }
+    };
+
+    const res = resultData[dominant];
+    document.getElementById('res-icon').innerText = res.icon;
+    document.getElementById('res-title').innerText = res.title;
+    document.getElementById('res-quality').innerText = res.quality;
+    document.getElementById('res-text').innerHTML = res.text;
+    
+    // UI Update
+    document.getElementById('quiz-progress').style.display = 'none';
+    document.getElementById('q-step-result').classList.add('active');
+  }
+
+  function resetQuiz() {
+    quizAnswers = [];
+    userBaseArchetype = null;
+    
+    // Selects zurücksetzen
+    document.getElementById('birth-day').value = "";
+    document.getElementById('birth-month').value = "";
+
+    document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+    
+    const dots = document.querySelectorAll('.quiz-dot');
+    dots.forEach((dot, index) => {
+      if(index === 0) dot.classList.add('active');
+      else dot.classList.remove('active');
+    });
+    
+    document.getElementById('quiz-progress').style.display = 'flex';
+    document.getElementById('q-step-0').classList.add('active');
   }
 </script>
 </body>
