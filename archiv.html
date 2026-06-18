@@ -14,7 +14,6 @@ layout: null
   <link rel="alternate icon" href="/img/zq-favicon.png">
   <link rel="apple-touch-icon" href="/img/zq-favicon.png">
 
-  <!-- Hier laden wir dein ausgelagertes, globales Design -->
   <link rel="stylesheet" href="/css/style.css">
   <style>
   /* ── SPEZIFISCHE STYLES FÜR DAS ARCHIV-GRID & SUCHE ── */
@@ -65,7 +64,7 @@ layout: null
     <a href="/" class="logo-container">
       <svg viewBox="0 0 120 120" style="height: 42px; width: 42px;">
         <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.4"/>
-        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="var(--accent)"/>
+        <path d="M60 22 Q60 60 22 60 Q60 60 98 60 Q60 60 60 22 Z" fill="var(--accent)"/>
       </svg>
       <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); font-weight: 600; letter-spacing: 0.05em;">Zeitqualität</span>
     </a>
@@ -96,12 +95,14 @@ layout: null
          data-desc="{{ post.data.description | downcase | escape }}">
         
         <div class="post-card-media">
-          {% if post.data.featured_video %}
-            <video autoplay muted loop playsinline poster="/{{ post.data.image | lstrip: '/' }}">
+          {% if post.data.featured_video and post.data.featured_video != "" %}
+            <video autoplay muted loop playsinline poster="{% if post.data.image and post.data.image != "" %}/{{ post.data.image | lstrip: '/' }}{% endif %}">
               <source src="/{{ post.data.featured_video | lstrip: '/' }}#t=0.1" type="video/mp4">
             </video>
+          {% elsif post.data.image and post.data.image != "" %}
+            <img src="/{{ post.data.image | lstrip: '/' }}" alt="{{ post.data.title }}">
           {% else %}
-            <img src="{% if post.data.image %}/{{ post.data.image | lstrip: '/' }}{% else %}/img/sternenhimmel-berge.jpg{% endif %}" onerror="this.src='/img/sternenhimmel-berge.jpg'">
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);"></div>
           {% endif %}
         </div>
 
