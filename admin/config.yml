@@ -26,13 +26,13 @@ collections:
         date_format: "DD.MM.YYYY"
         time_format: "HH:mm"
         format: "YYYY-MM-DDTHH:mm:ssZ"
-      - {label: "Kachel-Bild & Social Media (WICHTIG!)", name: "image", widget: "image", required: true}
+      - {label: "Kachel-Bild & Social Media (WICHTIG!)", name: "image", widget: "image", required: false}
       - {label: "Optional: Bewegtes Kachel-Video (MP4)", name: "featured_video", widget: "file", required: false}
       - {label: "Banner-Bild (Hintergrund)", name: "banner_image", widget: "image", required: false}
       - {label: "Banner-Video (MP4)", name: "video", widget: "file", required: false}
       - {label: "Hauptfoto im Blog-Artikel", name: "post_image", widget: "image", required: false}
       - {label: "Kurzbeschreibung", name: "description", widget: "text", required: false}
-      - label: "Banner-Platzierung"
+      - label: "Banner-Placement"
         name: "placement"
         widget: "select"
         options:
