@@ -89,3 +89,4 @@ collections:
               - { label: "Mental-Impuls-Kartendeck (Die 3 Fokus-Karten)", value: "deck" }
               - { label: "60-Sekunden Fokus-Anker (Der Atem-Guide)", value: "breath" }
               - { label: "Minimalistischer Mental-Check-In (Der Selbsttest)", value: "wizard" }
+              - { label: "EFT Klopfakupressur (Energie-Reset)", value: "eft" }
