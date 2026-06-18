@@ -1,12 +1,14 @@
 ---
 title: "Souveränität in der Beratung: Warum Fachwissen nur das Fundament ist"
 draft: false
-category: "Strategie & Fokus"
+category: Strategie & Fokus
 date: 2026-05-14T18:00:00.000+02:00
-image: /img/beratung-souveraenitaet.png
-post_image: /img/beratung-souveraenitaet.png
-description: "Fachwissen allein reicht in volatilen Märkten nicht aus. Warum die Fähigkeit, als mentaler Anker den Raum zu halten, heute die wichtigste Kompetenz für Führungskräfte ist."
-placement: "Kein Banner"
+image: ""
+post_image: ""
+description: Fachwissen allein reicht in volatilen Märkten nicht aus. Warum die
+  Fähigkeit, als mentaler Anker den Raum zu halten, heute die wichtigste
+  Kompetenz für Führungskräfte ist.
+placement: Kein Banner
 ---
 
 Die Märkte schwanken, Rahmenbedingungen verändern sich rasant und bewährte Strategien greifen plötzlich nicht mehr. In Zeiten dieser Unsicherheit suchen Kunden und Teams nach mehr als nur nach analytischen Daten – sie suchen Orientierung. Für Experten und Führungskräfte bedeutet das: Fachwissen ist die notwendige Voraussetzung, aber mentale Souveränität ist das Differenzierungsmerkmal.
