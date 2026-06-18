@@ -3,7 +3,7 @@ title: "Wenn der Kopf nie abschaltet: Wege aus dem Overload"
 draft: false
 category: Mentale Stärke
 date: 2026-06-18T09:45:00+02:00
-image: ""
+image: /img/overload.jpeg
 description: Dauerstress und Schlafmangel rauben dir den Fokus. Wie du den
   mentalen Overload stoppst und wieder in die Gestaltungskraft kommst.
 placement: Kein Banner
