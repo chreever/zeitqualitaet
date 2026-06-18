@@ -172,3 +172,10 @@ footer { border-top: 1px solid var(--border-light); padding: 4rem 2rem; text-ali
         height: 260px;
     }
 }
+/* ── AUTOMATISCHER FALLBACK FÜR POST-KACHELN ── */
+.post-card-fallback {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    border-bottom: 1px solid var(--border-light);
+}
