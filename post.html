@@ -91,17 +91,29 @@
         }
       }
 
-      // Medienanzeige
+      // Medienanzeige (Repariert & Farbschema-Fallback hinzugefügt)
       const m = document.getElementById('media-container');
       const finalImg = pImg || tImg;
-      if(finalImg) { m.innerHTML = `<img class="article-image" src="${fixPath(finalImg)}" alt="Beitrag">`; }
-      else { const v = fVid || bVid; if(v) m.innerHTML = `<video class="article-image" autoplay muted loop playsinline><source src="${fixPath(v)}#t=0.1" type="video/mp4"></video>`; }
+      const finalVid = fVid || bVid;
+
+      if (finalVid && finalVid !== "") { 
+        m.innerHTML = `<video class="article-image" autoplay muted loop playsinline><source src="${fixPath(finalVid)}#t=0.1" type="video/mp4"></video>`; 
+      } 
+      else if (finalImg && finalImg !== "") { 
+        // alt="" lässt den Text komplett verschwinden, falls das Bild fehlt
+        m.innerHTML = `<img class="article-image" src="${fixPath(finalImg)}" alt="">`; 
+      } 
+      else { 
+        // Hochwertiges Farbschema, wenn weder Video noch Bild vorhanden sind
+        m.innerHTML = `<div style="width: 100%; height: 450px; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: var(--radius); border: 1px solid var(--border-light); box-shadow: 0 10px 30px rgba(0,0,0,0.05);"></div>`; 
+      }
 
       // Content rendern
       let parsedContent = `<h1>${title || id}</h1>` + marked.parse(body);
 
       document.getElementById('post-content').innerHTML = parsedContent;
       document.title = `${title || 'Beitrag'} — Zeitqualität`;
+      
       // Social Media Tags dynamisch anpassen
       const ogImage = document.querySelector('meta[property="og:image"]');
       const ogTitle = document.querySelector('meta[property="og:title"]');
