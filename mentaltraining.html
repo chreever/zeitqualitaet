@@ -148,30 +148,105 @@ layout: null
     .wizard-step { display: none; }
     .wizard-step.active { display: block; }
 
-    /* ════════ TOOL 4: EFT STYLES ════════ */
-    .eft-card { background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05); max-width: 650px; margin: 0 auto; text-align: center; position: relative; }
-    .eft-step-indicator { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
-    .eft-slider { width: 100%; max-width: 400px; margin: 2rem auto; cursor: pointer; accent-color: var(--accent); }
-    .eft-point-display { font-size: 1.8rem; font-family: var(--font-display); font-weight: 600; color: var(--text); margin: 2rem 0; padding: 1.5rem; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); }
-    .eft-btn { padding: 12px 32px; background: var(--accent); color: #FFF; border: none; border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); margin-top: 1rem; font-family: var(--font-body); }
-    .eft-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
-    .eft-step { display: none; }
-    .eft-step.active { display: block; }
-  </style>
-</head>
-<body>
+   <!-- ════════ TOOL 4: EFT KLOPFAKUPRESSUR ════════ -->
+  <div class="tool-box">
+    <h2 class="tool-title">4. EFT Klopfakupressur</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Die Ursache emotionaler Probleme ist eine Störung im Energiesystem. Nutze diese geführte Sequenz, um Blockaden systematisch aufzulösen.</p>
 
-<nav>
-  <div class="nav-inner">
-    <a href="/" class="logo-container">
-      <svg viewBox="0 0 120 120" style="height: 42px; width: 42px;">
-        <circle cx="60" cy="60" r="54" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.4"/>
-        <path d="M60 22 Q60 60 22 60 Q60 60 60 98 Q60 60 98 60 Q60 60 60 22 Z" fill="var(--accent)"/>
-      </svg>
-      <span style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); font-weight: 600; letter-spacing: 0.05em;">Zeitqualität</span>
-    </a>
-    <div class="nav-links">
-        <a href="/">← Zurück zur Startseite</a>
+    <style>
+      .eft-card { background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%); padding: 3rem 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05); max-width: 650px; margin: 0 auto; text-align: center; position: relative; }
+      .eft-step-indicator { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+      .eft-slider { width: 100%; max-width: 400px; margin: 2rem auto; cursor: pointer; accent-color: var(--accent); }
+      .eft-point-display { font-size: 1.6rem; font-family: var(--font-display); font-weight: 600; color: var(--accent); margin-bottom: 0.5rem; }
+      .eft-point-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; }
+      
+      /* NEU: Premium Buttons */
+      .eft-btn { padding: 12px 32px; background: var(--accent); color: #FFF; border: none; border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); font-family: var(--font-body); }
+      .eft-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+      .eft-btn-secondary { padding: 12px 32px; background: transparent; color: var(--text-muted); border: 1px solid var(--border); border-radius: 100px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: var(--transition); font-family: var(--font-body); }
+      .eft-btn-secondary:hover { border-color: var(--text); color: var(--text); }
+      
+      .eft-step { display: none; }
+      .eft-step.active { display: block; }
+
+      /* NEU: Grafik Layout */
+      .eft-graphic-container { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); padding: 2rem; margin-bottom: 2rem; }
+      .eft-dot { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+    
+    <div class="eft-card">
+      
+      <!-- EFT Schritt 1: Problem & Skala -->
+      <div id="pageEftStep1" class="eft-step active">
+        <div class="eft-step-indicator">Schritt 1 von 3</div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Bestimme die aktuelle Belastung</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Benenne das Thema für dich im Geist (Was belastet dich? Welches Gefühl löst es aus?). Schätze nun deine subjektive Belastung auf der Stress-Skala ein.</p>
+        <div style="margin: 2.5rem 0;">
+          <span style="font-weight: 600; font-size: 1.2rem; color: var(--accent);" id="pageEftScaleValue">Wert: 8</span>
+          <br>
+          <input type="range" id="pageEftSlider" class="eft-slider" min="0" max="10" value="8" oninput="document.getElementById('pageEftScaleValue').innerText = 'Wert: ' + this.value">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); max-width: 400px; margin: 0 auto;">
+            <span>0 = Entspannt</span>
+            <span>10 = Höchster Stress</span>
+          </div>
+        </div>
+        <button class="eft-btn" onclick="nextPageEftStep(2)">Thema fixieren & Weiter</button>
+      </div>
+
+      <!-- EFT Schritt 2: Set-up-Satz -->
+      <div id="pageEftStep2" class="eft-step">
+        <div class="eft-step-indicator">Schritt 2 von 3</div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Der Einstimmungssatz (Set-up)</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Klopfe nun sanft mit zwei Fingern auf den <strong>Handkantenpunkt</strong> (Karate-Schlag-Punkt). Sprich dabei <strong>dreimal laut</strong> den folgenden Satz, um das Thema im System aufzurufen:</p>
+        <div style="font-size: 1.3rem; font-family: var(--font-display); color: var(--accent); margin: 2rem 0; padding: 1.5rem; background: var(--bg); border-radius: 12px; border: 1px solid var(--border-light); font-style: italic;">
+          "Auch wenn ich dieses Problem habe, das dieses Gefühl wachruft, akzeptiere ich mich voll und ganz."
+        </div>
+        <button class="eft-btn" onclick="startPageEftTapping()">Atme tief aus & Starte Sequenz</button>
+      </div>
+
+      <!-- EFT Schritt 3: Die 8 Punkte mit interaktiver Grafik -->
+      <div id="pageEftStep3" class="eft-step">
+        <div class="eft-step-indicator">Schritt 3 von 3: Die Klopfsequenz</div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Klopfe diesen Punkt 5-10 mal</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Wiederhole beim Klopfen gedanklich dein Gefühl (z.B. "diese Wut").</p>
+        
+        <div class="eft-graphic-container">
+          <!-- Die dynamische SVG Körper-Grafik -->
+          <svg viewBox="0 0 200 260" style="width: 100%; max-width: 160px; height: auto; display: block; margin: 0 auto 2rem;">
+            <!-- Kopf -->
+            <ellipse cx="100" cy="80" rx="45" ry="60" fill="none" stroke="var(--border)" stroke-width="3"/>
+            <!-- Hals -->
+            <path d="M80 135 L80 160 M120 135 L120 160" stroke="var(--border)" stroke-width="3" fill="none"/>
+            <!-- Schultern -->
+            <path d="M80 160 Q40 160 20 220 M120 160 Q160 160 180 220" stroke="var(--border)" stroke-width="3" fill="none"/>
+            <!-- Referenzpunkte für Orientierung im Gesicht -->
+            <path d="M85 75 Q100 85 115 75" stroke="var(--border-light)" stroke-width="2" fill="none"/> <!-- Augenlinie -->
+            <path d="M100 75 L100 105" stroke="var(--border-light)" stroke-width="2"/> <!-- Nase -->
+            <path d="M90 120 Q100 125 110 120" stroke="var(--border-light)" stroke-width="2" fill="none"/> <!-- Mund -->
+            
+            <!-- Der pulsierende rote Indikator-Punkt -->
+            <circle id="pageEftDot" class="eft-dot" cx="100" cy="20" r="8" fill="#EF4444" style="box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);"/>
+          </svg>
+
+          <!-- Text-Beschreibung für Anfänger -->
+          <div id="pageEftCurrentPoint" class="eft-point-display">1. Scheitel-Punkt (TOH)</div>
+          <div id="pageEftCurrentDesc" class="eft-point-desc">Klopfe auf den höchsten Punkt deines Kopfes.</div>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <button class="eft-btn-secondary" onclick="prevPageEftPoint()">Zurück</button>
+          <button id="pageEftNextBtn" class="eft-btn" onclick="nextPageEftPoint()">Nächster Punkt</button>
+        </div>
+      </div>
+
+      <!-- EFT Abschluss: Überprüfung -->
+      <div id="pageEftStep4" class="eft-step">
+        <div class="eft-step-indicator">Abschluss</div>
+        <h3 style="font-size: 1.4rem; margin-bottom: 1rem;">Überprüfung</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Atme tief durch. Spüre in dich hinein. Wie hoch ist der Wert auf der Stress-Skala jetzt? Ist er noch nicht bei Null, wiederhole die Sequenz.</p>
+        <button class="eft-btn" onclick="resetPageEft()">Neuer Durchgang</button>
+      </div>
+
     </div>
   </div>
 </nav>
