@@ -437,7 +437,7 @@ layout: null
           <video class="post-card-img" autoplay muted loop playsinline poster="{{ post.data.image | url }}">
             <source src="{{ post.data.featured_video | url }}#t=0.1" type="video/mp4">
           </video>
-        {% elsif post.data.image %}
+        {% elsif post.data.image and post.data.image != "" %}
           <img class="post-card-img" src="{{ post.data.image | url }}" alt="{{ post.data.title }}">
         {% else %}
           <div class="post-card-fallback"></div>
