@@ -936,7 +936,7 @@ layout: null
         <div class="cta-box">
           <h4>Ein kurzer Gedanke dazu?</h4>
           <p>Hast du dich im Ergebnis wiedererkannt? Oft reicht schon ein kleiner Perspektivenwechsel von außen, um mentale Knoten zu lösen. Wenn du magst, schreib mir völlig unverbindlich – ich teile gerne 1-2 konkrete Gedanken zu deiner Situation mit dir.</p>
-          <a href="#" id="dynamic-mailto" class="cta-btn">Kurzen Impuls per Mail anfragen</a>
+         <button onclick="transferToContact()" class="cta-btn">Über Kontaktformular anfragen</button>
         </div>
         
         <div style="text-align: center; margin-top: 2rem;">
@@ -1264,24 +1264,24 @@ function openAssessment() {
     }
 
     // Lösungs-Archetypen mappen (Stress-Auswertung)
-  const resultData = {
-    'overload': {
-      icon: '○', title: 'Der Mentor', quality: 'Innere Einkehr & Loslassen',
-      text: '<strong>Dein System läuft im roten Drehzahlbereich.</strong> Dein Nervensystem ist im ständigen Alarmbereitschaftsmodus, was zu Reizbarkeit und mentaler Erschöpfung führt. Du versuchst den Druck mit noch mehr Tempo zu lösen.<br><br><strong>Dein Lösungs-Impuls:</strong> Du brauchst jetzt nicht noch mehr Disziplin oder Zeitmanagement, sondern die Energie des <em>Mentors</em>. Die strategische Antwort lautet: Radikales Loslassen. Schaffe dir künstliche Pausen, blende äußere Anforderungen für einen Moment rigoros aus und reduziere das mentale Rauschen.'
-    },
-    'stagnation': {
-      icon: '▲', title: 'Der Initiator', quality: 'Pioniergeist & Handlungskraft',
-      text: '<strong>Dein mentaler Motor stockt.</strong> Du hängst in einer zähen, blockierten Energie fest. Häufig entsteht das, wenn Ziele unklar sind oder der Aufgabenberg so massiv wirkt, dass das Gehirn in eine Art analytische Schockstarre verfällt.<br><br><strong>Dein Lösungs-Impuls:</strong> Du benötigst jetzt die durchschlagende Kraft des <em>Initiators</em>. Brich aus dem theoretischen Planen aus! Setze dir einen Timer auf exakt 10 Minuten und beginne mit der kleinsten, primitivsten Aufgabe. Der Fokus und die Energie folgen der Handlung – nicht umgekehrt.'
-    },
-    'control': {
-      icon: '↗', title: 'Der Visionär', quality: 'Perspektivewechsel & Flughöhe',
-      text: '<strong>Du verlierst dich im Mikro-Management.</strong> Du versuchst aktuell, äußere Unsicherheit und Stress durch ein hohes Maß an Kontrolle zu bewältigen. Das kostet enorm viel Ressourcen und nimmt dir die souveräne Flexibilität.<br><br><strong>Dein Lösungs-Impuls:</strong> Dir fehlt momentan die Flughöhe des <em>Visionärs</em>. Tritt mental einen Schritt zurück. Verlasse die operative Ebene und wechsle in die Meta-Perspektive: Was ist auf lange Sicht wirklich wichtig? Welcher Kampf lohnt sich, und wo darfst du die Zügel bewusst lockern?'
-    },
-    'boundary': {
-      icon: '∟', title: 'Der Realist', quality: 'Abgrenzung & Eigenschutz',
-      text: '<strong>Deine Grenzen sind zu durchlässig.</strong> Du bist stark im Außen orientiert und reagierst momentan fast nur noch auf die Erwartungen und Dringlichkeiten anderer. Deine eigene strategische Ausrichtung bleibt auf der Strecke.<br><br><strong>Dein Lösungs-Impuls:</strong> Es ist Zeit für die strukturelle Klarheit und Härte des <em>Realisten</em>. Übernimm wieder das Kommando über deine Ressourcen. Setze einen bewussten Puffer zwischen Reiz und Reaktion: Sag nicht sofort "Ja", sondern erbitte dir Bedenkzeit. Schütze dein Fundament.'
-    }
-  };
+    const resultData = {
+      'overload': {
+        icon: '○', title: 'Der Mentor', quality: 'Innere Einkehr & Loslassen',
+        text: '<strong>Dein System läuft im roten Drehzahlbereich.</strong> Dein Nervensystem ist im ständigen Alarmbereitschaftsmodus, was zu Reizbarkeit und mentaler Erschöpfung führt. Du versuchst den Druck mit noch mehr Tempo zu lösen.<br><br><strong>Dein Lösungs-Impuls:</strong> Du brauchst jetzt nicht noch mehr Disziplin oder Zeitmanagement, sondern die Energie des <em>Mentors</em>. Die strategische Antwort lautet: Radikales Loslassen. Schaffe dir künstliche Pausen, blende äußere Anforderungen für einen Moment rigoros aus und reduziere das mentale Rauschen.'
+      },
+      'stagnation': {
+        icon: '▲', title: 'Der Initiator', quality: 'Pioniergeist & Handlungskraft',
+        text: '<strong>Dein mentaler Motor stockt.</strong> Du hängst in einer zähen, blockierten Energie fest. Häufig entsteht das, wenn Ziele unklar sind oder der Aufgabenberg so massiv wirkt, dass das Gehirn in eine Art analytische Schockstarre verfällt.<br><br><strong>Dein Lösungs-Impuls:</strong> Du benötigst jetzt die durchschlagende Kraft des <em>Initiators</em>. Brich aus dem theoretischen Planen aus! Setze dir einen Timer auf exakt 10 Minuten und beginne mit der kleinsten, primitivsten Aufgabe. Der Fokus und die Energie folgen der Handlung – nicht umgekehrt.'
+      },
+      'control': {
+        icon: '↗', title: 'Der Visionär', quality: 'Perspektivewechsel & Flughöhe',
+        text: '<strong>Du verlierst dich im Mikro-Management.</strong> Du versuchst aktuell, äußere Unsicherheit und Stress durch ein hohes Maß an Kontrolle zu bewältigen. Das kostet enorm viel Ressourcen und nimmt dir die souveräne Flexibilität.<br><br><strong>Dein Lösungs-Impuls:</strong> Dir fehlt momentan die Flughöhe des <em>Visionärs</em>. Tritt mental einen Schritt zurück. Verlasse die operative Ebene und wechsle in die Meta-Perspektive: Was ist auf lange Sicht wirklich wichtig? Welcher Kampf lohnt sich, und wo darfst du die Zügel bewusst lockern?'
+      },
+      'boundary': {
+        icon: '∟', title: 'Der Realist', quality: 'Abgrenzung & Eigenschutz',
+        text: '<strong>Deine Grenzen sind zu durchlässig.</strong> Du bist stark im Außen orientiert und reagierst momentan fast nur noch auf die Erwartungen und Dringlichkeiten anderer. Deine eigene strategische Ausrichtung bleibt auf der Strecke.<br><br><strong>Dein Lösungs-Impuls:</strong> Es ist Zeit für die strukturelle Klarheit und Härte des <em>Realisten</em>. Übernimm wieder das Kommando über deine Ressourcen. Setze einen bewussten Puffer zwischen Reiz und Reaktion: Sag nicht sofort "Ja", sondern erbitte dir Bedenkzeit. Schütze dein Fundament.'
+      }
+    };
 
     const res = resultData[dominant];
     document.getElementById('res-icon').innerText = res.icon;
@@ -1289,14 +1289,22 @@ function openAssessment() {
     document.getElementById('res-quality').innerText = res.quality;
     document.getElementById('res-text').innerHTML = res.text;
     
-    // Dynamischen Mail-Link generieren (Nimmt dem User die Schreibarbeit ab)
-    const mailSubject = encodeURIComponent("Mein Ergebnis aus dem Resilienz-Kompass");
-    const mailBody = encodeURIComponent(`Hallo Christian,\n\nich habe gerade deinen Resilienz-Kompass gemacht und fand das Ergebnis sehr spannend.\n\nMeine systemische Basis: ${userBaseArchetype.name}\nMomentan brauche ich: ${res.title}\n\nHast du dazu vielleicht noch einen kurzen, unverbindlichen Gedanken oder Impuls für mich?\n\nViele Grüße`);
-    document.getElementById('dynamic-mailto').href = `mailto:christian@zeitqualitaet.at?subject=${mailSubject}&body=${mailBody}`;
+    // Testergebnis für das Kontaktformular zwischenspeichern
+    window.currentAssessmentText = `Hallo Christian,\n\nich habe gerade deinen Resilienz-Kompass gemacht und fand das Ergebnis sehr spannend.\n\nMeine systemische Basis: ${userBaseArchetype.name}\nMomentan brauche ich: ${res.title}\n\nHast du dazu vielleicht noch einen kurzen, unverbindlichen Gedanken oder Impuls für mich?\n\nViele Grüße`;
     
     // UI Update
     document.getElementById('quiz-progress').style.display = 'none';
     document.getElementById('q-step-result').classList.add('active');
+  }
+
+  // NEUE FUNKTION: Außerhalb von resetQuiz!
+  function transferToContact() {
+    // Füllt das Kontaktformular aus und scrollt sanft dorthin
+    const messageField = document.querySelector('#contact-form textarea[name="message"]');
+    if (messageField) {
+      messageField.value = window.currentAssessmentText;
+    }
+    document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
   }
 
   function resetQuiz() {
