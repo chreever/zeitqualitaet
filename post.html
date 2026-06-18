@@ -91,21 +91,22 @@
         }
       }
 
-      // Medienanzeige (Repariert & Farbschema-Fallback hinzugefügt)
+      // Medienanzeige (Unsichtbar, wenn kein Bild vorhanden)
       const m = document.getElementById('media-container');
       const finalImg = pImg || tImg;
       const finalVid = fVid || bVid;
 
       if (finalVid && finalVid !== "") { 
         m.innerHTML = `<video class="article-image" autoplay muted loop playsinline><source src="${fixPath(finalVid)}#t=0.1" type="video/mp4"></video>`; 
+        m.style.display = 'block';
       } 
       else if (finalImg && finalImg !== "") { 
-        // alt="" lässt den Text komplett verschwinden, falls das Bild fehlt
         m.innerHTML = `<img class="article-image" src="${fixPath(finalImg)}" alt="">`; 
+        m.style.display = 'block';
       } 
       else { 
-        // Hochwertiges Farbschema, wenn weder Video noch Bild vorhanden sind
-        m.innerHTML = `<div style="width: 100%; height: 450px; background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-radius: var(--radius); border: 1px solid var(--border-light); box-shadow: 0 10px 30px rgba(0,0,0,0.05);"></div>`; 
+        // Wenn kein Bild/Video da ist: Container komplett ausblenden!
+        m.style.display = 'none'; 
       }
 
       // Content rendern
