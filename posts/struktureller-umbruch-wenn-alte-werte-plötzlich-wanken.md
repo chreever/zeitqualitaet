@@ -3,6 +3,7 @@ title: "Struktureller Umbruch: Wenn alte Werte plötzlich wanken"
 draft: false
 category: Reflexion
 date: 2026-07-12T19:57:00+02:00
+image: /img/12072026.png
 banner_image: /img/12072026.png
 post_image: /img/12072026.png
 description: Plötzlicher Drang nach Veränderung? Wie du unerwartete Dynamiken in
