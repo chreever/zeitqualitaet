@@ -8,7 +8,7 @@ banner_image: /img/beitrag-juli26.jpeg
 post_image: /img/beitrag-juli26.jpeg
 description: Raus aus dem reaktiven Krisenmodus. Wie du persönliche Grenzen
   sprengst und dir den Raum für authentische Freude zurückeroberst.
-placement: Kein Banner
+placement: Top-Banner (Header)
 ---
 
 Kennst du das Gefühl, dass das Leben in letzter Zeit vor allem aus Verwalten bestand? Das ständige Jonglieren von Verpflichtungen – sei es das Koordinieren von Betreuungszeiten in der Familie, das Aufrechterhalten von Verbindungen über räumliche Distanzen hinweg oder einfach der tägliche Spagat zwischen Pflicht und noch mehr Pflicht. Wir haben uns oft klein gemacht, nur um zu funktionieren und das System am Laufen zu halten. Doch systemisch betrachtet dreht sich der Wind gerade spürbar. 
