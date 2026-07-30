@@ -8,7 +8,7 @@ banner_image: /img/12072026.png
 post_image: /img/12072026.png
 description: Plötzlicher Drang nach Veränderung? Wie du unerwartete Dynamiken in
   Beziehungen und Finanzen strategisch nutzt, ohne impulsiv zu handeln.
-placement: Top-Banner (Header)
+placement: Kein Banner
 ---
 
 
