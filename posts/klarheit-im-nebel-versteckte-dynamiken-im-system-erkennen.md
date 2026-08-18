@@ -8,7 +8,7 @@ banner_image: /img/beitrag-060826.jpeg
 post_image: /img/beitrag-060826.jpeg
 description: Fühlen sich Absprachen aktuell zäh und unklar an? Erfahre, wie du
   den mentalen Nebel durchdringst und tiefe systemische Wahrheiten entlarvst.
-placement: Top-Banner (Header)
+placement: Kein Banner
 ---
 
 Kennst du diese Phasen, in denen sich jede Kommunikation wie das Waten durch knietiefen Schlamm anfühlt? Du sitzt in Meetings oder führst private Gespräche, alle nicken, aber unter der Oberfläche spürst du: Hier ist gar nichts geklärt. 
